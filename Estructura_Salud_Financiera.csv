@@ -1,0 +1,17 @@
+Tipo_Variable,ID_Variable,Clasificacion,Entrada_o_Calculado,Formula_o_Regla_Excel,Descripcion_y_Alcance
+Variable Base,ingreso_mensual_fijo,Flujo de Entrada,Input Manual,Valores >= 0,"Sumatoria de ingresos recurrentes netos (salario, rentas fijas)."
+Variable Base,ingreso_mensual_variable,Flujo de Entrada,Input Manual,Valores >= 0,"Sumatoria de ingresos no recurrentes (bonos, horas extra). Mide volatilidad."
+Variable Base,ingreso_mensual,Flujo de Entrada,Calculado,ingreso_mensual_fijo + ingreso_mensual_variable,Ingreso neto total del mes.
+Variable Base,gastos_esenciales_mensuales,Flujo de Salida,Input Manual,Valores >= 0,"Gastos vitales: vivienda, salud, supermercado basico."
+Variable Base,gastos_no_escenciales_mensuales,Flujo de Salida,Input Manual,Valores >= 0,"Gastos de estilo de vida: ocio, restaurantes, compras prescindibles."
+Variable Base,gastos_totales_del_mes,Flujo de Salida,Calculado,gastos_esenciales_mensuales + gastos_no_escenciales_mensuales,Suma total de consumo. Evita redundancia.
+Variable Base,cuotas_mensuales_deuda,Flujo de Salida,Input Manual,Valores >= 0,"Compromisos financieros fijos a pagar en el mes (tarjetas, prestamos)."
+Variable Base,ahorro_mensual,Flujo de Retencion,Calculado,ingreso_mensual - gastos_totales_del_mes - cuotas_mensuales_deuda,"Lo que sobra a fin de mes. Si es negativo, hubo desahorro o nueva deuda."
+Variable Base,ahorro_total,Stock Acumulado,Input Manual,Valores >= 0,Liquidez total en cuenta/inversiones de rescate rapido.
+Indicador Avanzado,ratio_ahorro_neto,Ratio,Calculado,ahorro_mensual / ingreso_mensual,Porcentaje del ingreso que se ahorra. Un 20% es el estandar ideal.
+Indicador Avanzado,ratio_endeudamiento_dti,Ratio,Calculado,cuotas_mensuales_deuda / ingreso_mensual,"Alimenta el semaforo: 0-20% Saludable, 21-36% Observacion, >37% Riesgo."
+Indicador Avanzado,gastos_esenciales_ratio,Ratio,Calculado,gastos_esenciales_mensuales / ingreso_mensual,"Si supera el 50%, el usuario es muy vulnerable a la inflacion o recortes."
+Indicador Avanzado,gastos_estilo_vida_ratio,Ratio,Calculado,gastos_no_escenciales_mensuales / ingreso_mensual,Margen de ajuste. Donde el usuario puede recortar en crisis.
+Indicador Avanzado,meses_supervivencia,Métrica de Resiliencia,Calculado,"SI(gastos_esenciales_mensuales>0, ahorro_total / gastos_esenciales_mensuales, ""N/A"")",Meses que sobrevive manteniendo su vida basica si sus ingresos caen a cero hoy.
+Indicador Comportamental,frecuencia_transacciones_ocio,Frecuencia,Input Manual,Entero >= 0,"Sintoma de ""gastos hormiga"". Mide descontrol impulsivo."
+Variable Objetivo,perfil_financiero,Categórica (Multiclase),Calculado,"SI(L2<=0.20, ""Saludable"", SI(L2<=0.36, ""En Observación"", ""En Riesgo""))",Etiqueta final del algoritmo que clasifica el nivel de riesgo financiero del usuario.
