@@ -1,4 +1,4 @@
-nombre_tienda,contexto_micro,monto,esencial,categoria_macro
+nombre_tienda,subcategoria,monto,esencial,categoria_principal
 Montagne,hobbies_y_deportes,4828.97,FALSE,Entretenimiento
 Vantage,farmacia,59250.57,TRUE,Salud
 Levis,indumentaria,111984.4,FALSE,Entretenimiento
