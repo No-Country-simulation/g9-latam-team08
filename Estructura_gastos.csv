@@ -1,11 +1,11 @@
 Columna,Tipo de dato,Ejemplo(s),Descripción
 nombre_tienda,Texto (string),"Starbucks, Uber, Falabella, ARBA, Amex","Nombre del comercio, entidad o servicio donde se realizó la transacción"
-contexto_micro,"Texto (string, categórico)","farmacia, restaurante, taxi_y_apps, transferencias, combustible","Subcategoría específica del gasto (22 valores posibles en total). Es la etiqueta de clasificación ""micro"" (más granular) y también se usa como texto de contexto adicional en el modelo"
+subcategoria,"Texto (string, categórico)","farmacia, restaurante, taxi_y_apps, transferencias, combustible","Subcategoría específica del gasto (22 valores posibles en total). Es la etiqueta de clasificación ""micro"" (más granular) y también se usa como texto de contexto adicional en el modelo"
 monto,Numérico (float),"4828.97, 59250.57, 99724.09","Monto de la transacción, en pesos"
 esencial,Booleano (True / False),"True, False","Indica si el gasto se considera esencial (ej.: salud, servicios básicos, impuestos) o no esencial (ej.: entretenimiento, delivery, indumentaria)."
-categoria_macro,"Texto (string, categórico)","Alimentacion, Salud, Transporte, Hogar, Finanzas, Entretenimiento","Categoría general del gasto (6 valores posibles). Es la etiqueta de clasificación ""macro"" (más amplia), de la cual ""contexto_micro"" es una subcategoría jerárquica"
+categoria_principal,"Texto (string, categórico)","Alimentacion, Salud, Transporte, Hogar, Finanzas, Entretenimiento","Categoría general del gasto (6 valores posibles). Es la etiqueta de clasificación ""macro"" (más amplia), de la cual ""contexto_micro"" es una subcategoría jerárquica"
 ,,,
-Relación jerárquica categoria_macro → contexto_micro,,,
+Relación jerárquica categoria_macro → subcategoria,,,
 Alimentacion,"carniceria_y_granja, restaurante, delivery, supermercado",,
 Entretenimiento,"hobbies_y_deportes, indumentaria, cuidado_personal, suscripciones_digitales",,
 Finanzas,"transferencias, pago_tarjetas, impuestos",,
