@@ -40,5 +40,6 @@ Esta herramienta desglosa visualmente en qué subcategorías (ej. pago de tarjet
 Debido a las restricciones de almacenamiento de GitHub (límite de 25 MB), el modelo predictivo finalizado no se encuentra alojado físicamente en este repositorio.
 
 *   **Archivo del Código:** La lógica completa está en el archivo `.ipynb` de esta rama.
-*   **Archivo del Modelo:** El modelo ya entrenado y empaquetado mediante `joblib` (`modelo_riesgo_financiero.pkl`) se encuentra en el canal de Discord.
+*   **Archivo del Modelo:** El modelo ya entrenado y empaquetado mediante `joblib` (`modelo_riesgo_financiero.pkl`) se encuentra en el repositorio.
+
 
