@@ -1,0 +1,22 @@
+.placeholder-page__main {
+  padding: var(--space-8) 0;
+}
+
+.placeholder-page__card {
+  display: grid;
+  gap: 1rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.placeholder-page__tag {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-warning-soft);
+  color: var(--color-text);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
