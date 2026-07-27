@@ -37,4 +37,15 @@ public class UsuarioService{
     public Optional<UsuarioModel> obtenerPorID(Long id){
         return usuarioRepository.findById(id);
     }
+
+    // BUSQUEDA DE USUARIOS POR PERFIL FINANCIERO
+    public ArrayList<UsuarioModel> obtenerUsuariosPorPerfilFinanciero(String perfilFinanciero) {
+        return usuarioRepository.findByPerfilFinanciero(perfilFinanciero);
+    }
+
+    // BUSQUEDA DE USUARIOS CON MESES DE SUPERVIVENCIA MAYORES O IGUALES A
+    public ArrayList<UsuarioModel> obtenerUsuariosConSupervivenciaMayorACero() {
+        return usuarioRepository.findByMesesSupervivenciaMayoresA(0);
+    }
 }
+

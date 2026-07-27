@@ -46,5 +46,14 @@ public class UsuarioController{
             return "No se pudo eliminar al usuario de id: " + id;
         }
     }
+    @GetMapping("/{perfilFinanciero}")
+    public ArrayList<UsuarioModel> obtenerUsuariosPorPerfil(@PathVariable("perfilFinanciero") String perfilFinanciero) {
+        return this.usuarioService.obtenerUsuariosPorPerfilFinanciero(perfilFinanciero);
+    }
+
+    @GetMapping("/{meses_supervivencia}")
+    public ArrayList<UsuarioModel> obtenerUsuariosConSupervivenciaMayorACero() {
+        return this.usuarioService.obtenerUsuariosConSupervivenciaMayorACero();
+    }
 
 }
