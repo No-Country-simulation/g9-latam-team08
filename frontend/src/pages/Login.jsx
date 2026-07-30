@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
 import "./Login.css";
 
@@ -74,9 +75,9 @@ function Login() {
 
         <p className="login-card__footer">
           ¿No tenés cuenta?{" "}
-          <a className="login-card__link" href="#">
+          <Link className="login-card__link" to="/register">
             Registrate
-          </a>
+          </Link>
         </p>
       </section>
     </main>
