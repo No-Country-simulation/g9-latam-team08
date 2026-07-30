@@ -2,26 +2,90 @@
 
 ## Objetivo
 
+> Pendiente de completar.
+
+---
+
+## Alcance
+
+> Pendiente de completar.
+
+---
+
 ## Arquitectura
 
-## Tecnologías utilizadas
+> Pendiente de completar.
 
-## Estructura del proyecto
+---
+
+## Tecnologías Utilizadas
+
+> Pendiente de completar.
+
+---
+
+## Estructura del Proyecto
+
+> Pendiente de completar.
+
+---
 
 ## API REST
 
-## Endpoints
+### Endpoints
 
-## Validación de datos
+### Métodos HTTP
 
-## Manejo de errores
+### Validación de Datos
+
+### Manejo de Errores
+
+---
 
 ## Integración con Ciencia de Datos
 
-## Integración con Oracle Cloud Infrastructure (OCI)
+> Pendiente de completar.
+
+---
+
+## Integración con Base de Datos
+
+> Pendiente de completar.
+
+---
+
+## Infraestructura
+
+### Oracle Cloud Infrastructure (OCI)
+
+> Pendiente de implementación.
+
+---
 
 ## Seguridad
 
+> Pendiente de completar.
+
+---
+
 ## Pruebas
 
-## Mejoras futuras
+> Pendiente de completar.
+
+---
+
+## Estado del Desarrollo
+
+> Pendiente de actualizar.
+
+---
+
+## Mejoras Futuras
+
+> Pendiente de completar.
+
+---
+
+## Equipo Responsable
+
+> Pendiente de completar.

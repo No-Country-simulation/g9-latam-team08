@@ -2,28 +2,131 @@
 
 ## Objetivo
 
+> Pendiente de completar.
+
+---
+
+## Alcance
+
+> Pendiente de completar.
+
+---
+
 ## Dataset
+
+### Descripción
+
+### Generación del Dataset
+
+### Variables Calculadas
+
+### Clasificación del Perfil Financiero
+
+---
+
+## Base de Datos
+
+### Modelo de Datos
+
+### Validaciones
+
+### Evolución del Modelo de Datos
+
+---
 
 ## Análisis Exploratorio de Datos (EDA)
 
-## Preprocesamiento de datos
+> Pendiente de completar.
 
-## Ingeniería de características
+---
 
-## Clasificación de gastos
+## Preprocesamiento de Datos
 
-## Clasificación del perfil financiero
+> Pendiente de completar.
+
+---
+
+## Ingeniería de Características
+
+> Pendiente de completar.
+
+---
+
+## Clasificación de Gastos
+
+> Pendiente de completar.
+
+---
 
 ## Modelos de Machine Learning
 
-## Entrenamiento del modelo
+> Pendiente de completar.
 
-## Evaluación del modelo
+---
 
-## Serialización del modelo
+## Entrenamiento del Modelo
+
+> Pendiente de completar.
+
+---
+
+## Evaluación del Modelo
+
+> Pendiente de completar.
+
+---
+
+## Serialización del Modelo
+
+> Pendiente de completar.
+
+---
+
+## Dashboard
+
+> Pendiente de completar.
+
+---
 
 ## Integración con Backend
 
-## Estructura de carpetas
+> Pendiente de completar.
 
-## Mejoras futuras
+---
+
+## Infraestructura
+
+### Railway
+
+### Oracle Cloud Infrastructure (OCI)
+
+> Pendiente de implementación.
+---
+
+## Tecnologías Utilizadas
+
+> Pendiente de completar.
+
+---
+
+## Estructura de Carpetas
+
+> Pendiente de completar.
+
+---
+
+## Estado del Desarrollo
+
+> Pendiente de actualizar.
+
+---
+
+## Mejoras Futuras
+
+> Pendiente de completar.
+
+---
+
+## Equipo Responsable
+
+> Pendiente de completar.

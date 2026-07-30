@@ -2,20 +2,82 @@
 
 ## Objetivo
 
-## Tecnologías utilizadas
+> Pendiente de completar.
 
-## Diseño de la interfaz
+---
 
-## Arquitectura de la aplicación
+## Alcance
 
-## Estructura de páginas
+> Pendiente de completar.
+
+---
+
+## Arquitectura
+
+> Pendiente de completar.
+
+---
+
+## Diseño de la Interfaz
+
+> Pendiente de completar.
+
+---
 
 ## Componentes
 
-## Integración con la API REST
+> Pendiente de completar.
 
-## Diseño responsive
+---
 
-## Pruebas
+## Navegación
 
-## Mejoras futuras
+> Pendiente de completar.
+
+---
+
+## Diseño Responsive
+
+> Pendiente de completar.
+
+---
+
+## Integración con Backend
+
+> Pendiente de completar.
+
+---
+
+## Visualización de Datos
+
+> Pendiente de completar.
+
+---
+
+## Tecnologías Utilizadas
+
+> Pendiente de completar.
+
+---
+
+## Estructura de Carpetas
+
+> Pendiente de completar.
+
+---
+
+## Estado del Desarrollo
+
+> Pendiente de actualizar.
+
+---
+
+## Mejoras Futuras
+
+> Pendiente de completar.
+
+---
+
+## Equipo Responsable
+
+> Pendiente de completar.

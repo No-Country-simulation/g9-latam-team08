@@ -2,20 +2,84 @@
 
 ## Objetivo
 
-## Arquitectura en OCI
+> Pendiente de completar.
 
-## Servicios utilizados
+---
 
-## Configuración del entorno
+## Alcance
 
-## Despliegue de la solución
+> Pendiente de completar.
+
+---
+
+## Arquitectura de la Solución
+
+> Pendiente de completar.
+
+---
+
+## Servicios Utilizados
+
+### Object Storage
+
+> Pendiente de implementación.
+
+### Compute
+
+> Pendiente de implementación.
+
+### Functions
+
+> Pendiente de implementación.
+
+### Base de Datos (Opcional)
+
+> Pendiente de implementación.
+
+---
+
+## Despliegue
+
+> Pendiente de completar.
+
+---
+
+## Integración con Backend
+
+> Pendiente de completar.
+
+---
+
+## Integración con Ciencia de Datos
+
+> Pendiente de completar.
+
+---
 
 ## Seguridad
 
-## Almacenamiento
+> Pendiente de completar.
 
-## Integración con la aplicación
+---
 
-## Monitoreo
+## Tecnologías Utilizadas
 
-## Mejoras futuras
+> Pendiente de completar.
+
+---
+
+## Estado del Desarrollo
+
+> Pendiente de actualizar.
+
+---
+
+## Mejoras Futuras
+
+> Pendiente de completar.
+
+---
+
+## Equipo Responsable
+
+> Pendiente de completar.

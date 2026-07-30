@@ -2,16 +2,78 @@
 
 ## Introducción
 
+> Pendiente de completar.
+
+---
+
+## Objetivo de la Aplicación
+
+> Pendiente de completar.
+
+---
+
 ## Requisitos
 
-## Acceso a la aplicación
+### Requisitos del Sistema
 
-## Uso de la aplicación
+> Pendiente de completar.
+
+### Acceso a la Aplicación
+
+> Pendiente de completar.
+
+---
+
+## Inicio de la Aplicación
+
+> Pendiente de completar.
+
+---
 
 ## Funcionalidades
 
-## Recomendaciones de uso
+### Registro de Información Financiera
 
-## Preguntas frecuentes
+> Pendiente de completar.
 
-## Soporte
+### Visualización del Análisis Financiero
+
+> Pendiente de completar.
+
+### Consulta de Indicadores
+
+> Pendiente de completar.
+
+### Recomendaciones Financieras
+
+> Pendiente de completar.
+
+---
+
+## Interpretación de Resultados
+
+> Pendiente de completar.
+
+---
+
+## Preguntas Frecuentes (FAQ)
+
+> Pendiente de completar.
+
+---
+
+## Solución de Problemas
+
+> Pendiente de completar.
+
+---
+
+## Limitaciones
+
+> Pendiente de completar.
+
+---
+
+## Versiones
+
+> Pendiente de completar.

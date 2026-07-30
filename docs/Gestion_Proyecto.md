@@ -1,31 +1,77 @@
 # Gestión del Proyecto
 
-## Objetivo de la gestión del proyecto
+## Objetivo
 
-## Metodología de trabajo
+> Pendiente de completar.
 
-## Organización del equipo
+---
 
-### Roles y responsabilidades
+## Metodología de Trabajo
 
-## Cronograma
+> Pendiente de completar.
 
-## Historial de reuniones
+---
 
-## Fechas importantes
+## Organización del Equipo
 
-## Recursos y enlaces
+> Pendiente de completar.
 
-## Decisiones y acuerdos
+---
 
-## Entregables del Hackathon
+## Roles y Responsabilidades
 
-## Fuera del alcance del MVP
+> Pendiente de completar.
 
-## Riesgos del proyecto
+---
 
-## Gestión de cambios
+## Planificación del Proyecto
 
-## Control de versiones
+> Pendiente de completar.
 
-## Estado del proyecto
+---
+
+## Gestión del Backlog
+
+> Pendiente de completar.
+
+---
+
+## Gestión de Tareas
+
+> Pendiente de completar.
+
+---
+
+## Gestión de Reuniones
+
+> Pendiente de completar.
+
+---
+
+## Comunicación
+
+> Pendiente de completar.
+
+---
+
+## Gestión de Riesgos
+
+> Pendiente de completar.
+
+---
+
+## Control de Versiones
+
+> Pendiente de completar.
+
+---
+
+## Estado del Proyecto
+
+> Pendiente de actualizar.
+
+---
+
+## Lecciones Aprendidas
+
+> Pendiente de completar.

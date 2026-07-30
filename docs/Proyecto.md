@@ -1,19 +1,83 @@
 # Proyecto
 
-## Problema
+## Introducción
 
-## Contexto
+> Pendiente de completar.
 
-## Usuario objetivo
+---
 
-## Objetivo general
+## Descripción del Proyecto
 
-## Objetivo del Hackathon
+> Pendiente de completar.
 
-## Alcance del MVP
+---
 
-### Incluye
+## Problema a Resolver
 
-## Entregables principales
+> Pendiente de completar.
 
-## Criterios de éxito del MVP
+---
+
+## Objetivo General
+
+> Pendiente de completar.
+
+---
+
+## Objetivos Específicos
+
+> Pendiente de completar.
+
+---
+
+## Alcance
+
+> Pendiente de completar.
+
+---
+
+## Usuario Objetivo
+
+> Pendiente de completar.
+
+---
+
+## Propuesta de Valor
+
+> Pendiente de completar.
+
+---
+
+## Funcionalidades Principales
+
+> Pendiente de completar.
+
+---
+
+## Arquitectura General
+
+> Pendiente de completar.
+
+---
+
+## Tecnologías Utilizadas
+
+> Pendiente de completar.
+
+---
+
+## Estructura General del Proyecto
+
+> Pendiente de completar.
+
+---
+
+## Estado del Proyecto
+
+> Pendiente de actualizar.
+
+---
+
+## Próximas Etapas
+
+> Pendiente de completar.

@@ -1,23 +1,83 @@
 # Herramientas y Tecnologías
 
-## Introducción
+## Objetivo
 
-## Gestión del proyecto
+> Pendiente de completar.
 
-## Desarrollo
+---
 
-## Ciencia de Datos
+## Herramientas de Gestión
 
-## Backend
+### Trello
 
-## Frontend
+> Pendiente de completar.
 
-## Oracle Cloud Infrastructure (OCI)
+### Discord
 
-## Control de versiones
+> Pendiente de completar.
 
-## Comunicación
+### GitHub
 
-## Diseño
+> Pendiente de completar.
 
-## Otras herramientas utilizadas
+---
+
+## Herramientas de Desarrollo
+
+### Visual Studio Code
+
+> Pendiente de completar.
+
+### GitHub Desktop
+
+> Pendiente de completar.
+
+### Postman
+
+> Pendiente de completar.
+
+### DBeaver
+
+> Pendiente de completar.
+
+---
+
+## Tecnologías Utilizadas
+
+### Frontend
+
+> Pendiente de completar.
+
+### Backend
+
+> Pendiente de completar.
+
+### Ciencia de Datos
+
+> Pendiente de completar.
+
+### Base de Datos
+
+> Pendiente de completar.
+
+### Cloud
+
+> Pendiente de completar.
+
+---
+
+## Control de Versiones
+
+> Pendiente de completar.
+
+---
+
+## Repositorio del Proyecto
+
+> Pendiente de completar.
+
+---
+
+## Estado del Desarrollo
+
+> Pendiente de actualizar.
