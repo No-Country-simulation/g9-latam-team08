@@ -4,7 +4,7 @@ package team08.apirest.models;
 public class UsuarioModel{
 
     // Variables privadas
-    private Long id;
+    private Long id_cliente;
     private String nombre;
     private String password;
     private String email;
@@ -24,16 +24,34 @@ public class UsuarioModel{
     private int meses_supervivencia;
     private Double frecuencia_transacciones_ocio;
     private String perfil_financiero;
+    private String modalidad_pago_tarjeta;
+    private Long ahorro_previo;
 
 
     // GETTERS & SETTERS
     
     public Long getId() {
-        return id;
+        return id_cliente;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getModalidad_pago_tarjeta() {
+        return modalidad_pago_tarjeta;
+    }
+
+    public void setModalidad(String modalidad_pago_tarjeta){
+        this.modalidad_pago_tarjeta = modalidad_pago_tarjeta;
+    }
+
+    public Long getAhorros(){
+        return ahorro_previo;
+    }
+
+    public void setAhorro_previo(Long ahorro_previo){
+        this.ahorro_previo = ahorro_previo;
+    }
+
+    public void setId(Long id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     public void setPassword(String password){
