@@ -2,16 +2,22 @@ import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  };
-
+    setError("");
+     if ( !email || !password) {
+      setError("Credenciales incorrectas. Por favor, revisá tu email y contraseña.");
+      return;
+    }
+  }
   return (
     <main className="login-page">
       <div className="login-page__backdrop" aria-hidden="true" />
@@ -67,7 +73,11 @@ function Login() {
               required
             />
           </div>
-
+          {error && (
+            <p className="login-form__error" role="alert" style={{ color: "var(--color-error)" }}>
+              {error}
+            </p>
+          )}
           <Button type="submit" fullWidth>
             Iniciar Sesión
           </Button>
