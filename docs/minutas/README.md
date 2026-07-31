@@ -1,4 +1,11 @@
-# Minutas de reuniones
+# 📊 Finance AI – Asistente Inteligente de Salud Financiera
+
+**Hackathon Alura + Oracle ONE**  
+**Equipo:** G9-LATAM-Team 08
+
+---
+
+# 📝 Minutas de Reunión
 
 En esta carpeta se encuentran las minutas de las reuniones realizadas durante el desarrollo del proyecto.
 
@@ -15,6 +22,10 @@ Cada minuta documenta los objetivos de la reunión, los participantes, los temas
 | 23/07/2026 | Semana 1 | Estado de desarrollo, revisión de pendientes y planificación de la siguiente etapa. |
 | 27/07/2026 | Semana 2 | Seguimiento general del proyecto, revisión de documentación, GitHub, Trello y planificación de las próximas actividades. |
 | 29/07/2026 | Semana 2 | Seguimiento de avances, revisión de la documentación del proyecto, organización del repositorio GitHub, actualización de Trello y seguimiento del estado de Oracle Cloud Infrastructure (OCI). |
+| 30/07/2026 | Semana 2 | Revisión del avance por áreas, seguimiento de la documentación técnica, definición del estándar de documentación del proyecto y asignación de responsables por documento. |
+
+---
+
 ## Estructura de las minutas
 
 Cada minuta contiene la siguiente información:
