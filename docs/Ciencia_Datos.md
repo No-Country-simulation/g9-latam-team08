@@ -2,13 +2,13 @@
 
 ## Objetivo
 
-> Pendiente de completar por el equipo de Ciencia de Datos.
+
 
 ---
 
 ## Alcance
 
-> Pendiente de completar por el equipo de Ciencia de Datos.
+
 
 ---
 
@@ -83,63 +83,109 @@ La estructura de la base de datos fue actualizada conforme evolucionó el datase
 
 ## Análisis Exploratorio de Datos (EDA)
 
-> Pendiente de completar.
+Se generaron reportes automáticos con **ydata-profiling** para los dos datasets del proyecto: el de salud financiera (500 clientes, 23 variables) y el de gastos/transacciones (2.000 registros, 7 variables). En ambos casos se confirmó 0% de valores nulos y 0% de filas duplicadas.
+
+Sobre el dataset de gastos se identificó alta correlación entre `categoria_principal`, `subcategoria` y `esencial`, algo esperable dado que la categoría de una transacción define en gran medida si es o no un gasto esencial. La variable `monto` presenta un rango entre $518 y $119.951, con una media de $60.410.
+
+Para unir ambos datasets se normalizaron los IDs de cliente (extracción numérica mediante regex) y se realizó un merge por `id_cliente_limpio`.
 
 ---
 
 ## Preprocesamiento de Datos
 
-> Pendiente de completar.
+- Normalización de los identificadores de cliente: extracción del componente numérico del ID (eliminando prefijos de texto) para poder cruzar el dataset de gastos con el de salud financiera.
+- Verificación de nulos y duplicados sobre el dataset de salud financiera, sin encontrar inconsistencias.
+- Codificación de la variable categórica `modalidad_pago_tarjeta` mediante `pd.get_dummies`.
+- Balanceo de clases con **SMOTE** (Synthetic Minority Over-sampling Technique) sobre la variable objetivo `perfil_financiero`, para evitar que el modelo aprenda sesgado hacia la clase mayoritaria y pierda capacidad de detectar los perfiles "En Riesgo".
 
 ---
 
 ## Ingeniería de Características
 
-> Pendiente de completar.
+Se diseñaron cinco variables (scores) que consolidan el comportamiento financiero del cliente, en lugar de evaluarlo solo por ingresos:
+
+- **score_supervivencia** (máximo 35 pts): 0 si `meses_supervivencia = 0`, 15 si es menor o igual a 3, 25 si es menor o igual a 6, 35 si supera los 6 meses. Basado en el estándar de mantener un fondo de emergencia de 3 a 6 meses de gastos esenciales.
+- **score_ahorro** (máximo 35 pts): 0 si el ratio de ahorro neto es negativo, 15 si es menor o igual a 0.10, 25 si es menor o igual a 0.20, 35 si supera 0.20.
+- **score_endeudamiento** (máximo 30 pts): 0 si el DTI supera 0.36, 15 si supera 0.20, 30 si está dentro del rango saludable.
+- **Penalización por pago parcial de tarjeta:** -15 puntos si `modalidad_pago_tarjeta` es "parcial".
+- **score_financiero:** suma de los tres scores anteriores más la penalización, con un piso en 0 para que no se generen valores negativos.
+
+Se evaluó incorporar variables transaccionales directas (por ejemplo, ticket promedio o porcentaje de gasto no esencial), pero se descartaron en la versión final del modelo porque introducían ruido estadístico y reducían la precisión frente al modelo basado únicamente en los cinco scores.
 
 ---
 
 ## Clasificación de Gastos
 
-> Pendiente de completar.
+Modelo que clasifica cada transacción en una categoría (Alimentación, Transporte, Entretenimiento, Hogar, Finanzas, Salud, etc.) a partir de su texto.
+
+**Enfoque:** basado en el paper "Hierarchical Classification of Financial Transactions Through Context-Fusion of Transformer-based Embeddings" (Busson et al., BTG Pactual / PUC-Rio, 2023), que propone el modelo Two-headed DragoNet. La idea central es que una transacción sola rara vez tiene suficiente información, por lo que se genera un embedding para cada texto disponible por separado (nombre del comercio y subcategoría) y se fusionan antes de clasificar. Se adaptó el enfoque a un solo nivel de categoría (`categoria_principal`), en lugar del esquema jerárquico del paper original.
+
+**Componentes del modelo:**
+- TextVectorization + Embedding para convertir el texto libre (`nombre_tienda`, `subcategoria`) en vectores entrenables.
+- Transformer Encoder (Multi-Head Attention), que en el paper de referencia superó consistentemente a LSTM, GRU, BLSTM y modelos clásicos (KNN, SVC, Random Forest).
+- Context-Fusion (concatenación + capa Dense) para combinar los embeddings de nombre de comercio y subcategoría.
+- La variable `esencial` se agregó como input numérico adicional, fuera del esquema del paper original.
+- Capa final Softmax para la clasificación multiclase.
+
+Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria + esencial) y Modelo B (solo subcategoria + esencial, sin el nombre del comercio), para evaluar si el nombre del comercio aporta valor real sobre este dataset.
 
 ---
 
 ## Modelos de Machine Learning
 
-> Pendiente de completar.
+**Clasificador de perfil financiero:** `RandomForestClassifier` de scikit-learn.
+
+**Clasificador de transacciones:** modelo basado en Transformer con Context-Fusion (ver sección "Clasificación de Gastos").
 
 ---
 
 ## Entrenamiento del Modelo
 
-> Pendiente de completar.
+**Clasificador de perfil financiero:**
+- Variables de entrada: `meses_supervivencia`, `score_supervivencia`, `score_ahorro`, `score_endeudamiento`, `score_financiero`.
+- División de datos: 80% entrenamiento / 20% testeo.
+- Entrenamiento previo sobre el dataset balanceado con SMOTE.
+- Hiperparámetros: `n_estimators=100`, `random_state=42`.
+
+**Clasificador de transacciones:** se entrena a partir del dataset de gastos, normalizando la variable `esencial` (de booleano a 0/1) y vectorizando `nombre_tienda` y `subcategoria` antes de entrenar ambas variantes del modelo (A y B).
 
 ---
 
 ## Evaluación del Modelo
 
-> Pendiente de completar.
+**Clasificador de perfil financiero:**
+- Precisión global (accuracy): 96.21%.
+- Recall para la clase "En Riesgo": 1.00 (sin falsos negativos en la detección de usuarios en situación crítica).
+
+**Clasificador de transacciones:** según el paper de referencia, el modelo con Context-Fusion alcanzó entre 93% y 95% de F1 (macro), contra 57-59% usando únicamente el nombre del comercio.
 
 ---
 
 ## Serialización del Modelo
 
-> Pendiente de completar.
+**Clasificador de perfil financiero:** exportado con `joblib.dump` como `modelo_riesgo_financiero.pkl`, descargado directamente desde el entorno de entrenamiento (Google Colab).
+
+**Clasificador de transacciones:** se generan `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras` y `artefactos_categoria.pkl` (label encoder y vocabulario).
+
+**Versiones de librerías utilizadas:**
+- pandas == 2.2.2
+- scikit-learn == 1.6.1
+- imbalanced-learn == 0.14.2
+- joblib == 1.5.3
 
 ---
 
 ## Dashboard
 
-> Pendiente de completar.
+Se desarrolló un dashboard interactivo que cruza los resultados predictivos del modelo con la base de datos transaccional en la nube. Permite visualizar en qué subcategorías (por ejemplo, pago de tarjetas, delivery, supermercado) concentran su gasto los usuarios clasificados como "En Riesgo", con el objetivo de habilitar alertas tempranas de educación financiera o planes de refinanciación.
 
 ---
 
 ## Integración con Backend
 
-El modelo desarrollado por el área de Ciencia de Datos será consumido por la API REST implementada por el equipo Backend, permitiendo realizar el análisis financiero y la clasificación del perfil de los usuarios.
+El modelo desarrollado por el área de Ciencia de Datos será consumido por la API REST implementada por el equipo de Backend, permitiendo realizar el análisis financiero y la clasificación del perfil de los usuarios.
 
-> Pendiente de completar el flujo de integración.
+Falta definir el formato JSON de entrada y salida entre el modelo y la API (contrato de datos), y confirmar la vía de entrega del archivo `.pkl` del modelo de perfil financiero, dado que no queda alojado en el repositorio por el límite de tamaño de GitHub.
 
 ---
 
@@ -166,13 +212,24 @@ El proyecto contempla utilizar Oracle Object Storage para almacenar el modelo en
 
 ## Tecnologías Utilizadas
 
-> Pendiente de completar.
+- Python
+- pandas, numpy
+- scikit-learn (RandomForestClassifier)
+- imbalanced-learn (SMOTE)
+- joblib
+- ydata-profiling
+- plotly
+- TensorFlow / Keras (clasificador de transacciones)
+- MySQL
+- Railway
+- OCI (pendiente de implementación)
+- Git / GitHub
 
 ---
 
 ## Estructura de Carpetas
 
-> Pendiente de completar.
+
 
 ---
 
@@ -180,24 +237,25 @@ El proyecto contempla utilizar Oracle Object Storage para almacenar el modelo en
 
 Actualmente se encuentra implementado:
 
-- Dataset sintético.
-- Base de datos MySQL.
-- Modelo de datos.
-- Despliegue de la base de datos en Railway.
+- Dataset sintético (salud financiera y gastos).
+- Base de datos MySQL, con despliegue en Railway.
+- Análisis exploratorio de datos (EDA) sobre ambos datasets.
+- Ingeniería de características (scores financieros).
+- Entrenamiento y evaluación del modelo de perfil financiero (Random Forest).
+- Entrenamiento del modelo de clasificación de transacciones (Transformer).
+- Dashboard interactivo.
 
 Pendiente:
 
-- Entrenamiento del modelo.
-- Evaluación.
-- Dashboard.
-- Integración Backend.
-- Implementación en OCI.
+- Definición del contrato JSON entre el modelo y el Backend.
+- Implementación de OCI Object Storage.
+- Entrega e integración del archivo del modelo al Backend.
 
 ---
 
 ## Mejoras Futuras
 
-> Pendiente de completar.
+
 
 ---
 
