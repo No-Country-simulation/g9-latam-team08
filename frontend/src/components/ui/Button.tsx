@@ -23,6 +23,7 @@ interface AnchorButtonProps extends BaseButtonProps {
 interface NativeButtonProps extends BaseButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   to?: never;
   href?: never;
 }
@@ -53,7 +54,12 @@ function Button(props: ButtonProps) {
   }
 
   return (
-    <button className={className} type={props.type ?? "button"} onClick={props.onClick}>
+    <button
+      className={className}
+      type={props.type ?? "button"}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.children}
     </button>
   );

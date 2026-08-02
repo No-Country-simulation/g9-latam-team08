@@ -2,7 +2,7 @@ import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import BotonGoogle from "../components/ui/BotonGoogle";
 import "./Login.css";
 
 function Login() {
@@ -38,6 +38,8 @@ function Login() {
             Accedé a tu panel financiero y continuá con tu análisis.
           </p>
         </header>
+
+
 
         <form className="login-form" onSubmit={handleSubmit} noValidate>
           <div className="login-form__field">
@@ -82,6 +84,12 @@ function Login() {
             Iniciar Sesión
           </Button>
         </form>
+        <div className="login-social">
+          <p className="login-social__label">O continuá con</p>
+          <BotonGoogle onSuccess={() => setError("Registro con Google (simulado). Implementá la llamada al backend para completar el flujo.")} onError={(err) => setError(err?.message || "Error al iniciar sesión con Google.")}>
+            Iniciar sesión con Google
+          </BotonGoogle>
+        </div>
 
         <p className="login-card__footer">
           ¿No tenés cuenta?{" "}

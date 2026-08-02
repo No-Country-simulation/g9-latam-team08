@@ -20,6 +20,12 @@
   transform: translateY(-1px);
 }
 
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .button:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;

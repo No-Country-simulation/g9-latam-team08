@@ -2,6 +2,7 @@ import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
+import BotonGoogle from "../components/ui/BotonGoogle";
 import "./Login.css";
 
 function Register() {
@@ -36,6 +37,23 @@ function Register() {
     setError("Registración exitosa (simulada). Podés iniciar sesión ahora.");
   };
 
+  const handleGoogleSuccess = (tokenResponse) => {
+    // tokenResponse contiene access_token / credential dependiendo de la configuración
+    // TODO: Enviar tokenResponse a backend para completar el registro/login
+    console.log("Google token response:", tokenResponse);
+    setError("Registro con Google (simulado). Implementá la llamada al backend para completar el flujo.");
+  };
+
+  const handleGoogleError = (err) => {
+    console.error("Google login error:", err);
+
+    const message =
+      err?.message ||
+      "Error al registrarse con Google. Intentá nuevamente.";
+
+    setError(message);
+  };
+
   return (
     <main className="login-page">
       <div className="login-page__backdrop" aria-hidden="true" />
@@ -56,6 +74,13 @@ function Register() {
             Registrate para acceder a tu panel financiero.
           </p>
         </header>
+
+        {/* Botón de registro con Google */}
+        <div style={{ marginBottom: "1rem" }}>
+          <BotonGoogle onSuccess={handleGoogleSuccess} onError={handleGoogleError}>
+            Registrate con Google
+          </BotonGoogle>
+        </div>
 
         <form className="login-form" onSubmit={handleSubmit} noValidate>
           <div className="login-form__field">
