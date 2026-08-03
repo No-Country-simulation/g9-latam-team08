@@ -1,21 +1,49 @@
 # LIBRERIAS
 import os
 import joblib
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, HTTPException
+import pandas as pd
+import requests
+import io
+
+
 app = Flask(__name__)
-# MODELO
-MODEL_PATH = os.path.join(os.path.dirname(__file__), 'modelo_financiero.pkl')
+# MODELOS 
+URL_ARTEFACTOS = "https://objectstorage.sa-santiago-1.oraclecloud.com/p/KBtE6vnucxdHl9eAUeSbPNb6hdeZikdvIa5G5JytdrL_Bc-e4fhkQpxNKqaCRYJ8/n/axxteegxmict/b/hackathon-fintech-modelo/o/clasificacion-gastos/artefactos_categoria.pkl"
+URL_RIESGO = "https://objectstorage.sa-santiago-1.oraclecloud.com/p/KBtE6vnucxdHl9eAUeSbPNb6hdeZikdvIa5G5JytdrL_Bc-e4fhkQpxNKqaCRYJ8/n/axxteegxmict/b/hackathon-fintech-modelo/o/clasificacion-perfil/modelo_riesgo_financiero.pkl"
 
-# CARGA DE MODELO
-try:
-  modelo = joblib.load(
-      MODEL_PATH
-  ) 
-  print("Modelo cargado exitosamente")
-except Exception as e:
-  print(f"Error al cargar el modelo .pkl: {e}")
-  modelo = None
+modelo_categoria = None
+modelo_riesgo = None
 
+# Funcion para descargar y cargar modelos al iniciar la app
+@app.on_event("startup")
+def cargar_modelos():
+    global modelo_categoria, modelo_riesgo
+    try:
+        print("Descargando modelo de categorizacion de gastos")
+        resp_cat = requests.get(URL_ARTEFACTOS)
+        resp_cat.raise_for_status()
+        modelo_categoria = joblib.load(io.BytesIO(resp_cat.content))
+        
+        print("Descargando modelo de perfil financiero")
+        resp_riesgo = requests.get(URL_RIESGO)
+        resp_riesgo.raise_for_status()
+        modelo_riesgo = joblib.load(io.BytesIO(resp_riesgo.content))
+        
+        print("¡Modelos cargados exitosamente!")
+    except Exception as e:
+        print(f"Error al cargar los modelos desde OCI: {e}")
+
+@app.post("/predict/categoria")
+def predecir_categoria(gasto: dict):
+    if not modelo_categoria:
+        raise HTTPException(status_code=500, detail="Modelo de categoria no disponible")
+    try:
+        df = pd.DataFrame([gasto])
+        prediccion = modelo_categoria.predict(df)[0]
+        return {"categoria_predicha": str(prediccion)}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 @app.route("/calcular-finanzas", methods=["POST"])
 def calcular_finanzas():
@@ -30,9 +58,7 @@ def calcular_finanzas():
     gastos_esenciales = data.get("gastos_esenciales_mensuales", 0) or 0
     gastos_no_esenciales = data.get("gastos_no_esenciales_mensuales", 0) or 0
     cuotas_deuda = data.get("cuotas_mensuales_deuda", 0) or 0
-    modalidad_pago_tarjeta = data.get("modalidad_pago_tarjeta", "sin_deuda")
     ahorro_previo = data.get("ahorro_previo", 0) or 0
-    frecuencia_transacciones_ocio = (data.get("frecuencia_transacciones_ocio", 0) or 0)
 
     # Calculos:
     ingreso_mensual = ingreso_fijo + ingreso_variable
@@ -59,7 +85,7 @@ def calcular_finanzas():
     # Prediccion del perfil financiero
     perfil_financiero = "En Observación" # VALOR PREDETERMINADO
 
-    if modelo is not None:
+    if modelo_riesgo is not None:
         try:
             # Variables a enviar al modelo
             features = [[
@@ -70,7 +96,7 @@ def calcular_finanzas():
                 ratio_ahorro_neto,
                 meses_supervivencia,
             ]]
-            prediccion = modelo.predict(features)
+            prediccion = modelo_riesgo.predict(features)
             perfil_financiero = str(prediccion[0])
         except Exception as e:
             print(f"Error al ejecutar la prediccion del modelo: {e}")
