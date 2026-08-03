@@ -17,7 +17,7 @@ import team08.apirest.services.UsuarioService;
 
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/api/usuarios") // Ruta base para los endpoints de usuarios
 public class UsuarioController{
     @Autowired
     UsuarioService usuarioService;

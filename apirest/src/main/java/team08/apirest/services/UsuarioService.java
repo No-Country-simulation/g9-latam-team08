@@ -65,7 +65,7 @@ public class UsuarioService{
 
     // BUSQUEDA DE USUARIOS CON MESES DE SUPERVIVENCIA MAYORES O IGUALES A
     public ArrayList<UsuarioModel> obtenerUsuariosConSupervivenciaMayorACero() {
-        return usuarioRepository.findByMesesSupervivenciaMayoresA(0);
+        return usuarioRepository.findByMesesSupervivenciaGreaterThan(0);
     }
 }
 

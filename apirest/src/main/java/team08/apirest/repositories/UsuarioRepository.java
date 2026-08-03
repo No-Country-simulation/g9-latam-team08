@@ -11,7 +11,7 @@ public interface UsuarioRepository extends CrudRepository<UsuarioModel, Long>{
 
     // Buscar por perfil financiero (coincidencia exacta del String)
     ArrayList<UsuarioModel> findByPerfilFinanciero(String perfilFinanciero);
-
+    
     // Buscar usuarios con meses de supervivencia mayores a 0
-    ArrayList<UsuarioModel> findByMesesSupervivenciaMayoresA(int mesesSupervivencia);
+    ArrayList<UsuarioModel> findByMesesSupervivenciaGreaterThan(int mesesSupervivencia);
 }
