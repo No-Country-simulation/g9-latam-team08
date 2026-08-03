@@ -18,8 +18,18 @@ Abarcar la creación de controladores REST, la gestión de entidades de usuarios
 
 ## Tecnologías Utilizadas
 
-Java con Spring Boot ---> Framework principal.
-Maven ---> Gestión de dependencias y compilación.  Spring Data JPA / Hibernate ---> Manejo de entidades y base de datos.
+Lenguaje: Java
+
+Framework: Spring Boot
+
+Gestor de dependencias y construcción: Maven
+
+Control de versiones: Git y GitHub
+
+Documentación de API: Swagger / OpenAPI (Springdoc-OpenAPI)
+
+
+Spring Data JPA / Hibernate ---> Manejo de entidades y base de datos.
 
 ## Estructura del Proyecto
 
@@ -47,6 +57,7 @@ Manejo de Errores: Control de respuestas del servidor ante fallos o datos incorr
 
 ## Integración con Ciencia de Datos
 
+Preparación de servicios lógicos capaces de recibir resultados analíticos como categorías predichas, niveles de confianza y alertas de salud financiera para estructurarlos y despacharlos de forma eficiente hacia el panel del cliente.
 
 ## Integración con Base de Datos
 
@@ -66,9 +77,7 @@ Configuración de seguridad mediante Spring Security para proteger las rutas del
 
 ## Pruebas
 
-> Pendiente de completar.
-
----
+Pruebas unitarias y de integración locales para validar el correcto funcionamiento de los controladores y repositorios mediante compilaciones limpias con Maven, así como el uso de postman y swagger para las pruebas de endpoints.
 
 ## Estado del Desarrollo
 
@@ -82,10 +91,10 @@ Ampliación de las reglas de análisis financiero automático.
 
 ## Equipo Responsable
 
-inicio (Magali)
-login_usuario (Juan)
-dashboard (Thiago y Leandro)
-analisis (Magali Y Juan)
-transacciones (Alan)
-recomendaciones (Magali y Juan)
-historial (Thiago y Juan)
+- [ ] **inicio** — Magali
+- [ ] **login_usuario** — Juan
+- [ ] **dashboard** — Thiago y Leandro
+- [ ] **analisis** — Magali Y Juan
+- [ ] **transacciones** — Alan
+- [ ] **recomendaciones** — Magali y Juan
+- [ ] **historial** — Thiago y Juan
