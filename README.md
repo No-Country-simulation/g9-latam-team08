@@ -12,7 +12,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 * **OCI Object Storage**[cite: 2] - Almacenamiento en la nube para los modelos `.pkl`.
 
 ## 🚀 Endpoints Disponibles
-### 1. Predecir Categoría de Gasto
+### Predecir Categoría de Gasto
 * **URL:** `/predict/categoria`
 * **Método:** `POST`
 * **Descripción:** Recibe los datos de un gasto en formato JSON y devuelve la categoría predicha por el modelo de Machine Learning[cite: 2].
@@ -24,3 +24,49 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
     "metodo_pago": "Tarjeta",
     "esencial": true
   }
+* Respuesta exitosa (200 Ok):
+  ```json
+  {
+    "categoria_predicha": "Alimentacion"
+  }
+### Calcular Finanzas y Perfil de Riesgo
+* **URL:** /calcular-finanzas
+* **Método:** POST
+* **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes (supervivencia, endeudamiento, etc.) y evalúa el perfil de riesgo mediante un modelo predictivo[cite: 2].
+* **Cuerpo de la petición (Ejemplo):**
+  ```json
+  {
+    "ingreso_mensual_fijo": 500000,
+    "ingreso_mensual_variable": 50000,
+    "gastos_esenciales_mensuales": 200000,
+    "gastos_no_esenciales_mensuales": 50000,
+    "cuotas_mensuales_deuda": 30000,
+    "ahorro_previo": 100000
+  }
+
+* **Respuesta exitosa (200 OK):** Retorna el objeto JSON original enriquecido con los cálculos, ratios y el campo "perfil_financiero" determinado por el modelo.
+
+## ⚙️ Instalación y Ejecución Local
+* 1. **Clona el repositorio** en tu equipo local:
+   ```bash
+    git clone [https://github.com/tu-usuario/g9-latam-team08.git](https://github.com/tu-usuario/g9-latam-team08.git)
+    cd g9-latam-team08
+
+* (OPCIONAL) Crea y activa un entorno virtual (opcional pero recomendado):
+  ```bash
+    python -m venv venv
+    # En Windows:
+    venv\Scripts\activate
+    # En macOS / Linux:
+    source venv/bin/activate
+  
+* 2. **Instala las dependencias** necesarias ejecutando el siguiente comando:
+  ```bash
+  pip install flask pandas requests joblib scikit-learn
+
+* 3. Ejecuta la aplicación:
+  ```bash
+  python app.py
+
+(Por defecto, la API se hostea en el puerto 500)
+
