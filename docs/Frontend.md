@@ -2,77 +2,62 @@
 
 ## Objetivo
 
-> Pendiente de completar.
+Documentar la arquitectura, diseño, implementación e integración del componente Frontend desarrollado para el Sistema de Alerta Financiera Temprana, describiendo las interfaces de usuario, los componentes implementados y la comunicación con los servicios del Backend.
 
 ---
-
 ## Alcance
 
-> Pendiente de completar.
+Este documento describe los componentes, procesos y funcionalidades implementados por el área de Frontend, incluyendo el diseño de las interfaces de usuario, la navegación entre pantallas, los componentes desarrollados, la integración con la API Backend, la experiencia de usuario, la infraestructura utilizada y las tecnologías empleadas durante el desarrollo del proyecto.
 
 ---
 
-## Arquitectura
+## Desarrollo del Componente
 
-> Pendiente de completar.
-
----
-
-## Diseño de la Interfaz
-
-> Pendiente de completar.
-
----
-
-## Componentes
+### Arquitectura
 
 > Pendiente de completar.
 
 ---
 
-## Navegación
+### Diseño de Interfaces
 
 > Pendiente de completar.
 
 ---
 
-## Diseño Responsive
+### Componentes
 
 > Pendiente de completar.
 
 ---
 
-## Integración con Backend
+### Navegación
 
 > Pendiente de completar.
 
 ---
 
-## Visualización de Datos
+### Integración con Backend
 
 > Pendiente de completar.
 
 ---
 
-## Tecnologías Utilizadas
+## Integración con otras áreas
+
+### Backend
 
 > Pendiente de completar.
 
 ---
 
-## Estructura de Carpetas
+## Infraestructura
 
 > Pendiente de completar.
 
 ---
 
-## Estado del Desarrollo
-
-> Pendiente de actualizar.
-
----
-
-## Mejoras Futuras
+## Herramientas y Tecnologías Utilizadas
 
 > Pendiente de completar.
 

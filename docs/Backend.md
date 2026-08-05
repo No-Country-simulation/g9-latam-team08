@@ -2,66 +2,66 @@
 
 ## Objetivo
 
-> Pendiente de completar.
-
+Documentar la arquitectura, implementación e integración del componente Backend desarrollado para el Sistema de Alerta Financiera Temprana, describiendo los servicios, la API REST, la persistencia de datos y los mecanismos de comunicación con las demás áreas del proyecto.
 ---
 
 ## Alcance
 
-Abarcar la creación de controladores REST, la gestión de entidades de usuarios, categorías, transacciones y alertas, así como la integración de los servicios de procesamiento de datos financieros.
+Este documento describe los componentes, servicios y procesos implementados por el área de Backend, abarcando la arquitectura de la API REST, la creación de controladores REST, la gestión de entidades de usuarios, categorías, transacciones y alertas, la persistencia de datos, las validaciones, la seguridad, las pruebas realizadas y la integración de los servicios de procesamiento de datos financieros con Ciencia de Datos, Frontend y Oracle Cloud Infrastructure (OCI).
 
-## Arquitectura
+---
+
+## Desarrollo del Componente
+
+### Arquitectura
 
 > Pendiente de completar.
 
 ---
 
-## Tecnologías Utilizadas
+### API REST
 
-Lenguaje: Java
+#### Endpoints
 
-Framework: Spring Boot
+Rutas expuestas para gestionar usuarios, transacciones, categorías, alertas y las métricas globales del dashboard.
 
-Gestor de dependencias y construcción: Maven
+#### Métodos HTTP
 
-Control de versiones: Git y GitHub
+Uso de métodos estándar (GET, POST, etc.) según la acción requerida.
 
-Documentación de API: Swagger / OpenAPI (Springdoc-OpenAPI)
+#### Validación de Datos
 
+Reglas implementadas para asegurar la integridad de la información recibida en las peticiones.
 
-Spring Data JPA / Hibernate ---> Manejo de entidades y base de datos.
+#### Manejo de Errores
 
-## Estructura del Proyecto
+Control de respuestas del servidor ante fallos o datos incorrectos.
 
+---
 
-## API REST
+### Integración con Base de Datos
 
-### Endpoints
+Mapeo relacional de entidades en User, Transaction, Category y Alert, mediante JPA para almacenar de forma persistente la información financiera y recuperarla mediante consultas optimizadas en los repositorios.
 
-Endpoints: Rutas expuestas para gestionar usuarios, transacciones, categorías, alertas y las métricas globales del dashboard.
+---
 
-### Métodos HTTP
+### Seguridad
 
-Métodos HTTP: Uso de métodos estándar (GET, POST, etc.) según la acción requerida.
+Configuración de seguridad mediante Spring Security para proteger las rutas del sistema y asegurar el acceso controlado a los datos de los usuarios.
 
+### Pruebas
 
-### Validación de Datos
+Pruebas unitarias y de integración locales para validar el correcto funcionamiento de los controladores y repositorios mediante compilaciones limpias con Maven, así como el uso de Postman y Swagger para las pruebas de endpoints.
 
+---
 
-Validación de Datos: Reglas implementadas para asegurar la integridad de la información recibida en las peticiones.
+## Integración con otras áreas
 
+### Ciencia de Datos
 
-### Manejo de Errores
+El componente Backend integra los servicios desarrollados por el área de Ciencia de Datos, permitiendo recibir resultados analíticos como categorías predichas, niveles de confianza y alertas de salud financiera para estructurarlos y despacharlos de forma eficiente hacia el panel del cliente.
 
-Manejo de Errores: Control de respuestas del servidor ante fallos o datos incorrectos.
-
-## Integración con Ciencia de Datos
-
-Preparación de servicios lógicos capaces de recibir resultados analíticos como categorías predichas, niveles de confianza y alertas de salud financiera para estructurarlos y despacharlos de forma eficiente hacia el panel del cliente.
-
-## Integración con Base de Datos
-
-Mapeo relacional de entidades en User, Transaction, Category, Alert, mediante JPA para almacenar de forma persistente la información financiera y recuperarla mediante consultas optimizadas en los repositorios.
+---
 
 ## Infraestructura
 
@@ -71,30 +71,28 @@ Mapeo relacional de entidades en User, Transaction, Category, Alert, mediante JP
 
 ---
 
-## Seguridad
+## Herramientas y Tecnologías Utilizadas
 
-Configuración de seguridad mediante Spring Security para proteger las rutas del sistema y asegurar el acceso controlado a los datos de los usuarios.
+Lenguaje: Java
 
-## Pruebas
+Framework: Spring Boot
 
-Pruebas unitarias y de integración locales para validar el correcto funcionamiento de los controladores y repositorios mediante compilaciones limpias con Maven, así como el uso de postman y swagger para las pruebas de endpoints.
+Gestor de dependencias y construcción: Maven
 
-## Estado del Desarrollo
+Spring Data JPA / Hibernate
 
-Módulos de backend, repositorios y controladores principales implementados y en fase de integración con las vistas del frontend.
+Swagger / OpenAPI (Springdoc-OpenAPI)
 
-## Mejoras Futuras
+Control de versiones: Git y GitHub
 
-Optimización de consultas complejas para el rendimiento del dashboard.
-
-Ampliación de las reglas de análisis financiero automático.
+---
 
 ## Equipo Responsable
 
 - [ ] **inicio** — Magali
 - [ ] **login_usuario** — Juan
 - [ ] **dashboard** — Thiago y Leandro
-- [ ] **analisis** — Magali Y Juan
+- [ ] **analisis** — Magali y Juan
 - [ ] **transacciones** — Alan
 - [ ] **recomendaciones** — Magali y Juan
 - [ ] **historial** — Thiago y Juan

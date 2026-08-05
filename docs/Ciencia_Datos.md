@@ -2,25 +2,27 @@
 
 ## Objetivo
 
-
+Documentar la arquitectura, los procesos, los modelos de Machine Learning, la preparación de los datos y la integración del componente de Ciencia de Datos desarrollado para el Sistema de Alerta Financiera Temprana, proporcionando una referencia técnica para su comprensión, mantenimiento e integración con las demás áreas del proyecto.
 
 ---
 
 ## Alcance
 
-
+Este documento describe el conjunto de actividades, procesos y componentes técnicos desarrollados por el área de Ciencia de Datos, incluyendo la generación y preparación de los datasets, el análisis exploratorio de datos, la ingeniería de características, el entrenamiento y evaluación de los modelos de Machine Learning, la integración con Backend, la infraestructura utilizada y las herramientas empleadas durante el desarrollo del proyecto.
 
 ---
 
-## Dataset
+## Desarrollo del Componente
 
-### Descripción
+### Dataset
+
+#### Descripción
 
 El dataset utilizado en el proyecto es sintético y fue generado mediante un script desarrollado en Python. No contiene datos reales de usuarios; toda la información fue construida a partir de reglas de negocio y rangos definidos por el equipo de Ciencia de Datos.
 
 Cada registro representa la situación financiera mensual de un cliente e incluye información sobre ingresos, gastos, deuda, ahorro e indicadores financieros derivados de estos datos.
 
-### Generación del Dataset
+#### Generación del Dataset
 
 El proceso de generación del dataset parte de variables base que simulan la información que un usuario registraría en una aplicación de finanzas personales, entre ellas:
 
@@ -37,7 +39,7 @@ A partir de estas variables se calcularon automáticamente distintos indicadores
 
 Se generó un conjunto de **500 clientes**, buscando una distribución representativa de perfiles financieros saludables, en observación y en riesgo.
 
-### Variables Calculadas
+#### Variables Calculadas
 
 Entre las variables derivadas se encuentran:
 
@@ -50,7 +52,7 @@ Entre las variables derivadas se encuentran:
 - Ratio de gastos de estilo de vida.
 - Meses de supervivencia financiera.
 
-### Clasificación del Perfil Financiero
+#### Clasificación del Perfil Financiero
 
 El perfil financiero del usuario se determina mediante el ratio de endeudamiento (DTI):
 
@@ -60,19 +62,19 @@ El perfil financiero del usuario se determina mediante el ratio de endeudamiento
 
 ---
 
-## Base de Datos
+### Base de Datos
 
-### Modelo de Datos
+#### Modelo de Datos
 
 Se implementó una base de datos MySQL con una tabla denominada **clientes_financiero**, cuya estructura replica el dataset generado por el equipo de Ciencia de Datos.
 
-### Validaciones
+#### Validaciones
 
 Se incorporaron restricciones (CHECK) para garantizar la consistencia de los datos, evitando valores inválidos en campos numéricos y limitando los valores permitidos para el perfil financiero.
 
 La columna **ahorro_mensual** admite valores negativos, ya que representan meses donde los gastos superan los ingresos.
 
-### Evolución del Modelo de Datos
+#### Evolución del Modelo de Datos
 
 La estructura de la base de datos fue actualizada conforme evolucionó el dataset, incorporando nuevas columnas como:
 
@@ -81,7 +83,7 @@ La estructura de la base de datos fue actualizada conforme evolucionó el datase
 
 ---
 
-## Análisis Exploratorio de Datos (EDA)
+### Análisis Exploratorio de Datos (EDA)
 
 Se generaron reportes automáticos con **ydata-profiling** para los dos datasets del proyecto: el de salud financiera (500 clientes, 23 variables) y el de gastos/transacciones (2.000 registros, 7 variables). En ambos casos se confirmó 0% de valores nulos y 0% de filas duplicadas.
 
@@ -91,7 +93,7 @@ Para unir ambos datasets se normalizaron los IDs de cliente (extracción numéri
 
 ---
 
-## Preprocesamiento de Datos
+### Preprocesamiento de Datos
 
 - Normalización de los identificadores de cliente: extracción del componente numérico del ID (eliminando prefijos de texto) para poder cruzar el dataset de gastos con el de salud financiera.
 - Verificación de nulos y duplicados sobre el dataset de salud financiera, sin encontrar inconsistencias.
@@ -100,7 +102,7 @@ Para unir ambos datasets se normalizaron los IDs de cliente (extracción numéri
 
 ---
 
-## Ingeniería de Características
+### Ingeniería de Características
 
 Se diseñaron cinco variables (scores) que consolidan el comportamiento financiero del cliente, en lugar de evaluarlo solo por ingresos:
 
@@ -114,7 +116,7 @@ Se evaluó incorporar variables transaccionales directas (por ejemplo, ticket pr
 
 ---
 
-## Clasificación de Gastos
+### Clasificación de Gastos
 
 Modelo que clasifica cada transacción en una categoría (Alimentación, Transporte, Entretenimiento, Hogar, Finanzas, Salud, etc.) a partir de su texto.
 
@@ -131,7 +133,7 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 
 ---
 
-## Modelos de Machine Learning
+### Modelos de Machine Learning
 
 **Clasificador de perfil financiero:** `RandomForestClassifier` de scikit-learn.
 
@@ -139,7 +141,7 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 
 ---
 
-## Entrenamiento del Modelo
+### Entrenamiento del Modelo
 
 **Clasificador de perfil financiero:**
 - Variables de entrada: `meses_supervivencia`, `score_supervivencia`, `score_ahorro`, `score_endeudamiento`, `score_financiero`.
@@ -151,7 +153,7 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 
 ---
 
-## Evaluación del Modelo
+### Evaluación del Modelo
 
 **Clasificador de perfil financiero:**
 - Precisión global (accuracy): 96.21%.
@@ -161,7 +163,7 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 
 ---
 
-## Serialización del Modelo
+### Serialización del Modelo
 
 **Clasificador de perfil financiero:** exportado con `joblib.dump` como `modelo_riesgo_financiero.pkl`, descargado directamente desde el entorno de entrenamiento (Google Colab).
 
@@ -175,17 +177,17 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 
 ---
 
-## Dashboard
+### Dashboard
 
 Se desarrolló un dashboard interactivo que cruza los resultados predictivos del modelo con la base de datos transaccional en la nube. Permite visualizar en qué subcategorías (por ejemplo, pago de tarjetas, delivery, supermercado) concentran su gasto los usuarios clasificados como "En Riesgo", con el objetivo de habilitar alertas tempranas de educación financiera o planes de refinanciación.
 
 ---
 
-## Integración con Backend
+## Integración con otras áreas
 
-El modelo desarrollado por el área de Ciencia de Datos será consumido por la API REST implementada por el equipo de Backend, permitiendo realizar el análisis financiero y la clasificación del perfil de los usuarios.
+### Integración con Backend
 
-Falta definir el formato JSON de entrada y salida entre el modelo y la API (contrato de datos), y confirmar la vía de entrega del archivo `.pkl` del modelo de perfil financiero, dado que no queda alojado en el repositorio por el límite de tamaño de GitHub.
+El componente de Ciencia de Datos se integra con la API REST desarrollada por el equipo de Backend, proporcionando los modelos de Machine Learning y los resultados del análisis financiero para su consumo desde la aplicación.
 
 ---
 
@@ -193,7 +195,7 @@ Falta definir el formato JSON de entrada y salida entre el modelo y la API (cont
 
 ### Railway
 
-Como entorno de desarrollo, se implementó una base de datos MySQL utilizando Railway.
+Como entorno de desarrollo se implementó una base de datos MySQL utilizando Railway.
 
 Las actividades realizadas fueron:
 
@@ -204,58 +206,41 @@ Las actividades realizadas fueron:
 
 ### Oracle Cloud Infrastructure (OCI)
 
-El proyecto contempla utilizar Oracle Object Storage para almacenar el modelo entrenado y permitir que el Backend lo descargue para su utilización dentro de la API REST.
-
-> Pendiente de implementación.
+Oracle Cloud Infrastructure (OCI) se utiliza mediante Object Storage para almacenar los modelos entrenados, permitiendo que la API Backend los descargue y utilice durante el procesamiento del análisis financiero.
 
 ---
 
-## Tecnologías Utilizadas
+## Herramientas y Tecnologías Utilizadas
+
+### Lenguaje de programación
 
 - Python
-- pandas, numpy
-- scikit-learn (RandomForestClassifier)
+
+### Librerías
+
+- pandas
+- numpy
+- scikit-learn
 - imbalanced-learn (SMOTE)
+- TensorFlow / Keras
 - joblib
 - ydata-profiling
 - plotly
-- TensorFlow / Keras (clasificador de transacciones)
+
+### Base de datos
+
 - MySQL
+
+### Infraestructura
+
 - Railway
-- OCI (pendiente de implementación)
-- Git / GitHub
+- Oracle Cloud Infrastructure (OCI)
 
----
+### Herramientas
 
-## Estructura de Carpetas
-
-
-
----
-
-## Estado del Desarrollo
-
-Actualmente se encuentra implementado:
-
-- Dataset sintético (salud financiera y gastos).
-- Base de datos MySQL, con despliegue en Railway.
-- Análisis exploratorio de datos (EDA) sobre ambos datasets.
-- Ingeniería de características (scores financieros).
-- Entrenamiento y evaluación del modelo de perfil financiero (Random Forest).
-- Entrenamiento del modelo de clasificación de transacciones (Transformer).
-- Dashboard interactivo.
-
-Pendiente:
-
-- Definición del contrato JSON entre el modelo y el Backend.
-- Implementación de OCI Object Storage.
-- Entrega e integración del archivo del modelo al Backend.
-
----
-
-## Mejoras Futuras
-
-
+- Google Colab
+- DBeaver
+- GitHub
 
 ---
 
