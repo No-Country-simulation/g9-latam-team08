@@ -1,20 +1,16 @@
 .historial-container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 3rem 2rem;
 }
 
 .cabecera-historial {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .cabecera-historial h1 {
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem;
   font-size: 2.4rem;
   color: var(--color-text);
 }
@@ -23,30 +19,6 @@
   margin: 0;
   font-size: 1.4rem;
   color: var(--color-text-muted);
-}
-
-.boton-agregar {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 0.8rem;
-  background-color: var(--color-primary);
-  color: #fff;
-  font-size: 1.4rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.boton-agregar:hover {
-  background-color: var(--color-primary-strong);
-}
-
-.boton-agregar span {
-  font-size: 1.6rem;
-  line-height: 1;
 }
 
 .tarjeta {
@@ -58,14 +30,23 @@
 
 .historial-toolbar {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
   padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.historial-search-wrapper {
+  position: relative;
+  flex: 1 1 28rem;
+  min-width: 0;
 }
 
 .historial-input {
-  flex: 1;
-  padding: 1rem 1.5rem;
+  width: 100%;
+  padding: 1rem 1.5rem 1rem 3.8rem;
   border: 1px solid var(--color-border);
   border-radius: 0.8rem;
   font-size: 1.4rem;
@@ -79,142 +60,176 @@
   box-shadow: 0 0 0 3px rgba(10, 77, 92, 0.12);
 }
 
-.historial-tabla {
+.historial-search-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--color-text-muted);
+}
+
+.historial-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.4rem;
+  border-radius: 0.8rem;
+  background: #f8fafc;
+}
+
+.historial-filter-button {
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.7rem 1rem;
+  border-radius: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.historial-filter-button-active {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+}
+
+.historial-filter-button-income-active {
+  color: var(--color-positive);
+}
+
+.historial-filter-button-expense-active {
+  color: #dc2626;
+}
+
+.historial-list-card {
   overflow: hidden;
   padding: 0;
 }
 
-.historial-tabla-header,
-.historial-tabla-row {
-  display: grid;
-  grid-template-columns: 3fr 1.5fr 1.5fr 1fr;
-  padding: 1.5rem 2.5rem;
-  align-items: center;
+.historial-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.historial-tabla-header {
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.historial-columna-monto {
-  text-align: right;
-}
-
-.historial-columna-fecha {
-  text-align: center;
-}
-
-.historial-tabla-body {
+.historial-list-item {
   display: flex;
-  flex-direction: column;
-}
-
-.historial-tabla-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
   border-bottom: 1px solid #f1f5f9;
   transition: background-color 0.2s ease;
 }
 
-.historial-tabla-row:hover {
+.historial-list-item:hover {
   background-color: #f8fafc;
 }
 
-.historial-descripcion {
+.historial-item-main {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  min-width: 0;
 }
 
-.historial-icono {
+.historial-item-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 3.6rem;
   height: 3.6rem;
-  border-radius: 0.8rem;
-  background-color: #eef2ff;
-  font-size: 1.8rem;
+  border-radius: 999px;
+  flex-shrink: 0;
 }
 
-.historial-texto {
+.historial-item-icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.historial-icon-income {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.historial-icon-expense {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.historial-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.historial-item-description {
+  margin: 0;
   font-size: 1.4rem;
-  font-weight: 500;
-  padding: 0 0.5rem 0;
+  font-weight: 600;
   color: var(--color-text);
 }
 
-.historial-monto {
-  text-align: right;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--color-text);
-}
-
-.historial-monto-positivo {
-  color: var(--color-positive);
-}
-
-.historial-fecha {
-  text-align: center;
-  font-size: 1.3rem;
+.historial-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.2rem;
   color: var(--color-text-muted);
 }
 
-.historial-paginacion {
-  padding: 1.5rem;
-  text-align: center;
-  border-top: 1px solid var(--color-border);
+.historial-item-meta-separator {
+  color: var(--color-text-muted);
 }
 
-.historial-paginacion-boton {
-  border: none;
-  background: none;
-  color: var(--color-primary);
+.historial-amount-cell {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.historial-amount {
+  margin: 0;
   font-size: 1.4rem;
-  font-weight: 500;
-  cursor: pointer;
+  font-weight: 700;
 }
 
-.badge-categoria {
-  display: inline-block;
-  padding: 0.4rem 1.2rem;
-  border-radius: 1rem;
-  font-size: 1.2rem;
+.historial-amount-positive {
+  color: var(--color-positive);
+}
+
+.historial-amount-negative {
+  color: #dc2626;
+}
+
+.historial-empty-state {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.historial-empty-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+}
+
+.historial-empty-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
+  color: var(--color-text);
 }
 
-.badge-categoria-alimentacion {
-  background-color: #d1fae5;
-  color: #065f46;
+.historial-empty-description {
+  margin: 0;
+  font-size: 1.3rem;
 }
-
-.badge-categoria-transporte {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-
-.badge-categoria-entretenimiento {
-  background-color: #fee2e2;
-  color: #991b1b;
-}
-
-.badge-categoria-salud {
-  background-color: #e0e7ff;
-  color: #3730a3;
-}
-
-.badge-categoria-ingresos {
-  background-color: #ecfccb;
-  color: #3f6212;
-}
-
-.badge-categoria-default {
-  background-color: #f3f4f6;
-  color: #374151;
-}
-
 
