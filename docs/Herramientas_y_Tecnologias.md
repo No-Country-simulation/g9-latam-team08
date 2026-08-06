@@ -6,82 +6,98 @@
 
 ## Objetivo
 
+Documentar las herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto, facilitando la comprensión de los recursos tecnológicos empleados por cada área y de la solución implementada.
+---
+
+## Alcance
+
+Este documento reúne las herramientas y tecnologías utilizadas por los equipos de Ciencia de Datos, Backend, Frontend, Oracle Cloud Infrastructure (OCI) y Project Management durante el desarrollo del proyecto.
+
+---
+
+## Ciencia de Datos
+
+> Pendiente de completar.
+
+---
+
+## Backend
+
+> Pendiente de completar.
+
+---
+
+## Frontend
+
+> Pendiente de completar.
+
+---
+
+## Oracle Cloud Infrastructure (OCI)
+
 > Pendiente de completar.
 
 ---
 
 ## Herramientas de Gestión
 
-### Trello
+Las siguientes herramientas fueron utilizadas para la planificación, coordinación, seguimiento y documentación del proyecto durante el Hackathon.
 
-> Pendiente de completar.
+### Planificación y seguimiento
 
-### Discord
+#### Trello
 
-> Pendiente de completar.
+Herramienta utilizada para la planificación, organización y seguimiento de las actividades del proyecto mediante tableros Kanban. Permitió gestionar el backlog, asignar responsables, realizar el seguimiento de tareas y controlar el avance de cada área.
 
-### GitHub
+### Control de versiones
 
-> Pendiente de completar.
+#### Git
 
----
+Sistema de control de versiones distribuido utilizado para registrar y gestionar los cambios realizados en el código fuente y la documentación del proyecto.
 
-## Herramientas de Desarrollo
+#### GitHub
 
-### Visual Studio Code
+Plataforma utilizada para alojar el repositorio del proyecto, facilitar el trabajo colaborativo, gestionar versiones y centralizar la documentación.
 
-> Pendiente de completar.
+#### GitHub Desktop
 
-### GitHub Desktop
+Aplicación de escritorio utilizada para facilitar la gestión de commits, ramas y sincronización del repositorio con GitHub.
 
-> Pendiente de completar.
+### Comunicación
 
-### Postman
+#### Discord
 
-> Pendiente de completar.
+Plataforma utilizada como canal principal de comunicación del equipo para coordinar reuniones, compartir avances, resolver dudas y dar seguimiento al desarrollo del proyecto.
 
-### DBeaver
+### Documentación
 
-> Pendiente de completar.
+#### Markdown (.md)
 
----
+Lenguaje de marcado utilizado para elaborar la documentación técnica, funcional y de gestión del proyecto.
 
-## Tecnologías Utilizadas
+#### Visual Studio Code
 
-### Frontend
-
-> Pendiente de completar.
-
-### Backend
-
-> Pendiente de completar.
-
-### Ciencia de Datos
-
-> Pendiente de completar.
-
-### Base de Datos
-
-> Pendiente de completar.
-
-### Cloud
-
-> Pendiente de completar.
+Editor de código utilizado para el desarrollo de la documentación, edición del código fuente y mantenimiento del proyecto.
 
 ---
 
-## Control de Versiones
+## Responsables
 
-> Pendiente de completar.
+La información contenida en este documento fue proporcionada por los responsables de cada área del proyecto y consolidada por el Project Manager.
+
+| Integrante | Rol | Responsabilidad |
+|------------|-----|-----------------|
+| Yanucelly Moreira | Project Manager | Coordinación y consolidación del documento |
+| Lucía Evelyn Jantus | Data Scientist | Ciencia de Datos |
+| Fernando Thiele | Data Scientist | Ciencia de Datos |
+| Matías Bueno | Data Engineer | Ingeniería de Datos y Oracle Cloud Infrastructure (OCI) |
+| Alan Joel Romero | Software Engineer | Software Engineering |
+| Juan Manuel Roldán | Backend Developer | Backend |
+| Leandro Baque | Backend Developer | Backend |
+| Thiago Beber Feil | Full Stack Developer | Frontend e Integración |
 
 ---
 
-## Repositorio del Proyecto
+## Observaciones
 
-> Pendiente de completar.
-
----
-
-## Estado del Desarrollo
-
-> Pendiente de actualizar.
+Este documento será actualizado conforme cada área complete la información correspondiente a las herramientas y tecnologías utilizadas durante el desarrollo del proyecto. La información será consolidada por el Project Manager para su incorporación en los entregables finales del Hackathon.
