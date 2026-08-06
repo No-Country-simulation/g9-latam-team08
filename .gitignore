@@ -1,0 +1,20 @@
+﻿# Local JDK shipped with the workspace
+oracleJdk-26/
+
+# Maven build output
+/target/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.class
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Build artifacts
+*.jar
+*.war
+*.ear
