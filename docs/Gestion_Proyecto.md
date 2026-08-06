@@ -1,4 +1,8 @@
-# Gestión del Proyecto
+# 📊 Finance AI – Asistente Inteligente de Salud Financiera
+
+## Gestión del Proyecto
+
+---
 
 ## Objetivo
 

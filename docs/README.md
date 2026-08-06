@@ -5,7 +5,7 @@
 
 ---
 
-# Documentación del Proyecto
+## Documentación del Proyecto
 
 Esta carpeta contiene la documentación funcional, técnica y de gestión del proyecto **Finance AI – Asistente Inteligente de Salud Financiera**, desarrollado por el equipo **G9-LATAM-Team 08** durante el Hackathon Alura + Oracle ONE.
 

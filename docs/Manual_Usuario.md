@@ -1,4 +1,8 @@
-# Manual de Usuario
+# 📊 Finance AI – Asistente Inteligente de Salud Financiera
+
+## Manual de Usuario
+
+---
 
 ## Introducción
 

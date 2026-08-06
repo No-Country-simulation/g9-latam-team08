@@ -1,4 +1,8 @@
-# Proyecto
+# 📊 Finance AI – Asistente Inteligente de Salud Financiera
+
+## Proyecto
+
+---
 
 ## Introducción
 

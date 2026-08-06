@@ -1,4 +1,8 @@
-# Frontend
+# Sistema de Alerta Financiera Temprana
+
+## Frontend
+
+---
 
 ## Objetivo
 
@@ -58,6 +62,12 @@ Este documento describe los componentes, procesos y funcionalidades implementado
 ---
 
 ## Herramientas y Tecnologías Utilizadas
+
+> Pendiente de completar.
+
+---
+
+## Mejoras Futuras
 
 > Pendiente de completar.
 

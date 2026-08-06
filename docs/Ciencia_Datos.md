@@ -1,4 +1,8 @@
-# Ciencia de Datos
+# Sistema de Alerta Financiera Temprana
+
+## Ciencia de Datos
+
+---
 
 ## Objetivo
 
@@ -241,6 +245,12 @@ Oracle Cloud Infrastructure (OCI) se utiliza mediante Object Storage para almace
 - Google Colab
 - DBeaver
 - GitHub
+
+---
+
+## Mejoras Futuras
+
+> Pendiente de completar.
 
 ---
 

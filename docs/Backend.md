@@ -1,4 +1,8 @@
-# Backend
+# Sistema de Alerta Financiera Temprana
+
+## Backend
+
+---
 
 ## Objetivo
 
@@ -84,6 +88,12 @@ Spring Data JPA / Hibernate
 Swagger / OpenAPI (Springdoc-OpenAPI)
 
 Control de versiones: Git y GitHub
+
+---
+
+## Mejoras Futuras
+
+> Pendiente de completar.
 
 ---
 
