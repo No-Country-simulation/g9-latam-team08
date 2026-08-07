@@ -55,7 +55,7 @@ Debido a que aún no se contaba con información sobre la reincorporación de la
 
 Se definió lo siguiente:
 
-- Juan Manuel Roldán asumirá el diseño de las pantallas del MVP.
+- Alan Joel Romero asumirá el diseño de las pantallas del MVP.
 - Lucía Evelyn Jantus brindará apoyo en la elaboración del diseño utilizando Figma.
 
 Ambos manifestaron su disposición para colaborar con el proyecto, con el objetivo de garantizar la continuidad del desarrollo del Frontend.
