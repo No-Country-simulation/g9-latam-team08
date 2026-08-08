@@ -6,6 +6,9 @@ import Historial from "../../pages/Historial";
 import Register from "../../pages/Register";
 import NewAnalysisPage from "../../pages/NewAnalysisPage";
 import NotFoundPage from "../../pages/NotFoundPage";
+import AuthLayout from "../../components/layout/AuthLayout";
+
+import Nav from "../../components/layout/Nav";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +16,7 @@ export const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFoundPage />,
     children: [
+
       {
         index: true,
         element: <LandingPage />,
@@ -21,22 +25,35 @@ export const router = createBrowserRouter([
         path: "demo",
         element: <LandingPage initialSection="demo" />,
       },
+
       {
-        path: "login",
-        element: <Login />,
+
+        element: <Nav />,
+        children: [
+          {
+            path: "historial",
+            element: <Historial />,
+          }
+        ],
       },
-      {
-        path: "register",
-        element: <Register />,
-      },
-       {
-        path: "historial",
-        element: <Historial/>,
-      },
-      {
-        path: "analisis/nuevo",
-        element: <NewAnalysisPage />,
-      },
+
+
+        {
+        element: <AuthLayout />,
+        children: [
+            {
+            path: "login",
+            element: <Login />,
+            },
+            {
+            path: "register",
+            element: <Register />,
+            },
+        
+        ],
+    },
+
+
       {
         path: "*",
         element: <NotFoundPage />,

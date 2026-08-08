@@ -47,3 +47,12 @@ export interface FinancialAnalysisResult {
   classifiedTransactions: ClassifiedTransaction[];
   recommendations: FinancialRecommendation[];
 }
+
+export interface Transaction {
+  id: string;
+  date: string;
+  description: string;
+  amount: number;
+  type: 'income' | 'expense';
+  category: string;
+}
