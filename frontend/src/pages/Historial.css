@@ -232,4 +232,49 @@
   margin: 0;
   font-size: 1.3rem;
 }
+/** Estilos menu**/
 
+.menu-historial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+}
+
+
+.historial-paginacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--color-border);
+}
+
+.btn-paginacion {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-paginacion:hover:not(:disabled) {
+  background-color: #e2e8f0;
+}
+
+.btn-paginacion:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.info-paginacion {
+  font-size: 1.3rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
