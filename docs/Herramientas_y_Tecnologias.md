@@ -7,18 +7,63 @@
 ## Objetivo
 
 Documentar las herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto, facilitando la comprensión de los recursos tecnológicos empleados por cada área y de la solución implementada.
+
 ---
 
 ## Alcance
 
-Este documento reúne las herramientas y tecnologías utilizadas por los equipos de Ciencia de Datos, Backend, Frontend, Oracle Cloud Infrastructure (OCI) y Project Management durante el desarrollo del proyecto.
+Este documento reúne las herramientas y tecnologías utilizadas por los equipos de Ciencia de Datos, Backend, Frontend y Oracle Cloud Infrastructure (OCI), así como las herramientas empleadas para la gestión y colaboración durante el desarrollo del proyecto.
 
 ---
 
 ## Ciencia de Datos
 
-> Pendiente de completar.
+Las siguientes herramientas y tecnologías son utilizadas para la generación y preparación de los datos, análisis exploratorio, desarrollo y evaluación de los modelos de Machine Learning e integración del componente de Ciencia de Datos.
 
+### Lenguaje de programación
+
+#### Python
+
+Lenguaje utilizado para la generación y procesamiento de los datasets, análisis de datos, ingeniería de características, entrenamiento y evaluación de los modelos de Machine Learning.
+
+### Librerías y frameworks
+
+- **pandas:** manipulación y procesamiento de datos.
+- **NumPy:** operaciones numéricas y procesamiento de datos.
+- **scikit-learn:** desarrollo y evaluación del modelo de clasificación del perfil financiero.
+- **imbalanced-learn (SMOTE):** balanceo de clases durante la preparación de los datos.
+- **TensorFlow / Keras:** desarrollo del modelo de clasificación de transacciones.
+- **joblib:** serialización del modelo de perfil financiero.
+- **ydata-profiling:** generación de reportes para el análisis exploratorio de datos.
+- **Plotly:** visualización interactiva de datos.
+
+### Machine Learning
+
+- **Random Forest:** algoritmo utilizado para la clasificación del perfil financiero.
+- **Transformer con Context-Fusion:** modelo utilizado para la clasificación de transacciones.
+- **SMOTE:** técnica utilizada para el balanceo de clases.
+
+### Base de datos
+
+#### MySQL
+
+Sistema de gestión de base de datos utilizado para almacenar y gestionar la información financiera procesada durante el desarrollo.
+
+### Infraestructura y servicios
+
+#### Railway
+
+Plataforma utilizada como entorno de desarrollo para la implementación de la base de datos MySQL.
+
+#### Oracle Cloud Infrastructure (OCI)
+
+Plataforma cloud utilizada como parte de la infraestructura de la solución.
+
+### Herramientas
+
+- **Google Colab:** entorno utilizado para el desarrollo y entrenamiento de los modelos de Machine Learning.
+- **DBeaver:** herramienta utilizada para la gestión y consulta de la base de datos.
+- **GitHub:** plataforma utilizada para el control de versiones y almacenamiento de los recursos desarrollados por el área.
 ---
 
 ## Backend
@@ -81,23 +126,26 @@ Editor de código utilizado para el desarrollo de la documentación, edición de
 
 ---
 
-## Responsables
+## Equipo del Proyecto
 
-La información contenida en este documento fue proporcionada por los responsables de cada área del proyecto y consolidada por el Project Manager.
+El proyecto es desarrollado por un equipo multidisciplinario integrado por profesionales de distintas áreas, que participan de forma colaborativa en el desarrollo del MVP.
 
-| Integrante | Rol | Responsabilidad |
-|------------|-----|-----------------|
-| Yanucelly Moreira | Project Manager | Coordinación y consolidación del documento |
-| Lucía Evelyn Jantus | Data Scientist | Ciencia de Datos |
-| Fernando Thiele | Data Scientist | Ciencia de Datos |
-| Matías Bueno | Data Engineer | Ingeniería de Datos y Oracle Cloud Infrastructure (OCI) |
-| Alan Joel Romero | Software Engineer | Software Engineering |
-| Juan Manuel Roldán | Backend Developer | Backend |
-| Leandro Baque | Backend Developer | Backend |
-| Thiago Beber Feil | Full Stack Developer | Frontend e Integración |
+| Integrante | Rol en el Proyecto |
+| --- | --- |
+| Yanucelly Moreira | Project Manager |
+| Lucía Evelyn Jantus | Data Scientist |
+| Fernando Thiele | Data Scientist |
+| Matías Bueno | Data Engineer |
+| Alan Joel Romero | Software Engineer |
+| Juan Manuel Roldán | Backend Developer |
+| Leandro Baque | Backend Developer |
+| Thiago Beber Feil | Full Stack Developer |
+| Magalí Aldana Suarez | Frontend Developer |
 
 ---
 
 ## Observaciones
 
-Este documento será actualizado conforme cada área complete la información correspondiente a las herramientas y tecnologías utilizadas durante el desarrollo del proyecto. La información será consolidada por el Project Manager para su incorporación en los entregables finales del Hackathon.
+Este documento será actualizado conforme cada área complete y valide la información correspondiente a las herramientas y tecnologías efectivamente utilizadas durante el desarrollo del proyecto.
+
+La información será consolidada por el Project Manager para su incorporación en los entregables finales del Hackathon.

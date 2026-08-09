@@ -15,7 +15,7 @@ Se revisaron los acuerdos establecidos durante la reunión del 16 de julio de 20
 | Definir el usuario principal del proyecto | ✅ Cumplido |
 | Centrar el MVP en resolver la necesidad del usuario final | ✅ Cumplido |
 | Conformar oficialmente los equipos de trabajo | ✅ Cumplido |
-| Continuar la organización de los tableros Trello | ✅ En progreso |
+| Continuar la organización de los tableros Trello | ⏳ En progreso |
 | Realizar reuniones internas por equipo | ✅ Cumplido |
 | Definir la estructura del dataset | ⏳ En progreso |
 
@@ -28,6 +28,12 @@ Se revisaron los acuerdos establecidos durante la reunión del 16 de julio de 20
 | Matías Bueno | Data Engineer |
 | Alan Joel Romero | Software Engineer |
 | Yanucelly Moreira | Project Manager |
+
+## Ausentes
+
+- Magalí Aldana Suarez – Frontend Developer.
+- Thiago Beber Feil – Full Stack Developer.
+- Juan Manuel Roldan – Backend Developer.
 
 ## Temas tratados
 

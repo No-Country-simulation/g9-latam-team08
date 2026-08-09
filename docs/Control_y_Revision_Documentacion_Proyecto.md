@@ -18,7 +18,7 @@ Este documento contempla la revisión de la documentación técnica y de los REA
 
 ---
 
-## Estado de la revisión de la documentación
+## Estado del proceso de revisión documental
 
 | Fecha | Documento | Estado |
 |---|---|---|
@@ -66,7 +66,7 @@ Como parte del proceso de estandarización de la documentación del proyecto, se
 - Estructura de archivos.
 - Responsables.
 
-Los README de las demás áreas (Backend, Frontend, OCI y Gestión del Proyecto) seguirán este mismo estándar, adaptando el contenido a las características y responsabilidades de cada módulo.
+Los README de las demás áreas (Backend, Frontend y OCI) seguirán este mismo estándar, adaptando el contenido a las características y responsabilidades de cada módulo.
 
 Los lineamientos para la elaboración de los README se encuentran definidos en el documento `README.md` de la carpeta `docs`, en la sección:
 

@@ -12,99 +12,123 @@ Centralizar los enlaces oficiales utilizados durante el desarrollo del proyecto,
 
 ## Alcance
 
-Este documento reúne los enlaces oficiales relacionados con el proyecto, incluyendo el repositorio GitHub, la documentación, las herramientas de gestión, los canales de comunicación, los recursos de Oracle Cloud Infrastructure (OCI) y los entregables finales.
+Este documento reúne los enlaces oficiales relacionados con el proyecto, incluyendo el repositorio GitHub, la documentación, las herramientas de gestión y comunicación, la aplicación web y los entregables finales del Hackathon.
 
 ---
 
 ## Repositorio GitHub
 
-**Repositorio principal**
+### Repositorio principal
 
-> Pendiente de completar.
+> 🔄 Enlace pendiente de incorporar.
 
 ---
 
 ## Documentación del Proyecto
 
-**Documentación técnica y de gestión**
+### Documentación general
 
-- Carpeta `docs`
-- Carpeta `minutas`
+- `README.md` – README principal del proyecto.
+- `docs/Documentacion_Proyecto_Hackathon.md` – Documentación general del proyecto.
+- `docs/Herramientas_y_Tecnologias.md` – Herramientas y tecnologías utilizadas.
+- `docs/Manual_Usuario.md` – Manual de usuario.
+- `docs/minutas/` – Registro de reuniones del proyecto.
+
+> 🔄 Los enlaces definitivos serán incorporados una vez consolidada la documentación en la rama principal.
 
 ---
 
 ## Herramientas de Gestión
 
-- Trello – Tablero General del Proyecto.
-- GitHub – Repositorio del proyecto.
+### Trello
 
-> Enlaces pendientes de completar.
+- Tablero General del Proyecto.
+
+> 🔄 Enlace pendiente de incorporar.
 
 ---
 
 ## Comunicación
 
-- Discord (Canal oficial del equipo).
+### Discord
 
-> Enlace pendiente de completar.
+- Canal oficial de comunicación del equipo.
+
+> 🔄 Enlace pendiente de incorporar.
+
+---
+
+## Aplicación Web
+
+Enlace de acceso a la aplicación web de Finance AI.
+
+> 🔄 Pendiente de completar una vez realizado y validado el despliegue.
+
+---
+
+## API REST
+
+Enlace público de acceso a la API REST del proyecto, si corresponde.
+
+> 🔄 Pendiente de completar una vez confirmado el despliegue final.
+
+---
+
+## Diseño en Figma
+
+Enlace al diseño de la interfaz de la aplicación web.
+
+> 🔄 Enlace pendiente de incorporar.
 
 ---
 
 ## Oracle Cloud Infrastructure (OCI)
 
-- Oracle Cloud Infrastructure (OCI).
+Enlaces relacionados con los recursos o servicios de OCI utilizados en la implementación del proyecto, cuando corresponda.
 
-> Enlace pendiente de completar.
+> 🔄 Pendiente de completar de acuerdo con la implementación final.
 
 ---
 
 ## Presentación (Pitch)
 
-Presentación oficial del proyecto utilizada durante la exposición final del Hackathon.
+Presentación oficial utilizada para la exposición final del proyecto.
 
-> Pendiente de completar.
+> 🔄 Enlace pendiente de incorporar.
 
 ---
 
 ## Video Demo
 
-Video demostrativo del funcionamiento del MVP, elaborado como parte de los entregables del Hackathon.
+Video demostrativo del funcionamiento del MVP elaborado como parte de los entregables finales del Hackathon.
 
-> Pendiente de completar.
+> 🔄 Enlace pendiente de incorporar.
 
 ---
 
 ## Entregables del Hackathon
 
-Enlaces a los entregables finales requeridos por el Hackathon Alura + Oracle ONE.
+Esta sección centralizará los enlaces definitivos correspondientes a los entregables del proyecto.
 
-- Documentación del proyecto.
-- Herramientas y tecnologías.
-- Enlaces del proyecto.
-- Presentación (Pitch).
-- Video Demo.
+- 📄 Documentación del proyecto.
+- 🛠️ Herramientas y tecnologías.
+- 🔗 Enlaces del proyecto.
+- 🎥 Video Demo.
 
-> Pendiente de completar.
+> 🔄 Los enlaces serán incorporados y verificados antes de la entrega final.
 
 ---
 
-## Responsables
+## Responsable de la actualización
 
-La información contenida en este documento fue proporcionada por los responsables de cada área del proyecto y consolidada por el Project Manager.
-
-| Integrante | Rol | Responsabilidad |
-|------------|-----|-----------------|
-| Yanucelly Moreira | Project Manager | Coordinación y consolidación del documento |
-| Lucía Evelyn Jantus | Data Scientist | Ciencia de Datos |
-| Fernando Thiele | Data Scientist | Ciencia de Datos |
-| Matías Bueno | Data Engineer | Ingeniería de Datos y Oracle Cloud Infrastructure (OCI) |
-| Alan Joel Romero | Software Engineer | Software Engineering |
-| Juan Manuel Roldán | Backend Developer | Backend |
-| Leandro Baque | Backend Developer | Backend |
-| Thiago Beber Feil | Full Stack Developer | Frontend e Integración |
+La actualización, consolidación y verificación de los enlaces del proyecto estará a cargo del Project Manager, con la colaboración de los integrantes del equipo para proporcionar los enlaces correspondientes a cada área.
 
 ---
 
 ## Observaciones
 
-Este documento será actualizado durante el desarrollo del proyecto conforme se publiquen los enlaces oficiales y se completen los entregables finales requeridos por el Hackathon Alura + Oracle ONE.
+Este documento será actualizado progresivamente conforme se publiquen y validen los enlaces oficiales del proyecto.
+
+Antes de la entrega final se verificará que los enlaces incluidos se encuentren actualizados, sean accesibles y correspondan a las versiones definitivas de los recursos y entregables del Hackathon.
+
+No se incorporarán credenciales, datos de acceso ni enlaces a recursos privados que no deban ser compartidos públicamente.

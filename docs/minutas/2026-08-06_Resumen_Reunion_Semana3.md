@@ -120,8 +120,6 @@ Durante la reunión se acordó utilizar dos denominaciones, según el tipo de do
 
 Se utilizará como nombre oficial del proyecto en la documentación general y los entregables, incluyendo:
 
-- Proyecto.md
-- Gestion_Proyecto.md
 - Herramientas_y_Tecnologias.md
 - Enlaces_Proyecto.md
 - Manual_Usuario.md
