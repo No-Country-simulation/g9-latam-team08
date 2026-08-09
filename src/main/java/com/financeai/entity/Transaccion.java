@@ -11,7 +11,7 @@ public class Transaccion {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario user;
 
     @Column(nullable = false)
@@ -25,7 +25,7 @@ public class Transaccion {
     private Categoria category;
 
     @Column(nullable = false)
-    private Integer confidence; // 0-100
+    private Integer confidence; 
 
     @Column(nullable = false)
     private LocalDateTime transactionDate;
