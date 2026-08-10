@@ -27,6 +27,36 @@ El desarrollo del modelo se dividió en fases secuenciales documentadas en nuest
 
 ---
 
+## Clasificador de Gastos y Transacciones
+
+Como complemento al modelo de riesgo financiero, se desarrolló un **clasificador de categoría de transacciones** encargado de asignar cada transacción a una categoría principal de gasto.
+
+El modelo utiliza como principales entradas `nombre_tienda`, `subcategoria` y `esencial`. Para procesar la información textual se utiliza `TextVectorization` + `Embedding`, seguido de un **Transformer Encoder con Multi-Head Attention**. Los embeddings generados se fusionan mediante una capa de concatenación + Dense, mientras que `esencial` se incorpora como variable numérica adicional.
+
+Las principales categorías que clasifica son:
+
+*   **Alimentacion**
+*   **Entretenimiento**
+*   **Finanzas**
+*   **Hogar**
+*   **Salud**
+*   **Transporte**
+
+El modelo completo se mantiene como la variante principal frente a una versión reducida que no utilizaba `nombre_tienda`. El EDA mostró que `subcategoria` y `esencial` presentan una alta correlación con `categoria_principal`, mientras que `id_cliente`, `monto` y `metodo_pago` fueron descartados como entradas del modelo por las razones documentadas en el informe específico del clasificador.
+
+### Resultado principal
+
+Sobre un **set de test de 400 transacciones**, el clasificador obtuvo:
+
+*   **Accuracy:** 100%
+*   **Precision:** 100%
+*   **Recall:** 100%
+*   **F1-score:** 100%
+
+El resultado fue de **100% de precision, recall y F1-score en las 6 categorías**. Este desempeño es consistente con la relación fuertemente correlacionada entre `subcategoria` y `categoria_principal` observada en el EDA, donde cada subcategoría pertenece en la práctica a una única categoría principal.
+
+---
+
 ## Visualización
 
 Se desarrolló un **Dashboard Interactivo** que cruza los resultados predictivos del modelo con la base de datos transaccional en la nube.
