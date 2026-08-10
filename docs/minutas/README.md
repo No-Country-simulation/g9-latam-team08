@@ -18,6 +18,7 @@ Cada minuta documenta los objetivos de la reunión, los participantes, los temas
 | 30/07/2026 | Semana 2 | Revisión del avance por áreas, seguimiento de la documentación técnica, definición del estándar de documentación del proyecto y asignación de responsables por documento. |
 | 03/08/2026 | Semana 3 | Seguimiento del estado del MVP, resolución del bloqueo de Oracle Cloud Infrastructure (OCI), revisión de los avances por áreas, seguimiento de la documentación del proyecto, coordinación de las próximas actividades y acuerdos sobre la situación del área de Frontend. |
 | 06/08/2026 | Semana 3 | Seguimiento del avance del MVP, revisión de los acuerdos de la reunión anterior, organización del área de Frontend, estado de la documentación, preparación de los entregables del Hackathon y definición del nombre oficial del proyecto. |
+| 10/08/2026 | Semana 4 | Seguimiento del estado del MVP, avances del área de Frontend tras la reincorporación de Magalí, estado de la documentación, coordinación de los entregables del Hackathon y planificación de las próximas actividades de integración y pruebas. |
 
 ---
 
