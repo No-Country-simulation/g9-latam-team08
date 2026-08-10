@@ -119,6 +119,46 @@ Se diseñaron cinco variables (scores) que consolidan el comportamiento financie
 Se evaluó incorporar variables transaccionales directas (por ejemplo, ticket promedio o porcentaje de gasto no esencial), pero se descartaron en la versión final del modelo porque introducían ruido estadístico y reducían la precisión frente al modelo basado únicamente en los cinco scores.
 
 ---
+ 
+### Clasificación de Gastos
+ 
+Modelo que clasifica cada transacción en una categoría a partir de su texto. Se definieron 6 categorías principales, cada una con sus subcategorías, y una marca de si el gasto es esencial o no. Esta marca es la que después alimenta al modelo, además de servir como base para los indicadores del perfil financiero (gastos esenciales vs. no esenciales).
+ 
+**1. Hogar** — todo lo necesario para mantener la infraestructura del usuario.
+- `Alquiler_y_Expensas` (esencial)
+- `Servicios_Basicos`: luz, agua, gas, internet (esencial)
+- `Mantenimiento_y_Muebles`: ferreterías, materiales, jardinería (no esencial)
+- 
+**2. Alimentación** — el pilar donde más varía el comportamiento del usuario, y donde las recomendaciones de la app tienen mayor impacto.
+- `Supermercados_y_Almacenes` (esencial)
+- `Carnicerias_y_Granjas` (esencial)
+- `Restaurantes`: restaurantes, bares (no esencial)
+- `Delivery_y_Apps`: PedidosYa, Rappi (no esencial)
+  
+**3. Transporte** — cómo se mueve el usuario; diferencia drásticamente entre perfiles de consumo.
+- `Transporte_Publico`: SUBE, trenes, colectivos (esencial)
+- `Combustible` (esencial)
+- `Peajes` (esencial)
+- `Mantenimiento_Vehicular`: seguro, mecánico (esencial)
+- `taxi_y_apps`: Uber, Cabify (no esencial)
+  
+**4. Entretenimiento** — el dinero que no es de supervivencia; donde el modelo busca identificar "fugas" de capital.
+- `Suscripciones_Digitales`: Netflix, Spotify, herramientas online (no esencial)
+- `Hobbies_y_Deportes` (no esencial)
+- `Indumentaria` (no esencial)
+  
+- `Cuidado_Personal`: peluquería, masajes, cosmética (no esencial)
+**5. Salud** — gastos ineludibles pero variables.
+- `Farmacias` (esencial)
+- `Cobertura_Medica`: obras sociales, prepagas (esencial)
+- `Atencion_Medica`: turnos, estudios (esencial)
+  
+**6. Finanzas** — el comportamiento crediticio del usuario.
+- `Pago_tarjetas` (esencial)
+- `Transferencias` (mixto: suele requerir análisis manual del caso)
+- `Impuestos` (esencial)
+
+---
 
 ### Clasificación de Gastos
 
