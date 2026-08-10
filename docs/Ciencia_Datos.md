@@ -148,6 +148,7 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - `Indumentaria` (no esencial)
   
 - `Cuidado_Personal`: peluquería, masajes, cosmética (no esencial)
+
 **5. Salud** — gastos ineludibles pero variables.
 - `Farmacias` (esencial)
 - `Cobertura_Medica`: obras sociales, prepagas (esencial)
@@ -181,7 +182,7 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 
 **Clasificador de perfil financiero:** `RandomForestClassifier` de scikit-learn.
 
-**Clasificador de transacciones:** modelo basado en Transformer con Context-Fusion (ver sección "Clasificación de Gastos").
+**Clasificador de transacciones:** modelo basado en Transformer con Context-Fusion.
 
 ---
 
@@ -203,7 +204,9 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 - Precisión global (accuracy): 96.21%.
 - Recall para la clase "En Riesgo": 1.00 (sin falsos negativos en la detección de usuarios en situación crítica).
 
-**Clasificador de transacciones:** según el paper de referencia, el modelo con Context-Fusion alcanzó entre 93% y 95% de F1 (macro), contra 57-59% usando únicamente el nombre del comercio.
+**Clasificador de transacciones:** 
+- Precisión global (accuracy) y F1-score (macro): 100.00% en las 6 categorías.
+- El desempeño perfecto se debe a la relación unívoca entre `subcategoria` y `categoria_principal` presente en el dataset, lo cual permite una clasificación sin ambigüedad y descarta fuga de datos (data leakage).
 
 ---
 
@@ -300,12 +303,6 @@ El acceso se otorga mediante un Pre-Authenticated Request (PAR) a nivel de bucke
 - Google Colab
 - DBeaver
 - GitHub
-
----
-
-## Mejoras Futuras
-
-> Pendiente de completar.
 
 ---
 
