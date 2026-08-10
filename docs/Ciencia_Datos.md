@@ -165,7 +165,6 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 
 **Clasificador de perfil financiero:** `RandomForestClassifier` de scikit-learn.
 
-**Clasificador de transacciones:**
 
 ---
 
@@ -176,8 +175,6 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - División de datos: 80% entrenamiento / 20% testeo.
 - Entrenamiento previo sobre el dataset balanceado con SMOTE.
 - Hiperparámetros: `n_estimators=100`, `random_state=42`.
-
-**Clasificador de transacciones:**
 
 ---
 
