@@ -148,6 +148,7 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - `Indumentaria` (no esencial)
   
 - `Cuidado_Personal`: peluquería, masajes, cosmética (no esencial)
+
 **5. Salud** — gastos ineludibles pero variables.
 - `Farmacias` (esencial)
 - `Cobertura_Medica`: obras sociales, prepagas (esencial)
@@ -160,28 +161,10 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 
 ---
 
-### Clasificación de Gastos
-
-Modelo que clasifica cada transacción en una categoría (Alimentación, Transporte, Entretenimiento, Hogar, Finanzas, Salud, etc.) a partir de su texto.
-
-**Enfoque:** basado en el paper "Hierarchical Classification of Financial Transactions Through Context-Fusion of Transformer-based Embeddings" (Busson et al., BTG Pactual / PUC-Rio, 2023), que propone el modelo Two-headed DragoNet. La idea central es que una transacción sola rara vez tiene suficiente información, por lo que se genera un embedding para cada texto disponible por separado (nombre del comercio y subcategoría) y se fusionan antes de clasificar. Se adaptó el enfoque a un solo nivel de categoría (`categoria_principal`), en lugar del esquema jerárquico del paper original.
-
-**Componentes del modelo:**
-- TextVectorization + Embedding para convertir el texto libre (`nombre_tienda`, `subcategoria`) en vectores entrenables.
-- Transformer Encoder (Multi-Head Attention), que en el paper de referencia superó consistentemente a LSTM, GRU, BLSTM y modelos clásicos (KNN, SVC, Random Forest).
-- Context-Fusion (concatenación + capa Dense) para combinar los embeddings de nombre de comercio y subcategoría.
-- La variable `esencial` se agregó como input numérico adicional, fuera del esquema del paper original.
-- Capa final Softmax para la clasificación multiclase.
-
-Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria + esencial) y Modelo B (solo subcategoria + esencial, sin el nombre del comercio), para evaluar si el nombre del comercio aporta valor real sobre este dataset.
-
----
-
 ### Modelos de Machine Learning
 
 **Clasificador de perfil financiero:** `RandomForestClassifier` de scikit-learn.
 
-**Clasificador de transacciones:** modelo basado en Transformer con Context-Fusion (ver sección "Clasificación de Gastos").
 
 ---
 
@@ -193,8 +176,6 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 - Entrenamiento previo sobre el dataset balanceado con SMOTE.
 - Hiperparámetros: `n_estimators=100`, `random_state=42`.
 
-**Clasificador de transacciones:** se entrena a partir del dataset de gastos, normalizando la variable `esencial` (de booleano a 0/1) y vectorizando `nombre_tienda` y `subcategoria` antes de entrenar ambas variantes del modelo (A y B).
-
 ---
 
 ### Evaluación del Modelo
@@ -203,15 +184,13 @@ Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria
 - Precisión global (accuracy): 96.21%.
 - Recall para la clase "En Riesgo": 1.00 (sin falsos negativos en la detección de usuarios en situación crítica).
 
-**Clasificador de transacciones:** según el paper de referencia, el modelo con Context-Fusion alcanzó entre 93% y 95% de F1 (macro), contra 57-59% usando únicamente el nombre del comercio.
-
 ---
 
 ### Serialización del Modelo
 
 **Clasificador de perfil financiero:** exportado con `joblib.dump` como `modelo_riesgo_financiero.pkl`, descargado directamente desde el entorno de entrenamiento (Google Colab).
 
-**Clasificador de transacciones:** se generan `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras` y `artefactos_categoria.pkl` (label encoder y vocabulario).
+**Clasificador de transacciones:** se generan `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras` y `artefactos_categoria.pkl`.
 
 **Versiones de librerías utilizadas:**
 - pandas == 2.2.2
@@ -300,12 +279,6 @@ El acceso se otorga mediante un Pre-Authenticated Request (PAR) a nivel de bucke
 - Google Colab
 - DBeaver
 - GitHub
-
----
-
-## Mejoras Futuras
-
-> Pendiente de completar.
 
 ---
 
