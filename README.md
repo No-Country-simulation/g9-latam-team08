@@ -16,7 +16,7 @@ Para evitar los sesgos del modelo bancario tradicional (que solo evalúa ingreso
 
 ---
 
-## Modelo Predictivo 
+## Modelo Predictivo
 
 El desarrollo del modelo se dividió en fases secuenciales documentadas en nuestro cuaderno principal:
 
@@ -29,7 +29,7 @@ El desarrollo del modelo se dividió en fases secuenciales documentadas en nuest
 
 ## Visualización
 
-Se desarrolló un **Dashboard Interactivo** que cruza los resultados predictivos del modelo con la base de datos transaccional en la nube. 
+Se desarrolló un **Dashboard Interactivo** que cruza los resultados predictivos del modelo con la base de datos transaccional en la nube.
 
 Esta herramienta desglosa visualmente en qué subcategorías (ej. pago de tarjetas, delivery, supermercado) se fuga el capital de los usuarios "En Riesgo", permitiendo al equipo de negocio lanzar alertas tempranas de educación financiera o planes de refinanciación personalizados.
 
@@ -37,11 +37,56 @@ Esta herramienta desglosa visualmente en qué subcategorías (ej. pago de tarjet
 
 ## Notas de Integración para Backend
 
-Debido a las restricciones de almacenamiento de GitHub (límite de 25 MB), el modelo predictivo finalizado no se encuentra alojado físicamente en este repositorio.
+El modelo entrenado y empaquetado mediante `joblib` (`modelo_riesgo_financiero.pkl`), junto con los artefactos del clasificador de gastos, se encuentran alojados en Oracle Object Storage (OCI), desde donde Backend puede descargarlos mediante el acceso provisto por el área de Datos.
 
 *   **Archivo del Código:** La lógica completa está en el archivo `.ipynb` de esta rama.
-*   **Archivo del Modelo:** El modelo ya entrenado y empaquetado mediante `joblib` (`modelo_riesgo_financiero.pkl`) se encuentra en el repositorio.
+*   **Archivo del Modelo:** El modelo entrenado (`modelo_riesgo_financiero.pkl`) y los artefactos del clasificador de gastos (`artefactos_categoria.pkl`, `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras`) están disponibles en el bucket de OCI Object Storage del proyecto.
 
+---
 
+## Estructura de archivos
 
+```
+Dataset/
+├── Perfil/
+│   ├── Estructura_gastos.csv
+│   └── dataset_gastos.csv
+└── Transacciones/
+    ├── Dataset_Salud_Financiera_Defi...
+    └── Estructura_Salud_Financiera.csv
 
+EDA/
+├── Hackaton_No_Country_Entrena...
+├── README_Salud_financiera.md
+└── Reporte_EDA_Gastos.html
+
+models/
+├── ClasificacionGastos/
+│   ├── README.md
+│   ├── artefactos_categoria.pkl
+│   ├── modelo_categoria_full.keras
+│   └── modelo_categoria_reducido.keras
+└── ClasificacionPerfil/
+    └── modelo_riesgo_financiero.pkl
+
+notebooks/
+├── ClasificacionGastos/
+│   ├── modeloClasificatorio.ipynb
+│   └── pruebas_modeloClasificatorio.ipynb
+└── ClasificacionPerfil/
+    └── Hackaton_No_Country_Entrena...
+
+Hackaton_No_Country_Entrenami...
+README.md
+modelo_riesgo_financiero.pkl
+```
+
+---
+
+## Responsables
+
+| Integrante | Rol |
+| --- | --- |
+| Lucía Jantus | Data Scientist |
+| Fernando Thiele | Data Scientist |
+| Matías Bueno | Data Engineer |
