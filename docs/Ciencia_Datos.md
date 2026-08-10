@@ -193,6 +193,12 @@ Se desarrolló un dashboard interactivo que cruza los resultados predictivos del
 
 El componente de Ciencia de Datos se integra con la API REST desarrollada por el equipo de Backend, proporcionando los modelos de Machine Learning y los resultados del análisis financiero para su consumo desde la aplicación.
 
+El intercambio de información entre ambas áreas se da por tres vías:
+
+- **Base de datos compartida (Railway):** el dataset `clientes_financiero`, generado por el área de Datos, queda disponible en la base MySQL hosteada en Railway, a la cual Backend se conecta con las credenciales provistas. Sobre esta misma base, Backend administra sus propias tablas (por ejemplo, `usuarios`, con los campos `email`, `contraseña` y `nombre`).
+- **Modelos entrenados (OCI Object Storage):** los artefactos de ambos modelos (perfil financiero y clasificación de gastos) se suben a un bucket de Oracle Object Storage, desde donde Backend los descarga para integrarlos a la API.
+- **Contrato de datos (JSON):** pendiente de definición formal. Debe especificar qué variables recibe cada modelo como entrada, cómo se transforman desde la API antes de la predicción, y el formato exacto de la respuesta (clase predicha, probabilidad, indicadores asociados).
+
 ---
 
 ## Infraestructura
@@ -210,7 +216,16 @@ Las actividades realizadas fueron:
 
 ### Oracle Cloud Infrastructure (OCI)
 
-Oracle Cloud Infrastructure (OCI) se utiliza mediante Object Storage para almacenar los modelos entrenados, permitiendo que la API Backend los descargue y utilice durante el procesamiento del análisis financiero.
+Oracle Cloud Infrastructure (OCI) se utiliza mediante dos servicios:
+
+**Object Storage.** Se creó un bucket que aloja los artefactos de ambos modelos, organizados en dos carpetas:
+
+- `clasificacion-gastos/`: `artefactos_categoria.pkl`, `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras`.
+- `clasificacion-perfil/`: `modelo_riesgo_financiero.pkl`.
+
+El acceso se otorga mediante un Pre-Authenticated Request (PAR) a nivel de bucket, con permiso de lectura y listado de objetos habilitado, lo que permite a Backend descargar cualquiera de los cuatro archivos sin necesidad de credenciales de OCI.
+
+**Compute.** Se provisionó una instancia (Ubuntu, shape `VM.Standard.E2.1.Micro`, dentro del nivel Always Free) para alojar la API REST del proyecto, con IP pública asignada y el puerto 8080 habilitado para el tráfico entrante. El acceso se comparte con Backend mediante conexión SSH con clave privada.
 
 ---
 
