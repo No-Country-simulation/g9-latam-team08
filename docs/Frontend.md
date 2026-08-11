@@ -19,8 +19,7 @@ Este documento describe los componentes, procesos y funcionalidades implementado
 
 ### Arquitectura
 
-
-   frontend/
+frontend/
 ├── .env.example
 ├── README.md
 ├── index.html
@@ -130,6 +129,8 @@ Este documento describe los componentes, procesos y funcionalidades implementado
     │   └── financial-analysis.ts
     └── utils/
         └── formatters.ts
+   
+    
 
 ---
 
