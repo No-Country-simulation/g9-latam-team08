@@ -99,10 +99,4 @@ Control de versiones: Git y GitHub
 
 ## Equipo Responsable
 
-- [ ] **inicio** — Magali
-- [ ] **login_usuario** — Juan
-- [ ] **dashboard** — Thiago y Leandro
-- [ ] **analisis** — Magali y Juan
-- [ ] **transacciones** — Alan
-- [ ] **recomendaciones** — Magali y Juan
-- [ ] **historial** — Thiago y Juan
+Equipo: Grupo de Desarrollo del equipo 8.
