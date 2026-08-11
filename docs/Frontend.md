@@ -19,7 +19,8 @@ Este documento describe los componentes, procesos y funcionalidades implementado
 
 ### Arquitectura
 
-frontend/
+
+   frontend/
 ├── .env.example
 ├── README.md
 ├── index.html
