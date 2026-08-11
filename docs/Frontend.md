@@ -75,4 +75,4 @@ Este documento describe los componentes, procesos y funcionalidades implementado
 
 ## Equipo Responsable
 
-> Pendiente de completar.
+Equipo: Grupo de Desarrollo del equipo 8.
