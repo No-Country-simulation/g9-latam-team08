@@ -137,25 +137,35 @@ frontend/
 
 ### Diseño de Interfaces
 
-> Pendiente de completar.
+El frontend cuenta con un sistema de páginas y vistas bien definidas ubicadas en src/pages/, incluyendo DashboardPage.tsx, LandingPage.tsx, NewAnalysisPage.tsx, NotFoundPage.tsx, además de vistas de autenticación (Login.jsx, Register.jsx).
+
+Utiliza una capa de componentes visuales reutilizables bajo src/components/ui/ (botones, tarjetas, contenedores, cabeceras de sección) y componentes estructurales de diseño en src/components/layout/ (Header y Footer).
+
+Implementa una interfaz de usuario orientada a paneles de control financieros avanzados dentro de src/features/dashboard/components/, que incluye gráficos de barras, gráficos de dona, medidores de puntaje, tarjetas de alertas, tablas de transacciones y barras de navegación adaptadas.
 
 ---
 
 ### Componentes
 
-> Pendiente de completar.
+Estructurales y de Layout: Header.tsx, Footer.tsx, Sidebar.tsx, Topbar.tsx, MobileTabBar.tsx, DashboardLayout.tsx.
+
+UI Atómicos: Button.tsx, Card.tsx, Container.tsx, SectionHeader.tsx, CategoryBadge.tsx, ConfidenceBar.tsx.
+
+Componentes de Visualización y Analítica: BarChart.tsx, DonutChart.tsx, ScoreGauge.tsx, ScoreCard.tsx, StatCard.tsx, StatsGrid.tsx, AlertsCard.tsx, ExpensesByCategoryCard.tsx, KeyFactorsCard.tsx, MonthlyEvolutionCard.tsx, RecommendationsCard.tsx, TransactionsTable.tsx.
+
+Landing Page: DashboardPreviewSkeleton.tsx, FeatureCard.tsx, StepCard.tsx.
 
 ---
 
 ### Navegación
 
-> Pendiente de completar.
+La navegación y el enrutamiento se lo gestionan de forma centralizada mediante un enrutador ubicado en src/app/router/index.tsx.
 
 ---
 
 ### Integración con Backend
 
-> Pendiente de completar.
+La comunicación con la API se encuentra organizada en el directorio src/api/, el cual contiene módulos especializados como dashboard.ts, indicators.ts, recommendations.ts, configuración de entorno (env.ts) y definiciones de tipos centralizadas (types.ts).
 
 ---
 
@@ -163,19 +173,23 @@ frontend/
 
 ### Backend
 
-> Pendiente de completar.
+El frontend consume estos servicios a través del directorio src/api/, el cual incluye módulos especializados como dashboard.ts, indicators.ts y recommendations.ts para gestionar las peticiones hacia el servidor.
+
+Para los tipos y los datos se utilizan interfaces y tipos centralizados en types.ts dentro del frontend para asegurar que la estructura de los datos recibidos desde el backend coincida con la requerida por los componentes visuales como TransactionsTable.tsx o StatsGrid.tsx.
+
+El entorno está configurado y se emplea con archivos como env.ts en el frontend para definir la URL base de conexión hacia el servidor de Spring Boot.
 
 ---
 
 ## Infraestructura
 
-> Pendiente de completar.
+Se incluye configuración de contenedores y flujos de trabajo orientados a microservicios o despliegues modernos, junto con herramientas de gestión de dependencias como Maven en pnpm pnpm-workspace.yaml y pnpm-lock.yaml.
 
 ---
 
 ## Herramientas y Tecnologías Utilizadas
 
-> Pendiente de completar.
+React, TypeScript, Vite, pnpm, CSS modular por componente, diseño basado en tokens dentro de src/styles/tokens.css, src/styles/globals.css.
 
 ---
 
