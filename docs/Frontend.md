@@ -19,7 +19,116 @@ Este documento describe los componentes, procesos y funcionalidades implementado
 
 ### Arquitectura
 
-> Pendiente de completar.
+frontend/
+├── .env.example
+├── README.md
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── tsconfig.app.json
+├── tsconfig.json
+├── vite.config.ts
+└── src/
+    ├── App.tsx
+    ├── main.tsx
+    ├── vite-env.d.ts
+    ├── api/
+    │   ├── env.ts
+    │   ├── index.ts
+    │   ├── indicators.ts
+    │   ├── recommendations.ts
+    │   └── types.ts
+    ├── app/
+    │   └── router/
+    │       └── index.tsx
+    ├── assets/
+    ├── components/
+    │   ├── layout/
+    │   │   ├── Footer.css
+    │   │   ├── Footer.tsx
+    │   │   ├── Header.css
+    │   │   └── Header.tsx
+    │   └── ui/
+    │       ├── Button.css
+    │       ├── Button.tsx
+    │       ├── Card.css
+    │       ├── Card.tsx
+    │       ├── Container.css
+    │       ├── Container.tsx
+    │       ├── SectionHeader.css
+    │       └── SectionHeader.tsx
+    ├── features/
+    │   ├── analysis/
+    │   ├── dashboard/
+    │   │   └── components/
+    │   │       ├── AlertsCard.css
+    │   │       ├── AlertsCard.tsx
+    │   │       ├── BarChart.css
+    │   │       ├── BarChart.tsx
+    │   │       ├── CategoryBadge.css
+    │   │       ├── CategoryBadge.tsx
+    │   │       ├── ConfidenceBar.css
+    │   │       ├── ConfidenceBar.tsx
+    │   │       ├── DashboardLayout.css
+    │   │       ├── DashboardLayout.tsx
+    │   │       ├── DonutChart.css
+    │   │       ├── DonutChart.tsx
+    │   │       ├── ExpensesByCategoryCard.css
+    │   │       ├── ExpensesByCategoryCard.tsx
+    │   │       ├── KeyFactorsCard.css
+    │   │       ├── KeyFactorsCard.tsx
+    │   │       ├── MobileTabBar.css
+    │   │       ├── MobileTabBar.tsx
+    │   │       ├── MonthlyEvolutionCard.css
+    │   │       ├── MonthlyEvolutionCard.tsx
+    │   │       ├── RecommendationsCard.css
+    │   │       ├── RecommendationsCard.tsx
+    │   │       ├── ScoreCard.css
+    │   │       ├── ScoreCard.tsx
+    │   │       ├── ScoreGauge.css
+    │   │       ├── ScoreGauge.tsx
+    │   │       ├── Sidebar.css
+    │   │       ├── Sidebar.tsx
+    │   │       ├── StatCard.css
+    │   │       ├── StatCard.tsx
+    │   │       ├── StatsGrid.css
+    │   │       ├── StatsGrid.tsx
+    │   │       ├── Topbar.css
+    │   │       ├── Topbar.tsx
+    │   │       ├── TransactionsTable.css
+    │   │       ├── TransactionsTable.tsx
+    │   │       ├── categoryColors.ts
+    │   │       └── dashboardMocks.ts
+    │   ├── landing/
+    │   │   └── components/
+    │   │       ├── DashboardPreviewSkeleton.css
+    │   │       ├── DashboardPreviewSkeleton.tsx
+    │   │       ├── FeatureCard.css
+    │   │       ├── FeatureCard.tsx
+    │   │       ├── StepCard.css
+    │   │       └── StepCard.tsx
+    │   ├── recommendations/
+    │   └── transactions/
+    ├── pages/
+    │   ├── DashboardPage.css
+    │   ├── DashboardPage.tsx
+    │   ├── LandingPage.css
+    │   ├── LandingPage.tsx
+    │   ├── Login.css
+    │   ├── Login.jsx
+    │   ├── NewAnalysisPage.css
+    │   ├── NewAnalysisPage.tsx
+    │   ├── NotFoundPage.css
+    │   ├── NotFoundPage.tsx
+    │   └── Register.jsx
+    ├── styles/
+    │   ├── globals.css
+    │   └── tokens.css
+    ├── types/
+    │   └── financial-analysis.ts
+    └── utils/
+        └── formatters.ts
 
 ---
 
