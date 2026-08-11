@@ -129,7 +129,6 @@ frontend/
     │   └── financial-analysis.ts
     └── utils/
         └── formatters.ts
-   
     
 
 ---
