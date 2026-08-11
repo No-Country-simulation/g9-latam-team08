@@ -44,6 +44,17 @@ El modelo entrenado y empaquetado mediante `joblib` (`modelo_riesgo_financiero.p
 
 ---
 
+### Clasificador de Gastos y Transacciones
+
+Para comprender a fondo el comportamiento de los usuarios, implementamos un modelo de clasificación de transacciones que procesa los datos crudos de consumo (como el nombre de la tienda y el monto) y los estructura en dimensiones de negocio accionables. 
+
+**Principales Categorías de Clasificación:**
+*   **Categoría Principal (`categoria_principal`):** Agrupa el gasto en grandes rubros macro (ej. Supermercados, Entretenimiento, Salud, Pago de Deudas).
+*   **Subcategoría (`subcategoria`):** Brinda un nivel de granularidad mayor sobre el tipo exacto de transacción.
+*   **Nivel de Necesidad (`esencial`):** Etiqueta binaria/booleana que define si el gasto representa una necesidad básica para el usuario o si es un gasto prescindible (ocio, lujos, no esencial).
+
+---
+
 ## Estructura de archivos
 
 ```
