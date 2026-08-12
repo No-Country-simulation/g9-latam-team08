@@ -1,6 +1,6 @@
 # Área de Data Science - Sistema de Alerta Financiera Temprana
 
-Este repositorio contiene todo el flujo de trabajo de Datos y Machine Learning desarrollado por el Equipo 08. Nuestro objetivo principal es crear un **"radar de alerta temprana"** capaz de predecir la vulnerabilidad financiera de un usuario, basándonos en sus hábitos de consumo y no solo en sus ingresos.
+Esta carpeta contiene el flujo de trabajo de Datos y Machine Learning desarrollado por el Equipo 08. Nuestro objetivo principal es crear un **"radar de alerta temprana"** capaz de predecir la vulnerabilidad financiera de un usuario, basándonos en sus hábitos de consumo y no solo en sus ingresos.
 
 ---
 
