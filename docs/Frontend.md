@@ -187,6 +187,11 @@ Se incluye configuración de contenedores y flujos de trabajo orientados a micro
 
 ---
 
+## Mejoras Futuras
+
+
+---
+
 ## Herramientas y Tecnologías Utilizadas
 
 React, TypeScript, Vite, pnpm, CSS modular por componente, diseño basado en tokens dentro de src/styles/tokens.css, src/styles/globals.css.

@@ -160,10 +160,28 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - `Impuestos` (esencial)
 
 ---
+### Clasificación de Gastos
+
+Modelo que clasifica cada transacción en una categoría (Alimentación, Transporte, Entretenimiento, Hogar, Finanzas, Salud, etc.) a partir de su texto.
+
+**Enfoque:** basado en el paper "Hierarchical Classification of Financial Transactions Through Context-Fusion of Transformer-based Embeddings" (Busson et al., BTG Pactual / PUC-Rio, 2023), que propone el modelo Two-headed DragoNet. La idea central es que una transacción sola rara vez tiene suficiente información, por lo que se genera un embedding para cada texto disponible por separado (nombre del comercio y subcategoría) y se fusionan antes de clasificar. Se adaptó el enfoque a un solo nivel de categoría (`categoria_principal`), en lugar del esquema jerárquico del paper original.
+
+**Componentes del modelo:**
+- TextVectorization + Embedding para convertir el texto libre (`nombre_tienda`, `subcategoria`) en vectores entrenables.
+- Transformer Encoder (Multi-Head Attention), que en el paper de referencia superó consistentemente a LSTM, GRU, BLSTM y modelos clásicos (KNN, SVC, Random Forest).
+- Context-Fusion (concatenación + capa Dense) para combinar los embeddings de nombre de comercio y subcategoría.
+- La variable `esencial` se agregó como input numérico adicional, fuera del esquema del paper original.
+- Capa final Softmax para la clasificación multiclase.
+
+Se entrenaron y compararon dos variantes: Modelo A (nombre_tienda + subcategoria + esencial) y Modelo B (solo subcategoria + esencial, sin el nombre del comercio), para evaluar si el nombre del comercio aporta valor real sobre este dataset.
+
+---
 
 ### Modelos de Machine Learning
 
 **Clasificador de perfil financiero:** `RandomForestClassifier` de scikit-learn.
+
+**Clasificador de transacciones:** modelo basado en `Transformer` con `Context-Fusion`.
 
 
 ---
@@ -176,6 +194,15 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - Entrenamiento previo sobre el dataset balanceado con SMOTE.
 - Hiperparámetros: `n_estimators=100`, `random_state=42`.
 
+**Clasificador de transacciones (categorización de gastos):**
+- Variables de entrada: `nombre_tienda`, `subcategoria` (texto) y `esencial` (booleano/texto). Variable objetivo: `categoria_principal` (codificada con `LabelEncoder`).
+- Preprocesamiento: normalización de `esencial` a 0/1 y vectorización de textos con `TextVectorization` (`max_tokens=5000`, `sequence_length=5`) ajustada solo sobre entrenamiento.
+- División de datos: 80% entrenamiento / 20% testeo (`random_state=42`).
+- Arquitectura: *embedding* (`embed_dim=64`) + *Transformer Encoder* (`num_heads=2`, `ff_dim=64`) para cada texto, fusión (concatenación) con `esencial`, capa densa de 128 neuronas y dropout (0.2).
+- Entrenamiento: Adam (`lr=0.001`), `sparse_categorical_crossentropy`, 10 épocas y `batch_size=32`.
+- Evaluación: *accuracy* de validación y reporte de *Precision/Recall/F1* por clase sobre test.
+- Artefactos exportados: modelo (`.keras`), `LabelEncoder`, vocabulario del vectorizador y versiones de librerías.
+
 ---
 
 ### Evaluación del Modelo
@@ -184,13 +211,17 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - Precisión global (accuracy): 96.21%.
 - Recall para la clase "En Riesgo": 1.00 (sin falsos negativos en la detección de usuarios en situación crítica).
 
+**Clasificador de transacciones:** 
+- Precisión global (accuracy) y F1-score (macro): 100.00% en las 6 categorías.
+- El desempeño perfecto se debe a la relación unívoca entre `subcategoria` y `categoria_principal` presente en el dataset, lo cual permite una clasificación sin ambigüedad y descarta fuga de datos (data leakage).
+
 ---
 
 ### Serialización del Modelo
 
 **Clasificador de perfil financiero:** exportado con `joblib.dump` como `modelo_riesgo_financiero.pkl`, descargado directamente desde el entorno de entrenamiento (Google Colab).
 
-**Clasificador de transacciones:** se generan `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras` y `artefactos_categoria.pkl`.
+**Clasificador de transacciones:** se generan `modelo_categoria_full.keras`, `modelo_categoria_reducido.keras` y `artefactos_categoria.pkl` (label encoder y vocabulario).
 
 **Versiones de librerías utilizadas:**
 - pandas == 2.2.2
@@ -216,7 +247,14 @@ El intercambio de información entre ambas áreas se da por tres vías:
 
 - **Base de datos compartida (Railway):** el dataset `clientes_financiero`, generado por el área de Datos, queda disponible en la base MySQL hosteada en Railway, a la cual Backend se conecta con las credenciales provistas. Sobre esta misma base, Backend administra sus propias tablas (por ejemplo, `usuarios`, con los campos `email`, `contraseña` y `nombre`).
 - **Modelos entrenados (OCI Object Storage):** los artefactos de ambos modelos (perfil financiero y clasificación de gastos) se suben a un bucket de Oracle Object Storage, desde donde Backend los descarga para integrarlos a la API.
-- **Contrato de datos (JSON):** pendiente de definición formal. Debe especificar qué variables recibe cada modelo como entrada, cómo se transforman desde la API antes de la predicción, y el formato exacto de la respuesta (clase predicha, probabilidad, indicadores asociados).
+
+**Contrato de Datos (JSON)**
+
+- **Clasificador de perfil financiero:** entrada con 5 variables numéricas: `meses_supervivencia`, `score_supervivencia`, `score_ahorro`, `score_endeudamiento`, `score_financiero`. Salida: `perfil` (clase: Saludable/En Observación/En Riesgo) y `probabilidades` (diccionario con las 3 clases).
+
+- **Clasificador de transacciones:** entrada con `nombre_tienda` (texto), `subcategoria` (texto) y `esencial` (debe normalizarse a 0/1 desde valores como "sí/no", "true/false" antes de la predicción). Salida: `categoria_principal` (una de 6 clases: Alimentación, Transporte, Hogar, etc.) y `probabilidades` (diccionario con todas las clases).
+
+- **Transformación obligatoria:** la API debe convertir `esencial` a float (0 o 1) según mapeo definido; el modelo ya incluye la vectorización de textos, por lo que se pasan los strings tal cual.
 
 ---
 
