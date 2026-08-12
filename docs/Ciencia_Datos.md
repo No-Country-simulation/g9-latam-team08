@@ -247,7 +247,14 @@ El intercambio de información entre ambas áreas se da por tres vías:
 
 - **Base de datos compartida (Railway):** el dataset `clientes_financiero`, generado por el área de Datos, queda disponible en la base MySQL hosteada en Railway, a la cual Backend se conecta con las credenciales provistas. Sobre esta misma base, Backend administra sus propias tablas (por ejemplo, `usuarios`, con los campos `email`, `contraseña` y `nombre`).
 - **Modelos entrenados (OCI Object Storage):** los artefactos de ambos modelos (perfil financiero y clasificación de gastos) se suben a un bucket de Oracle Object Storage, desde donde Backend los descarga para integrarlos a la API.
-- **Contrato de datos (JSON):** pendiente de definición formal. Debe especificar qué variables recibe cada modelo como entrada, cómo se transforman desde la API antes de la predicción, y el formato exacto de la respuesta (clase predicha, probabilidad, indicadores asociados).
+
+**Contrato de Datos (JSON)**
+
+- **Clasificador de perfil financiero:** entrada con 5 variables numéricas: `meses_supervivencia`, `score_supervivencia`, `score_ahorro`, `score_endeudamiento`, `score_financiero`. Salida: `perfil` (clase: Saludable/En Observación/En Riesgo) y `probabilidades` (diccionario con las 3 clases).
+
+- **Clasificador de transacciones:** entrada con `nombre_tienda` (texto), `subcategoria` (texto) y `esencial` (debe normalizarse a 0/1 desde valores como "sí/no", "true/false" antes de la predicción). Salida: `categoria_principal` (una de 6 clases: Alimentación, Transporte, Hogar, etc.) y `probabilidades` (diccionario con todas las clases).
+
+- **Transformación obligatoria:** la API debe convertir `esencial` a float (0 o 1) según mapeo definido; el modelo ya incluye la vectorización de textos, por lo que se pasan los strings tal cual.
 
 ---
 
