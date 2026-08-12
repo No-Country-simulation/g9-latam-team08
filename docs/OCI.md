@@ -20,7 +20,7 @@ Este documento describe los servicios, recursos y procesos implementados en Orac
 
 ### Arquitectura de la Solución
 
-OCI cumple dos funciones dentro del proyecto: alojar los modelos entrenados por el equipo de Ciencia de Datos (Object Storage) y hospedar la API que los consume (Compute). Los modelos se suben al bucket una vez entrenados y serializados; la API, corriendo en la instancia de Compute, los descarga desde ahí al iniciar y los utiliza para procesar las solicitudes de análisis financiero. La base de datos del proyecto no se implementó en OCI, sino en MySQL sobre Railway.
+OCI cumple dos funciones dentro del proyecto: alojar los modelos entrenados por el equipo de Ciencia de Datos (Object Storage) y proveer la infraestructura de cómputo donde Backend desplegará la API (Compute). Los modelos se suben al bucket una vez entrenados y serializados, quedando disponibles para su descarga. La instancia de Compute fue provisionada y configurada, quedando lista para que Backend realice el despliegue de la API sobre ella. La base de datos del proyecto no se implementó en OCI, sino en MySQL sobre Railway.
 
 ---
 
