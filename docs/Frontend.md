@@ -193,12 +193,6 @@ React, TypeScript, Vite, pnpm, CSS modular por componente, diseño basado en tok
 
 ---
 
-## Mejoras Futuras
-
-> Pendiente de completar.
-
----
-
 ## Equipo Responsable
 
 Equipo: Grupo de Desarrollo del equipo 8.

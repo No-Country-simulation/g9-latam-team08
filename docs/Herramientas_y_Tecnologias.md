@@ -40,7 +40,6 @@ Lenguaje utilizado para la generación y procesamiento de los datasets, análisi
 ### Machine Learning
 
 - **Random Forest:** algoritmo utilizado para la clasificación del perfil financiero.
-- **Transformer con Context-Fusion:** modelo utilizado para la clasificación de transacciones.
 - **SMOTE:** técnica utilizada para el balanceo de clases.
 
 ### Base de datos
@@ -57,52 +56,152 @@ Plataforma utilizada como entorno de desarrollo para la implementación de la ba
 
 #### Oracle Cloud Infrastructure (OCI)
 
-Plataforma cloud utilizada como parte de la infraestructura de la solución.
+Plataforma cloud utilizada para el almacenamiento de los modelos entrenados y sus artefactos mediante Object Storage, facilitando su disponibilidad para la integración con Backend.
 
 ### Herramientas
 
 - **Google Colab:** entorno utilizado para el desarrollo y entrenamiento de los modelos de Machine Learning.
 - **DBeaver:** herramienta utilizada para la gestión y consulta de la base de datos.
 - **GitHub:** plataforma utilizada para el control de versiones y almacenamiento de los recursos desarrollados por el área.
+
 ---
 
 ## Backend
 
-> Pendiente de completar.
+Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de los servicios Backend de Finance AI, la implementación de las APIs REST, la persistencia de datos y la integración con los modelos de Machine Learning.
+
+### Lenguajes de programación
+
+- **Java:** lenguaje utilizado para el desarrollo de la API REST principal.
+- **Python:** lenguaje utilizado para el desarrollo del servicio encargado del procesamiento financiero y la ejecución de los modelos de Machine Learning.
+
+### Frameworks
+
+- **Spring Boot:** framework utilizado para el desarrollo de la API REST en Java.
+- **Spring Data JPA / Hibernate:** utilizados para el mapeo objeto-relacional y la persistencia de datos.
+- **Flask:** microframework utilizado para implementar la API en Python encargada de los cálculos financieros y la ejecución de los modelos de Machine Learning.
+
+### Procesamiento e integración con Machine Learning
+
+- **Pandas:** utilizado para el procesamiento de datos dentro del servicio Python.
+- **scikit-learn:** utilizado para la ejecución de los modelos predictivos.
+- **joblib:** utilizado para la carga de los modelos serializados.
+- **Requests:** utilizado para realizar peticiones HTTP y acceder a los artefactos requeridos por el servicio.
+
+### Base de datos
+
+- **H2 Database:** base de datos en memoria utilizada en el entorno de desarrollo del Backend.
+
+### Seguridad
+
+- **Spring Security:** framework utilizado para la configuración de seguridad y autenticación en la aplicación Backend.
+- **JWT (JSON Web Token):** tecnología utilizada para la autenticación mediante tokens.
+
+### Gestión de dependencias y construcción
+
+- **Maven:** utilizado para la gestión de dependencias y construcción de la aplicación desarrollada con Spring Boot.
+
+### Documentación y pruebas de API
+
+- **Swagger / OpenAPI:** herramienta utilizada para la documentación y prueba de los endpoints de la API.
+
+### Herramientas de desarrollo
+
+- **Lombok:** librería utilizada para reducir código repetitivo en las clases Java mediante la generación automática de métodos y constructores.
+
+### Control de versiones
+
+- **Git:** sistema utilizado para el control de versiones.
+- **GitHub:** plataforma utilizada para alojar y gestionar colaborativamente el código fuente.
 
 ---
 
 ## Frontend
 
-> Pendiente de completar.
+Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de la interfaz web de Finance AI, la construcción de componentes reutilizables, la navegación entre las distintas páginas y la integración con los servicios del Backend.
+
+### Framework y lenguaje
+
+- **React:** utilizado para el desarrollo de la interfaz de usuario y la construcción de componentes reutilizables.
+- **TypeScript:** lenguaje utilizado para el desarrollo del Frontend, proporcionando tipado estático y facilitando la organización y mantenimiento del código.
+
+### Herramientas de desarrollo
+
+- **Vite:** herramienta utilizada para el desarrollo, ejecución local y construcción del Frontend.
+- **pnpm:** gestor de paquetes utilizado para la instalación y administración de las dependencias del proyecto.
+
+### Estilos y diseño de interfaz
+
+- **CSS:** utilizado para la definición de estilos de las páginas y componentes de la aplicación.
+- **Design Tokens:** utilizados para centralizar y mantener consistentes los estilos visuales de la aplicación mediante `tokens.css` y `globals.css`.
 
 ---
 
 ## Oracle Cloud Infrastructure (OCI)
 
-> Pendiente de completar.
+Las siguientes herramientas, servicios y tecnologías son utilizados para el almacenamiento de los modelos de Machine Learning, la infraestructura de despliegue de la API y la configuración de red de la solución.
+
+### Plataforma Cloud
+
+#### Oracle Cloud Infrastructure (OCI)
+
+Plataforma de infraestructura cloud utilizada para alojar los artefactos de los modelos de Machine Learning y proporcionar la infraestructura necesaria para el despliegue de la API REST.
+
+### Servicios de OCI
+
+#### Object Storage
+
+Servicio utilizado para almacenar los modelos entrenados y los artefactos generados por Ciencia de Datos, organizados en las carpetas `clasificacion-gastos/` y `clasificacion-perfil/`.
+
+#### Compute
+
+Servicio utilizado para provisionar la instancia destinada al alojamiento de la API REST del proyecto.
+
+#### Networking
+
+Servicios de red utilizados para configurar la conectividad de la infraestructura mediante:
+
+- **VCN (Virtual Cloud Network):** red virtual creada para la infraestructura del proyecto.
+- **Subnet pública:** utilizada para proporcionar conectividad a la instancia Compute.
+- **Security Lists:** utilizadas para definir las reglas de tráfico de red, incluyendo la habilitación del puerto 8080 para la API.
+
+### Acceso a recursos
+
+#### Pre-Authenticated Request (PAR)
+
+Mecanismo utilizado para proporcionar a Backend acceso de lectura y listado a los modelos almacenados en Object Storage sin exponer credenciales permanentes de la cuenta OCI.
+
+#### SSH
+
+Protocolo utilizado para el acceso seguro a la instancia Compute mediante autenticación por clave.
+
+### Sistema operativo
+
+#### Ubuntu 20.04
+
+Sistema operativo utilizado en la instancia Compute provisionada para el proyecto.
 
 ---
 
-## Herramientas de Gestión
+## Herramientas de Gestión y Colaboración
 
-Las siguientes herramientas fueron utilizadas para la planificación, coordinación, seguimiento y documentación del proyecto durante el Hackathon.
+Las siguientes herramientas fueron utilizadas para la planificación, coordinación, comunicación, control de versiones y documentación del proyecto durante el Hackathon.
 
 ### Planificación y seguimiento
 
 #### Trello
 
-Herramienta utilizada para la planificación, organización y seguimiento de las actividades del proyecto mediante tableros Kanban. Permitió gestionar el backlog, asignar responsables, realizar el seguimiento de tareas y controlar el avance de cada área.
+Herramienta utilizada para la planificación, organización y seguimiento de las actividades del proyecto mediante tableros Kanban. Permitió gestionar el backlog, organizar las tareas por áreas y realizar el seguimiento de los avances del equipo.
 
-### Control de versiones
+### Control de versiones y colaboración
 
 #### Git
 
-Sistema de control de versiones distribuido utilizado para registrar y gestionar los cambios realizados en el código fuente y la documentación del proyecto.
+Sistema de control de versiones utilizado para gestionar los cambios realizados en el código fuente y la documentación del proyecto.
 
 #### GitHub
 
-Plataforma utilizada para alojar el repositorio del proyecto, facilitar el trabajo colaborativo, gestionar versiones y centralizar la documentación.
+Plataforma utilizada para alojar el repositorio del proyecto, gestionar las distintas ramas de trabajo, facilitar la colaboración entre los integrantes y centralizar el código y la documentación.
 
 #### GitHub Desktop
 
@@ -112,17 +211,23 @@ Aplicación de escritorio utilizada para facilitar la gestión de commits, ramas
 
 #### Discord
 
-Plataforma utilizada como canal principal de comunicación del equipo para coordinar reuniones, compartir avances, resolver dudas y dar seguimiento al desarrollo del proyecto.
+Plataforma utilizada como canal principal de comunicación del equipo para coordinar reuniones, compartir avances, resolver consultas y realizar el seguimiento del proyecto.
+
+### Diseño y prototipado
+
+#### Figma
+
+Herramienta utilizada para el diseño y prototipado de las interfaces de usuario del proyecto, facilitando la definición visual de las pantallas y la colaboración durante el desarrollo del Frontend.
 
 ### Documentación
 
 #### Markdown (.md)
 
-Lenguaje de marcado utilizado para elaborar la documentación técnica, funcional y de gestión del proyecto.
+Lenguaje de marcado utilizado para elaborar y mantener la documentación técnica, funcional y de gestión del proyecto.
 
 #### Visual Studio Code
 
-Editor de código utilizado para el desarrollo de la documentación, edición del código fuente y mantenimiento del proyecto.
+Editor utilizado para trabajar con el código fuente y la documentación del proyecto.
 
 ---
 

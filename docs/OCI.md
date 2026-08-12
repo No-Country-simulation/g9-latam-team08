@@ -102,12 +102,6 @@ Los artefactos alojados en Object Storage corresponden a los modelos entrenados 
 
 ---
 
-## Mejoras Futuras
-
-- No se realizaron más modificaciones.
-
----
-
 ## Equipo Responsable
 
 - **Matías Bueno** – Data Engineer

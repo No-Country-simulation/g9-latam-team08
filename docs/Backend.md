@@ -3,15 +3,15 @@
 ## Backend
 
 ---
-
 ## Objetivo
 
-Documentar la arquitectura, implementación e integración del componente Backend desarrollado para el Sistema de Alerta Financiera Temprana, describiendo los servicios, la API REST, la persistencia de datos y los mecanismos de comunicación con las demás áreas del proyecto.
+Documentar la arquitectura, implementación e integración del componente Backend desarrollado para el Sistema de Alerta Financiera Temprana, describiendo los servicios y APIs implementados, la persistencia de datos y los mecanismos de comunicación con las demás áreas del proyecto.
+
 ---
 
 ## Alcance
 
-Este documento describe los componentes, servicios y procesos implementados por el área de Backend, abarcando la arquitectura de la API REST, la creación de controladores REST, la gestión de entidades de usuarios, categorías, transacciones y alertas, la persistencia de datos, las validaciones, la seguridad, las pruebas realizadas y la integración de los servicios de procesamiento de datos financieros con Ciencia de Datos, Frontend y Oracle Cloud Infrastructure (OCI).
+Este documento describe los componentes, servicios y procesos implementados por el área de Backend, abarcando la arquitectura de las APIs desarrolladas en **Spring Boot y Python/Flask**, la creación de controladores y servicios REST, la gestión de usuarios, transacciones, categorías y alertas, la persistencia de datos, las validaciones, la seguridad, las pruebas realizadas y la integración de los servicios de procesamiento financiero con **Ciencia de Datos, Frontend y Oracle Cloud Infrastructure (OCI)**.
 
 ---
 
@@ -88,12 +88,6 @@ Spring Data JPA / Hibernate
 Swagger / OpenAPI (Springdoc-OpenAPI)
 
 Control de versiones: Git y GitHub
-
----
-
-## Mejoras Futuras
-
-> Pendiente de completar.
 
 ---
 
