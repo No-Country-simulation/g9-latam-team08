@@ -86,9 +86,8 @@ Dataset/
     └── dataset_gastos.csv
 
 EDA/
-├── Hackaton_No_Country_Entrena...
-├── README_Salud_financiera.md
-└── Reporte_EDA_Gastos.html
+├── Reporte_EDA_Gastos.html
+└── Reporte_EDA_Perfil.html
 
 models/
 ├── ClasificacionGastos/
@@ -98,6 +97,7 @@ models/
 │   └── modelo_categoria_reducido.keras
 └── ClasificacionPerfil/
     └── modelo_riesgo_financiero.pkl
+    └── README_Salud_financiera.md
 
 notebooks/
 ├── ClasificacionGastos/
@@ -106,9 +106,7 @@ notebooks/
 └── ClasificacionPerfil/
     └── Hackaton_No_Country_Entrena...
 
-Hackaton_No_Country_Entrenami...
 README.md
-modelo_riesgo_financiero.pkl
 ```
 
 ---
