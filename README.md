@@ -96,7 +96,7 @@ models/
 │   ├── modelo_categoria_full.keras
 │   └── modelo_categoria_reducido.keras
 └── ClasificacionPerfil/
-    └── modelo_riesgo_financiero.pkl
+    ├── modelo_riesgo_financiero.pkl
     └── README_Salud_financiera.md
 
 notebooks/
