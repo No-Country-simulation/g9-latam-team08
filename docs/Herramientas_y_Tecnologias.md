@@ -95,7 +95,6 @@ Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de 
 ### Seguridad
 
 - **Spring Security:** framework utilizado para la configuración de seguridad y autenticación en la aplicación Backend.
-- **JWT (JSON Web Token):** tecnología utilizada para la autenticación mediante tokens.
 
 ### Gestión de dependencias y construcción
 
