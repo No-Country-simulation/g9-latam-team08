@@ -79,11 +79,11 @@ El modelo entrenado y empaquetado mediante `joblib` (`modelo_riesgo_financiero.p
 ```
 Dataset/
 ├── Perfil/
-│   ├── Estructura_gastos.csv
-│   └── dataset_gastos.csv
+│   ├── Dataset_Salud_Financiera_Definido.csv
+│   └── Estructura_Salud_Financiera.csv
 └── Transacciones/
-    ├── Dataset_Salud_Financiera_Defi...
-    └── Estructura_Salud_Financiera.csv
+    ├── Estructura_gastos.csv
+    └── dataset_gastos.csv
 
 EDA/
 ├── Hackaton_No_Country_Entrena...
