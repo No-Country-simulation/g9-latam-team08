@@ -104,7 +104,7 @@ notebooks/
 │   ├── modeloClasificatorio.ipynb
 │   └── pruebas_modeloClasificatorio.ipynb
 └── ClasificacionPerfil/
-    └── Hackaton_No_Country_Entrena...
+    └── Hackaton_No_Country_Entrenamiento_Modelo.ipynb
 
 README.md
 ```
