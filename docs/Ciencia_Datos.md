@@ -120,7 +120,7 @@ Se evaluó incorporar variables transaccionales directas (por ejemplo, ticket pr
 
 ---
  
-### Clasificación de Gastos
+### Clasificación de Gastos 
  
 Modelo que clasifica cada transacción en una categoría a partir de su texto. Se definieron 6 categorías principales, cada una con sus subcategorías, y una marca de si el gasto es esencial o no. Esta marca es la que después alimenta al modelo, además de servir como base para los indicadores del perfil financiero (gastos esenciales vs. no esenciales).
  
@@ -128,7 +128,7 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - `Alquiler_y_Expensas` (esencial)
 - `Servicios_Basicos`: luz, agua, gas, internet (esencial)
 - `Mantenimiento_y_Muebles`: ferreterías, materiales, jardinería (no esencial)
-- 
+
 **2. Alimentación** — el pilar donde más varía el comportamiento del usuario, y donde las recomendaciones de la app tienen mayor impacto.
 - `Supermercados_y_Almacenes` (esencial)
 - `Carnicerias_y_Granjas` (esencial)
@@ -160,9 +160,8 @@ Modelo que clasifica cada transacción en una categoría a partir de su texto. S
 - `Impuestos` (esencial)
 
 ---
-### Clasificación de Gastos
+### Modelo Clasificación de Gastos
 
-Modelo que clasifica cada transacción en una categoría (Alimentación, Transporte, Entretenimiento, Hogar, Finanzas, Salud, etc.) a partir de su texto.
 
 **Enfoque:** basado en el paper "Hierarchical Classification of Financial Transactions Through Context-Fusion of Transformer-based Embeddings" (Busson et al., BTG Pactual / PUC-Rio, 2023), que propone el modelo Two-headed DragoNet. La idea central es que una transacción sola rara vez tiene suficiente información, por lo que se genera un embedding para cada texto disponible por separado (nombre del comercio y subcategoría) y se fusionan antes de clasificar. Se adaptó el enfoque a un solo nivel de categoría (`categoria_principal`), en lugar del esquema jerárquico del paper original.
 
