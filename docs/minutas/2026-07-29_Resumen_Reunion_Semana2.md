@@ -121,7 +121,7 @@ Se realizó la consulta correspondiente al soporte técnico de Oracle y el equip
 - Revisar los entregables oficiales del Hackathon.
 - Revisar los avances pendientes de Frontend y Software Engineering correspondientes a los integrantes ausentes.
 
-## Próximas reuniones
+## Próxima reunión
 
 **Jueves, 30 de julio de 2026 – 11:00 a. m. (Argentina)**
 

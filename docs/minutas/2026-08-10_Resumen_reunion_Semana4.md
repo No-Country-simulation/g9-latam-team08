@@ -34,26 +34,17 @@ Realizar el seguimiento del estado actual del MVP, revisar los acuerdos de la re
 
 ---
 
-# Participantes
+## Participantes
 
 | Nombre | Rol |
-
-| --- | --- |
-
+|---------|-----|
 | Lucía Evelyn Jantus | Data Scientist |
-
-| Fernando Thiele | Data Scientist |
-
-| Matías Bueno | Data Engineer |
-
 | Magalí Aldana Suarez | Frontend Developer |
-
+| Fernando Thiele | Data Scientist |
+| Matías Bueno | Data Engineer |
 | Alan Joel Romero | Software Engineer |
-
 | Leandro Baque | Backend Developer |
-
 | Thiago Beber Feil | Full Stack Developer |
-
 | Yanucelly Moreira | Project Manager |
 
 ---

@@ -25,6 +25,21 @@ Realizar el seguimiento del estado actual del MVP, revisar los avances de Fronte
 
 ---
 
+## Participantes
+
+| Nombre | Rol |
+|---------|-----|
+| Lucía Evelyn Jantus | Data Scientist |
+| Magalí Aldana Suarez | Frontend Developer |
+| Fernando Thiele | Data Scientist |
+| Matías Bueno | Data Engineer |
+| Alan Joel Romero | Software Engineer |
+| Juan Manuel Roldán | Backend Developer |
+| Leandro Baque | Backend Developer |
+| Thiago Beber Feil | Full Stack Developer |
+| Yanucelly Moreira | Project Manager |
+
+
 # Temas tratados
 
 ## 1. Frontend

@@ -20,6 +20,8 @@ Cada minuta documenta los objetivos de la reunión, los participantes, los temas
 | 06/08/2026 | Semana 3 | Seguimiento del avance del MVP, revisión de los acuerdos de la reunión anterior, organización del área de Frontend, estado de la documentación, preparación de los entregables del Hackathon y definición del nombre oficial del proyecto. |
 | 10/08/2026 | Semana 4 | Seguimiento del estado del MVP, avances del área de Frontend tras la reincorporación de Magalí, estado de la documentación, coordinación de los entregables del Hackathon y planificación de las próximas actividades de integración y pruebas. |
 | 12/08/2026 | Semana 4 | Seguimiento del estado del MVP y avances de Frontend, revisión de la integración y planificación de las pruebas integrales, seguimiento de la documentación y entregables del Hackathon, y preparación inicial del Pitch y Demo Day. |
+| 13/08/2026 | Semana 4 | Seguimiento del avance de Frontend y reprogramación de las pruebas integrales, seguimiento de documentación y entregables, y organización del Pitch y Demo Day con definición de presentador principal y backup. |
+
 ---
 
 ## Estructura de las minutas
