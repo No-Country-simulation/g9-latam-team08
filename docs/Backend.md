@@ -17,7 +17,7 @@ Este documento describe los componentes, servicios y procesos implementados por 
 
 ## Desarrollo del Componente
 
-### Arquitura
+### Arquitectura
 
 ```
 
@@ -128,7 +128,14 @@ El componente Backend integra los servicios desarrollados por el área de Cienci
 
 ### Oracle Cloud Infrastructure (OCI)
 
-> Pendiente de implementación.
+Despliegue Híbrido de Microservicios: El backend en Spring Boot y el microservicio de Python (ml-service/) están diseñados para ejecutarse como servicios independientes que pueden empaquetarse en contenedores y desplegarse en instancias de computación o clusters en la nube de OCI.  
+
+
+Comunicación Interna: El backend utiliza componentes de servicio como MlServiceImpl.java para conectarse y comunicarse con el servicio de Machine Learning ubicado en ml-service/app.py, el cual procesa los cálculos financieros y scores que se muestran en el frontend.  
+
+
+Configuración del Entorno: Los parámetros de conexión de red, URLs de servicios y credenciales de bases de datos para este entorno en la nube se gestionan típicamente a través del archivo de propiedades del backend en src/main/resources/application.properties.  
+
 
 ---
 
