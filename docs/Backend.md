@@ -202,17 +202,15 @@ El componente Backend integra los servicios desarrollados por el área de Cienci
 
 ## Herramientas y Tecnologías Utilizadas
 
-Lenguaje: Java
-
-Framework: Spring Boot
-
-Gestor de dependencias y construcción: Maven
-
-Spring Data JPA / Hibernate
-
-Swagger / OpenAPI (Springdoc-OpenAPI)
-
-Control de versiones: Git y GitHub
+- **Spring Boot 3.2.0** - Framework
+- **Spring Data JPA** - ORM
+- **Spring Security** - Autenticación
+- **H2 Database** - Base de datos
+- **Lombok** - Reducir boilerplate
+- **Maven** - Gestor de dependencias
+- **Springdoc OpenAPI (Swagger)** - Documentación interactiva de la API integrada en /swagger-ui.html.
+- **JWT** - Autenticación por tokens (incluido, listo pa
+ra usar) 
 
 ---
 
