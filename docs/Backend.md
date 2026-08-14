@@ -17,7 +17,7 @@ Este documento describe los componentes, servicios y procesos implementados por 
 
 ## Desarrollo del Componente
 
-### Arquitura
+### Arquitectura
 
 ```
 
