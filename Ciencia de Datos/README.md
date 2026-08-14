@@ -83,16 +83,16 @@ Ciencia de Datos/
 │ │ ├── Dataset_Salud_Financiera_Definido.csv
 │ │ └── Estructura_Salud_Financiera.csv
 │ └── Transacciones/
-│ ├── dataset_gastos.csv
-│ └── Estructura_gastos.csv
+│   ├── dataset_gastos.csv
+│   └── Estructura_gastos.csv
 ├── models/
 │ ├── ClasificacionGastos/
 │ │ ├── artefactos_categoria.pkl
 │ │ ├── modelo_categoria_full.keras
 │ │ └── README.md
 │ └── ClasificacionPerfil/
-│ ├── modelo_riesgo_financiero.pkl
-│ └── README_Salud_financiera.md
+│   ├── modelo_riesgo_financiero.pkl
+│   └── README_Salud_financiera.md
 ├── Notebook_Principal.ipynb
 └── README.md
 ```
