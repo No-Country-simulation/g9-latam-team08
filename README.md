@@ -215,7 +215,9 @@ java -jar target/finance-dashboard-api-1.0.0.jar
 - **H2 Database** - Base de datos
 - **Lombok** - Reducir boilerplate
 - **Maven** - Gestor de dependencias
-- **JWT** - Autenticación por tokens (incluido, listo para usar)
+- **Springdoc OpenAPI (Swagger)** - Documentación interactiva de la API integrada en /swagger-ui.html.
+- **JWT** - Autenticación por tokens (incluido, listo pa
+ra usar) actualiza esto entonces
 
 ## Variables de Entorno
 
@@ -223,14 +225,7 @@ Puedes configurar variables de entorno en `application.properties` o crear un ar
 
 ## Desarrollo Futuro
 
-- [ ] Implementar JWT Authentication
-- [ ] Agregar Swagger/OpenAPI documentation
-- [ ] Implementar paginación en endpoints
-- [ ] Agregar filtros avanzados
-- [ ] Implementar caching
-- [ ] Agregar tests unitarios e integración
-- [ ] Implementar CI/CD
-- [ ] Agregar más tipos de alertas
+- [ ] Agregar dockerizacion 
 
 ## Troubleshooting
 
@@ -246,14 +241,7 @@ Verifica que `spring.jpa.hibernate.ddl-auto=create-drop` está en `application.p
 ### Error: "User not found"
 Asegúrate de que el usuario exista antes de crear transacciones
 
-## Contacto y Soporte
-
-Para reportar issues o sugerencias, contacta al equipo de desarrollo.
-
-## Licencia
-
-Este proyecto está bajo licencia MIT.
 
 ---
 
-**Última actualización:** 2024-07-26
+**Última actualización:** 2024-08-14
