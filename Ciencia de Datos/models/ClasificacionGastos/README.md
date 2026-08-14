@@ -20,7 +20,7 @@ modo de experimento de ablación. Tras comparar resultados, **se mantiene el mod
 ## 2. Análisis Exploratorio de Datos (EDA)
 
 El EDA se generó con [ydata-profiling](https://ydata.ai/?utm_source=opensource&utm_medium=pandasprofiling&utm_campaign=report)
-sobre `dataset.csv` (2000 filas, 7 columnas, 0 valores nulos, 0 filas duplicadas). Resumen por
+sobre `dataset_gastos.csv` (2000 filas, 7 columnas, 0 valores nulos, 0 filas duplicadas). Resumen por
 columna:
 
 | Columna | Tipo | Distintos | Observación |
@@ -164,26 +164,7 @@ numpy: 2.0.2
 pandas: 2.2.2
 ```
 
-## 8. Cómo entrenar y usar el modelo
-
-1. **Subir el dataset** `dataset.csv` a la ruta usada en el notebook
-   (`/content/drive/MyDrive/b/c/dataset.csv`, o ajustarla si cambia).
-2. **Ejecutar `modeloClasificatorio.ipynb`** de arriba hacia abajo:
-   - Monta Drive y carga librerías.
-   - Carga el CSV y normaliza `esencial`.
-   - Vectoriza `nombre_tienda` + `subcategoria`.
-   - Entrena el modelo.
-   - Imprime accuracy de validación y el `classification_report` por clase.
-   - Guarda `modelo_categoria_full.keras` y `artefactos_categoria.pkl` (incluye label
-     encoder, vocabulario y versiones de librerías).
-3. **Copiar ambos archivos generados** a la ruta de Drive que uses para inferencia.
-4. **Ejecutar `pruebas_modeloClasificatorio.ipynb`**:
-   - Carga el modelo y los artefactos.
-   - Usa `predecir_transaccion_full(nombre_tienda, subcategoria, esencial)`.
-   - Devuelve `categoria_principal` predicha y su confianza.
-
-
-## 9. Referencias
+## 8. Referencias
 
 - Busson, A. J. G. et al. (2023). *Hierarchical Classification of Financial Transactions Through
   Context-Fusion of Transformer-based Embeddings and Taxonomy-aware Attention Layer*.

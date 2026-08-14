@@ -1,4 +1,4 @@
-## Especificaciones Técnicas para Data Engineering
+## Clasificación de Perfil Financiero - Sistema de Alerta Financiera Temprana
 
 A continuación se detalla la configuración exacta del entorno, el preprocesamiento y la arquitectura del modelo predictivo para facilitar su integración.
 
