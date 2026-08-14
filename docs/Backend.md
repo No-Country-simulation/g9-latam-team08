@@ -120,7 +120,7 @@ Pruebas unitarias y de integración locales para validar el correcto funcionamie
 
 ### Ciencia de Datos
 
-El componente Backend integra los servicios desarrollados por el área de Ciencia de Datos, permitiendo recibir resultados analíticos como categorías predichas, niveles de confianza y alertas de salud financiera para estructurarlos y despacharlos de forma eficiente hacia el panel del cliente.
+El componente Backend integra los servicios desarrollados por el área de Ciencia de Datos conectado a través de ml.service.url=http://localhost:5000, permitiendo recibir resultados analíticos como categorías predichas, niveles de confianza y alertas de salud financiera para estructurarlos y despacharlos de forma eficiente hacia el panel del cliente.
 
 ---
 
