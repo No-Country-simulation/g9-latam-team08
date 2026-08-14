@@ -6,7 +6,7 @@
 
 El proyecto tiene como propósito transformar datos financieros y transaccionales en conocimiento útil para apoyar la toma de decisiones, permitiendo clasificar automáticamente los gastos, analizar el perfil financiero del usuario y generar recomendaciones personalizadas para mejorar su salud financiera.
 
-La solución integra **Ciencia de Datos**, una **API REST**, una **aplicación web responsive** y servicios de **Oracle Cloud Infrastructure (OCI)**, conformando una arquitectura que permite procesar, analizar y presentar la información financiera al usuario.
+La solución integra **Ciencia de Datos**, una **API REST**, una **aplicación web para computadora (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**, conformando una arquitectura que permite procesar, analizar y presentar la información financiera al usuario.
 
 El desarrollo es realizado por un equipo multidisciplinario conformado por profesionales de **Project Management**, **Data Science**, **Data Engineering**, **Backend Development**, **Frontend Development**, **Full Stack Development** y **Software Engineering**, trabajando de forma colaborativa durante el Hackathon en el diseño, desarrollo e integración de los distintos componentes del MVP.
 
@@ -26,7 +26,7 @@ Como consecuencia, pueden desconocer en qué categorías concentran sus gastos, 
 
 Desarrollar un **MVP (Producto Mínimo Viable)** que permita analizar la información financiera y transaccional de un usuario, clasificar automáticamente sus gastos, identificar su perfil financiero y generar recomendaciones personalizadas que contribuyan a mejorar la toma de decisiones sobre sus finanzas personales.
 
-Para alcanzar este objetivo, la solución integra componentes de **Ciencia de Datos**, una **API REST**, una **aplicación web responsive** y servicios de **Oracle Cloud Infrastructure (OCI)**, permitiendo procesar, analizar y presentar los resultados obtenidos de forma clara para el usuario.
+Para alcanzar este objetivo, la solución integra componentes de **Ciencia de Datos**, una **API REST**, una **aplicación web para computadora (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**, permitiendo procesar, analizar y presentar los resultados obtenidos de forma clara para el usuario.
 
 ---
 
@@ -48,8 +48,8 @@ El MVP integra diferentes componentes tecnológicos que trabajan de forma coordi
 
 - **Ciencia de Datos:** procesamiento y análisis de la información financiera y transaccional, clasificación de transacciones, evaluación del perfil financiero y generación de resultados.
 - **Backend:** API REST encargada de gestionar el procesamiento de la información y la integración entre los distintos componentes de la solución.
-- **Frontend:** aplicación web responsive mediante la cual el usuario interactúa con Finance AI y visualiza los resultados del análisis financiero.
-- **Oracle Cloud Infrastructure (OCI):** infraestructura cloud utilizada como parte de la arquitectura de la solución.
+- **Frontend:** aplicación web para computadora (PC) mediante la cual el usuario interactúa con Finance AI y visualiza los resultados del análisis financiero.
+- **Oracle Cloud Infrastructure (OCI):** infraestructura cloud utilizada para el almacenamiento de los modelos de Machine Learning y archivos asociados mediante Object Storage y para proporcionar la infraestructura de despliegue de la API mediante Compute y servicios de red.
 
 La integración de estos componentes permite transformar los datos financieros y transaccionales en información comprensible para el usuario, facilitando la identificación de hábitos de consumo, la evaluación de su situación financiera y la generación de recomendaciones orientadas a mejorar su salud financiera.
 
@@ -68,23 +68,18 @@ El MVP de Finance AI contempla las funcionalidades principales necesarias para a
 - Generación de recomendaciones personalizadas.
 - Exposición de los resultados mediante una API REST.
 - Integración con Oracle Cloud Infrastructure (OCI).
-- Aplicación web responsive para la interacción con el usuario y visualización de los resultados.
+- Aplicación web para computadora (PC) para la interacción con el usuario y visualización de los resultados.
 
 ### Categorías de gastos
 
-La solución contempla la clasificación automática de las transacciones en diferentes categorías financieras.
-
-Entre las categorías consideradas se encuentran:
+La solución contempla la clasificación automática de las transacciones en seis categorías financieras principales:
 
 - Alimentación.
-- Transporte.
-- Salud.
-- Vivienda / Hogar.
-- Educación.
-- Ocio / Entretenimiento.
-- Servicios.
+- Entretenimiento.
 - Finanzas.
-- Otras categorías definidas de acuerdo con el modelo implementado.
+- Hogar.
+- Salud.
+- Transporte.
 
 ---
 
@@ -102,8 +97,151 @@ Responsable de proporcionar los servicios necesarios para el procesamiento de la
 
 ### Frontend
 
-Responsable de proporcionar la aplicación web responsive mediante la cual el usuario interactúa con Finance AI y consulta los resultados de su análisis financiero.
+Responsable de proporcionar la aplicación web para computadora (PC) mediante la cual el usuario interactúa con Finance AI y consulta los resultados de su análisis financiero.
 
 ### Oracle Cloud Infrastructure (OCI)
 
-Responsable de proporcionar los servicios de infraestructura cloud utilizados por la solución para el almacenamiento, procesamiento o despliegue de los componentes definidos para el MVP.
+Proporciona los servicios de infraestructura cloud utilizados por la solución, incluyendo **Object Storage** para el almacenamiento de los modelos de Machine Learning y archivos asociados, **Compute** para la infraestructura destinada al despliegue de la API y los servicios de **Networking** necesarios para la conectividad de la solución.
+
+---
+
+## Arquitectura General de la Solución
+
+Finance AI integra diferentes componentes tecnológicos que trabajan de manera coordinada para procesar la información financiera del usuario y presentar los resultados del análisis.
+
+El flujo general de la solución contempla:
+
+1. El usuario interactúa con la aplicación web de Finance AI.
+2. El Frontend envía la información requerida a los servicios del Backend.
+3. El Backend gestiona las solicitudes y la integración con los servicios encargados del procesamiento financiero.
+4. Los modelos de Ciencia de Datos procesan la información para clasificar las transacciones y evaluar el perfil financiero del usuario.
+5. Los modelos de Machine Learning y archivos asociados se encuentran almacenados en Oracle Cloud Infrastructure (OCI).
+6. Los resultados obtenidos son procesados por los servicios de la solución y presentados al usuario mediante la aplicación web.
+7. El usuario puede visualizar sus indicadores, distribución de gastos, perfil financiero, alertas y recomendaciones.
+
+---
+## Gestión y Metodología de Trabajo
+
+El proyecto fue desarrollado por un equipo multidisciplinario mediante una metodología de trabajo ágil basada en **Kanban**.
+
+Para la planificación, organización y seguimiento de las actividades se utilizó **Trello**, estructurando la gestión del proyecto mediante tres tableros de trabajo:
+
+- **Trello General:** utilizado para la planificación y seguimiento global del proyecto, consolidación de avances, documentación, entregables, reuniones y coordinación entre las distintas áreas.
+- **Trello Ciencia de Datos:** utilizado para organizar y dar seguimiento a las actividades correspondientes a Ciencia de Datos e Ingeniería de Datos.
+- **Trello Desarrollo:** utilizado para organizar y dar seguimiento a las actividades relacionadas con Backend, Frontend, integración y desarrollo de la solución.
+
+Las tareas fueron organizadas mediante backlogs y estados de avance, permitiendo realizar un seguimiento continuo del desarrollo del MVP y mantener la coordinación entre las distintas áreas.
+
+El seguimiento del proyecto se realizó mediante:
+
+- Reuniones periódicas del equipo.
+- Elaboración de minutas de reunión.
+- Actualización del Trello General.
+- Seguimiento de los tableros de Ciencia de Datos y Desarrollo.
+- Consolidación de los avances de las distintas áreas.
+- Revisión continua de la documentación.
+- Seguimiento del repositorio GitHub y de los avances de integración.
+
+La planificación se realizó de manera incremental, permitiendo reorganizar tareas y prioridades de acuerdo con las necesidades, dependencias y avances del MVP.
+
+---
+
+## Organización del Equipo
+
+Finance AI fue desarrollado por el equipo **G9-LATAM-Team 08**, integrado por profesionales de diferentes áreas que participaron de forma colaborativa en el desarrollo del MVP.
+
+| Integrante | Rol |
+| --- | --- |
+| Yanucelly Moreira | Project Manager |
+| Lucía Evelyn Jantus | Data Scientist |
+| Fernando Thiele | Data Scientist |
+| Matías Bueno | Data Engineer |
+| Alan Joel Romero | Software Engineer |
+| Juan Manuel Roldán | Backend Developer |
+| Leandro Baque | Backend Developer |
+| Thiago Beber Feil | Full Stack Developer |
+| Magalí Aldana Suarez | Frontend Developer |
+
+---
+
+## Herramientas y Tecnologías
+
+El proyecto utiliza diferentes herramientas y tecnologías de acuerdo con las necesidades de cada componente de la solución.
+
+Entre las principales se encuentran:
+
+- **Ciencia de Datos:** Python, pandas, NumPy, scikit-learn, TensorFlow/Keras, joblib, Google Colab y MySQL.
+- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, Maven y Swagger/OpenAPI.
+- **Frontend:** React, TypeScript, Vite, pnpm y CSS.
+- **Cloud:** Oracle Cloud Infrastructure (OCI), Object Storage, Compute y Networking.
+- **Gestión y colaboración:** Trello, GitHub, GitHub Desktop, Discord y Figma.
+
+El detalle completo de las herramientas, tecnologías, librerías y servicios utilizados se encuentra documentado en `Herramientas_y_Tecnologias.md`.
+
+---
+
+## Documentación del Proyecto
+
+La documentación de Finance AI se organiza de manera centralizada en el repositorio del proyecto e incluye:
+
+- README principal.
+- README de las áreas.
+- Documentación técnica de Ciencia de Datos.
+- Documentación técnica de Backend.
+- Documentación de Oracle Cloud Infrastructure (OCI).
+- Documentación de Frontend.
+- Manual de Usuario.
+- Documento de Herramientas y Tecnologías.
+- Minutas y documentación de seguimiento del proyecto.
+
+La documentación se mantiene actualizada de acuerdo con los avances de cada área y la evolución del MVP.
+
+---
+## Entregables del Hackathon
+
+Los principales entregables preparados por el equipo incluyen:
+
+- Documentación del proyecto.
+- Herramientas y tecnologías utilizadas.
+- Enlaces oficiales del proyecto.
+- Manual de Usuario.
+- Repositorio GitHub.
+- Video Demo – Entregable No Country.
+- Presentación (Pitch) y Demo Day.
+
+Los entregables son revisados y validados por el equipo antes de su publicación o carga en la plataforma correspondiente.
+
+---
+
+## Estado Actual del Proyecto
+
+Finance AI se encuentra en la etapa final de desarrollo del MVP.
+
+Los principales componentes de la solución se encuentran desarrollados o en proceso de integración, mientras el equipo avanza en la consolidación de la documentación, la preparación de los entregables finales y la planificación de las pruebas integrales del MVP.
+
+---
+
+## Mejoras Futuras
+
+Como evolución del MVP, Finance AI podrá incorporar nuevas funcionalidades y mejoras orientadas a ampliar las capacidades de análisis financiero y la experiencia del usuario.
+
+Las mejoras futuras serán definidas a partir de los resultados obtenidos durante las pruebas del MVP y de las oportunidades de evolución identificadas por el equipo.
+
+---
+
+## Repositorio y Enlaces del Proyecto
+
+Los enlaces oficiales del proyecto serán incorporados y verificados antes de la entrega final:
+
+- **Repositorio GitHub:** pendiente de incorporar.
+- **Aplicación Web:** pendiente de incorporar.
+- **API REST:** pendiente de incorporar, si se publica.
+- **Figma:** pendiente de incorporar.
+- **Video Demo:** pendiente de incorporar.
+- **Documentación:** pendiente de consolidación y revisión final.
+
+---
+
+## Observaciones
+
+Este documento consolida la información general de **Finance AI – Asistente Inteligente de Salud Financiera** y será actualizado conforme finalicen la integración, las pruebas y la preparación de los entregables del Hackathon.
