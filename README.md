@@ -136,10 +136,6 @@ La consola H2 queda disponible en:
 http://localhost:8080/h2-console
 ```
 
-## Seguridad
-
-La aplicación usa Spring Security. Al arrancar, Spring puede mostrar una contraseña temporal de desarrollo en la consola. Se recomienda usar una configuración más robusta en producción.
-
 ## Variables de entorno importantes
 
 - `JAVA_HOME`: debe apuntar al JDK 17.
