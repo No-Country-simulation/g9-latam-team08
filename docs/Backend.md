@@ -173,7 +173,7 @@ Configuración de seguridad mediante Spring Security para proteger las rutas del
 
 ### Pruebas
 
-Pruebas unitarias y de integración locales para validar el correcto funcionamiento de los controladores y repositorios mediante compilaciones limpias con Maven, así como el uso de Postman y Swagger para las pruebas de endpoints.
+Pruebas unitarias y de integración locales para validar el correcto funcionamiento de los controladores y repositorios mediante compilaciones limpias con Maven, así como el uso de Postman y Swagger en /swagger-ui.html, para las pruebas de endpoints.
 
 ---
 
