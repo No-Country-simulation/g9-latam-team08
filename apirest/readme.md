@@ -28,10 +28,10 @@ Brindar a los usuarios una plataforma automatizada que permita registrar y clasi
 ## Estructura del repositorio
 ├── apirest/                               # Proyecto principal en Spring Boot (Java)
 │   ├── src/main/java/team08/apirest/
-│   │   ├── controllers/                   # Controladores REST (GastoController, UsuarioController)[cite: 3, 4]
-│   │   ├── models/                        # Entidades JPA (GastoModel, UsuarioModel)[cite: 9, 10]
-│   │   ├── repositories/                  # Interfaces de acceso a datos (GastoRepository, UsuarioRepository)[cite: 7, 8]
-│   │   └── services/                      # Lógica de negocio e integración (GastoService, UsuarioService)[cite: 5, 6]
+│   │   ├── controllers/                   # Controladores REST (GastoController, UsuarioController)
+│   │   ├── models/                        # Entidades JPA (GastoModel, UsuarioModel)
+│   │   ├── repositories/                  # Interfaces de acceso a datos (GastoRepository, UsuarioRepository)
+│   │   └── services/                      # Lógica de negocio e integración (GastoService, UsuarioService)
 │   └── src/main/resources/
 │       └── application.properties         # Configuración de conexión y base de datos
 ├── app.py                                 # Microservicio en Flask (Python) para ML y cálculos
