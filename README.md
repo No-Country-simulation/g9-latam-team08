@@ -208,7 +208,7 @@ java -jar target/finance-dashboard-api-1.0.0.jar
 - **Maven** - Gestor de dependencias
 - **Springdoc OpenAPI (Swagger)** - Documentación interactiva de la API integrada en /swagger-ui.html.
 - **JWT** - Autenticación por tokens (incluido, listo pa
-ra usar) actualiza esto entonces
+ra usar) 
 
 ## Variables de Entorno
 
