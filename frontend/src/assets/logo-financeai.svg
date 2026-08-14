@@ -1,0 +1,27 @@
+<svg width="320" height="80" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ÍCONO GEOMÉTRICO -->
+  <g transform="translate(50, 8)">
+
+    <!-- Barra izquierda flotante (Celeste) -->
+    <line x1="12" y1="20" x2="12" y2="34" stroke="#25c8d3" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Barra central (Azul oscuro) -->
+    <line x1="28" y1="8" x2="28" y2="40" stroke="#114477" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Barra derecha y curva envolvente inferior (Azul oscuro) -->
+    <!-- Baja por la derecha, hace una curva perfecta bajo la central y termina apuntando hacia arriba bajo la celeste -->
+    <path d="M 44 4 V 46 A 16 16 0 0 1 12 46 V 44" stroke="#114477" stroke-width="8" stroke-linecap="round" fill="none" />
+
+  </g>
+
+  <!-- TIPOGRAFÍA -->
+  <!-- Título principal -->
+  <text x="110" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="34" fill="#114477" letter-spacing="-0.5">
+    FinanceAI
+  </text>
+
+  <!-- Subtítulo -->
+  <text x="115" y="66" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="20" fill="#888888">
+    Salud Financiera
+  </text>
+</svg>
