@@ -123,12 +123,7 @@ curl -X POST http://localhost:8080/users \
 curl -X POST http://localhost:8080/transactions?userId=1 \
   -H "Content-Type: application/json" \
   -d "{\"description\":\"Supermercado\",\"amount\":45000,\"category\":\"Alimentación\",\"transactionDate\":\"2024-05-20T14:30:00\",\"type\":\"EXPENSE\"}"
-```
 
-### Obtener el dashboard de un usuario
-
-```bash
-curl http://localhost:8080/dashboard/1
 ```
 
 ## Base de datos
