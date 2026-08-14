@@ -17,9 +17,66 @@ Este documento describe los componentes, servicios y procesos implementados por 
 
 ## Desarrollo del Componente
 
-### Arquitectura
+### Arquitura
 
-> Pendiente de completar.
+```
+
+backend/
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   └── com/
+    │   │       └── financeai/
+    │   │           ├── FinanceAiApplication.java
+    │   │           ├── config/
+    │   │           │   ├── DataInitializer.java
+    │   │           │   └── SecurityConfig.java
+    │   │           ├── controller/
+    │   │           │   ├── AlertController.java
+    │   │           │   ├── CategoryController.java
+    │   │           │   ├── DashboardController.java
+    │   │           │   ├── TransactionController.java
+    │   │           │   └── UserController.java
+    │   │           ├── dto/
+    │   │           │   ├── AlertDTO.java
+    │   │           │   ├── CreateTransactionDTO.java
+    │   │           │   ├── DashboardDTO.java
+    │   │           │   ├── DashboardMetricsDTO.java
+    │   │           │   ├── ExpenseByCategoryDTO.java
+    │   │           │   ├── MonthlyEvolutionDTO.java
+    │   │           │   ├── RecommendationDTO.java
+    │   │           │   └── TransactionDTO.java
+    │   │           ├── entity/
+    │   │           │   ├── Alerta.java
+    │   │           │   ├── Categoria.java
+    │   │           │   ├── Transaccion.java
+    │   │           │   └── Usuario.java
+    │   │           ├── repository/
+    │   │           │   ├── AlertRepository.java
+    │   │           │   ├── CategoryRepository.java
+    │   │           │   ├── TransactionRepository.java
+    │   │           │   └── UserRepository.java
+    │   │           └── service/
+    │   │               ├── AlertService.java
+    │   │               ├── CategoryService.java
+    │   │               ├── DashboardService.java
+    │   │               ├── MlService.java
+    │   │               ├── TransactionService.java
+    │   │               ├── UserService.java
+    │   │               └── impl/
+    │   │                   ├── AlertServiceImpl.java
+    │   │                   ├── CategoryServiceImpl.java
+    │   │                   ├── DashboardServiceImpl.java
+    │   │                   ├── MlServiceImpl.java
+    │   │                   ├── TransactionServiceImpl.java
+    │   │                   └── UserServiceImpl.java
+    └── resources/
+        └── application.properties
+
+```
 
 ---
 
