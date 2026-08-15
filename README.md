@@ -48,11 +48,13 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 
 ## Instalación y Ejecución Local
 **Clona el repositorio en tu equipo local:**
+
    ```bash
    https://github.com/No-Country-simulation/g9-latam-team08.git 
     cd g9-latam-team08
-
+```
 (OPCIONAL) Crea y activa un entorno virtual (opcional pero recomendado):
+
   ```bash
     python -m venv venv
     # En Windows:
@@ -62,7 +64,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
   
 **Instala las dependencias necesarias ejecutando el siguiente comando:**
 
-  ```text
+  ```
   pip install flask pandas requests joblib scikit-learn
 ```
 
