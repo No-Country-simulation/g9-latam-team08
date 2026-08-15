@@ -12,11 +12,17 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 * **OCI Object Storage** - Almacenamiento en la nube para los modelos `.pkl`.
 
 ## 🚀 Endpoints Disponibles
-### Predecir Categoría de Gasto
-* **URL:** `/predict/categoria`
-* **Método:** `POST`
-* **Descripción:** Recibe los datos de un gasto en formato JSON y devuelve la categoría predicha por el modelo de Machine Learning.
-* **Cuerpo de la petición (Ejemplo):**
+
+**Predecir Categoría de Gasto**
+
+```text
+URL: /predict/categoria
+Método: POST
+```
+**Descripción:** Recibe los datos de un gasto en formato JSON y devuelve la categoría predicha por el modelo de Machine Learning.
+
+
+**Cuerpo de la petición (Ejemplo):**
   ```json
   {
     "nombre_tienda": "Supermercado",
@@ -24,15 +30,21 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
     "metodo_pago": "Tarjeta",
     "esencial": true
   }
-* Respuesta exitosa (200 Ok):
+**Respuesta exitosa (200 Ok):**
   ```json
   {
     "categoria_predicha": "Alimentacion"
   }
-### Calcular Finanzas y Perfil de Riesgo
-* **URL:** /calcular-finanzas
-* **Método:** POST
-* **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes (supervivencia, endeudamiento, etc.) y evalúa el perfil de riesgo mediante un modelo predictivo.
+
+
+**Calcular Finanzas y Perfil de Riesgo**
+
+```text
+URL: /calcular-finanzas
+Método: POST
+```
+**Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes (supervivencia, endeudamiento, etc.) y evalúa el perfil de riesgo mediante un modelo predictivo.
+
 * **Cuerpo de la petición (Ejemplo):**
   ```json
   {
@@ -44,7 +56,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
     "ahorro_previo": 100000
   }
 
-* **Respuesta exitosa (200 OK):** Retorna el objeto JSON original enriquecido con los cálculos, ratios y el campo "perfil_financiero" determinado por el modelo.
+**Respuesta exitosa (200 OK):** Retorna el objeto JSON original enriquecido con los cálculos, ratios y el campo "perfil_financiero" determinado por el modelo.
 
 ## Instalación y Ejecución Local
 **Clona el repositorio en tu equipo local:**
