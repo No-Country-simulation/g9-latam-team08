@@ -23,6 +23,7 @@ Método: POST
 
 
 **Cuerpo de la petición (Ejemplo):**
+
   ```json
   {
     "nombre_tienda": "Supermercado",
@@ -30,6 +31,7 @@ Método: POST
     "metodo_pago": "Tarjeta",
     "esencial": true
   }
+```
 
 **Respuesta exitosa (200 Ok):**
 
