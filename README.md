@@ -47,12 +47,12 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 * **Respuesta exitosa (200 OK):** Retorna el objeto JSON original enriquecido con los cálculos, ratios y el campo "perfil_financiero" determinado por el modelo.
 
 ## Instalación y Ejecución Local
-**Clona el repositorio** en tu equipo local:
+**Clona el repositorio en tu equipo local:**
    ```bash
    https://github.com/No-Country-simulation/g9-latam-team08.git 
     cd g9-latam-team08
 
-* (OPCIONAL) Crea y activa un entorno virtual (opcional pero recomendado):
+(OPCIONAL) Crea y activa un entorno virtual (opcional pero recomendado):
   ```bash
     python -m venv venv
     # En Windows:
@@ -64,7 +64,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
   ```bash
   pip install flask pandas requests joblib scikit-learn
 
-* Ejecuta la aplicación:
+**Ejecuta la aplicación:**
   ```bash
   python app.py
 
