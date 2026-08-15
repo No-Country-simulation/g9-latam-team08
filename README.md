@@ -1,4 +1,4 @@
-# g9-latam-team08
+# API Python/Flask - Sistema de Alerta Financiera Temprana
 Proyecto de No Country enfocado en desarrollar una herramienta de gestion de finanzas para usuarios.
 # Descripción del Proyecto
 Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios de salud económica y realizar inferencias utilizando modelos de Machine Learning (descargados dinámicamente desde Oracle Cloud Infrastructure Object Storage).
