@@ -219,7 +219,7 @@ Método: PUT
 **Descripción:** Actualiza el estado de una alerta específica para marcarla como leída.
 
 
-###Finanzas
+### Finanzas
 
 **Calcular finanzas y perfil de riesgo**
 
