@@ -41,7 +41,7 @@ Brindar a los usuarios una plataforma automatizada que permita registrar y clasi
 
 ## Documentación
 ### Endpoints de la API REST (Spring Boot)
-#### Módulo de Gastos (/api/gastos)
+### Módulo de Gastos 
 **Obtener todos los gastos**
 
 ```text
@@ -85,7 +85,7 @@ Método: DELETE
 **Descripción:** Elimina el gasto correspondiente al ID proporcionado. 
 
 
-#### Módulo de Usuarios / Clientes Financieros (/api/usuarios)
+### Módulo de Usuarios / Clientes Financieros
 
 **Obtener todos los usuarios**
 
