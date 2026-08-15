@@ -7,15 +7,15 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 * **Python** - Lenguaje principal de programación.
 * **Flask** - Microframework para la creación de la API REST.
 * **Pandas** - Manipulación y análisis de estructuras de datos.
-* **Scikit-learn / Joblib**[cite: 2] - Carga y ejecución de modelos predictivos de Machine Learning.
-* **Requests**[cite: 2] - Gestión de peticiones HTTP para descarga dinámica de artefactos.
-* **OCI Object Storage**[cite: 2] - Almacenamiento en la nube para los modelos `.pkl`.
+* **Scikit-learn / Joblib** - Carga y ejecución de modelos predictivos de Machine Learning.
+* **Requests** - Gestión de peticiones HTTP para descarga dinámica de artefactos.
+* **OCI Object Storage** - Almacenamiento en la nube para los modelos `.pkl`.
 
 ## 🚀 Endpoints Disponibles
 ### Predecir Categoría de Gasto
 * **URL:** `/predict/categoria`
 * **Método:** `POST`
-* **Descripción:** Recibe los datos de un gasto en formato JSON y devuelve la categoría predicha por el modelo de Machine Learning[cite: 2].
+* **Descripción:** Recibe los datos de un gasto en formato JSON y devuelve la categoría predicha por el modelo de Machine Learning.
 * **Cuerpo de la petición (Ejemplo):**
   ```json
   {
@@ -32,7 +32,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 ### Calcular Finanzas y Perfil de Riesgo
 * **URL:** /calcular-finanzas
 * **Método:** POST
-* **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes (supervivencia, endeudamiento, etc.) y evalúa el perfil de riesgo mediante un modelo predictivo[cite: 2].
+* **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes (supervivencia, endeudamiento, etc.) y evalúa el perfil de riesgo mediante un modelo predictivo.
 * **Cuerpo de la petición (Ejemplo):**
   ```json
   {
