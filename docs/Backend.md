@@ -273,7 +273,10 @@ Mapeo relacional de entidades en User, Transaction, Category y Alert, mediante J
 
 ### Seguridad
 
-Configuración de seguridad mediante Spring Security para proteger las rutas del sistema y asegurar el acceso controlado a los datos de los usuarios.
+- Configuración de seguridad mediante Spring Security  el cual se encarga de proteger los endpoints de la API en el backend mediante un sistema de filtros que intercepta cada petición HTTP, verifica la autenticidad y validez del token JWT enviado por el cliente, y asegura que solo los usuarios autorizados tengan acceso a los recursos y datos protegidos de la aplicación.
+
+- **JWT/JSON Web Token** funciona como un pase digital seguro y firmado que contiene la identidad y los permisos del usuario; el backend lo genera al iniciar sesión correctamente y el frontend lo reenvía en cada solicitud HTTP subsiguiente para demostrar quién es, permitiendo que el servidor verifique su autenticidad al instante sin necesidad de almacenar sesiones activas en su memoria.
+
 
 ### Pruebas
 
