@@ -1,4 +1,4 @@
-# Finance AI Dashboard
+# Finance AI Dashboard - Sistema de Alerta Financiera Temprana
 
 Backend RESTful API para un dashboard de análisis de salud financiera, desarrollado con Java y Spring Boot.
 
