@@ -290,6 +290,11 @@ Pruebas unitarias y de integración locales para validar el correcto funcionamie
 
 El componente Backend integra los servicios desarrollados por el área de Ciencia de Datos conectado a través de ml.service.url=http://localhost:5000, permitiendo recibir resultados analíticos como categorías predichas, niveles de confianza y alertas de salud financiera para estructurarlos y despacharlos de forma eficiente hacia el panel del cliente.
 
+
+### Frontend
+
+La integración entre el frontend (React) y el backend (Spring Boot) en FinanceAI opera mediante una arquitectura de API REST que intercambia información estructurada en formato JSON, cuyo flujo inicia cuando el usuario ingresa sus credenciales en el cliente para obtener un token JWT que autentica todas las peticiones posteriores; a partir de ahí, el frontend guía al usuario mediante un asistente paso a paso para la carga de datos financieros y transacciones manuales, enviando esta información a la API del servidor para que gestione la lógica de negocio, coordine el procesamiento automático y de clasificación inteligente con el motor de IA en la nube, y finalmente devuelva los resultados estructurados necesarios para alimentar dinámicamente las tarjetas de métricas, gráficos interactivos y recomendaciones del panel de control
+
 ---
 
 ## Infraestructura
