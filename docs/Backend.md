@@ -150,8 +150,7 @@ El componente Backend integra los servicios desarrollados por el área de Cienci
 - **Lombok** - Reducir boilerplate
 - **Maven** - Gestor de dependencias
 - **Springdoc OpenAPI (Swagger)** - Su utilidad actual es tener todos los endpoints juntos para pruebas desde backend y probar el envío de datos al análisis de los modelos entrenados y pasarlos a frontend para que se visualizen.
-- **JWT** - Autenticación por tokens (incluido, listo pa
-ra usar) 
+- **JWT** - Autenticación por tokens 
 
 ---
 
