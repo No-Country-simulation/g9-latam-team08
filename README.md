@@ -227,7 +227,7 @@ Método: PUT
 URL: /calcular-finanzas
 Método: POST
 ```
-Descripción: Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
+**Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
 
 
 
