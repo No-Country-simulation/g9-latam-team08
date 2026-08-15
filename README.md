@@ -3,7 +3,7 @@ Proyecto de No Country enfocado en desarrollar una herramienta de gestion de fin
 # Descripción del Proyecto
 Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios de salud económica y realizar inferencias utilizando modelos de Machine Learning (descargados dinámicamente desde Oracle Cloud Infrastructure Object Storage).
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 * **Python** - Lenguaje principal de programación.
 * **Flask** - Microframework para la creación de la API REST.
 * **Pandas** - Manipulación y análisis de estructuras de datos.
@@ -11,7 +11,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 * **Requests** - Gestión de peticiones HTTP para descarga dinámica de artefactos.
 * **OCI Object Storage** - Almacenamiento en la nube para los modelos `.pkl`.
 
-## 🚀 Endpoints Disponibles
+## Endpoints Disponibles
 
 **Predecir Categoría de Gasto**
 
