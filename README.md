@@ -229,25 +229,6 @@ Método: POST
 ```
 **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
 
-
-
-## Ejemplos de uso
-
-### Crear un usuario
-
-```bash
-curl -X POST http://localhost:8080/users \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"juan@example.com\",\"password\":\"123456\",\"firstName\":\"Juan\",\"lastName\":\"Pérez\"}"
-```
-
-### Crear una transacción
-
-```bash
-curl -X POST http://localhost:8080/transactions?userId=1 \
-  -H "Content-Type: application/json" \
-  -d "{\"description\":\"Supermercado\",\"amount\":45000,\"category\":\"Alimentación\",\"transactionDate\":\"2024-05-20T14:30:00\",\"type\":\"EXPENSE\"}"
-
 ```
 
 ## Base de datos
