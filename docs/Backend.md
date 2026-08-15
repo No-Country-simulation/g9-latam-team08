@@ -273,9 +273,9 @@ Mapeo relacional de entidades en User, Transaction, Category y Alert, mediante J
 
 ### Seguridad
 
-- Configuración de seguridad mediante Spring Security  el cual se encarga de proteger los endpoints de la API en el backend mediante un sistema de filtros que intercepta cada petición HTTP, verifica la autenticidad y validez del token JWT enviado por el cliente, y asegura que solo los usuarios autorizados tengan acceso a los recursos y datos protegidos de la aplicación.
+Configuración de seguridad mediante Spring Security  el cual se encarga de proteger los endpoints de la API en el backend mediante un sistema de filtros que intercepta cada petición HTTP, verifica la autenticidad y validez del token JWT enviado por el cliente, y asegura que solo los usuarios autorizados tengan acceso a los recursos y datos protegidos de la aplicación.
 
-- **JWT/JSON Web Token** funciona como un pase digital seguro y firmado que contiene la identidad y los permisos del usuario; el backend lo genera al iniciar sesión correctamente y el frontend lo reenvía en cada solicitud HTTP subsiguiente para demostrar quién es, permitiendo que el servidor verifique su autenticidad al instante sin necesidad de almacenar sesiones activas en su memoria.
+**JWT/JSON Web Token** funciona como un pase digital seguro y firmado que contiene la identidad y los permisos del usuario; el backend lo genera al iniciar sesión correctamente y el frontend lo reenvía en cada solicitud HTTP subsiguiente para demostrar quién es, permitiendo que el servidor verifique su autenticidad al instante sin necesidad de almacenar sesiones activas en su memoria.
 
 
 ### Pruebas
@@ -299,10 +299,10 @@ El componente Backend integra los servicios desarrollados por el área de Cienci
 -**Despliegue Híbrido de Microservicios:** El backend en Spring Boot y el microservicio de Python (ml-service/) están diseñados para ejecutarse como servicios independientes que pueden empaquetarse en contenedores y desplegarse en instancias de computación o clusters en la nube de OCI.  
 
 
--**Comunicación Interna:** El backend utiliza componentes de servicio como MlServiceImpl.java para conectarse y comunicarse con el servicio de Machine Learning ubicado en ml-service/app.py, el cual procesa los cálculos financieros y scores que se muestran en el frontend.  
+**Comunicación Interna:** El backend utiliza componentes de servicio como MlServiceImpl.java para conectarse y comunicarse con el servicio de Machine Learning ubicado en ml-service/app.py, el cual procesa los cálculos financieros y scores que se muestran en el frontend.  
 
 
--**Configuración del Entorno:** Los parámetros de conexión de red, URLs de servicios y credenciales de bases de datos para este entorno en la nube se gestionan típicamente a través del archivo de propiedades del backend en src/main/resources/application.properties.  
+**Configuración del Entorno:** Los parámetros de conexión de red, URLs de servicios y credenciales de bases de datos para este entorno en la nube se gestionan típicamente a través del archivo de propiedades del backend en src/main/resources/application.properties.  
 
 
 ---
