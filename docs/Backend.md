@@ -91,66 +91,6 @@ Rutas expuestas para gestionar usuarios, transacciones, categorías, alertas y l
 Uso de métodos estándar (GET, POST, etc.) según la acción requerida.
 
 
--**Endpoints principales**
-
-### Usuarios
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| POST | /users | Crear un usuario |
-| GET | /users/{userId} | Obtener un usuario por ID |
-| GET | /users/email/{email} | Buscar usuario por correo |
-| PUT | /users/{userId} | Actualizar datos básicos |
-| PUT | /users/{userId}/financial | Actualizar datos financieros |
-| DELETE | /users/{userId} | Eliminar usuario |
-
-### Transacciones
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| POST | /transactions | Crear una transacción |
-| GET | /transactions/user/{userId} | Obtener transacciones de un usuario |
-| GET | /transactions/{transactionId} | Obtener una transacción por ID |
-| DELETE | /transactions/{transactionId} | Eliminar una transacción |
-
-### Categorías
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| GET | /categories | Listar categorías |
-| GET | /categories/{name} | Buscar categoría por nombre |
-| POST | /categories | Crear categoría |
-
-### Alertas
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| GET | /alerts/user/{userId} | Obtener alertas de un usuario |
-| GET | /alerts/user/{userId}/unread | Obtener alertas no leídas |
-| PUT | /alerts/{alertId}/read | Marcar alerta como leída |
-
-## Ejemplos de uso
-
-### Crear un usuario
-
-```bash
-curl -X POST http://localhost:8080/users \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"juan@example.com\",\"password\":\"123456\",\"firstName\":\"Juan\",\"lastName\":\"Pérez\"}"
-```
-
-### Crear una transacción
-
-```bash
-curl -X POST http://localhost:8080/transactions?userId=1 \
-  -H "Content-Type: application/json" \
-  -d "{\"description\":\"Supermercado\",\"amount\":45000,\"category\":\"Alimentación\",\"transactionDate\":\"2024-05-20T14:30:00\",\"type\":\"EXPENSE\"}"
-
-```
-
-
-
-
 #### Validación de Datos
 
 Reglas implementadas para asegurar la integridad de la información recibida en las peticiones.
