@@ -1,4 +1,4 @@
-# g9-latam-team08
+# API REST Spring Boot - Sistema de Alerta Financiera Temprana
 Proyecto de No Country enfocado en desarrollar una herramienta de gestion de finanzas para usuarios.
 
 ## Descripción
