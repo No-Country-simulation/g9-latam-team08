@@ -62,13 +62,13 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
   
 **Instala las dependencias necesarias ejecutando el siguiente comando:**
 
-  ```bash
+  ```text
   pip install flask pandas requests joblib scikit-learn
 ```
 
 **Ejecuta la aplicación:**
 
-  ```bash
+  ```text
   python app.py
 ```
 
