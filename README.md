@@ -49,7 +49,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 ## ⚙️ Instalación y Ejecución Local
 * 1. **Clona el repositorio** en tu equipo local:
    ```bash
-    git clone [https://github.com/tu-usuario/g9-latam-team08.git](https://github.com/tu-usuario/g9-latam-team08.git)
+   https://github.com/No-Country-simulation/g9-latam-team08.git 
     cd g9-latam-team08
 
 * (OPCIONAL) Crea y activa un entorno virtual (opcional pero recomendado):
