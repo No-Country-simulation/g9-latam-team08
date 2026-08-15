@@ -70,39 +70,166 @@ http://localhost:8080
 
 ### Usuarios
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| POST | /users | Crear un usuario |
-| GET | /users/{userId} | Obtener un usuario por ID |
-| GET | /users/email/{email} | Buscar usuario por correo |
-| PUT | /users/{userId} | Actualizar datos básicos |
-| PUT | /users/{userId}/financial | Actualizar datos financieros |
-| DELETE | /users/{userId} | Eliminar usuario |
+**Registrar un usuario**
+
+```text
+URL: /users
+Método: POST
+```
+**Descripción:** Crea un nuevo usuario en el sistema.
+
+
+**Obtener un usuario por ID**
+
+```text
+URL: /users/{userId}
+Método: GET
+```
+**Descripción:** Recupera la información detallada de un usuario específico mediante su ID.
+
+
+**Buscar usuario por correo**
+
+```text
+URL: /users/email/{email}
+Método: GET
+```
+**Descripción:** Busca un usuario en el sistema utilizando su dirección de correo electrónico.
+
+**Actualizar datos básicos**
+
+```text
+URL: /users/{userId}
+Método: PUT
+```
+**Descripción:** Actualiza la información personal básica de un usuario existente.
+
+
+**Actualizar datos financieros**
+
+```text
+URL: /users/{userId}/financial
+Método: PUT
+```
+**Descripción:** Modifica únicamente la información financiera asociada a un usuario.
+
+
+**Eliminar usuario**
+
+```text
+URL: /users/{userId}
+Método: DELETE
+```
+**Descripción:** Elimina permanentemente a un usuario del sistema.
+
 
 ### Transacciones
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| POST | /transactions | Crear una transacción |
-| GET | /transactions/user/{userId} | Obtener transacciones de un usuario |
-| GET | /transactions/{transactionId} | Obtener una transacción por ID |
-| DELETE | /transactions/{transactionId} | Eliminar una transacción |
+**Crear una transacción**
+
+```text
+URL: /transactions
+Método: POST
+```
+**Descripción:** Registra un nuevo movimiento o gasto en el sistema asociado a un usuario.
+
+
+**Obtener transacciones de un usuario**
+
+```text
+URL: /transactions/user/{userId}
+Método: GET
+```
+**Descripción:** Lista todas las transacciones realizadas por un usuario específico.
+
+
+**Obtener una transacción por ID**
+
+```text
+URL: /transactions/{transactionId}
+Método: GET
+```
+**Descripción:** Recupera los detalles de una transacción única mediante su identificador.
+
+
+**Eliminar una transacción**
+
+```text
+URL: /transactions/{transactionId}
+Método: DELETE
+```
+**Descripción:** Borra un registro de transacción específico del sistema.
+
 
 ### Categorías
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| GET | /categories | Listar categorías |
-| GET | /categories/{name} | Buscar categoría por nombre |
-| POST | /categories | Crear categoría |
+**Listar categorías**
+
+```text
+URL: /categories
+Método: GET
+```
+**Descripción:** Obtiene un listado completo de las categorías disponibles para transacciones.
+
+
+**Buscar categoría por nombre**
+
+```text
+URL: /categories/{name}
+Método: GET
+```
+**Descripción:** Busca una categoría específica filtrándola por su nombre.
+
+
+**Crear categoría**
+
+```text
+URL: /categories
+Método: POST
+```
+**Descripción:** Añade una nueva categoría para clasificar gastos o ingresos.
+
 
 ### Alertas
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| GET | /alerts/user/{userId} | Obtener alertas de un usuario |
-| GET | /alerts/user/{userId}/unread | Obtener alertas no leídas |
-| PUT | /alerts/{alertId}/read | Marcar alerta como leída |
+**Obtener alertas de un usuario**
+
+```text
+URL: /alerts/user/{userId}
+Método: GET
+```
+**Descripción:** Recupera todas las alertas generadas para un usuario en particular.
+
+
+**Obtener alertas no leídas**
+
+```text
+URL: /alerts/user/{userId}/unread
+Método: GET
+```
+**Descripción:** Filtra y muestra solo las notificaciones o alertas que el usuario aún no ha revisado.
+
+
+**Marcar alerta como leída**
+
+```text
+URL: /alerts/{alertId}/read
+Método: PUT
+```
+**Descripción:** Actualiza el estado de una alerta específica para marcarla como leída.
+
+
+###Finanzas
+
+**Calcular finanzas y perfil de riesgo**
+
+```text
+URL: /calcular-finanzas
+Método: POST
+```
+Descripción: Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
+
+
 
 ## Ejemplos de uso
 
