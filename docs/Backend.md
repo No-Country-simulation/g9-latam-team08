@@ -249,7 +249,7 @@ Método: POST
 ```
 **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
 
-
+---
 #### Métodos HTTP
 
 Uso de métodos estándar (GET, POST, etc.) según la acción requerida.
