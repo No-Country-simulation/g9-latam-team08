@@ -17,7 +17,6 @@ Categorías predeterminadas para gastos
 - Maven 
 - Git
 
-> Importante: para que el proyecto funcione correctamente, la variable `JAVA_HOME` debe apuntar a un JDK .
 
 ## Estructura del proyecto
 
