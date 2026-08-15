@@ -1,4 +1,4 @@
-# Finance AI Dashboard Backend API
+# Finance AI Dashboard
 
 Backend RESTful API para un dashboard de análisis de salud financiera, desarrollado con Java 17 y Spring Boot 3.2.0.
 
@@ -14,11 +14,11 @@ Base de datos H2 en memoria para desarrollo
 
 ## Requisitos previos
 
-- Java 17
+- Java 
 - Maven 3.6+
 - Git
 
-> Importante: para que el proyecto funcione correctamente, la variable `JAVA_HOME` debe apuntar a un JDK 17.
+> Importante: para que el proyecto funcione correctamente, la variable `JAVA_HOME` debe apuntar a un JDK .
 
 ## Estructura del proyecto
 
@@ -36,10 +36,10 @@ src/main/java/com/financeai/
 
 ## Configuración local
 
-### 1. Entrar al proyecto
+### 1. Clonar el repositorio 
 
-```bash
-cd C:\Users\DETPC\PVSC
+```
+https://github.com/No-Country-simulation/g9-latam-team08.git
 ```
 
 ### 2. Verificar Java y Maven
