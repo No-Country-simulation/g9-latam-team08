@@ -60,13 +60,16 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
     # En macOS / Linux:
     source venv/bin/activate
   
-**Instala las dependencias** necesarias ejecutando el siguiente comando:
+**Instala las dependencias necesarias ejecutando el siguiente comando:**
   ```bash
   pip install flask pandas requests joblib scikit-learn
+```
 
 **Ejecuta la aplicación:**
+
   ```bash
   python app.py
+```
 
 (Por defecto, la API se hostea en el puerto 500)
 
