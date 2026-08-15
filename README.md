@@ -61,10 +61,10 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
     venv\Scripts\activate
     # En macOS / Linux:
     source venv/bin/activate
-  
+ ``` 
 **Instala las dependencias necesarias ejecutando el siguiente comando:**
 
-  ```
+  ```bash
   pip install flask pandas requests joblib scikit-learn
 ```
 
