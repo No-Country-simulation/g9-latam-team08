@@ -145,7 +145,7 @@ El componente Backend integra los servicios desarrollados por el área de Cienci
 - **Spring Boot 3.2.0** - Framework
 - **Spring Data JPA** - ORM
 - **Spring Security** - Autenticación
-- **H2 Database** - Base de datos
+- **H2 Database** - Base de datos local/desarrollo
 - **Lombok** - Reducir boilerplate
 - **Maven** - Gestor de dependencias
 - **Springdoc OpenAPI (Swagger)** - Documentación interactiva de la API integrada en /swagger-ui.html.
