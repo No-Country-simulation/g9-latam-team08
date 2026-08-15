@@ -1,6 +1,6 @@
 # Finance AI Dashboard
 
-Backend RESTful API para un dashboard de análisis de salud financiera, desarrollado con Java 17 y Spring Boot 3.2.0.
+Backend RESTful API para un dashboard de análisis de salud financiera, desarrollado con Java y Spring Boot.
 
 ## ¿Qué incluye este proyecto?
 
@@ -10,7 +10,6 @@ Dashboard con métricas financieras
 Alertas automáticas
 Recomendaciones personalizadas
 Categorías predeterminadas para gastos
-Base de datos H2 en memoria para desarrollo
 
 ## Requisitos previos
 
