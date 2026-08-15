@@ -42,50 +42,50 @@ Brindar a los usuarios una plataforma automatizada que permita registrar y clasi
 ## Documentación
 ### Endpoints de la API REST (Spring Boot)
 #### Módulo de Gastos (/api/gastos)
-* Obtener todos los gastos
-URL: /api/gastos
-Método: GET  
-Descripción: Retorna una lista con todos los registros de gastos almacenados.  
-* Registrar un nuevo gasto
-URL: /api/gastos  
-Método: POST  
-Descripción: Guarda un nuevo gasto asociado a un cliente.
-* Obtener gastos por cliente
-URL: /api/gastos/cliente/{idCliente}  
-Método: GET  
-Descripción: Filtra y devuelve todos los gastos pertenecientes a un cliente específico mediante su ID. 
-* Obtener un gasto por ID
-URL: /api/gastos/{id}  
-Método: GET  
-Descripción: Busca y retorna un registro de gasto particular a través de su identificador. 
-* Eliminar un gasto
-URL: /api/gastos/{id}  
-Método: DELETE  
-Descripción: Elimina el gasto correspondiente al ID proporcionado. 
+**Obtener todos los gastos**
+**URL:** /api/gastos
+**Método:** GET  
+**Descripción:** Retorna una lista con todos los registros de gastos almacenados.  
+**Registrar un nuevo gasto**
+**URL:** /api/gastos  
+**Método:** POST  
+**Descripción:** Guarda un nuevo gasto asociado a un cliente.
+**Obtener gastos por cliente**
+**URL:** /api/gastos/cliente/{idCliente}  
+**Método:** GET  
+**Descripción:** Filtra y devuelve todos los gastos pertenecientes a un cliente específico mediante su ID. 
+**Obtener un gasto por ID**
+**URL:** /api/gastos/{id}  
+**Método:** GET  
+**Descripción:** Busca y retorna un registro de gasto particular a través de su identificador. 
+**Eliminar un gasto**
+**URL:** /api/gastos/{id}  
+**Método:** DELETE  
+**Descripción:** Elimina el gasto correspondiente al ID proporcionado. 
 #### Módulo de Usuarios / Clientes Financieros (/api/usuarios)
-* Obtener todos los usuarios
-URL: /api/usuarios  
-Método: GET  
-Descripción: Lista todos los clientes financieros registrados.
-* Registrar un usuarioURL: /api/usuarios  
-Método: POST  
-Descripción: Envía los datos financieros del usuario al microservicio de Python (/calcular-finanzas) para procesar ratios y perfilar el riesgo antes de guardarlos en MySQL.
-* Obtener usuario por ID
-URL: /api/usuarios/{id}  
-Método: GET  
-Descripción: Retorna la información detallada de un usuario específico según su ID.  
-* Eliminar usuario
-URL: /api/usuarios/{id}  
-Método: DELETE  
-Descripción: Da de baja a un usuario del sistema mediante su identificador. 
-* Filtrar usuarios por perfil financiero
-URL: /api/usuarios/{perfilFinanciero}  
-Método: GET  
-Descripción: Permite buscar usuarios agrupados por su categoría de perfil de riesgo.
-* Filtrar usuarios con meses de supervivencia activos
-URL: /api/usuarios/{meses_supervivencia}  
-Método: GET  
-Descripción: Retorna aquellos usuarios cuyos meses de supervivencia estimados sean mayores a cero. 
+**Obtener todos los usuarios**
+**URL:** /api/usuarios  
+**Método:** GET  
+**Descripción:** Lista todos los clientes financieros registrados.
+**Registrar un usuarioURL:** /api/usuarios  
+**Método:** POST  
+**Descripción:** Envía los datos financieros del usuario al microservicio de Python (/calcular-finanzas) para procesar ratios y perfilar el riesgo antes de guardarlos en MySQL.
+**Obtener usuario por ID**
+**URL:** /api/usuarios/{id}  
+**Método:** GET  
+**Descripción:** Retorna la información detallada de un usuario específico según su ID.  
+**Eliminar usuario**
+**URL:** /api/usuarios/{id}  
+**Método:** DELETE  
+**Descripción:** Da de baja a un usuario del sistema mediante su identificador. 
+**Filtrar usuarios por perfil financiero**
+**URL:** /api/usuarios/{perfilFinanciero}  
+**Método:** GET  
+**Descripción:** Permite buscar usuarios agrupados por su categoría de perfil de riesgo.
+**Filtrar usuarios con meses de supervivencia activos**
+**URL:** /api/usuarios/{meses_supervivencia}  
+**Método:** GET  
+**Descripción:** Retorna aquellos usuarios cuyos meses de supervivencia estimados sean mayores a cero. 
 
 ## Equipo de trabajo
 Equipo: Grupo de Desarrollo del equipo 8.
