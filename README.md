@@ -15,7 +15,7 @@ Base de datos H2 en memoria para desarrollo
 ## Requisitos previos
 
 - Java 
-- Maven 3.6+
+- Maven 
 - Git
 
 > Importante: para que el proyecto funcione correctamente, la variable `JAVA_HOME` debe apuntar a un JDK .
@@ -48,8 +48,6 @@ https://github.com/No-Country-simulation/g9-latam-team08.git
 java -version
 mvn -v
 ```
-
-Debe mostrar Java 17 en ambos casos.
 
 ### 3. Compilar el proyecto
 
@@ -138,18 +136,10 @@ http://localhost:8080/h2-console
 
 ## Variables de entorno importantes
 
-- `JAVA_HOME`: debe apuntar al JDK 17.
+- `JAVA_HOME`: debe apuntar al JDK.
 - `PATH`: debe incluir `%JAVA_HOME%\bin`.
 
 ## Troubleshooting
-
-### Error al ejecutar Maven
-
-Si aparece un error como `Process terminated with exit code: 1`, revisa:
-
-1. Que `JAVA_HOME` apunte a Java 17.
-2. Que `mvn -v` muestre Java 17.
-3. Que no haya un puerto 8080 ocupado.
 
 ### Puerto ocupado
 
@@ -159,21 +149,9 @@ Si 8080 ya está en uso, puedes cambiarlo en `application.properties`:
 server.port=8081
 ```
 
-## Tecnologías usadas
-
-- Java 17
-- Spring Boot 3.2.0
-- Spring Data JPA
-- Spring Security
-- H2 Database
-- Lombok
-- Maven
-
 El backend está configurado para aceptar solicitudes desde:
 - `http://localhost:3000`
 - `http://localhost:4200`
-
-Modifica `FinanceAiApplication.java` para agregar más orígenes según sea necesario.
 
 ## Logs
 
@@ -183,6 +161,12 @@ Los logs están configurados en `application.properties`:
 logging.level.root=INFO
 logging.level.com.financeai=DEBUG
 ```
+### Error: "Table creation"
+Verifica que `spring.jpa.hibernate.ddl-auto=create-drop` está en `application.properties`
+
+### Error: "User not found"
+Asegúrate de que el usuario exista antes de crear transacciones
+
 
 ## Build y Deployment
 
@@ -207,8 +191,7 @@ java -jar target/finance-dashboard-api-1.0.0.jar
 - **Lombok** - Reducir boilerplate
 - **Maven** - Gestor de dependencias
 - **Springdoc OpenAPI (Swagger)** - Documentación interactiva de la API integrada en /swagger-ui.html.
-- **JWT** - Autenticación por tokens (incluido, listo pa
-ra usar) 
+- **JWT** - Autenticación por tokens  
 
 ## Variables de Entorno
 
@@ -218,21 +201,5 @@ Puedes configurar variables de entorno en `application.properties` o crear un ar
 
 - [ ] Agregar dockerizacion 
 
-## Troubleshooting
-
-### Error: "Port 8080 is already in use"
-```bash
-# Cambiar puerto en application.properties
-server.port=8081
-```
-
-### Error: "Table creation"
-Verifica que `spring.jpa.hibernate.ddl-auto=create-drop` está en `application.properties`
-
-### Error: "User not found"
-Asegúrate de que el usuario exista antes de crear transacciones
-
-
 ---
 
-**Última actualización:** 2024-08-14
