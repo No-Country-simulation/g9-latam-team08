@@ -30,12 +30,14 @@ Método: POST
     "metodo_pago": "Tarjeta",
     "esencial": true
   }
+
 **Respuesta exitosa (200 Ok):**
+
   ```json
   {
     "categoria_predicha": "Alimentacion"
   }
-
+```
 
 **Calcular Finanzas y Perfil de Riesgo**
 
@@ -45,7 +47,7 @@ Método: POST
 ```
 **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes (supervivencia, endeudamiento, etc.) y evalúa el perfil de riesgo mediante un modelo predictivo.
 
-* **Cuerpo de la petición (Ejemplo):**
+**Cuerpo de la petición (Ejemplo):**
   ```json
   {
     "ingreso_mensual_fijo": 500000,
@@ -55,6 +57,7 @@ Método: POST
     "cuotas_mensuales_deuda": 30000,
     "ahorro_previo": 100000
   }
+```
 
 **Respuesta exitosa (200 OK):** Retorna el objeto JSON original enriquecido con los cálculos, ratios y el campo "perfil_financiero" determinado por el modelo.
 
