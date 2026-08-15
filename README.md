@@ -46,7 +46,7 @@ Esta API en Python se encarga de procesar cálculos financieros, evaluar ratios 
 
 * **Respuesta exitosa (200 OK):** Retorna el objeto JSON original enriquecido con los cálculos, ratios y el campo "perfil_financiero" determinado por el modelo.
 
-## ⚙️ Instalación y Ejecución Local
+## Instalación y Ejecución Local
 * 1. **Clona el repositorio** en tu equipo local:
    ```bash
    https://github.com/No-Country-simulation/g9-latam-team08.git 
