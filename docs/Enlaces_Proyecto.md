@@ -6,13 +6,13 @@
 
 ## Objetivo
 
-Centralizar los enlaces oficiales utilizados durante el desarrollo del proyecto, facilitando el acceso a las herramientas de trabajo, la documentación, el código fuente, la infraestructura, la presentación y los entregables del Hackathon.
+Centralizar los enlaces oficiales utilizados durante el desarrollo del proyecto, facilitando el acceso a las herramientas de trabajo, la documentación, el código fuente, la aplicación, la presentación y los entregables del Hackathon.
 
 ---
 
 ## Alcance
 
-Este documento reúne los enlaces oficiales relacionados con el proyecto, incluyendo el repositorio GitHub, la documentación, las herramientas de gestión y comunicación, la aplicación web y los entregables finales del Hackathon.
+Este documento reúne los enlaces oficiales relacionados con el proyecto, incluyendo el repositorio GitHub, la documentación, las herramientas de gestión, la aplicación web, el diseño y los entregables finales del Hackathon.
 
 ---
 
@@ -33,6 +33,10 @@ Este documento reúne los enlaces oficiales relacionados con el proyecto, incluy
 - `docs/Herramientas_y_Tecnologias.md` – Herramientas y tecnologías utilizadas.
 - `docs/Manual_Usuario.md` – Manual de usuario.
 - `docs/minutas/` – Registro de reuniones del proyecto.
+- `docs/Ciencia_Datos.md` – Documentación técnica de Ciencia de Datos.
+- `docs/Backend.md` – Documentación técnica de Backend.
+- `docs/Frontend.md` – Documentación técnica de Frontend.
+- `docs/OCI.md` – Documentación técnica de Oracle Cloud Infrastructure.
 
 > 🔄 Los enlaces definitivos serán incorporados una vez consolidada la documentación en la rama principal.
 
@@ -42,19 +46,9 @@ Este documento reúne los enlaces oficiales relacionados con el proyecto, incluy
 
 ### Trello
 
-- Tablero General del Proyecto.
+Tablero General utilizado para la planificación, seguimiento y coordinación del proyecto.
 
-> 🔄 Enlace pendiente de incorporar.
-
----
-
-## Comunicación
-
-### Discord
-
-- Canal oficial de comunicación del equipo.
-
-> 🔄 Enlace pendiente de incorporar.
+> 🔄 Pendiente de revisar el contenido del tablero y verificar su acceso público antes de incorporar el enlace definitivo.
 
 ---
 
@@ -82,14 +76,6 @@ Enlace al diseño de la interfaz de la aplicación web.
 
 ---
 
-## Oracle Cloud Infrastructure (OCI)
-
-Enlaces relacionados con los recursos o servicios de OCI utilizados en la implementación del proyecto, cuando corresponda.
-
-> 🔄 Pendiente de completar de acuerdo con la implementación final.
-
----
-
 ## Presentación (Pitch)
 
 Presentación oficial utilizada para la exposición final del proyecto.
@@ -98,9 +84,17 @@ Presentación oficial utilizada para la exposición final del proyecto.
 
 ---
 
-## Video Demo
+## Videos del Proyecto
 
-Video demostrativo del funcionamiento del MVP elaborado como parte de los entregables finales del Hackathon.
+### Video Demo
+
+Video demostrativo del funcionamiento del MVP correspondiente al entregable solicitado por No Country.
+
+> 🔄 Enlace de YouTube pendiente de incorporar.
+
+### Demo Day
+
+Video correspondiente a la presentación final del proyecto en Demo Day, cuando se encuentre disponible.
 
 > 🔄 Enlace pendiente de incorporar.
 
@@ -108,14 +102,14 @@ Video demostrativo del funcionamiento del MVP elaborado como parte de los entreg
 
 ## Entregables del Hackathon
 
-Esta sección centralizará los enlaces definitivos correspondientes a los entregables del proyecto.
+De acuerdo con las tareas definidas en la plataforma de No Country, los entregables finales del proyecto comprenden:
 
-- 📄 Documentación del proyecto.
-- 🛠️ Herramientas y tecnologías.
-- 🔗 Enlaces del proyecto.
-- 🎥 Video Demo.
+- 📄 **Documentación del Proyecto:** URL directa al archivo `.md` correspondiente en GitHub.
+- 🛠️ **Herramientas del Equipo:** seleccionadas directamente en la plataforma de No Country, hasta un máximo de 10.
+- 🔗 **Enlaces del Proyecto:** recursos y enlaces relevantes del proyecto.
+- 🎥 **Video Demo:** enlace de YouTube con la demostración del MVP, con una duración máxima de 10 minutos.
 
-> 🔄 Los enlaces serán incorporados y verificados antes de la entrega final.
+> 🔄 Los enlaces definitivos serán incorporados y verificados antes de la entrega final.
 
 ---
 
@@ -129,6 +123,8 @@ La actualización, consolidación y verificación de los enlaces del proyecto es
 
 Este documento será actualizado progresivamente conforme se publiquen y validen los enlaces oficiales del proyecto.
 
-Antes de la entrega final se verificará que los enlaces incluidos se encuentren actualizados, sean accesibles y correspondan a las versiones definitivas de los recursos y entregables del Hackathon.
+De acuerdo con la información proporcionada por No Country, no existe un conjunto obligatorio de enlaces para esta sección. El equipo seleccionará los recursos que considere relevantes para la presentación y evaluación del proyecto.
 
-No se incorporarán credenciales, datos de acceso ni enlaces a recursos privados que no deban ser compartidos públicamente.
+Antes de la entrega final se verificará que todos los enlaces incluidos se encuentren actualizados, correspondan a las versiones definitivas de los recursos y cuenten con acceso público para permitir su revisión por parte de los evaluadores.
+
+No se incorporarán credenciales, datos de acceso ni enlaces a recursos privados.

@@ -56,7 +56,7 @@ Cada documento será elaborado, revisado y actualizado por los responsables defi
 
 ## Estructura Estándar de los README
 
-Los archivos **README.md** correspondientes a cada área deberán seguir una estructura común que permita presentar de forma resumida el trabajo realizado.
+Los archivos **README.md** correspondientes a cada área podrán tomar como referencia una estructura común, adaptándola de acuerdo con las características y necesidades técnicas de cada componente.
 
 La estructura recomendada es la siguiente:
 
@@ -68,7 +68,7 @@ La estructura recomendada es la siguiente:
 6. Estructura de archivos
 7. Responsables
 
-Esta estructura servirá como estándar para la elaboración de los README de las áreas de Ciencia de Datos, Backend, Frontend y OCI.
+Esta estructura servirá como referencia para la elaboración y organización de los README existentes en las distintas áreas y componentes del proyecto.
 
 ---
 
@@ -96,7 +96,7 @@ Cada documento podrá incorporar secciones específicas de acuerdo con las neces
 
 - **Documentacion_Proyecto_Hackathon.md:** Descripción del proyecto, Problema, Objetivo, Usuario objetivo, Solución propuesta, Alcance del MVP, Componentes de la solución y demás aspectos generales del proyecto.
 - **Ciencia_Datos.md:** Dataset, Análisis Exploratorio de Datos (EDA), Ingeniería de Características, Modelos de Machine Learning, Entrenamiento, Evaluación y Serialización.
-- **Backend.md:** Arquitectura de la API, Endpoints, Validaciones, Manejo de errores e Integración con Ciencia de Datos.
+- **Backend.md:** Arquitectura, APIs y servicios Backend, endpoints, persistencia, seguridad, validaciones, pruebas e integración con Ciencia de Datos, Frontend y OCI.
 - **Frontend.md:** Diseño de interfaces, Componentes, Navegación, Responsive Design e Integración con Backend.
 - **OCI.md:** Arquitectura Cloud, Servicios OCI, Despliegue, Seguridad y Configuración.
 - **Manual_Usuario.md:** Requisitos, Instalación (si aplica), Guía de uso y Preguntas frecuentes.
