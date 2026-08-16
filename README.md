@@ -228,9 +228,9 @@ Método: POST
 ```
 **Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
 
-```
 
-### Base de datos
+
+## Base de datos
 
 Por defecto el proyecto usa H2 en memoria.
 
