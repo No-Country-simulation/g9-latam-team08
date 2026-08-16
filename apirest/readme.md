@@ -58,8 +58,10 @@ Método: POST
 ```
 **Descripción:** Guarda un nuevo gasto asociado a un cliente.
 
-```text
+
 **Obtener gastos por cliente**
+
+```text
 URL: /api/gastos/cliente/{idCliente}  
 Método: GET  
 
