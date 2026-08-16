@@ -1,29 +1,35 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// 1. Definimos la interfaz para la respuesta que nos entrega Google
+// 1. Interfaz de Google
 interface GoogleTokenResponse {
   credential?: string;
   access_token?: string;
 }
 
-// 2. Definimos la interfaz para lo que responde tu backend en Spring Boot
+// 2. Interfaz del Backend
 interface AuthResponse {
-  id: string | number; // Aceptamos ambos por si tu backend manda el ID como número
-  // Puedes agregar más campos aquí si tu backend los devuelve (ej: email: string)
+  id: string | number;
+  token?: string;
+  nombre?: string;
+  email?: string;
 }
 
-// 3. Tipamos el parámetro 'setError'.
-// Le decimos a TS que es una función que recibe un string (el mensaje) y no retorna nada (void).
 export const useGoogleAuth = (setError: (message: string) => void) => {
   const navigate = useNavigate();
 
+  // Estado para saber si la petición está en curso
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleGoogleSuccess = async (tokenResponse: GoogleTokenResponse) => {
-    console.log("Token de Google recibido:", tokenResponse);
+    setIsLoading(true);
+    setError(""); // Limpiamos cualquier error de un intento anterior
+
     const tokenStr = tokenResponse.credential || tokenResponse.access_token;
 
-    // TypeScript nos exige asegurarnos de que el token realmente exista antes de enviarlo
     if (!tokenStr) {
-      setError("No se pudo obtener el token de autenticación.");
+      setError("No se pudo obtener el token de autenticación de Google.");
+      setIsLoading(false);
       return;
     }
 
@@ -38,24 +44,34 @@ export const useGoogleAuth = (setError: (message: string) => void) => {
       });
 
       if (!response.ok) {
-        throw new Error("El backend rechazó el token de Google");
+        throw new Error(`El backend rechazó el token (Status: ${response.status})`);
       }
 
-      // 2. Extraemos el usuario y le decimos a TypeScript qué forma tiene (AuthResponse)
+      // 2. Extraemos el usuario (Ej: Rodrigo lopez, ID: 1, Token: "eyJhbGci...")
       const userData: AuthResponse = await response.json();
 
-      // 3. Guardamos el ID en el almacenamiento del navegador
-      // Transformamos a string por si el ID del backend viene como number
+      // 3. Guardamos los datos de sesión en el navegador
       localStorage.setItem('userId', userData.id.toString());
 
-      // 4. Redirigimos al usuario al panel financiero
+      // Guardamos el JWT para usarlo luego
+      if (userData.token) {localStorage.setItem('jwt_token', userData.token);}
+
+      if (userData.name) localStorage.setItem('userName', userData.name);
+      if (userData.email) localStorage.setItem('userEmail', userData.email);
+      if (userData.photo) localStorage.setItem('userPhoto', userData.photo);
+
+      // 4. Redirigimos al panel
       navigate('/historial');
 
     } catch (error) {
       console.error("Error al comunicar con el backend:", error);
       setError("No pudimos validar tu cuenta de Google con nuestro servidor.");
+    } finally {
+      // Pase lo que pase (éxito o error), apagamos el estado de carga
+      setIsLoading(false);
     }
   };
 
-  return { handleGoogleSuccess };
+  // Retornamos también el isLoading para que el componente visual lo pueda usar
+  return { handleGoogleSuccess, isLoading };
 };
