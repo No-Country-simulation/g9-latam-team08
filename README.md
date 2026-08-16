@@ -13,7 +13,7 @@ Categorías predeterminadas para gastos
 
 ## Requisitos previos
 
-- Java 
+- Java 25
 - Maven 
 - Git
 
@@ -230,7 +230,7 @@ Método: POST
 
 ```
 
-## Base de datos
+### Base de datos
 
 Por defecto el proyecto usa H2 en memoria.
 
