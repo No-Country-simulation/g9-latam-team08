@@ -1,6 +1,6 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import Button from "./Button";
-
+import { FcGoogle } from "react-icons/fc";
 /**
  * BotonGoogle
  * Props:
@@ -43,7 +43,7 @@ function BotonGoogle({ onSuccess, onError, children }) {
         disabled={!isConfigured}
         title={!isConfigured ? "Agregá VITE_GOOGLE_CLIENT_ID en frontend/.env" : undefined}
       >
-        {children ?? "Continuar con Google"}
+         {children ?? "Continuar con Google"}
       </Button>
       {!isConfigured && (
         <p style={{ color: "var(--color-error)", fontSize: "0.9rem", margin: "0.5rem 0 0" }}>

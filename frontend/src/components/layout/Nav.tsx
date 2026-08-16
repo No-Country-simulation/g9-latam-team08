@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { LayoutDashboard, PlusCircle, Target, FileText, Bell, Settings,
-    Headset, Sun,Moon,Menu,X} from "lucide-react";
-import logoFinanceAI from "../../assets/logo-financeai.svg"; // Verifica que la ruta sea correcta
+  Headset, Sun, Moon, Menu, X } from "lucide-react";
+import logoFinanceAI from "../../assets/logo-financeai.svg";
 import "./Nav.css";
 
 export default function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light'); // Estado simulado para el diseño
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  // 1. NUEVOS ESTADOS: Para guardar los datos del usuario logueado
+  const [userName, setUserName] = useState("Usuario");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhoto, setUserPhoto] = useState<string | null>(null);
+
+  // 2. LECTURA DEL STORAGE: Se ejecuta una sola vez al cargar el componente
+  useEffect(() => {
+    const storedName = localStorage.getItem("userName");
+    const storedEmail = localStorage.getItem("userEmail");
+    const storedPhoto = localStorage.getItem("userPhoto");
+
+    if (storedName) setUserName(storedName);
+    if (storedEmail) setUserEmail(storedEmail);
+    if (storedPhoto) setUserPhoto(storedPhoto);
+  }, []);
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
@@ -84,19 +100,22 @@ export default function Nav() {
           </NavLink>
         </nav>
 
-        {/* Este div vacío empuja el contenido de abajo hacia el final de la pantalla */}
         <div className="sidebar-spacer"></div>
 
-        {/* Zona 4: Perfil de Usuario */}
+        {/* ========================================== */}
+        {/* Zona 4: Perfil de Usuario (ACTUALIZADA)    */}
+        {/* ========================================== */}
         <div className="sidebar-user">
           <img
-            src={`https://ui-avatars.com/api/?name=Juan+Manuel&background=f3f4f6&color=374151`}
-            alt="Avatar"
+            // Si hay foto de Google la usa. Si no, genera dinámicamente las iniciales basándose en el userName
+            src={userPhoto || `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=f3f4f6&color=374151`}
+            alt="Avatar del usuario"
             className="user-avatar"
           />
           <div className="user-info">
-            <p className="user-name">Juan Manuel</p>
-            <p className="user-email">juanmanuel@email.com</p>
+            {/* Renderizamos las variables dinámicas */}
+            <p className="user-name">{userName}</p>
+            <p className="user-email">{userEmail}</p>
           </div>
         </div>
 
