@@ -91,5 +91,5 @@ Método: POST
   python app.py
 ```
 
-(Por defecto, la API se hostea en el puerto 500)
+(Por defecto, la API se hostea en el puerto 5000)
 
