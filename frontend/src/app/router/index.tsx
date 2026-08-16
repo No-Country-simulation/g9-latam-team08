@@ -7,7 +7,8 @@ import Register from "../../pages/Register";
 import NotFoundPage from "../../pages/NotFoundPage";
 import AuthLayout from "../../components/layout/AuthLayout";
 import Nav from "../../components/layout/Nav";
-
+import ProtectedRoute from "../../utils/ProtectedRoute";
+import Soporte from "../../pages/Soporte";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
               {
                 path: "historial",
                 element: <Historial />,
+              },
+              {
+                path: "soporte",
+                element: <Soporte />,
               }
             ],
           },
