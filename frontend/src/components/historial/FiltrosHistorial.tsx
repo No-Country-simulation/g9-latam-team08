@@ -12,13 +12,14 @@ export default function FiltrosHistorial({
   onAccountChange
 }: FiltrosHistorialProps) {
 
-  // Opciones duras para los botones/dropdowns (esto podría venir del backend a futuro)
+
   const categorias = ["Todos", "Comida", "Transporte", "Servicios"];
   const tipos = ["Todos", "Ingresos", "Egresos"];
   const cuentas = ["Principal", "Ahorro"];
 
   return (
     <div className="filtros-contenedor">
+
       {/* Fila 1: Buscador */}
       <div className="filtro-buscador-wrapper">
         <label className="filtro-label">Buscar transacción</label>

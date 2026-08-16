@@ -21,7 +21,7 @@
   </text>
 
   <!-- Subtítulo -->
-  <text x="115" y="66" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="20" fill="#888888">
+  <text x="111" y="66" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="20" fill="#888888">
     Salud Financiera
   </text>
 </svg>

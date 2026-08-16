@@ -72,9 +72,9 @@
   background: #f3f4f6;
 }
 
-/* El estado activo del botón (ej: cuando seleccionas "Comida") */
+/* El estado activo del botón */
 .btn-pildora.activa {
-  background: #0f172a; /* Azul muy oscuro/Casi negro */
+  background: #0f172a;
   color: #ffffff;
   border-color: #0f172a;
 }

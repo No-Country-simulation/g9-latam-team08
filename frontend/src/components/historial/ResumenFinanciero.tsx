@@ -1,14 +1,13 @@
-import { ResumenFinancieroProps } from '../types/transaction-type'; // Ajusta la ruta según dónde guardaste el types.ts
+import { ResumenFinancieroProps } from '../types/transaction-type'; //
  import "./ResumenFinanciero.css";
 
 export default function ResumenFinanciero({ ingresosTotales, egresosTotales }: ResumenFinancieroProps) {
 
-  // Función auxiliar para formatear la moneda
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('es-AR', {
       style: 'currency',
       currency: 'ARS',
-      maximumFractionDigits: 2, // Viendo tu diseño, ahora usas decimales
+      maximumFractionDigits: 2,
     }).format(amount);
   };
 

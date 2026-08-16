@@ -2,7 +2,7 @@
 
 .tabla-contenedor {
   width: 100%;
-  overflow-x: auto; /* Permite scroll horizontal en celulares */
+  overflow-x: auto; 
   background: var(--color-surface, #ffffff);
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -19,7 +19,7 @@
   padding: 1rem 1.5rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #6b7280; /* Gris intermedio */
+  color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 2px solid #f3f4f6;
@@ -31,7 +31,7 @@
 }
 
 .tabla-fila:hover {
-  background-color: #f9fafb; /* Gris súper clarito al pasar el mouse */
+  background-color: #f9fafb;
 }
 
 .tabla-celda {
@@ -51,9 +51,9 @@
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #c2410c; /* Naranja oscuro */
-  background-color: #ffedd5; /* Naranja muy claro */
-  border-radius: 9999px; /* Forma de píldora redonda */
+  color: #c2410c;
+  background-color: #ffedd5;
+  border-radius: 9999px;
 }
 
 /* Botones de acción (Editar / Eliminar) */
@@ -62,11 +62,10 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  /* Evita que el contenedor colapse el espacio */
   white-space: nowrap;
 }
 
-/* Los botones en sí */
+/* Los botones*/
 .btn-accion {
   display: inline-flex;
   align-items: center;
@@ -77,14 +76,12 @@
   background-color: transparent;
   cursor: pointer;
   transition: all 150ms ease;
-
-  /* --- LA SOLUCIÓN --- */
-  flex-shrink: 0; /* Le dice al navegador: "PROHIBIDO encoger este elemento" */
-  min-width: 32px; /* Forzamos un tamaño mínimo */
+  flex-shrink: 0;
+  min-width: 32px;
   min-height: 32px;
 }
 
-/* Protegemos el SVG por dentro por si acaso */
+
 .btn-accion svg {
   flex-shrink: 0;
   min-width: 16px;

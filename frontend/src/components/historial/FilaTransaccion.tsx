@@ -4,7 +4,7 @@ import { Transaction } from "../types/transaction-type";
 
 export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaTransaccionProps) {
 
-  // Utilidades de formato encapsuladas en la fila
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('es-AR', {
       style: 'currency',
@@ -26,12 +26,11 @@ export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaT
       </td>
       <td className="tabla-celda text-muted">{formatDate(transaccion.date)}</td>
       <td className="tabla-celda">
-        {/* Aquí podrías agregar clases dinámicas según la categoría para cambiar el color de la píldora */}
         <span className="pildora-categoria">{transaccion.category}</span>
       </td>
       <td className="tabla-celda tabla-acciones">
         <button
-          onClick={() => onEdit(transaccion.id)}
+          onClick={() => onEdit(transaccion)}
           className="btn-accion btn-editar"
           title="Editar transacción"
         >
