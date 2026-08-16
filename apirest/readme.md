@@ -10,9 +10,9 @@ Brindar a los usuarios una plataforma automatizada que permita registrar y clasi
 ## Funcionalidades principales
 * **Gestión de Usuarios y Clientes Financieros:** Registro y control de datos económicos (ingresos fijos y variables, ahorros, deudas y gastos).
 * **Cálculo Financiero Automatizado:** Evaluación de ratios de ahorro neto, DTI (endeudamiento), gastos esenciales, estilo de vida y meses de supervivencia.
-**Predicción de Perfil Financiero:** Integración con un modelo de Machine Learning para clasificar el perfil de riesgo del usuario.
-**Gestión de Gastos por Usuario:** Registro de transacciones individuales asociadas a cada cliente, abarcando detalles como tienda, monto, método de pago y carácter esencial.
-**Categorización Automática:** Capacidad de enviar datos de gastos para su clasificación a través de artefactos de Machine Learning hosteados en la nube.
+* **Predicción de Perfil Financiero:** Integración con un modelo de Machine Learning para clasificar el perfil de riesgo del usuario.
+* **Gestión de Gastos por Usuario:** Registro de transacciones individuales asociadas a cada cliente, abarcando detalles como tienda, monto, método de pago y carácter esencial.
+* **Categorización Automática:** Capacidad de enviar datos de gastos para su clasificación a través de artefactos de Machine Learning hosteados en la nube.
 
 ## Herramientas y tecnologías
 * Java / Spring Boot: Framework para el desarrollo de la API REST del backend.  
