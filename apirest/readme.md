@@ -23,9 +23,10 @@ Brindar a los usuarios una plataforma automatizada que permita registrar y clasi
 * Oracle Cloud Infrastructure (OCI) Object Storage: Almacenamiento en la nube para los artefactos de modelos de Machine Learning.
 * Requests: Cliente HTTP para la comunicación entre servicios.
 
-```
 
 ## Estructura del repositorio
+
+```
 ├── apirest/                               # Proyecto principal en Spring Boot (Java)
 │   ├── src/main/java/team08/apirest/
 │   │   ├── controllers/                   # Controladores REST (GastoController, UsuarioController)
