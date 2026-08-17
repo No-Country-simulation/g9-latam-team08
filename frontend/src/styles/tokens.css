@@ -35,6 +35,7 @@
   --space-8: 4.5rem;
 
   --font-family-base: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-brand: "Poppins", var(--font-family-base);
   --container-max-width: 1180px;
 
   --breakpoint-sm: 640px;

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import MobileTabBar from "./MobileTabBar";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
+import { useTheme } from "./useTheme";
 import "./DashboardLayout.css";
 
 interface DashboardLayoutProps {
@@ -11,9 +12,11 @@ interface DashboardLayoutProps {
 }
 
 function DashboardLayout({ children, lastAnalysisDate, hasNotifications }: DashboardLayoutProps) {
+  const [theme, setTheme] = useTheme();
+
   return (
-    <div className="dashboard-layout">
-      <Sidebar />
+    <div className="dashboard-layout" data-theme={theme}>
+      <Sidebar theme={theme} onThemeChange={setTheme} />
 
       <div className="dashboard-layout__content">
         <Topbar lastAnalysisDate={lastAnalysisDate} hasNotifications={hasNotifications} />

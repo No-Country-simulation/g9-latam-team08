@@ -15,19 +15,9 @@
   gap: 0.6rem;
   margin-right: auto;
   color: var(--color-text);
+  font-family: var(--font-family-brand);
   font-weight: 800;
   text-decoration: none;
-}
-
-.dashboard-topbar__brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  color: var(--color-text-inverse);
 }
 
 .dashboard-topbar__meta {
