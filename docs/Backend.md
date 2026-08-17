@@ -314,7 +314,8 @@ La integración entre el frontend (React) y el backend (Spring Boot) en FinanceA
 
 ## Herramientas y Tecnologías Utilizadas
 
-- **Spring Boot 3.2.0** - Framework
+- **Java 25** - Lenguaje de programación 
+- **Spring Boot 3.5+** - Framework
 - **Spring Data JPA** - ORM
 - **Spring Security** - Autenticación
 - **MySQL/Railway** - Base de datos de producción en la nube
