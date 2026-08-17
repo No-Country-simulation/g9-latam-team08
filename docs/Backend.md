@@ -268,7 +268,9 @@ Control de respuestas del servidor ante fallos o datos incorrectos.
 ### Integración con Base de Datos
 
 Mapeo relacional de entidades en User, Transaction, Category y Alert, mediante JPA para almacenar de forma persistente la información financiera y recuperarla mediante consultas optimizadas en los repositorios.
+En base a su persistencia Se apoya en mapeo relacional de entidades (User, Transaction, Category y Alert) mediante Spring Data JPA.
 
+Utiliza MySQL/Railway como base de datos de producción en la nube e H2 Database para entornos locales y de pruebas.
 ---
 
 ### Seguridad
@@ -293,7 +295,10 @@ El componente Backend integra los servicios desarrollados por el área de Cienci
 
 ### Frontend
 
-La integración entre el frontend (React) y el backend (Spring Boot) en FinanceAI opera mediante una arquitectura de API REST que intercambia información estructurada en formato JSON, cuyo flujo inicia cuando el usuario ingresa sus credenciales en el cliente para obtener un token JWT que autentica todas las peticiones posteriores; a partir de ahí, el frontend guía al usuario mediante un asistente paso a paso para la carga de datos financieros y transacciones manuales, enviando esta información a la API del servidor para que gestione la lógica de negocio, coordine el procesamiento automático y de clasificación inteligente con el motor de IA en la nube, y finalmente devuelva los resultados estructurados necesarios para alimentar dinámicamente las tarjetas de métricas, gráficos interactivos y recomendaciones del panel de control
+La integración entre el frontend (React) y el backend (Spring Boot) en FinanceAI opera mediante una arquitectura de API REST que intercambia información estructurada en formato JSON, cuyo flujo inicia cuando el usuario ingresa sus credenciales en el cliente para obtener un token JWT que autentica todas las peticiones posteriores; a partir de ahí, el frontend guía al usuario mediante un asistente paso a paso para la carga de datos financieros y transacciones manuales, enviando esta información a la API del servidor para que gestione la lógica de negocio, coordine el procesamiento automático y de clasificación inteligente con el motor de IA en la nube, y finalmente devuelva los resultados estructurados necesarios para alimentar dinámicamente las tarjetas de métricas, gráficos interactivos y recomendaciones del panel de control. 
+Opera mediante una arquitectura de API REST que intercambia información estructurada en formato JSON con la aplicación en React.
+
+El flujo inicia autenticando al usuario mediante un token JWT, permitiéndole enviar datos financieros mediante un asistente paso a paso para alimentar dinámicamente las tarjetas de métricas, gráficos interactivos y recomendaciones del panel de control.
 
 ---
 
