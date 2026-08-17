@@ -14,6 +14,14 @@ Brindar a los usuarios una plataforma automatizada que permita registrar y clasi
 * **Gestión de Gastos por Usuario:** Registro de transacciones individuales asociadas a cada cliente, abarcando detalles como tienda, monto, método de pago y carácter esencial.
 * **Categorización Automática:** Capacidad de enviar datos de gastos para su clasificación a través de artefactos de Machine Learning hosteados en la nube.
 
+* **Despliegue en OCI:** El backend quedó configurado y ejecutándose en una instancia OCI, la cuál se maneja en el alojamiento en la nube.
+
+* **Datos de despliegue verificados**
+IP pública: 146.181.60.43
+Usuario: ubuntu
+Puerto: 8080
+
+
 ## Herramientas y tecnologías
 * Java / Spring Boot: Framework para el desarrollo de la API REST del backend.  
 * Spring Data JPA / Hibernate: Mapeo objeto-relacional para la persistencia de datos.
