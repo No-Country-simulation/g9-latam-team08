@@ -3,6 +3,7 @@ import App from "../../App";
 import LandingPage from "../../pages/LandingPage";
 import Login from "../../pages/Login";
 import Historial from "../../pages/Historial";
+import NewAnalysisPage from "../../pages/NewAnalysisPage";
 import Register from "../../pages/Register";
 import NotFoundPage from "../../pages/NotFoundPage";
 import AuthLayout from "../../components/layout/AuthLayout";
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
               {
                 path: "historial",
                 element: <Historial />,
+              },
+              {
+                path: "analisis/nuevo",
+                element: <NewAnalysisPage />,
               },
               {
                 path: "soporte",
