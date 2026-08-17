@@ -1,0 +1,401 @@
+.financial-data-step {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.financial-data-step__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.analysis-banner,
+.analysis-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.analysis-banner {
+  padding: 0.95rem 1rem;
+  background: var(--color-surface-muted);
+  box-shadow: none;
+}
+
+.analysis-banner p {
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.analysis-card {
+  display: grid;
+  gap: var(--space-4);
+  padding: 1.25rem 1.25rem 1.1rem;
+}
+
+.analysis-card--financial {
+  gap: 1.25rem;
+}
+
+.analysis-card__section-header,
+.analysis-card__section {
+  display: grid;
+  gap: 1rem;
+}
+
+.analysis-card__section-header h2,
+.analysis-card__section-header p,
+.analysis-card__section-header .analysis-card__eyebrow,
+.analysis-card__section-header h3 {
+  margin-bottom: 0;
+}
+
+.analysis-card__eyebrow {
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.analysis-card__section-header h2 {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.analysis-card__section-header p {
+  color: var(--color-text-muted);
+}
+
+.analysis-card__divider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.analysis-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.analysis-card__header h3,
+.analysis-card__header p {
+  margin-bottom: 0;
+}
+
+.analysis-card__header--stacked {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.analysis-card__header--stacked p {
+  color: var(--color-text-muted);
+}
+
+.financial-data-step__income-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: 1rem;
+  align-items: start;
+}
+
+.financial-data-step__income-column,
+.financial-data-step__sidebar {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.analysis-empty-state {
+  padding: 1rem 1.05rem;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+}
+
+.analysis-empty-state p {
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+}
+
+.income-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.income-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.income-row__content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.income-row__title,
+.income-row__meta,
+.income-row__amount {
+  margin: 0;
+}
+
+.income-row__title {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.income-row__meta {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.income-row__amount {
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.income-row__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.income-row__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-muted);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.income-row__icon-button:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface);
+}
+
+.income-row__icon-button--danger {
+  color: var(--color-error);
+}
+
+.income-row__icon-button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.analysis-summary-card {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1.1rem;
+}
+
+.analysis-summary-card__label,
+.analysis-summary-card__value,
+.analysis-summary-card__description {
+  margin: 0;
+}
+
+.analysis-summary-card__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+}
+
+.analysis-summary-card__value {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.analysis-summary-card__description {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.financial-data-step__add-income .button {
+  border-style: dashed;
+  background: var(--color-surface-muted);
+}
+
+.analysis-form-field {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+}
+
+.analysis-form-field__label {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.analysis-form-field__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.analysis-form-field__badge {
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.analysis-form-field__helper {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.analysis-form-field__input {
+  min-height: 3rem;
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.analysis-form-field__input:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.analysis-form-field__input--error {
+  border-color: var(--color-error);
+}
+
+.analysis-form-field__error {
+  margin: 0;
+  color: var(--color-error);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.analysis-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 21, 51, 0.52);
+  z-index: 70;
+}
+
+.analysis-dialog__content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 80;
+  width: min(92vw, 32rem);
+  max-height: min(88vh, 40rem);
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  padding: 1.1rem;
+}
+
+.analysis-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.analysis-dialog__title,
+.analysis-dialog__description {
+  margin-bottom: 0;
+}
+
+.analysis-dialog__description {
+  color: var(--color-text-muted);
+}
+
+.analysis-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.analysis-dialog__form {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.analysis-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+  .financial-data-step__income-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .financial-data-step__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .financial-data-step__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .income-row,
+  .income-row__content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .income-row__actions {
+    align-self: flex-end;
+  }
+
+  .analysis-card__header .button,
+  .analysis-dialog__actions .button {
+    width: 100%;
+  }
+
+  .analysis-card {
+    padding: 1rem;
+  }
+}

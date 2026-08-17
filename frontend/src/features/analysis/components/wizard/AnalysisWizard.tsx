@@ -1,32 +1,46 @@
+import { ArrowRight } from "lucide-react";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../components/ui/Button";
 import Card from "../../../../components/ui/Card";
+import FinancialDataStep from "../financial-data/FinancialDataStep";
 import {
   analysisDraftSchema,
   type AnalysisDraftFormValues,
 } from "../../schemas/analysis.schema";
 import { useAnalysisFlow } from "../../hooks/useAnalysisFlow";
-import { createEmptyAnalysisDraft } from "../../types/analysis-draft";
+import { useAnalysisDraftPersistence } from "../../hooks/useAnalysisDraftPersistence";
 import { loadDraft } from "../../utils/draftStorage";
+import { createEmptyAnalysisDraft } from "../../types/analysis-draft";
+import type { AnalysisWizardStep } from "../../types/analysis-flow";
 import AnalysisStepper from "./AnalysisStepper";
 import "./AnalysisWizard.css";
 
-const stepContent: Record<1 | 2 | 3, { title: string; body: string }> = {
-  1: {
-    title: "Datos financieros",
-    body: "Datos financieros",
-  },
+const stepContent: Record<2 | 3, { title: string; body: string }> = {
   2: {
     title: "Transacciones",
     body: "Transacciones",
   },
   3: {
-    title: "RevisiÃ³n",
-    body: "RevisiÃ³n",
+    title: "Revision",
+    body: "Revision",
   },
 };
+
+const stepOneFieldNames = [
+  "financialData.incomes",
+  "financialData.estimatedMonthlySavings",
+  "financialData.monthlyDebtPayments",
+  "financialData.emergencyFundAmount",
+  "financialData.savingsFrequency",
+] as const satisfies ReadonlyArray<
+  | "financialData.incomes"
+  | "financialData.estimatedMonthlySavings"
+  | "financialData.monthlyDebtPayments"
+  | "financialData.emergencyFundAmount"
+  | "financialData.savingsFrequency"
+>;
 
 const getCurrentUserId = (): string => {
   if (typeof window === "undefined") {
@@ -36,11 +50,20 @@ const getCurrentUserId = (): string => {
   return window.localStorage.getItem("userId") ?? "anonymous";
 };
 
+const hasDraftContent = (draft: AnalysisDraftFormValues): boolean =>
+  draft.financialData.incomes.length > 0 ||
+  draft.transactions.length > 0 ||
+  draft.financialData.estimatedMonthlySavings !== null ||
+  draft.financialData.monthlyDebtPayments !== null ||
+  draft.financialData.emergencyFundAmount !== null ||
+  draft.financialData.savingsFrequency !== null;
+
 function AnalysisWizard() {
   const userId = useMemo(() => getCurrentUserId(), []);
+  const emptyDraft = useMemo(() => createEmptyAnalysisDraft(), []);
   const defaultValues = useMemo<AnalysisDraftFormValues>(() => {
-    return loadDraft(userId) ?? createEmptyAnalysisDraft();
-  }, [userId]);
+    return loadDraft(userId) ?? emptyDraft;
+  }, [emptyDraft, userId]);
 
   const methods = useForm<AnalysisDraftFormValues>({
     resolver: zodResolver(analysisDraftSchema),
@@ -58,47 +81,111 @@ function AnalysisWizard() {
     showResult,
     resetFlow,
   } = useAnalysisFlow();
+  const { resetDraftState } = useAnalysisDraftPersistence({
+    control: methods.control,
+    reset: methods.reset,
+    userId,
+    emptyDraft,
+    defaultValues,
+  });
 
-  const activeStep = stepContent[flow.currentStep];
+  const handleCancelAnalysis = () => {
+    const currentDraft = methods.getValues();
+
+    if (
+      hasDraftContent(currentDraft) &&
+      !window.confirm("Se borrara el borrador actual. Quieres cancelar el analisis?")
+    ) {
+      return;
+    }
+
+    resetDraftState();
+    methods.reset(emptyDraft);
+    resetFlow();
+  };
+
+  const handleContinue = async () => {
+    if (flow.currentStep !== 1) {
+      nextStep();
+      return;
+    }
+
+    const isStepOneStructurallyValid = await methods.trigger(stepOneFieldNames);
+    const incomes = methods.getValues("financialData.incomes");
+
+    if (incomes.length === 0) {
+      methods.setError("financialData.incomes", {
+        type: "manual",
+        message: "Agrega al menos una fuente de ingreso valida",
+      });
+      return;
+    }
+
+    methods.clearErrors("financialData.incomes");
+
+    if (!isStepOneStructurallyValid) {
+      return;
+    }
+
+    nextStep();
+  };
+
+  const handleStepClick = (step: AnalysisWizardStep) => {
+    if (step <= flow.currentStep) {
+      goToStep(step);
+    }
+  };
+
+  const activePlaceholder =
+    flow.currentStep === 2 || flow.currentStep === 3
+      ? stepContent[flow.currentStep]
+      : null;
 
   return (
     <FormProvider {...methods}>
       <section className="analysis-wizard" aria-labelledby="analysis-wizard-title">
         <header className="analysis-wizard__header">
           <div>
-            <p className="analysis-wizard__eyebrow">Nuevo anÃ¡lisis</p>
-            <h1 id="analysis-wizard-title">Construimos la base del flujo guiado</h1>
+            <h1 id="analysis-wizard-title">Nuevo analisis</h1>
             <p className="analysis-wizard__description">
-              Esta etapa deja preparado el wizard privado dentro del layout autenticado
-              de FinanceAI.
+              Ingresa informacion aproximada sobre tu situacion actual.
+              Los indicadores financieros se calcularan durante el analisis.
             </p>
           </div>
         </header>
 
         {flow.screen === "wizard" ? (
           <div className="analysis-wizard__shell">
-            <AnalysisStepper currentStep={flow.currentStep} onStepClick={goToStep} />
+            <AnalysisStepper currentStep={flow.currentStep} onStepClick={handleStepClick} />
 
-            <Card className="analysis-wizard__panel">
-              <div className="analysis-wizard__step-placeholder">
-                <span className="analysis-wizard__step-kicker">Paso {flow.currentStep}</span>
-                <h2>{activeStep.title}</h2>
-                <p>{activeStep.body}</p>
-              </div>
+            {flow.currentStep === 1 ? <FinancialDataStep /> : null}
 
-              <div className="analysis-wizard__actions">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={previousStep}
-                  disabled={flow.currentStep === 1}
-                >
-                  Volver
-                </Button>
+            {flow.currentStep > 1 && activePlaceholder ? (
+              <Card className="analysis-wizard__panel">
+                <div className="analysis-wizard__step-placeholder">
+                  <span className="analysis-wizard__step-kicker">Paso {flow.currentStep}</span>
+                  <h2>{activePlaceholder.title}</h2>
+                  <p>{activePlaceholder.body}</p>
+                </div>
+              </Card>
+            ) : null}
+
+            <div className="analysis-wizard__actions">
+              <Button type="button" variant="ghost" onClick={handleCancelAnalysis}>
+                Cancelar analisis
+              </Button>
+
+              <div className="analysis-wizard__actions-group">
+                {flow.currentStep > 1 ? (
+                  <Button type="button" variant="ghost" onClick={previousStep}>
+                    Volver
+                  </Button>
+                ) : null}
 
                 {flow.currentStep < 3 ? (
-                  <Button type="button" onClick={nextStep}>
-                    Continuar
+                  <Button type="button" onClick={handleContinue}>
+                    Siguiente
+                    <ArrowRight size={16} aria-hidden="true" />
                   </Button>
                 ) : (
                   <Button type="button" onClick={startProcessing}>
@@ -106,7 +193,7 @@ function AnalysisWizard() {
                   </Button>
                 )}
               </div>
-            </Card>
+            </div>
           </div>
         ) : null}
 
@@ -116,14 +203,14 @@ function AnalysisWizard() {
               <span className="analysis-wizard__step-kicker">Procesando</span>
               <h2>Analizando tus finanzas</h2>
               <p>
-                TEMP-FE: esta pantalla representa Ãºnicamente un estado visual base.
-                TodavÃ­a no refleja progreso real de Backend ni de Data Science.
+                TEMP-FE: esta pantalla representa unicamente un estado visual base.
+                Todavia no refleja progreso real de Backend ni de Data Science.
               </p>
             </div>
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
-                Volver a revisiÃ³n
+                Volver a revision
               </Button>
               <Button type="button" onClick={showResult}>
                 Ver resultado placeholder
@@ -136,16 +223,16 @@ function AnalysisWizard() {
           <Card className="analysis-wizard__panel">
             <div className="analysis-wizard__step-placeholder">
               <span className="analysis-wizard__step-kicker">Resultado</span>
-              <h2>Resultado disponible prÃ³ximamente</h2>
+              <h2>Resultado disponible proximamente</h2>
               <p>
-                TODO-BE-CONTRACT: la carga de resultados definitivos dependerÃ¡ del contrato
+                TODO-BE-CONTRACT: la carga de resultados definitivos dependera del contrato
                 final con Backend.
               </p>
             </div>
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
-                Volver a revisiÃ³n
+                Volver a revision
               </Button>
               <Button type="button" onClick={resetFlow}>
                 Reiniciar flujo

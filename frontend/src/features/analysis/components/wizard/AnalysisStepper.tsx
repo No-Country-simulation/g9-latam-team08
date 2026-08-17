@@ -1,9 +1,10 @@
+import { Check } from "lucide-react";
 import type { AnalysisWizardStep } from "../../types/analysis-flow";
 
 const steps: Array<{ id: AnalysisWizardStep; label: string }> = [
   { id: 1, label: "Datos financieros" },
   { id: 2, label: "Transacciones" },
-  { id: 3, label: "RevisiÃ³n" },
+  { id: 3, label: "Revision" },
 ];
 
 interface AnalysisStepperProps {
@@ -13,7 +14,7 @@ interface AnalysisStepperProps {
 
 function AnalysisStepper({ currentStep, onStepClick }: AnalysisStepperProps) {
   return (
-    <ol className="analysis-stepper" aria-label="Progreso de nuevo anÃ¡lisis">
+    <ol className="analysis-stepper" aria-label="Progreso de nuevo analisis">
       {steps.map((step) => {
         const isActive = step.id === currentStep;
         const isCompleted = step.id < currentStep;
@@ -31,7 +32,9 @@ function AnalysisStepper({ currentStep, onStepClick }: AnalysisStepperProps) {
               onClick={() => onStepClick?.(step.id)}
               aria-current={isActive ? "step" : undefined}
             >
-              <span className="analysis-stepper__index">{step.id}</span>
+              <span className="analysis-stepper__index" aria-hidden="true">
+                {isCompleted ? <Check size={14} strokeWidth={3} /> : step.id}
+              </span>
               <span className="analysis-stepper__label">{step.label}</span>
             </button>
           </li>
