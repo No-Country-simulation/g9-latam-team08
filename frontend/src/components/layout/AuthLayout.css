@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: var(--space-5, 2rem); /* Añadí fallbacks por si la variable no carga */
+  padding: var(--space-5, 2rem);
   overflow: hidden;
 }
 
@@ -68,7 +68,7 @@
   height: 2.5rem;
   border-radius: var(--radius-lg, 0.5rem);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  color: white; /* Cambiado a white para asegurar legibilidad */
+  color: white; 
   box-shadow: var(--shadow-sm);
 }
 

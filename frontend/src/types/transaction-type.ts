@@ -5,7 +5,7 @@ export interface Transaction {
   date: string;       // Formato ISO: "2024-05-19"
   category: string;   // Ej: "Alimentación", "Transporte"
   type: 'income' | 'expense';
-  account: string;    // Ej: "Principal", "Ahorros" (Nuevo campo según tu diseño)
+  account: string;    // Ej: "Principal", "Ahorros" 
 }
 
 export interface FiltrosHistorialProps {
@@ -35,14 +35,6 @@ export interface ResumenFinancieroProps {
   egresosTotales: number;
 }
 
-
-export interface TablaTransaccionesProps {
-  transacciones: Transaction[]; // Recibe el arreglo ya filtrado
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
-}
-
-
 export interface FilaTransaccionProps {
   transaccion: Transaction; // Recibe una sola transacción
   onEdit: (id: string) => void;
@@ -57,4 +49,10 @@ export interface PieDeTablaProps {
   onNextPage: () => void;
   onPrevPage: () => void;
   onExport: () => void;         // Gatillo para el botón "Exportar Datos"
+}
+
+export interface TablaTransaccionesProps extends PieDeTablaProps {
+  transacciones: Transaction[];
+  onEdit: (transaccion: Transaction) => void;
+  onDelete: (id: string | number) => void;
 }

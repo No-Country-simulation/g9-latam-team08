@@ -1,25 +1,26 @@
-/* PieDeTabla.css */
-
 .pie-tabla-contenedor {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
   border-top: 1px solid #e5e7eb;
-  margin-top: 1rem;
+  background-color: #ffffff;
   flex-wrap: wrap;
   gap: 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .pie-tabla-info {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: #6b7280;
   letter-spacing: 0.05em;
 }
 
 .pie-tabla-paginacion {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -27,40 +28,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #e5e7eb;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d1d5db;
   border-radius: 6px;
   background: #ffffff;
-  color: #374151;
+  color: #4b5563;
   cursor: pointer;
   transition: all 150ms ease;
+  padding: 0;
+}
+.btn-paginacion svg {
+  stroke: currentColor;
+  width: 18px;
+  height: 18px;
 }
 
 .btn-paginacion:hover:not(:disabled) {
   background: #f3f4f6;
+  color: #111827;
+  border-color: #9ca3af;
 }
 
 .btn-paginacion:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  background: #f9fafb;
 }
 
 .btn-exportar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
   background: transparent;
   color: #0d9488;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: color 150ms ease;
+  transition: all 150ms ease;
 }
 
 .btn-exportar:hover {
+  background: #f0fdfa;
   color: #0f766e;
-  text-decoration: underline;
 }

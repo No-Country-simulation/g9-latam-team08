@@ -1,4 +1,4 @@
-import { Download, ChevronLeft, ChevronRight } from "lucide-react";
+import { Download} from "lucide-react";
 import { PieDeTablaProps } from "../types/transaction-type";
 import "./PieDeTabla.css";
 
@@ -27,15 +27,19 @@ export default function PieDeTabla({
           onClick={onPrevPage}
           disabled={currentPage === 1}
           className="btn-paginacion"
+          aria-label="Página anterior"
         >
-          <ChevronLeft size={18} />
+
+          <span style={{ fontSize: '14px', fontWeight: 'bold', lineHeight: 1 }}>&#10094;</span>
         </button>
         <button
           onClick={onNextPage}
           disabled={currentPage === totalPages || totalItems === 0}
           className="btn-paginacion"
+          aria-label="Página siguiente"
         >
-          <ChevronRight size={18} />
+
+          <span style={{ fontSize: '14px', fontWeight: 'bold', lineHeight: 1 }}>&#10095;</span>
         </button>
       </div>
 

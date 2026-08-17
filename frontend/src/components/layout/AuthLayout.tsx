@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import logoFinanceAI from "../../assets/logo-financeai.svg"; // <-- 1. Importamos tu logo
+import logoFinanceAI from "../../assets/logo-financeai.svg";
 import "./AuthLayout.css";
 
 export default function AuthLayout() {
@@ -9,7 +9,6 @@ export default function AuthLayout() {
 
       <section className="login-card" aria-labelledby="auth-title">
         <div className="logo-content" >
-          {/* 2. Reemplazamos la marca anterior por la imagen SVG */}
           <img className="logo-image"
             src={logoFinanceAI}
             alt="FinanceAI"
