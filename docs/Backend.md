@@ -309,6 +309,7 @@ La integración entre el frontend (React) y el backend (Spring Boot) en FinanceA
 
 **Configuración del Entorno:** Los parámetros de conexión de red, URLs de servicios y credenciales de bases de datos para este entorno en la nube se gestionan típicamente a través del archivo de propiedades del backend en src/main/resources/application.properties.  
 
+**OCI Compute para despliegue de Backend en APIRest Java:** Se configuró y desplegó el Backend desde la instancia OCI y se encuentra operativa para manejar los datos y el análisis de la solución con configuración en Linux imagen Ubuntu.
 
 ---
 
