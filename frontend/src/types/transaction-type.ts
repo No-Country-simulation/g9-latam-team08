@@ -38,14 +38,14 @@ export interface ResumenFinancieroProps {
 
 export interface TablaTransaccionesProps {
   transacciones: Transaction[]; // Recibe el arreglo ya filtrado
-  onEdit: (id: string) => void;
+  onEdit: (transaccion: Transaction) => void;
   onDelete: (id: string) => void;
 }
 
 
 export interface FilaTransaccionProps {
   transaccion: Transaction; // Recibe una sola transacción
-  onEdit: (id: string) => void;
+  onEdit: (transaccion: Transaction) => void;
   onDelete: (id: string) => void;
 }
 

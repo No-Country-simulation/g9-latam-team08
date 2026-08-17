@@ -1,6 +1,5 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import Button from "./Button";
-import { FcGoogle } from "react-icons/fc";
 /**
  * BotonGoogle
  * Props:
@@ -8,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
  * - onError: function(error) => void
  * - children: optional button label
  */
-function BotonGoogle({ onSuccess, onError, children }) {
+function BotonGoogle({ onSuccess, onError, children, disabled = false }) {
   const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID?.trim();
   const isConfigured = Boolean(googleClientId);
 
@@ -23,6 +22,10 @@ function BotonGoogle({ onSuccess, onError, children }) {
   });
 
   const handleClick = () => {
+    if (disabled) {
+      return;
+    }
+
     if (!isConfigured) {
       if (typeof onError === "function") {
         onError(new Error("VITE_GOOGLE_CLIENT_ID no está configurado. Agregalo en frontend/.env y reiniciá Vite."));
@@ -40,7 +43,7 @@ function BotonGoogle({ onSuccess, onError, children }) {
         variant="ghost"
         fullWidth
         onClick={handleClick}
-        disabled={!isConfigured}
+        disabled={disabled || !isConfigured}
         title={!isConfigured ? "Agregá VITE_GOOGLE_CLIENT_ID en frontend/.env" : undefined}
       >
          {children ?? "Continuar con Google"}

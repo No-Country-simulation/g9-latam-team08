@@ -11,8 +11,10 @@ interface GoogleTokenResponse {
 interface AuthResponse {
   id: string | number;
   token?: string;
+  name?: string;
   nombre?: string;
   email?: string;
+  photo?: string;
 }
 
 export const useGoogleAuth = (setError: (message: string) => void) => {

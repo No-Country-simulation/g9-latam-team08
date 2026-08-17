@@ -1,5 +1,5 @@
 import { Download, ChevronLeft, ChevronRight } from "lucide-react";
-import { PieDeTablaProps } from "../types/transaction-type";
+import { PieDeTablaProps } from "../../types/transaction-type";
 import "./PieDeTabla.css";
 
 export default function PieDeTabla({

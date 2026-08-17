@@ -1,5 +1,5 @@
 import { Pencil, Trash2 } from "lucide-react";
-import { Transaction } from "../types/transaction-type";
+import { FilaTransaccionProps } from "../../types/transaction-type";
 
 
 export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaTransaccionProps) {

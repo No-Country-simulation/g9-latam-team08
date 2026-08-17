@@ -1,4 +1,4 @@
-import { TablaTransaccionesProps } from "../types/transaction-type";
+import { TablaTransaccionesProps } from "../../types/transaction-type";
 import FilaTransaccion from "./FilaTransaccion";
 import "./TablaTransacciones.css";
 

@@ -1,5 +1,5 @@
-import { ResumenFinancieroProps } from '../types/transaction-type'; //
- import "./ResumenFinanciero.css";
+import { ResumenFinancieroProps } from "../../types/transaction-type";
+import "./ResumenFinanciero.css";
 
 export default function ResumenFinanciero({ ingresosTotales, egresosTotales }: ResumenFinancieroProps) {
 

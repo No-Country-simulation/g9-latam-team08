@@ -12,6 +12,7 @@ export default function Historial() {
   const [error, setError] = useState<string | null>(null);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedPeriod, setSelectedPeriod] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
   const [selectedType, setSelectedType] = useState<string>("Todos");
   const [selectedAccount, setSelectedAccount] = useState<string>("Principal");
@@ -97,7 +98,7 @@ export default function Historial() {
   // ==========================================
   // 6. MANEJADORES DE ACCIONES (Se los pasamos a la tabla)
   // ==========================================
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
      // 1. Confirmación de seguridad
     const confirmar = window.confirm("¿Estás seguro de que querés eliminar este movimiento?");
     if (!confirmar) return;
@@ -196,6 +197,7 @@ const handleGuardarEdicion = async (datosModificados: any) => {
       {/* Componente 1: Filtros */}
       <FiltrosHistorial
         searchTerm={searchTerm} onSearchChange={setSearchTerm}
+        selectedPeriod={selectedPeriod} onPeriodChange={setSelectedPeriod}
         selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory}
         selectedType={selectedType} onTypeChange={setSelectedType}
         selectedAccount={selectedAccount} onAccountChange={setSelectedAccount}
