@@ -271,6 +271,9 @@ Mapeo relacional de entidades en User, Transaction, Category y Alert, mediante J
 En base a su persistencia Se apoya en mapeo relacional de entidades (User, Transaction, Category y Alert) mediante Spring Data JPA.
 
 Utiliza MySQL/Railway como base de datos de producción en la nube e H2 Database para entornos locales y de pruebas.
+
+
+
 ---
 
 ### Seguridad
