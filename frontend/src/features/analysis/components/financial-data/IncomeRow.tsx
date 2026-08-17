@@ -6,7 +6,7 @@ const incomeTypeLabels = {
   SALARY: "Sueldo",
   FREELANCE: "Trabajo freelance",
   BUSINESS: "Negocio / emprendimiento",
-  BENEFIT: "Beneficio / pension",
+  BENEFIT: "Beneficio / pensión",
   OTHER: "Otro ingreso",
 } as const;
 

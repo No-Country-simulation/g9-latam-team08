@@ -1,5 +1,6 @@
 import { Controller, useFieldArray, useFormContext, useWatch } from "react-hook-form";
 import { useMemo, useState } from "react";
+import { Plus } from "lucide-react";
 import Button from "../../../../components/ui/Button";
 import type { AnalysisDraftFormValues } from "../../schemas/analysis.schema";
 import type { AnalysisIncomeDraftItem } from "../../types/analysis-draft";
@@ -90,8 +91,8 @@ function FinancialDataStep() {
           <p className="analysis-card__eyebrow">DATOS FINANCIEROS</p>
           <h2>Empecemos con una foto general de tus ingresos y capacidad de ahorro.</h2>
           <p>
-            No hace falta que los montos sean exactos. Con una aproximacion alcanza
-            para calcular los indicadores iniciales del analisis.
+            No hace falta que los montos sean exactos. Con una aproximación alcanza
+            para calcular los indicadores iniciales del análisis.
           </p>
         </div>
 
@@ -114,6 +115,7 @@ function FinancialDataStep() {
 
               <div className="financial-data-step__add-income">
                 <Button type="button" variant="secondary" fullWidth onClick={openCreateDialog}>
+                  <Plus size={16} aria-hidden="true" />
                   Agregar ingreso
                 </Button>
               </div>
@@ -143,7 +145,8 @@ function FinancialDataStep() {
                 <MoneyInput
                   id="estimated-monthly-savings"
                   label="Ahorro mensual estimado"
-                  helperText="Cuanto estimas que ahorras normalmente durante un mes?"
+                  helperText="¿Cuánto estimás que ahorrás normalmente durante un mes?"
+                  optionalBadge
                   value={field.value}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
@@ -160,7 +163,7 @@ function FinancialDataStep() {
                 <MoneyInput
                   id="monthly-debt-payments"
                   label="Pagos mensuales de deuda"
-                  helperText="Inclui prestamos, cuotas y otros compromisos financieros."
+                  helperText="Incluí préstamos, cuotas y otros compromisos financieros."
                   value={field.value}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
@@ -177,7 +180,8 @@ function FinancialDataStep() {
                 <MoneyInput
                   id="emergency-fund-amount"
                   label="Fondo de emergencia disponible"
-                  helperText="Dinero que ya tenes reservado actualmente para afrontar imprevistos."
+                  helperText="Dinero que ya tenés reservado actualmente para afrontar imprevistos."
+                  optionalBadge
                   value={field.value}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
@@ -195,7 +199,7 @@ function FinancialDataStep() {
                 <span className="analysis-form-field__badge">Opcional</span>
               </div>
               <p className="analysis-form-field__helper">
-                Selecciona la frecuencia que mejor describa tu habito actual.
+                Seleccioná la frecuencia que mejor describa tu hábito actual.
               </p>
               <Controller
                 control={control}
@@ -220,7 +224,7 @@ function FinancialDataStep() {
                         : undefined
                     }
                   >
-                    <option value="">Selecciona una opcion</option>
+                    <option value="">Seleccioná una opción</option>
                     <option value="WEEKLY">Semanal</option>
                     <option value="BIWEEKLY">Quincenal</option>
                     <option value="MONTHLY">Mensual</option>
@@ -240,7 +244,7 @@ function FinancialDataStep() {
 
         <section className="analysis-banner" aria-label="Informacion del analisis">
           <p>
-            Esta informacion se combinara mas adelante con tus transacciones para
+            Esta información se combinará más adelante con tus transacciones para
             calcular indicadores y generar recomendaciones personalizadas.
           </p>
         </section>

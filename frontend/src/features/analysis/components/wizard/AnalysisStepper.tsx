@@ -4,7 +4,7 @@ import type { AnalysisWizardStep } from "../../types/analysis-flow";
 const steps: Array<{ id: AnalysisWizardStep; label: string }> = [
   { id: 1, label: "Datos financieros" },
   { id: 2, label: "Transacciones" },
-  { id: 3, label: "Revision" },
+  { id: 3, label: "Revisión" },
 ];
 
 interface AnalysisStepperProps {
@@ -14,7 +14,7 @@ interface AnalysisStepperProps {
 
 function AnalysisStepper({ currentStep, onStepClick }: AnalysisStepperProps) {
   return (
-    <ol className="analysis-stepper" aria-label="Progreso de nuevo analisis">
+    <ol className="analysis-stepper" aria-label="Progreso de nuevo análisis">
       {steps.map((step) => {
         const isActive = step.id === currentStep;
         const isCompleted = step.id < currentStep;

@@ -23,8 +23,8 @@ const stepContent: Record<2 | 3, { title: string; body: string }> = {
     body: "Transacciones",
   },
   3: {
-    title: "Revision",
-    body: "Revision",
+    title: "Revisión",
+    body: "Revisión",
   },
 };
 
@@ -94,7 +94,7 @@ function AnalysisWizard() {
 
     if (
       hasDraftContent(currentDraft) &&
-      !window.confirm("Se borrara el borrador actual. Quieres cancelar el analisis?")
+      !window.confirm("Se borrará el borrador actual. ¿Querés cancelar el análisis?")
     ) {
       return;
     }
@@ -116,7 +116,7 @@ function AnalysisWizard() {
     if (incomes.length === 0) {
       methods.setError("financialData.incomes", {
         type: "manual",
-        message: "Agrega al menos una fuente de ingreso valida",
+        message: "Agregá al menos una fuente de ingreso válida",
       });
       return;
     }
@@ -146,10 +146,10 @@ function AnalysisWizard() {
       <section className="analysis-wizard" aria-labelledby="analysis-wizard-title">
         <header className="analysis-wizard__header">
           <div>
-            <h1 id="analysis-wizard-title">Nuevo analisis</h1>
+            <h1 id="analysis-wizard-title">Nuevo análisis</h1>
             <p className="analysis-wizard__description">
-              Ingresa informacion aproximada sobre tu situacion actual.
-              Los indicadores financieros se calcularan durante el analisis.
+              Ingresá información aproximada sobre tu situación actual.
+              Los indicadores financieros se calcularán durante el análisis.
             </p>
           </div>
         </header>
@@ -172,7 +172,7 @@ function AnalysisWizard() {
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={handleCancelAnalysis}>
-                Cancelar analisis
+                Cancelar análisis
               </Button>
 
               <div className="analysis-wizard__actions-group">
@@ -203,14 +203,14 @@ function AnalysisWizard() {
               <span className="analysis-wizard__step-kicker">Procesando</span>
               <h2>Analizando tus finanzas</h2>
               <p>
-                TEMP-FE: esta pantalla representa unicamente un estado visual base.
-                Todavia no refleja progreso real de Backend ni de Data Science.
+                TEMP-FE: esta pantalla representa únicamente un estado visual base.
+                Todavía no refleja progreso real de Backend ni de Data Science.
               </p>
             </div>
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
-                Volver a revision
+                Volver a revisión
               </Button>
               <Button type="button" onClick={showResult}>
                 Ver resultado placeholder
@@ -225,14 +225,14 @@ function AnalysisWizard() {
               <span className="analysis-wizard__step-kicker">Resultado</span>
               <h2>Resultado disponible proximamente</h2>
               <p>
-                TODO-BE-CONTRACT: la carga de resultados definitivos dependera del contrato
+                TODO-BE-CONTRACT: la carga de resultados definitivos dependerá del contrato
                 final con Backend.
               </p>
             </div>
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
-                Volver a revision
+                Volver a revisión
               </Button>
               <Button type="button" onClick={resetFlow}>
                 Reiniciar flujo

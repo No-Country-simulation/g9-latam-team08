@@ -13,12 +13,12 @@ import {
 } from "../../types/analysis-draft";
 
 const incomeDialogSchema = z.object({
-  description: z.string().trim().min(1, "La descripcion es obligatoria"),
+  description: z.string().trim().min(1, "La descripción es obligatoria"),
   monthlyAmount: z
     .union([z.number().finite(), z.null()])
     .refine((value) => value !== null && value > 0, "El monto debe ser mayor a 0"),
   incomeType: z.enum(incomeTypeOptions, {
-    error: "Selecciona un tipo de ingreso valido",
+    error: "Seleccioná un tipo de ingreso válido",
   }),
 });
 
@@ -28,7 +28,7 @@ const incomeTypeLabels = {
   SALARY: "Sueldo",
   FREELANCE: "Trabajo freelance",
   BUSINESS: "Negocio / emprendimiento",
-  BENEFIT: "Beneficio / pension",
+  BENEFIT: "Beneficio / pensión",
   OTHER: "Otro ingreso",
 } as const;
 
@@ -91,7 +91,7 @@ function IncomeDialog({
                 {mode === "create" ? "Agregar ingreso" : "Editar ingreso"}
               </Dialog.Title>
               <Dialog.Description className="analysis-dialog__description">
-                Completa la informacion de la fuente de ingreso.
+                Completá la información de la fuente de ingreso.
               </Dialog.Description>
             </div>
 
@@ -123,7 +123,7 @@ function IncomeDialog({
           >
             <div className="analysis-form-field">
               <label className="analysis-form-field__label" htmlFor="income-description">
-                Descripcion
+                Descripción
               </label>
               <input
                 id="income-description"
@@ -153,7 +153,7 @@ function IncomeDialog({
                 <MoneyInput
                   id="income-monthly-amount"
                   label="Monto mensual"
-                  helperText="Ingresa el monto aproximado que recibes por mes."
+                  helperText="Ingresá el monto aproximado que recibís por mes."
                   value={field.value}
                   onChange={field.onChange}
                   onBlur={field.onBlur}

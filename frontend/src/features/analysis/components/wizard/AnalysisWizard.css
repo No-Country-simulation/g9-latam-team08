@@ -1,18 +1,26 @@
 .analysis-wizard {
   display: grid;
-  gap: var(--space-5);
-  padding: var(--space-5);
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
 }
 
 .analysis-wizard__header {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.35rem;
+}
+
+.analysis-wizard__header h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.65rem, 2.4vw, 2rem);
+  line-height: 1.12;
 }
 
 .analysis-wizard__description {
-  max-width: 44rem;
+  max-width: 42rem;
   margin-bottom: 0;
   color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .analysis-wizard__shell {

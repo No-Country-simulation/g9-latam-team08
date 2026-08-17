@@ -39,6 +39,7 @@ interface MoneyInputProps {
   required?: boolean;
   error?: string;
   helperText?: string;
+  optionalBadge?: boolean;
 }
 
 function MoneyInput({
@@ -51,6 +52,7 @@ function MoneyInput({
   required = false,
   error,
   helperText,
+  optionalBadge = false,
 }: MoneyInputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [displayValue, setDisplayValue] = useState("");
@@ -74,9 +76,12 @@ function MoneyInput({
 
   return (
     <div className="analysis-form-field">
-      <label className="analysis-form-field__label" htmlFor={id}>
-        {label}
-      </label>
+      <div className="analysis-form-field__label-row">
+        <label className="analysis-form-field__label" htmlFor={id}>
+          {label}
+        </label>
+        {optionalBadge ? <span className="analysis-form-field__badge">Opcional</span> : null}
+      </div>
 
       {helperText ? (
         <p id={helperId} className="analysis-form-field__helper">
