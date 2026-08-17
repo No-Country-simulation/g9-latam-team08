@@ -59,7 +59,7 @@ function Login() {
       // Guardamos el ID real de la base de datos
       localStorage.setItem('userId', data.id.toString());
 
-      // Si tu backend envía un token JWT, lo guardamos para usarlo después
+      // Si el backend envía un token JWT, lo guardamos para usarlo después
       if (data.token) {
         localStorage.setItem('jwt_token', data.token);
       }
@@ -73,13 +73,13 @@ function Login() {
         localStorage.removeItem('userPhoto');
       }
 
-      // ¡Aprobado! Lo dejamos pasar al historial
+
       navigate("/historial");
 
     } catch (err: any) {
       setError(err.message || "Error al conectar con el servidor.");
     } finally {
-      setIsSubmitting(false); // Apagamos el estado de carga
+      setIsSubmitting(false); 
     }
   };
 

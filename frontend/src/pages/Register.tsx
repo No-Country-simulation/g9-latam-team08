@@ -14,7 +14,7 @@ function Register() {
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  // NUEVO ESTADO: Controla si el registro fue exitoso para cambiar la vista
+  // Controla si el registro fue exitoso para cambiar la vista
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ function Register() {
 
       console.log("Usuario validado por el backend:", data);
 
-      // En lugar de setError, activamos nuestra pantalla de éxito
+      // activamos nuestra pantalla de éxito
       setIsSuccess(true);
 
       // Lo mandamos al login después de 2.5 segundos para que lea bien el mensaje
@@ -89,7 +89,7 @@ function Register() {
       {/* RENDERIZADO CONDICIONAL: Si hay éxito muestra el mensaje, sino el formulario */}
       {isSuccess ? (
         <div style={{ textAlign: "center", padding: "2rem 0", animation: "fadeIn 0.5s ease-in-out" }}>
-          {/* Ícono de Check verde */}
+
           <svg
             width="64"
             height="64"
