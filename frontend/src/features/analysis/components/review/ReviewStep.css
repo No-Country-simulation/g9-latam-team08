@@ -1,0 +1,257 @@
+.review-step {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.review-step__intro {
+  gap: 0.5rem;
+}
+
+.review-step__intro h2,
+.review-step__intro p {
+  margin-bottom: 0;
+}
+
+.review-step__intro p {
+  color: var(--color-text-muted);
+}
+
+.review-step__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 320px);
+  gap: 1rem;
+  align-items: start;
+}
+
+.review-step__main,
+.review-step__sidebar {
+  display: grid;
+  gap: 1rem;
+}
+
+.review-card {
+  gap: 1rem;
+}
+
+.review-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.review-card__header-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.review-card__header-copy h3,
+.review-card__header-copy p {
+  margin-bottom: 0;
+}
+
+.review-card__header-copy p {
+  color: var(--color-text-muted);
+}
+
+.review-card__edit-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review-card__edit-button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.review-card__section {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.review-card__section-heading {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.review-card__eyebrow,
+.review-card__support {
+  margin: 0;
+}
+
+.review-card__eyebrow {
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.review-card__support {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.review-income-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review-income-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.review-income-list__title,
+.review-income-list__meta,
+.review-income-list__amount {
+  margin: 0;
+}
+
+.review-income-list__title {
+  font-weight: 700;
+}
+
+.review-income-list__meta {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.review-highlight {
+  padding-top: 0.25rem;
+}
+
+.review-highlight__value {
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+}
+
+.review-key-values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.review-key-values__item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+}
+
+.review-key-values__item dt,
+.review-key-values__item dd {
+  margin: 0;
+}
+
+.review-key-values__item dt {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.review-key-values__item dd {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.review-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.review-card__metric {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+}
+
+.review-transactions__scroll {
+  max-height: 22rem;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.review-transactions__table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--color-surface);
+}
+
+.review-transactions__table th,
+.review-transactions__table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.review-transactions__table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.review-transactions__table tr:last-child td {
+  border-bottom: none;
+}
+
+.review-summary-card {
+  gap: 0.85rem;
+}
+
+.review-summary-card__item {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.review-step__next p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 960px) {
+  .review-step__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .review-key-values,
+  .review-card__metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .review-income-list__item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -65,6 +65,24 @@ export function useAnalysisFlow(initialStep: AnalysisWizardStep = 1) {
     }));
   };
 
+  const editStepFromReview = (step: 1 | 2) => {
+    setFlow((current) => ({
+      ...current,
+      currentStep: normalizeStep(step),
+      returnToReviewAfterEdit: true,
+      screen: "wizard",
+    }));
+  };
+
+  const finishReviewEdit = () => {
+    setFlow((current) => ({
+      ...current,
+      currentStep: 3,
+      returnToReviewAfterEdit: false,
+      screen: "wizard",
+    }));
+  };
+
   const startProcessing = () => {
     setFlow((current) => ({
       ...current,
@@ -90,6 +108,8 @@ export function useAnalysisFlow(initialStep: AnalysisWizardStep = 1) {
     previousStep,
     goToStep,
     goToReview,
+    editStepFromReview,
+    finishReviewEdit,
     startProcessing,
     showResult,
     resetFlow,
