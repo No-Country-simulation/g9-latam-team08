@@ -64,19 +64,42 @@ Se deberá registrar la validación de los servicios OCI utilizados por el MVP y
 
 ## Frontend
 
-🔄 Pendiente completar esta sección con las pruebas realizadas por el equipo de Frontend.
+🔄 Las pruebas de Frontend se encuentran en progreso de acuerdo con el avance de la integración de la Aplicación Web para escritorio (PC) con Backend.
 
-La validación deberá reflejar las funcionalidades implementadas en la Aplicación Web para escritorio (PC), su comunicación con Backend y los resultados de las pruebas funcionales realizadas.
+### Pruebas realizadas
+
+- ✅ Validado el flujo del Dashboard integrado con Backend.
+- ✅ Validada la recepción de datos reales desde Backend para su presentación en el Dashboard.
+- ✅ Validado el flujo de recepción de datos, análisis y visualización de resultados en el Dashboard.
+- ✅ Verificada la visualización del gráfico de barras.
+- ✅ Verificada la presentación de la clasificación del mes.
+- ✅ Verificada la visualización de la diferencia entre ingresos y gastos.
+- ✅ Verificada la presentación de los porcentajes calculados a partir del score y ratio.
+- ✅ Verificada la presentación de los cálculos definidos para el Dashboard.
+
+### Pendiente
+
+- 🔄 Continuar las pruebas de las demás páginas y funcionalidades que formen parte de la versión definitiva de Frontend.
+- 🔄 Completar las pruebas finales del flujo integrado del MVP.
 
 ---
 
 ## Pruebas de Integración
 
-🔄 Pendiente completar las pruebas finales del flujo integrado del MVP:
+🔄 Las pruebas de integración del MVP se encuentran en progreso.
+
+### Validaciones realizadas
+
+- ✅ Validado el flujo de integración entre el Dashboard y Backend.
+- ✅ Validada la recepción de datos reales utilizados para el análisis financiero.
+- ✅ Validada la presentación de los resultados recibidos en el Dashboard.
+
+### Pendiente
+
+- 🔄 Completar la validación de las demás funcionalidades que formen parte de la versión final de la Aplicación Web para escritorio (PC).
+- 🔄 Completar las pruebas del flujo integrado definitivo del MVP:
 
 **Frontend ↔ Backend ↔ Ciencia de Datos ↔ OCI**
-
-Las pruebas deberán permitir verificar el funcionamiento conjunto de los componentes que forman parte de la solución definitiva.
 
 ---
 
