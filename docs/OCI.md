@@ -20,7 +20,7 @@ Este documento describe los servicios, recursos y procesos implementados en Orac
 
 ### Arquitectura de la Solución
 
-OCI cumple dos funciones dentro del proyecto: alojar los modelos entrenados por el equipo de Ciencia de Datos (Object Storage) y proveer la infraestructura de cómputo donde Backend desplegará la API (Compute). Los modelos se suben al bucket una vez entrenados y serializados, quedando disponibles para su descarga. La instancia de Compute fue provisionada y configurada, quedando lista para que Backend realice el despliegue de la API sobre ella. La base de datos del proyecto no se implementó en OCI, sino en MySQL sobre Railway.
+OCI cumple dos funciones dentro del proyecto: alojar los modelos entrenados por el equipo de Ciencia de Datos (Object Storage) y proveer la infraestructura de cómputo donde Backend desplegó la API (Compute). Los modelos se suben al bucket una vez entrenados y serializados, quedando disponibles para su descarga. La instancia de Compute fue provisionada y configurada, y Backend desplegó sobre ella la API REST del proyecto, accesible en `http://146.181.60.43:8080`. La base de datos del proyecto no se implementó en OCI, sino en MySQL sobre Railway.
 
 ---
 
@@ -49,7 +49,7 @@ Se provisionó una instancia para alojar la API REST del proyecto:
 
 No se implementó. El procesamiento se resuelve desde la API alojada en Compute, sin necesidad de funciones serverless para este proyecto.
 
-#### Base de Datos (Opcional)
+#### Base de Datos
 
 No se implementó en OCI. La base de datos del proyecto (MySQL) se aloja en Railway.
 
@@ -62,7 +62,7 @@ No se implementó en OCI. La base de datos del proyecto (MySQL) se aloja en Rail
 3. Creación de la VCN y subnet pública mediante el asistente de red de OCI.
 4. Provisión de la instancia Compute (Ubuntu) dentro de esa red.
 5. Apertura del puerto 8080 en la Security List para permitir el acceso público a la API.
-6. Entrega de credenciales de acceso (IP pública, clave SSH) al equipo de Backend para el despliegue de la API sobre la instancia.
+6. Entrega de credenciales de acceso (IP pública, clave SSH) al equipo de Backend, quien desplegó la API sobre la instancia. La API quedó accesible en `http://146.181.60.43:8080`.
 
 ---
 
@@ -78,7 +78,7 @@ No se implementó en OCI. La base de datos del proyecto (MySQL) se aloja en Rail
 
 ### Backend
 
-Backend accede a los modelos entrenados a través del Pre-Authenticated Request de Object Storage, y despliega la API REST sobre la instancia de Compute provista, utilizando el acceso SSH entregado.
+Backend accede a los modelos entrenados a través del Pre-Authenticated Request de Object Storage, y desplegó la API REST sobre la instancia de Compute provista, utilizando el acceso SSH entregado. La API se encuentra activa en `http://146.181.60.43:8080`.
 
 ### Ciencia de Datos
 
