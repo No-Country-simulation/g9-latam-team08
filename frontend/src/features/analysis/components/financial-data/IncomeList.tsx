@@ -4,8 +4,8 @@ import IncomeRow from "./IncomeRow";
 interface IncomeListProps {
   incomes: AnalysisIncomeDraftItem[];
   error?: string;
-  onEdit: (income: AnalysisIncomeDraftItem) => void;
-  onRemove: (income: AnalysisIncomeDraftItem) => void;
+  onEdit: (index: number, income: AnalysisIncomeDraftItem) => void;
+  onRemove: (index: number) => void;
 }
 
 function IncomeList({ incomes, error, onEdit, onRemove }: IncomeListProps) {
@@ -17,9 +17,10 @@ function IncomeList({ incomes, error, onEdit, onRemove }: IncomeListProps) {
         </div>
       ) : (
         <ul className="income-list">
-          {incomes.map((income) => (
+          {incomes.map((income, index) => (
             <IncomeRow
               key={income.id}
+              index={index}
               income={income}
               onEdit={onEdit}
               onRemove={onRemove}

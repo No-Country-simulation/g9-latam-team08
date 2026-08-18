@@ -11,12 +11,13 @@ const incomeTypeLabels = {
 } as const;
 
 interface IncomeRowProps {
+  index: number;
   income: AnalysisIncomeDraftItem;
-  onEdit: (income: AnalysisIncomeDraftItem) => void;
-  onRemove: (income: AnalysisIncomeDraftItem) => void;
+  onEdit: (index: number, income: AnalysisIncomeDraftItem) => void;
+  onRemove: (index: number) => void;
 }
 
-function IncomeRow({ income, onEdit, onRemove }: IncomeRowProps) {
+function IncomeRow({ index, income, onEdit, onRemove }: IncomeRowProps) {
   return (
     <li className="income-row">
       <div className="income-row__content">
@@ -32,7 +33,7 @@ function IncomeRow({ income, onEdit, onRemove }: IncomeRowProps) {
         <button
           type="button"
           className="income-row__icon-button"
-          onClick={() => onEdit(income)}
+          onClick={() => onEdit(index, income)}
           aria-label={`Editar ingreso ${income.description}`}
         >
           <Pencil size={16} aria-hidden="true" />
@@ -41,7 +42,7 @@ function IncomeRow({ income, onEdit, onRemove }: IncomeRowProps) {
         <button
           type="button"
           className="income-row__icon-button income-row__icon-button--danger"
-          onClick={() => onRemove(income)}
+          onClick={() => onRemove(index)}
           aria-label={`Eliminar ingreso ${income.description}`}
         >
           <Trash2 size={16} aria-hidden="true" />

@@ -26,8 +26,9 @@ function FinancialDataStep() {
   } = useFormContext<AnalysisDraftFormValues>();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingIncome, setEditingIncome] = useState<AnalysisIncomeDraftItem | null>(null);
+  const [editingIncomeIndex, setEditingIncomeIndex] = useState<number | null>(null);
 
-  const { fields, append, update, remove } = useFieldArray({
+  const { append, update, remove } = useFieldArray({
     control,
     name: "financialData.incomes",
   });
@@ -49,23 +50,22 @@ function FinancialDataStep() {
 
   const openCreateDialog = () => {
     setEditingIncome(null);
+    setEditingIncomeIndex(null);
     setDialogOpen(true);
   };
 
-  const openEditDialog = (income: AnalysisIncomeDraftItem) => {
+  const openEditDialog = (index: number, income: AnalysisIncomeDraftItem) => {
+    setEditingIncomeIndex(index);
     setEditingIncome(income);
     setDialogOpen(true);
   };
 
   const handleSubmitIncome = (incomeValues: Omit<AnalysisIncomeDraftItem, "id">) => {
-    if (editingIncome) {
-      const index = fields.findIndex((field) => field.id === editingIncome.id);
-      if (index >= 0) {
-        update(index, {
-          ...editingIncome,
-          ...incomeValues,
-        });
-      }
+    if (editingIncome && editingIncomeIndex !== null) {
+      update(editingIncomeIndex, {
+        ...editingIncome,
+        ...incomeValues,
+      });
     } else {
       append({
         id: createIncomeId(),
@@ -75,13 +75,11 @@ function FinancialDataStep() {
 
     clearErrors("financialData.incomes");
     setEditingIncome(null);
+    setEditingIncomeIndex(null);
   };
 
-  const handleRemoveIncome = (income: AnalysisIncomeDraftItem) => {
-    const index = fields.findIndex((field) => field.id === income.id);
-    if (index >= 0) {
-      remove(index);
-    }
+  const handleRemoveIncome = (index: number) => {
+    remove(index);
   };
 
   return (
@@ -258,6 +256,7 @@ function FinancialDataStep() {
           setDialogOpen(open);
           if (!open) {
             setEditingIncome(null);
+            setEditingIncomeIndex(null);
           }
         }}
         onSubmit={handleSubmitIncome}
