@@ -63,13 +63,13 @@ Las transacciones son clasificadas en seis categorías financieras principales:
 - **Ciencia de Datos:** procesa y analiza la información financiera, clasifica las transacciones y evalúa el perfil financiero del usuario.
 - **Backend:** proporciona la API REST y gestiona la comunicación entre los componentes de la solución.
 - **Frontend:** proporciona la Aplicación Web para escritorio (PC) mediante la cual el usuario interactúa con Finance AI y visualiza los resultados.
-- **Oracle Cloud Infrastructure (OCI):** proporciona la infraestructura cloud utilizada para el almacenamiento de los modelos de Machine Learning mediante Object Storage y la infraestructura destinada al despliegue de la API mediante Compute y servicios de red.
+- **Oracle Cloud Infrastructure (OCI):** proporciona la infraestructura cloud utilizada para almacenar los modelos de Machine Learning mediante Object Storage y alojar la API REST mediante Compute, utilizando servicios de Networking para la configuración de red.
 
 ### Flujo general
 
 **Usuario → Frontend → Backend → Ciencia de Datos → Backend → Frontend → Usuario**
 
-Los modelos de Machine Learning y archivos asociados son almacenados en **Oracle Cloud Infrastructure (OCI)** y utilizados por los servicios de la solución para procesar la información financiera y presentar los resultados al usuario.
+Los modelos de Machine Learning desarrollados por Ciencia de Datos son almacenados en **OCI Object Storage** y puestos a disposición de Backend para su utilización dentro de la solución. La API REST se encuentra desplegada sobre una instancia de **OCI Compute**.
 
 ---
 
@@ -128,13 +128,13 @@ Para consultar la documentación técnica del área:
 
 ### ☁️ Oracle Cloud Infrastructure (OCI)
 
-**Oracle Cloud Infrastructure (OCI)** proporciona los servicios cloud utilizados por Finance AI para el almacenamiento de los modelos de Machine Learning y la infraestructura necesaria para el despliegue de componentes de la solución.
+**Oracle Cloud Infrastructure (OCI)** proporciona la infraestructura cloud utilizada por Finance AI mediante **Object Storage** para el almacenamiento de los modelos de Machine Learning, **Compute** para el despliegue de la API REST y **Networking** para la configuración de red.
+
+Los modelos desarrollados por Ciencia de Datos se encuentran almacenados en Object Storage y disponibles para su utilización por Backend. La API REST se encuentra desplegada sobre una instancia de OCI Compute.
 
 Para consultar la documentación técnica:
 
 - [`Documentación técnica – OCI`](docs/OCI.md)
-
-> 🔄 Documentación pendiente de actualización y validación final.
 
 ---
 
@@ -145,6 +145,7 @@ La documentación del proyecto se encuentra organizada en la carpeta `docs/`.
 - [`Documentación general del proyecto`](docs/Documentacion_Proyecto_Hackathon.md)
 - [`Herramientas y Tecnologías`](docs/Herramientas_y_Tecnologias.md)
 - [`Manual de Usuario`](docs/Manual_Usuario.md)
+- [`Pruebas y Validación del MVP`](docs/Pruebas_y_Validacion.md)
 - [`Documentación técnica – Ciencia de Datos`](docs/Ciencia_Datos.md)
 - [`Documentación técnica – Backend`](docs/Backend.md)
 - [`Documentación técnica – Frontend`](docs/Frontend.md)
@@ -171,7 +172,7 @@ Finance AI fue desarrollado por un equipo multidisciplinario integrado por perfi
 
 🔄 **Finance AI se encuentra en etapa de integración, pruebas y cierre documental del MVP.**
 
-Las áreas de Ciencia de Datos y Backend cuentan con avances de desarrollo y documentación validados. Actualmente continúan el desarrollo e integración de Frontend, las pruebas finales del flujo integrado y la consolidación de la documentación y estructura definitiva del repositorio.
+Las áreas de Ciencia de Datos y Backend cuentan con avances de desarrollo y documentación validados, y la infraestructura implementada en OCI se encuentra documentada. Actualmente continúan el desarrollo e integración de Frontend, las pruebas finales del flujo integrado y la consolidación de la documentación y estructura definitiva del repositorio.
 
 ---
 

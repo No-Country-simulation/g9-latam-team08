@@ -56,9 +56,30 @@ Para consultar el detalle técnico:
 
 ## Oracle Cloud Infrastructure (OCI)
 
-🔄 Pendiente completar esta sección de acuerdo con la actualización y validación final de la documentación de OCI.
+La infraestructura implementada en Oracle Cloud Infrastructure (OCI) se encuentra integrada con los componentes de Ciencia de Datos y Backend utilizados por el MVP.
 
-Se deberá registrar la validación de los servicios OCI utilizados por el MVP y su funcionamiento dentro de la solución definitiva.
+### Implementación y configuración verificadas
+
+- ✅ Implementado Object Storage para el almacenamiento de los modelos entrenados y serializados por Ciencia de Datos.
+- ✅ Organizados los modelos en dos carpetas correspondientes a clasificación de gastos y clasificación del perfil financiero.
+- ✅ Configurado el acceso de Backend a los modelos mediante un Pre-Authenticated Request (PAR) con permisos de lectura y listado.
+- ✅ Provisionada y configurada una instancia OCI Compute para el despliegue de la API REST.
+- ✅ Configurada la infraestructura de red mediante VCN y subnet pública.
+- ✅ Habilitado el puerto necesario para el acceso a la API mediante Security List.
+- ✅ API REST desplegada sobre OCI Compute.
+- ✅ Documentada la integración de Object Storage con Ciencia de Datos y Backend, y el despliegue de la API REST en OCI Compute.
+
+### Configuración adoptada
+
+- **Object Storage:** utilizado para el almacenamiento de los modelos.
+- **Compute:** utilizado para alojar la API REST.
+- **Networking:** utilizado para la configuración de red de la infraestructura.
+- **Functions:** no implementado.
+- **Base de datos:** no implementada en OCI; la persistencia utiliza MySQL alojado en Railway.
+
+Para consultar el detalle técnico:
+
+- [`Documentación técnica – OCI`](OCI.md)
 
 ---
 

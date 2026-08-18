@@ -52,7 +52,7 @@ Sistema de gestión de base de datos utilizado para almacenar y gestionar la inf
 
 #### Railway
 
-Plataforma utilizada como entorno de desarrollo para la implementación de la base de datos MySQL.
+Plataforma utilizada para alojar la base de datos MySQL utilizada por la solución.
 
 #### Oracle Cloud Infrastructure (OCI)
 
@@ -93,6 +93,7 @@ Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de 
 - **H2 Database:** base de datos en memoria utilizada para desarrollo y pruebas locales del Backend.
 - **MySQL:** sistema de gestión de base de datos utilizado para la persistencia de datos en el entorno de producción.
 - **Railway:** plataforma utilizada para alojar la base de datos MySQL utilizada por la solución en la nube.
+
 
 ### Seguridad
 
@@ -148,7 +149,8 @@ Las siguientes herramientas, servicios y tecnologías son utilizados para el alm
 
 #### Oracle Cloud Infrastructure (OCI)
 
-Plataforma de infraestructura cloud utilizada para alojar los artefactos de los modelos de Machine Learning y proporcionar la infraestructura necesaria para el despliegue de la API REST.
+Plataforma de infraestructura cloud utilizada para almacenar los modelos entrenados y sus artefactos mediante Object Storage, proporcionar la infraestructura necesaria para el despliegue de la API REST mediante Compute y configurar la conectividad de la solución mediante servicios de Networking.
+
 
 ### Servicios de OCI
 
@@ -167,6 +169,11 @@ Servicios de red utilizados para configurar la conectividad de la infraestructur
 - **VCN (Virtual Cloud Network):** red virtual creada para la infraestructura del proyecto.
 - **Subnet pública:** utilizada para proporcionar conectividad a la instancia Compute.
 - **Security Lists:** utilizadas para definir las reglas de tráfico de red, incluyendo la habilitación del puerto 8080 para la API.
+
+### Servicios no implementados en OCI
+
+- **Functions:** no fue utilizado en la implementación final del MVP.
+- **Base de datos:** no fue implementada en OCI; la persistencia utiliza MySQL alojado en Railway.
 
 ### Acceso a recursos
 

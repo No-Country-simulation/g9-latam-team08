@@ -26,7 +26,7 @@ Como consecuencia, pueden desconocer en qué categorías concentran sus gastos, 
 
 Desarrollar un **MVP (Producto Mínimo Viable)** que permita analizar la información financiera y transaccional de un usuario, clasificar automáticamente sus gastos, identificar su perfil financiero y generar recomendaciones personalizadas que contribuyan a mejorar la toma de decisiones sobre sus finanzas personales.
 
-Para alcanzar este objetivo, la solución integra componentes de **Ciencia de Datos**, una **API REST**, una **aplicación web para computadora (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**, permitiendo procesar, analizar y presentar los resultados obtenidos de forma clara para el usuario.
+Para alcanzar este objetivo, la solución integra componentes de **Ciencia de Datos**, una **API REST**, una **Aplicación Web para escritorio (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**, permitiendo procesar, analizar y presentar los resultados obtenidos de forma clara para el usuario.
 
 ---
 
@@ -101,7 +101,7 @@ Responsable de proporcionar los servicios necesarios para el procesamiento de la
 
 ### Oracle Cloud Infrastructure (OCI)
 
-Proporciona los servicios de infraestructura cloud utilizados por la solución, incluyendo **Object Storage** para el almacenamiento de los modelos de Machine Learning y archivos asociados, **Compute** para la infraestructura destinada al despliegue de la API y los servicios de **Networking** necesarios para la conectividad de la solución.
+Proporciona la infraestructura cloud del MVP mediante **Object Storage** para el almacenamiento de los modelos de Machine Learning y archivos asociados, **Compute** para el despliegue de la API REST y **Networking** para la configuración de red necesaria para el funcionamiento de la solución.
 
 ---
 
@@ -115,7 +115,7 @@ El flujo general de la solución contempla:
 2. El Frontend envía la información requerida a los servicios del Backend.
 3. El Backend gestiona las solicitudes y la integración con los servicios encargados del procesamiento financiero.
 4. Los modelos de Ciencia de Datos procesan la información para clasificar las transacciones y evaluar el perfil financiero del usuario.
-5. Los modelos de Machine Learning y archivos asociados se encuentran almacenados en Oracle Cloud Infrastructure (OCI).
+5. Los modelos de Machine Learning desarrollados por Ciencia de Datos se encuentran almacenados en OCI Object Storage y son puestos a disposición de Backend para su utilización dentro de la solución. La API REST se encuentra desplegada sobre una instancia de OCI Compute.
 6. Los resultados obtenidos son procesados por los servicios de la solución y presentados al usuario mediante la aplicación web.
 7. El usuario puede visualizar sus indicadores, distribución de gastos, perfil financiero, alertas y recomendaciones.
 
@@ -217,7 +217,18 @@ Los entregables son revisados y validados por el equipo antes de su publicación
 
 Finance AI se encuentra en la etapa final de desarrollo del MVP.
 
-Los principales componentes de la solución se encuentran desarrollados o en proceso de integración, mientras el equipo avanza en la consolidación de la documentación, la preparación de los entregables finales y la planificación de las pruebas integrales del MVP.
+Los principales componentes de la solución se encuentran desarrollados o en proceso de integración, mientras el equipo avanza en las pruebas del flujo integrado del MVP, la consolidación de la documentación y la preparación de los entregables finales.
+
+### Oracle Cloud Infrastructure (OCI)
+
+- ✅ Implementado Object Storage para el almacenamiento de los modelos de Machine Learning.
+- ✅ Configurado el acceso de Backend a los modelos almacenados mediante Pre-Authenticated Request (PAR).
+- ✅ Provisionada y configurada la instancia OCI Compute.
+- ✅ API REST desplegada en OCI Compute.
+- ✅ Configurada la infraestructura de red mediante VCN, subnet pública y Security List.
+- ✅ Documentada la integración de OCI con Backend y Ciencia de Datos.
+- ℹ️ OCI Functions no fue requerido para la implementación final.
+- ℹ️ La base de datos MySQL se encuentra alojada en Railway y no en OCI.
 
 ---
 
