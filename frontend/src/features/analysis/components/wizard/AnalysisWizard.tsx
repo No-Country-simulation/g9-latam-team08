@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LoaderCircle, RefreshCw } from "lucide-react";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,9 +13,11 @@ import {
 } from "../../schemas/analysis.schema";
 import { useAnalysisFlow } from "../../hooks/useAnalysisFlow";
 import { useAnalysisDraftPersistence } from "../../hooks/useAnalysisDraftPersistence";
+import { useRunAnalysis } from "../../hooks/useRunAnalysis";
 import { loadDraft } from "../../utils/draftStorage";
-import { createEmptyAnalysisDraft } from "../../types/analysis-draft";
+import { createEmptyAnalysisDraft, type AnalysisDraft } from "../../types/analysis-draft";
 import type { AnalysisWizardStep } from "../../types/analysis-flow";
+import { MockAnalysisGateway } from "../../gateways/MockAnalysisGateway";
 import AnalysisStepper from "./AnalysisStepper";
 import "./AnalysisWizard.css";
 
@@ -55,6 +57,7 @@ function AnalysisWizard() {
   const defaultValues = useMemo<AnalysisDraftFormValues>(() => {
     return loadDraft(userId) ?? emptyDraft;
   }, [emptyDraft, userId]);
+  const gateway = useMemo(() => new MockAnalysisGateway(), []);
 
   const methods = useForm<AnalysisDraftFormValues>({
     resolver: zodResolver(analysisDraftSchema),
@@ -80,6 +83,15 @@ function AnalysisWizard() {
     userId,
     emptyDraft,
     defaultValues,
+  });
+  const {
+    analysisResult,
+    analysisError,
+    isAnalyzing,
+    runAnalysis,
+    resetAnalysisState,
+  } = useRunAnalysis({
+    gateway,
   });
 
   const validateStepOne = async (): Promise<boolean> => {
@@ -125,6 +137,7 @@ function AnalysisWizard() {
     }
 
     resetDraftState();
+    resetAnalysisState();
     methods.reset(emptyDraft);
     resetFlow();
   };
@@ -185,7 +198,20 @@ function AnalysisWizard() {
     }
   };
 
+  const executeAnalysis = async (draft: AnalysisDraft): Promise<void> => {
+    startProcessing();
+    const result = await runAnalysis(draft);
+
+    if (result) {
+      showResult();
+    }
+  };
+
   const handleAnalyze = async () => {
+    if (isAnalyzing) {
+      return;
+    }
+
     const isStepOneValid = await validateStepOne();
 
     if (!isStepOneValid) {
@@ -215,11 +241,24 @@ function AnalysisWizard() {
       return;
     }
 
-    startProcessing();
+    await executeAnalysis(methods.getValues());
+  };
+
+  const handleRetryAnalysis = async () => {
+    if (isAnalyzing) {
+      return;
+    }
+
+    await executeAnalysis(methods.getValues());
   };
 
   const handleBack = () => {
     previousStep();
+  };
+
+  const handleResetResult = () => {
+    resetAnalysisState();
+    resetFlow();
   };
 
   const handleStepClick = (step: AnalysisWizardStep) => {
@@ -283,7 +322,7 @@ function AnalysisWizard() {
                     <ArrowRight size={16} aria-hidden="true" />
                   </Button>
                 ) : (
-                  <Button type="button" onClick={handleAnalyze}>
+                  <Button type="button" onClick={handleAnalyze} disabled={isAnalyzing}>
                     {primaryActionLabel}
                   </Button>
                 )}
@@ -297,20 +336,33 @@ function AnalysisWizard() {
             <div className="analysis-wizard__step-placeholder">
               <span className="analysis-wizard__step-kicker">Procesando</span>
               <h2>Analizando tus finanzas</h2>
-              <p>
-                TEMP-FE: esta pantalla representa únicamente un estado visual base.
-                Todavía no refleja progreso real de Backend ni de Data Science.
-              </p>
+              {analysisError ? (
+                <p>No pudimos completar el análisis.</p>
+              ) : (
+                <>
+                  <p>
+                    Estamos preparando tus indicadores y recomendaciones a partir de la
+                    información cargada.
+                  </p>
+                  <div className="analysis-wizard__processing-state" role="status" aria-live="polite">
+                    <LoaderCircle className="analysis-wizard__spinner" size={28} aria-hidden="true" />
+                    <span>Procesando información</span>
+                  </div>
+                </>
+              )}
             </div>
 
-            <div className="analysis-wizard__actions">
-              <Button type="button" variant="ghost" onClick={goToReview}>
-                Volver a revisión
-              </Button>
-              <Button type="button" onClick={showResult}>
-                Ver resultado placeholder
-              </Button>
-            </div>
+            {analysisError ? (
+              <div className="analysis-wizard__actions">
+                <Button type="button" onClick={handleRetryAnalysis} disabled={isAnalyzing}>
+                  <RefreshCw size={16} aria-hidden="true" />
+                  Reintentar
+                </Button>
+                <Button type="button" variant="ghost" onClick={goToReview}>
+                  Volver a revisión
+                </Button>
+              </div>
+            ) : null}
           </Card>
         ) : null}
 
@@ -318,18 +370,47 @@ function AnalysisWizard() {
           <Card className="analysis-wizard__panel">
             <div className="analysis-wizard__step-placeholder">
               <span className="analysis-wizard__step-kicker">Resultado</span>
-              <h2>Resultado disponible próximamente</h2>
-              <p>
-                TODO-BE-CONTRACT: la carga de resultados definitivos dependerá del contrato
-                final con Backend.
-              </p>
+              <h2>Resultado preparado para la próxima etapa</h2>
+              {analysisResult ? (
+                <div className="analysis-wizard__result-preview">
+                  <p>
+                    Perfil financiero: <strong>{analysisResult.summary.financialProfile}</strong>
+                  </p>
+                  <p>
+                    Gastos detectados:{" "}
+                    <strong>
+                      {analysisResult.expenses.totalExpenses.toLocaleString("es-AR", {
+                        style: "currency",
+                        currency: "ARS",
+                        maximumFractionDigits: 0,
+                      })}
+                    </strong>
+                  </p>
+                  <p>
+                    Margen mensual:{" "}
+                    <strong>
+                      {analysisResult.summary.monthlyMargin?.toLocaleString("es-AR", {
+                        style: "currency",
+                        currency: "ARS",
+                        maximumFractionDigits: 0,
+                      }) ?? "No disponible"}
+                    </strong>
+                  </p>
+                  <p>
+                    Recomendaciones disponibles:{" "}
+                    <strong>{analysisResult.recommendations.length}</strong>
+                  </p>
+                </div>
+              ) : (
+                <p>No hay resultado disponible.</p>
+              )}
             </div>
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
                 Volver a revisión
               </Button>
-              <Button type="button" onClick={resetFlow}>
+              <Button type="button" onClick={handleResetResult}>
                 Reiniciar flujo
               </Button>
             </div>
