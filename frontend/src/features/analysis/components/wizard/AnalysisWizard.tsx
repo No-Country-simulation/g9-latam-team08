@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../components/ui/Button";
 import Card from "../../../../components/ui/Card";
 import FinancialDataStep from "../financial-data/FinancialDataStep";
+import TransactionsStep from "../transactions/TransactionsStep";
 import {
   analysisDraftSchema,
   type AnalysisDraftFormValues,
@@ -17,11 +18,7 @@ import type { AnalysisWizardStep } from "../../types/analysis-flow";
 import AnalysisStepper from "./AnalysisStepper";
 import "./AnalysisWizard.css";
 
-const stepContent: Record<2 | 3, { title: string; body: string }> = {
-  2: {
-    title: "Transacciones",
-    body: "Transacciones",
-  },
+const stepContent: Record<3, { title: string; body: string }> = {
   3: {
     title: "Revisión",
     body: "Revisión",
@@ -105,7 +102,24 @@ function AnalysisWizard() {
   };
 
   const handleContinue = async () => {
-    if (flow.currentStep !== 1) {
+    if (flow.currentStep === 2) {
+      const areTransactionsStructurallyValid = await methods.trigger("transactions");
+      const transactions = methods.getValues("transactions");
+
+      if (transactions.length < 3) {
+        methods.setError("transactions", {
+          type: "manual",
+          message: "Agregá al menos 3 transacciones válidas para continuar.",
+        });
+        return;
+      }
+
+      methods.clearErrors("transactions");
+
+      if (!areTransactionsStructurallyValid) {
+        return;
+      }
+
       nextStep();
       return;
     }
@@ -136,10 +150,7 @@ function AnalysisWizard() {
     }
   };
 
-  const activePlaceholder =
-    flow.currentStep === 2 || flow.currentStep === 3
-      ? stepContent[flow.currentStep]
-      : null;
+  const activePlaceholder = flow.currentStep === 3 ? stepContent[flow.currentStep] : null;
 
   return (
     <FormProvider {...methods}>
@@ -159,8 +170,9 @@ function AnalysisWizard() {
             <AnalysisStepper currentStep={flow.currentStep} onStepClick={handleStepClick} />
 
             {flow.currentStep === 1 ? <FinancialDataStep /> : null}
+            {flow.currentStep === 2 ? <TransactionsStep /> : null}
 
-            {flow.currentStep > 1 && activePlaceholder ? (
+            {flow.currentStep > 2 && activePlaceholder ? (
               <Card className="analysis-wizard__panel">
                 <div className="analysis-wizard__step-placeholder">
                   <span className="analysis-wizard__step-kicker">Paso {flow.currentStep}</span>
@@ -223,7 +235,7 @@ function AnalysisWizard() {
           <Card className="analysis-wizard__panel">
             <div className="analysis-wizard__step-placeholder">
               <span className="analysis-wizard__step-kicker">Resultado</span>
-              <h2>Resultado disponible proximamente</h2>
+              <h2>Resultado disponible próximamente</h2>
               <p>
                 TODO-BE-CONTRACT: la carga de resultados definitivos dependerá del contrato
                 final con Backend.
