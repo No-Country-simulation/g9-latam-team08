@@ -4,7 +4,7 @@
 
 La solución permite transformar datos financieros y transaccionales en información útil para apoyar la toma de decisiones, mediante la clasificación automática de gastos, el análisis del perfil financiero del usuario y la generación de recomendaciones personalizadas para mejorar su salud financiera.
 
-El MVP integra **Ciencia de Datos**, una **API REST**, una **aplicación web para computadora (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**.
+El MVP integra **Ciencia de Datos**, una **API REST**, una **Aplicación Web para escritorio (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**.
 
 ---
 
@@ -41,7 +41,7 @@ El MVP de **Finance AI** contempla las principales funcionalidades necesarias pa
 - Generación de recomendaciones personalizadas.
 - Exposición de los resultados mediante una API REST.
 - Integración con Oracle Cloud Infrastructure (OCI).
-- Aplicación web para computadora (PC) para la interacción con el usuario y visualización de los resultados.
+- Aplicación Web para escritorio (PC) para la interacción con el usuario y visualización de los resultados.
 
 ### Categorías de gastos
 
@@ -62,7 +62,7 @@ Las transacciones son clasificadas en seis categorías financieras principales:
 
 - **Ciencia de Datos:** procesa y analiza la información financiera, clasifica las transacciones y evalúa el perfil financiero del usuario.
 - **Backend:** proporciona la API REST y gestiona la comunicación entre los componentes de la solución.
-- **Frontend:** proporciona la aplicación web mediante la cual el usuario interactúa con Finance AI y visualiza los resultados.
+- **Frontend:** proporciona la Aplicación Web para escritorio (PC) mediante la cual el usuario interactúa con Finance AI y visualiza los resultados.
 - **Oracle Cloud Infrastructure (OCI):** proporciona la infraestructura cloud utilizada para el almacenamiento de los modelos de Machine Learning mediante Object Storage y la infraestructura destinada al despliegue de la API mediante Compute y servicios de red.
 
 ### Flujo general
@@ -78,7 +78,7 @@ Los modelos de Machine Learning y archivos asociados son almacenados en **Oracle
 **Finance AI** integra diferentes tecnologías de acuerdo con los componentes de la solución:
 
 - **Ciencia de Datos:** Python, pandas, NumPy, scikit-learn, TensorFlow/Keras y MySQL.
-- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, Maven y Swagger/OpenAPI.
+- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, JWT, H2, MySQL, Maven y Swagger/OpenAPI.
 - **Frontend:** React, TypeScript, Vite, pnpm y CSS.
 - **Cloud:** Oracle Cloud Infrastructure (OCI), Object Storage, Compute y Networking.
 - **Gestión y colaboración:** Trello, GitHub, GitHub Desktop, Discord y Figma.
@@ -99,4 +99,85 @@ Para consultar el detalle del desarrollo, modelos, evaluación e integración de
 
 - [`README – Ciencia de Datos`](Ciencia%20de%20Datos/README.md)
 - [`Documentación técnica – Ciencia de Datos`](docs/Ciencia_Datos.md)
+
+### ⚙️ Backend
+
+El componente de **Backend** se encarga de proporcionar los servicios necesarios para la comunicación entre la Aplicación Web para escritorio (PC), los servicios de Ciencia de Datos y la infraestructura utilizada por la solución.
+
+La implementación incluye servicios desarrollados en **Java/Spring Boot** y **Python/Flask**, responsables de gestionar la información financiera, exponer los endpoints de la solución e integrar los modelos desarrollados por Ciencia de Datos.
+
+Para consultar la documentación técnica del área:
+
+- [`Documentación técnica – Backend`](docs/Backend.md)
+
+> 🔄 Pendiente incorporar el enlace al README principal de Backend una vez definida su ubicación definitiva.
+
+---
+
+### 🖥️ Frontend
+
+El componente de **Frontend** proporciona la **Aplicación Web para escritorio (PC)** mediante la cual el usuario interactúa con Finance AI y visualiza su información y los resultados del análisis financiero.
+
+Para consultar la documentación técnica del área:
+
+- [`Documentación técnica – Frontend`](docs/Frontend.md)
+
+> 🔄 Documentación de Frontend pendiente de completar y validar de acuerdo con la implementación definitiva.
+
+---
+
+### ☁️ Oracle Cloud Infrastructure (OCI)
+
+**Oracle Cloud Infrastructure (OCI)** proporciona los servicios cloud utilizados por Finance AI para el almacenamiento de los modelos de Machine Learning y la infraestructura necesaria para el despliegue de componentes de la solución.
+
+Para consultar la documentación técnica:
+
+- [`Documentación técnica – OCI`](docs/OCI.md)
+
+> 🔄 Documentación pendiente de actualización y validación final.
+
+---
+
+## 📚 Documentación del Proyecto
+
+La documentación del proyecto se encuentra organizada en la carpeta `docs/`.
+
+- [`Documentación general del proyecto`](docs/Documentacion_Proyecto_Hackathon.md)
+- [`Herramientas y Tecnologías`](docs/Herramientas_y_Tecnologias.md)
+- [`Manual de Usuario`](docs/Manual_Usuario.md)
+- [`Documentación técnica – Ciencia de Datos`](docs/Ciencia_Datos.md)
+- [`Documentación técnica – Backend`](docs/Backend.md)
+- [`Documentación técnica – Frontend`](docs/Frontend.md)
+- [`Documentación técnica – OCI`](docs/OCI.md)
+- [`Minutas de reuniones`](docs/minutas/)
+
+---
+
+## 🔗 Enlaces del Proyecto
+
+Los enlaces oficiales del proyecto, herramientas utilizadas, aplicación, diseño y entregables se encuentran centralizados en:
+
+- [`Enlaces del Proyecto`](docs/Enlaces_Proyecto.md)
+
+---
+
+## 👥 Equipo
+
+Finance AI fue desarrollado por un equipo multidisciplinario integrado por perfiles de **Project Management, Ciencia de Datos, Data Engineering, Backend, Frontend, Full Stack y Software Engineering**.
+
+---
+
+## 📌 Estado del Proyecto
+
+🔄 **Finance AI se encuentra en etapa de integración, pruebas y cierre documental del MVP.**
+
+Las áreas de Ciencia de Datos y Backend cuentan con avances de desarrollo y documentación validados. Actualmente continúan el desarrollo e integración de Frontend, las pruebas finales del flujo integrado y la consolidación de la documentación y estructura definitiva del repositorio.
+
+---
+
+## 🎥 Demo
+
+El Video Demo del MVP será incorporado una vez finalizadas las pruebas y validado el funcionamiento definitivo de Finance AI.
+
+> 🔄 Enlace pendiente de incorporar.
 

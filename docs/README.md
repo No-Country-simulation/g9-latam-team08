@@ -19,7 +19,8 @@ La documentación está organizada por áreas con el objetivo de facilitar su co
 | --- | --- |
 | Documentacion_Proyecto_Hackathon.md | Documento general del proyecto: descripción, problema, objetivo, usuario objetivo, solución propuesta, alcance del MVP y componentes de la solución. |
 | Herramientas_y_Tecnologias.md | Herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto. |
-| Enlaces_Proyecto.md | Enlaces oficiales relacionados con el repositorio, documentación, aplicación web, API REST, diseño, herramientas y entregables del proyecto. |
+| Enlaces_Proyecto.md | Enlaces oficiales relacionados con el repositorio, documentación, Aplicación Web para escritorio (PC), API REST, diseño, herramientas y entregables del proyecto. |
+| Pruebas_y_Validacion.md | Registro y seguimiento de las pruebas funcionales, técnicas y de integración realizadas para la validación del MVP. |
 
 ---
 
@@ -38,7 +39,7 @@ La documentación está organizada por áreas con el objetivo de facilitar su co
 
 | Documento | Descripción |
 |-----------|-------------|
-| Manual_Usuario.md | Guía de instalación (cuando aplique), configuración y uso de la aplicación para el usuario final. |
+| Manual_Usuario.md | Guía de acceso, navegación y uso de la Aplicación Web para escritorio (PC) dirigida al usuario final. |
 
 ---
 
@@ -97,11 +98,12 @@ Cada documento podrá incorporar secciones específicas de acuerdo con las neces
 - **Documentacion_Proyecto_Hackathon.md:** Descripción del proyecto, Problema, Objetivo, Usuario objetivo, Solución propuesta, Alcance del MVP, Componentes de la solución y demás aspectos generales del proyecto.
 - **Ciencia_Datos.md:** Dataset, Análisis Exploratorio de Datos (EDA), Ingeniería de Características, Modelos de Machine Learning, Entrenamiento, Evaluación y Serialización.
 - **Backend.md:** Arquitectura, APIs y servicios Backend, endpoints, persistencia, seguridad, validaciones, pruebas e integración con Ciencia de Datos, Frontend y OCI.
-- **Frontend.md:** Diseño de interfaces, Componentes, Navegación, Responsive Design e Integración con Backend.
+- **Frontend.md:** Diseño de interfaces, componentes, navegación, desarrollo de la Aplicación Web para escritorio (PC) e integración con Backend.
 - **OCI.md:** Arquitectura Cloud, Servicios OCI, Despliegue, Seguridad y Configuración.
-- **Manual_Usuario.md:** Requisitos, Instalación (si aplica), Guía de uso y Preguntas frecuentes.
+- **Manual_Usuario.md:** Acceso a la aplicación, navegación, funcionalidades principales, guía de uso y preguntas frecuentes.
 - **Herramientas_y_Tecnologias.md:** Herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto.
 - **Enlaces_Proyecto.md:** Enlaces oficiales del proyecto y de los entregables finales.
+- **Pruebas_y_Validacion.md:** Pruebas por componente, pruebas de integración, ejemplos de uso del MVP, incidencias, correcciones y validación final.
 
 ---
 
@@ -125,6 +127,7 @@ La documentación será revisada y actualizada de forma continua durante el desa
 | Manual_Usuario.md | **Equipo de Desarrollo**, con apoyo del Equipo de Ciencia de Datos cuando sea necesario |
 | minutas/README.md | **Yanucelly Moreira** (Project Manager) |
 | Minutas de reunión | **Yanucelly Moreira** (Project Manager) |
+| Pruebas_y_Validacion.md | **Responsables de cada área**, según los componentes evaluados; coordinación y consolidación documental a cargo del **Project Manager** |
 
 ---
 

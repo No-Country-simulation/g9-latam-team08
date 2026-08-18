@@ -90,11 +90,15 @@ Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de 
 
 ### Base de datos
 
-- **H2 Database:** base de datos en memoria utilizada en el entorno de desarrollo del Backend.
+- **H2 Database:** base de datos en memoria utilizada para desarrollo y pruebas locales del Backend.
+- **MySQL:** sistema de gestión de base de datos utilizado para la persistencia de datos en el entorno de producción.
+- **Railway:** plataforma utilizada para alojar la base de datos MySQL utilizada por la solución en la nube.
 
 ### Seguridad
 
 - **Spring Security:** framework utilizado para la configuración de seguridad y autenticación en la aplicación Backend.
+- **JWT (JSON Web Token):** utilizado para la autenticación mediante tokens y la gestión de acceso a los servicios protegidos de la aplicación.
+
 
 ### Gestión de dependencias y construcción
 

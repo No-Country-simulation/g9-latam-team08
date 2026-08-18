@@ -6,7 +6,7 @@
 
 El proyecto tiene como propósito transformar datos financieros y transaccionales en conocimiento útil para apoyar la toma de decisiones, permitiendo clasificar automáticamente los gastos, analizar el perfil financiero del usuario y generar recomendaciones personalizadas para mejorar su salud financiera.
 
-La solución integra **Ciencia de Datos**, una **API REST**, una **aplicación web para computadora (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**, conformando una arquitectura que permite procesar, analizar y presentar la información financiera al usuario.
+La solución integra **Ciencia de Datos**, una **API REST**, una **Aplicación Web para escritorio (PC)** y servicios de **Oracle Cloud Infrastructure (OCI)**, permitiendo transformar datos financieros y transaccionales en información útil para apoyar la toma de decisiones del usuario.
 
 El desarrollo es realizado por un equipo multidisciplinario conformado por profesionales de **Project Management**, **Data Science**, **Data Engineering**, **Backend Development**, **Frontend Development**, **Full Stack Development** y **Software Engineering**, trabajando de forma colaborativa durante el Hackathon en el diseño, desarrollo e integración de los distintos componentes del MVP.
 
@@ -48,7 +48,7 @@ El MVP integra diferentes componentes tecnológicos que trabajan de forma coordi
 
 - **Ciencia de Datos:** procesamiento y análisis de la información financiera y transaccional, clasificación de transacciones, evaluación del perfil financiero y generación de resultados.
 - **Backend:** API REST encargada de gestionar el procesamiento de la información y la integración entre los distintos componentes de la solución.
-- **Frontend:** aplicación web para computadora (PC) mediante la cual el usuario interactúa con Finance AI y visualiza los resultados del análisis financiero.
+- **Frontend:** Aplicación Web para escritorio (PC) mediante la cual el usuario interactúa con Finance AI y visualiza los resultados del análisis financiero.
 - **Oracle Cloud Infrastructure (OCI):** infraestructura cloud utilizada para el almacenamiento de los modelos de Machine Learning y archivos asociados mediante Object Storage y para proporcionar la infraestructura de despliegue de la API mediante Compute y servicios de red.
 
 La integración de estos componentes permite transformar los datos financieros y transaccionales en información comprensible para el usuario, facilitando la identificación de hábitos de consumo, la evaluación de su situación financiera y la generación de recomendaciones orientadas a mejorar su salud financiera.
@@ -68,7 +68,7 @@ El MVP de Finance AI contempla las funcionalidades principales necesarias para a
 - Generación de recomendaciones personalizadas.
 - Exposición de los resultados mediante una API REST.
 - Integración con Oracle Cloud Infrastructure (OCI).
-- Aplicación web para computadora (PC) para la interacción con el usuario y visualización de los resultados.
+- **Aplicación Web para escritorio (PC)** para la interacción con el usuario y visualización de los resultados.
 
 ### Categorías de gastos
 
@@ -97,7 +97,7 @@ Responsable de proporcionar los servicios necesarios para el procesamiento de la
 
 ### Frontend
 
-Responsable de proporcionar la aplicación web para computadora (PC) mediante la cual el usuario interactúa con Finance AI y consulta los resultados de su análisis financiero.
+- Responsable de proporcionar la **Aplicación Web para escritorio (PC)** mediante la cual el usuario interactúa con Finance AI y consulta los resultados de su análisis financiero.
 
 ### Oracle Cloud Infrastructure (OCI)
 
@@ -171,7 +171,7 @@ El proyecto utiliza diferentes herramientas y tecnologías de acuerdo con las ne
 Entre las principales se encuentran:
 
 - **Ciencia de Datos:** Python, pandas, NumPy, scikit-learn, TensorFlow/Keras, joblib, Google Colab y MySQL.
-- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, Maven y Swagger/OpenAPI.
+- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, JWT, H2, MySQL, Maven y Swagger/OpenAPI.
 - **Frontend:** React, TypeScript, Vite, pnpm y CSS.
 - **Cloud:** Oracle Cloud Infrastructure (OCI), Object Storage, Compute y Networking.
 - **Gestión y colaboración:** Trello, GitHub, GitHub Desktop, Discord y Figma.

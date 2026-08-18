@@ -20,7 +20,7 @@ Este documento reúne los enlaces oficiales relacionados con el proyecto, incluy
 
 ### Repositorio principal
 
-> 🔄 Enlace pendiente de incorporar.
+https://github.com/No-Country-simulation/g9-latam-team08
 
 ---
 
@@ -51,10 +51,9 @@ Tablero General utilizado para la planificación, seguimiento y coordinación de
 > 🔄 Pendiente de revisar el contenido del tablero y verificar su acceso público antes de incorporar el enlace definitivo.
 
 ---
+## Aplicación Web para escritorio (PC)
 
-## Aplicación Web
-
-Enlace de acceso a la aplicación web de Finance AI.
+Enlace de acceso a la Aplicación Web para escritorio (PC) de Finance AI.
 
 > 🔄 Pendiente de completar una vez realizado y validado el despliegue.
 
