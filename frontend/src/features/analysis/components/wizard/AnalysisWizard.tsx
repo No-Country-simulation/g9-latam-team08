@@ -6,6 +6,7 @@ import Button from "../../../../components/ui/Button";
 import Card from "../../../../components/ui/Card";
 import FinancialDataStep from "../financial-data/FinancialDataStep";
 import ReviewStep from "../review/ReviewStep";
+import AnalysisResultView from "../result/AnalysisResultView";
 import TransactionsStep from "../transactions/TransactionsStep";
 import {
   analysisDraftSchema,
@@ -256,8 +257,10 @@ function AnalysisWizard() {
     previousStep();
   };
 
-  const handleResetResult = () => {
+  const handleNewAnalysis = () => {
+    resetDraftState();
     resetAnalysisState();
+    methods.reset(emptyDraft);
     resetFlow();
   };
 
@@ -344,8 +347,16 @@ function AnalysisWizard() {
                     Estamos preparando tus indicadores y recomendaciones a partir de la
                     información cargada.
                   </p>
-                  <div className="analysis-wizard__processing-state" role="status" aria-live="polite">
-                    <LoaderCircle className="analysis-wizard__spinner" size={28} aria-hidden="true" />
+                  <div
+                    className="analysis-wizard__processing-state"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    <LoaderCircle
+                      className="analysis-wizard__spinner"
+                      size={28}
+                      aria-hidden="true"
+                    />
                     <span>Procesando información</span>
                   </div>
                 </>
@@ -366,52 +377,28 @@ function AnalysisWizard() {
           </Card>
         ) : null}
 
-        {flow.screen === "result" ? (
+        {flow.screen === "result" && analysisResult ? (
+          <AnalysisResultView
+            result={analysisResult}
+            onNewAnalysis={handleNewAnalysis}
+            onBackToReview={goToReview}
+          />
+        ) : null}
+
+        {flow.screen === "result" && !analysisResult ? (
           <Card className="analysis-wizard__panel">
             <div className="analysis-wizard__step-placeholder">
               <span className="analysis-wizard__step-kicker">Resultado</span>
-              <h2>Resultado preparado para la próxima etapa</h2>
-              {analysisResult ? (
-                <div className="analysis-wizard__result-preview">
-                  <p>
-                    Perfil financiero: <strong>{analysisResult.summary.financialProfile}</strong>
-                  </p>
-                  <p>
-                    Gastos detectados:{" "}
-                    <strong>
-                      {analysisResult.expenses.totalExpenses.toLocaleString("es-AR", {
-                        style: "currency",
-                        currency: "ARS",
-                        maximumFractionDigits: 0,
-                      })}
-                    </strong>
-                  </p>
-                  <p>
-                    Margen mensual:{" "}
-                    <strong>
-                      {analysisResult.summary.monthlyMargin?.toLocaleString("es-AR", {
-                        style: "currency",
-                        currency: "ARS",
-                        maximumFractionDigits: 0,
-                      }) ?? "No disponible"}
-                    </strong>
-                  </p>
-                  <p>
-                    Recomendaciones disponibles:{" "}
-                    <strong>{analysisResult.recommendations.length}</strong>
-                  </p>
-                </div>
-              ) : (
-                <p>No hay resultado disponible.</p>
-              )}
+              <h2>No hay un resultado disponible.</h2>
+              <p>Volvé a revisión para ejecutar nuevamente el análisis cuando quieras.</p>
             </div>
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
                 Volver a revisión
               </Button>
-              <Button type="button" onClick={handleResetResult}>
-                Reiniciar flujo
+              <Button type="button" onClick={handleNewAnalysis}>
+                Nuevo análisis
               </Button>
             </div>
           </Card>
