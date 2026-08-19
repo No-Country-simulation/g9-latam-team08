@@ -1,6 +1,6 @@
 .analysis-result {
   display: grid;
-  gap: var(--space-4);
+  gap: 0.9rem;
 }
 
 .analysis-result__hero,
@@ -13,7 +13,9 @@
 
 .analysis-result__hero {
   display: grid;
-  gap: var(--space-5);
+  gap: 1rem;
+  border: 1px solid rgba(0, 122, 138, 0.12);
+  background: linear-gradient(180deg, rgba(0, 122, 138, 0.04) 0%, var(--color-surface) 48%);
 }
 
 .analysis-result__hero-main {
@@ -38,7 +40,7 @@
 }
 
 .analysis-result__hero-copy h2 {
-  font-size: clamp(1.55rem, 2.4vw, 2rem);
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
   line-height: 1.12;
 }
 
@@ -100,7 +102,7 @@
 .analysis-result__panel,
 .analysis-result__tab-content {
   display: grid;
-  gap: var(--space-4);
+  gap: 0.9rem;
 }
 
 .analysis-result__summary-grid {
@@ -146,13 +148,57 @@
 .analysis-result__metrics-grid,
 .analysis-result__recommendations-summary {
   display: grid;
-  gap: var(--space-4);
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .analysis-result__metric-card {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.45rem;
+  border: 1px solid rgba(0, 122, 138, 0.12);
+  background: linear-gradient(180deg, rgba(0, 122, 138, 0.03) 0%, var(--color-surface) 100%);
+}
+
+.analysis-result__metric-card--debt {
+  border-color: rgba(249, 178, 51, 0.2);
+  background: linear-gradient(180deg, rgba(249, 178, 51, 0.08) 0%, var(--color-surface) 100%);
+}
+
+.analysis-result__metric-card--margin {
+  border-color: rgba(42, 157, 143, 0.2);
+  background: linear-gradient(180deg, rgba(42, 157, 143, 0.08) 0%, var(--color-surface) 100%);
+}
+
+.analysis-result__metric-card--coverage {
+  border-color: rgba(78, 116, 189, 0.2);
+  background: linear-gradient(180deg, rgba(78, 116, 189, 0.08) 0%, var(--color-surface) 100%);
+}
+
+.analysis-result__metric-icon,
+.analysis-result__insight-icon {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(0, 122, 138, 0.1);
+  color: var(--color-primary);
+}
+
+.analysis-result__metric-icon--debt {
+  background: rgba(249, 178, 51, 0.16);
+  color: #8b5e00;
+}
+
+.analysis-result__metric-icon--margin {
+  background: rgba(42, 157, 143, 0.16);
+  color: #1f6d64;
+}
+
+.analysis-result__metric-icon--coverage {
+  background: rgba(78, 116, 189, 0.14);
+  color: #35538d;
 }
 
 .analysis-result__metric-label {
@@ -165,9 +211,22 @@
   line-height: 1.2;
 }
 
+.analysis-result__metric-value--debt {
+  color: #8b5e00;
+}
+
+.analysis-result__metric-value--margin {
+  color: #1f6d64;
+}
+
+.analysis-result__metric-value--coverage {
+  color: #35538d;
+}
+
 .analysis-result__section-card {
   display: grid;
-  gap: var(--space-4);
+  gap: 0.85rem;
+  border: 1px solid rgba(11, 21, 51, 0.08);
 }
 
 .analysis-result__section-heading {
@@ -190,7 +249,7 @@
 .analysis-result__recommendation-cards,
 .analysis-result__accordion {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .analysis-result__category-item,
@@ -199,13 +258,13 @@
 .analysis-result__accordion-item {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface-muted);
+  background: linear-gradient(180deg, rgba(125, 90, 255, 0.04) 0%, var(--color-surface-muted) 100%);
 }
 
 .analysis-result__category-item,
 .analysis-result__insight-card,
 .analysis-result__recommendation-card {
-  padding: 1rem;
+  padding: 0.9rem 1rem;
 }
 
 .analysis-result__category-header,
@@ -271,7 +330,7 @@
 }
 
 .analysis-result__table-scroll {
-  max-height: 28rem;
+  max-height: 24rem;
   overflow: auto;
 }
 
@@ -285,7 +344,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  padding: 0.95rem 1rem;
+  padding: 0.8rem 0.9rem;
   background: var(--color-surface);
   color: var(--color-text-muted);
   font-size: 0.83rem;
@@ -294,15 +353,19 @@
 }
 
 .analysis-result__table tbody td {
-  padding: 0.95rem 1rem;
+  padding: 0.8rem 0.9rem;
   border-top: 1px solid var(--color-border);
   vertical-align: top;
+}
+
+.analysis-result__table tbody tr:hover {
+  background: rgba(0, 122, 138, 0.03);
 }
 
 .analysis-result__accordion-trigger {
   display: flex;
   width: 100%;
-  padding: 1rem;
+  padding: 0.95rem 1rem;
   border: none;
   background: transparent;
   gap: 1rem;
@@ -333,7 +396,7 @@
 
 .analysis-result__accordion-panel {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
   padding: 0 1rem 1rem;
 }
 
@@ -400,4 +463,3 @@
     grid-template-columns: 1fr;
   }
 }
-

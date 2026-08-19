@@ -1,4 +1,4 @@
-import { Pencil } from "lucide-react";
+import { CalendarRange, Pencil, Wallet } from "lucide-react";
 import type { AnalysisTransactionDraftItem } from "../../types/analysis-draft";
 import {
   formatTransactionAmount,
@@ -49,6 +49,7 @@ function TransactionsReview({
         <div className="review-card__metric">
           <p className="analysis-summary-card__label">PERÍODO</p>
           <p className="analysis-summary-card__description">
+            <CalendarRange size={15} aria-hidden="true" />
             {period.start && period.end
               ? period.start === period.end
                 ? formatTransactionDate(period.start)
@@ -59,6 +60,7 @@ function TransactionsReview({
         <div className="review-card__metric">
           <p className="analysis-summary-card__label">TOTAL CARGADO</p>
           <p className="analysis-summary-card__description">
+            <Wallet size={15} aria-hidden="true" />
             {formatTransactionAmount(totalAmount)}
           </p>
         </div>

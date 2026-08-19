@@ -3,12 +3,12 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 3rem;
-  padding: 0.875rem 1.375rem;
+  min-height: 2.85rem;
+  padding: 0.8rem 1.2rem;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease,
@@ -21,9 +21,10 @@
 }
 
 .button:disabled {
-  opacity: 0.55;
+  opacity: 0.72;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .button:focus-visible {
@@ -32,9 +33,10 @@
 }
 
 .button--primary {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
   color: var(--color-text-inverse);
   box-shadow: var(--shadow-sm);
+  border-color: rgba(0, 122, 138, 0.28);
 }
 
 .button--primary:hover {
@@ -43,18 +45,27 @@
 
 .button--secondary {
   background: var(--color-surface);
-  border-color: var(--color-border-strong);
-  color: var(--color-primary);
+  border-color: rgba(0, 122, 138, 0.22);
+  color: var(--color-primary-strong);
+  box-shadow: 0 8px 20px rgba(7, 18, 47, 0.04);
 }
 
 .button--secondary:hover,
-.button--ghost:hover {
-  background: var(--color-surface-muted);
+.button--ghost:hover,
+.button--danger:hover {
+  background: rgba(244, 247, 246, 0.92);
 }
 
 .button--ghost {
-  background: transparent;
-  color: var(--color-primary);
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.button--danger {
+  background: var(--color-surface);
+  border-color: rgba(217, 45, 32, 0.2);
+  color: var(--color-error);
 }
 
 .button--full-width {

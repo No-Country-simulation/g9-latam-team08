@@ -1,3 +1,4 @@
+import { CircleDollarSign } from "lucide-react";
 import type { AnalysisTransactionDraftItem } from "../../types/analysis-draft";
 import TransactionRow from "./TransactionRow";
 
@@ -20,6 +21,9 @@ function TransactionsTable({
     <div className="transactions-table">
       {transactions.length === 0 ? (
         <div className="analysis-empty-state transactions-empty-state">
+          <span className="transactions-empty-state__icon" aria-hidden="true">
+            <CircleDollarSign size={20} />
+          </span>
           <p>Todavía no cargaste transacciones.</p>
           <button
             type="button"

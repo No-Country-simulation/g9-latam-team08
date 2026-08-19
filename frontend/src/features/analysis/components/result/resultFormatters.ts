@@ -4,12 +4,6 @@ import type {
   FinancialProfileStatus,
 } from "../../types/analysis-result";
 
-const currencyFormatter = new Intl.NumberFormat("es-AR", {
-  style: "currency",
-  currency: "ARS",
-  maximumFractionDigits: 0,
-});
-
 const decimalFormatter = new Intl.NumberFormat("es-AR", {
   maximumFractionDigits: 1,
 });
@@ -20,7 +14,13 @@ const dateFormatter = new Intl.DateTimeFormat("es-AR", {
   year: "numeric",
 });
 
-export const formatCurrency = (value: number): string => currencyFormatter.format(value);
+export const formatCurrency = (value: number): string =>
+  new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(value);
 
 export const formatPercentage = (value: number): string =>
   `${decimalFormatter.format(value)} %`;
@@ -107,4 +107,3 @@ export const formatConfidence = (value: number | null | undefined): string | nul
 
   return `${Math.round(normalized)}%`;
 };
-

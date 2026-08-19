@@ -1,6 +1,6 @@
 .review-step {
   display: grid;
-  gap: var(--space-4);
+  gap: 0.9rem;
 }
 
 .review-step__intro {
@@ -26,7 +26,7 @@
 .review-step__main,
 .review-step__sidebar {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .review-card {
@@ -59,10 +59,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: var(--color-primary);
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(0, 122, 138, 0.16);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-primary-strong);
   font-weight: 700;
   cursor: pointer;
 }
@@ -112,7 +113,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 0.9rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
@@ -139,6 +140,7 @@
 
 .review-highlight__value {
   font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+  color: var(--color-positive);
 }
 
 .review-key-values {
@@ -150,11 +152,11 @@
 
 .review-key-values__item {
   display: grid;
-  gap: 0.25rem;
-  padding: 0.85rem 0.95rem;
+  gap: 0.35rem;
+  padding: 0.8rem 0.9rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface-muted);
+  background: linear-gradient(180deg, rgba(10, 77, 92, 0.03) 0%, var(--color-surface-muted) 100%);
 }
 
 .review-key-values__item dt,
@@ -165,6 +167,9 @@
 .review-key-values__item dt {
   color: var(--color-text-muted);
   font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .review-key-values__item dd {
@@ -181,10 +186,10 @@
 .review-card__metric {
   display: grid;
   gap: 0.35rem;
-  padding: 0.85rem 0.95rem;
+  padding: 0.8rem 0.9rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface-muted);
+  background: linear-gradient(180deg, rgba(78, 116, 189, 0.04) 0%, var(--color-surface-muted) 100%);
 }
 
 .review-transactions__scroll {
@@ -204,7 +209,7 @@
 
 .review-transactions__table th,
 .review-transactions__table td {
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 0.85rem;
   border-bottom: 1px solid var(--color-border);
   text-align: left;
   vertical-align: top;
@@ -226,12 +231,18 @@
 }
 
 .review-summary-card {
-  gap: 0.85rem;
+  gap: 0.75rem;
+  border: 1px solid rgba(0, 122, 138, 0.14);
+  background: linear-gradient(180deg, rgba(0, 122, 138, 0.05) 0%, var(--color-surface) 100%);
 }
 
 .review-summary-card__item {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.2rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(11, 21, 51, 0.08);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.74);
 }
 
 .review-step__next p {

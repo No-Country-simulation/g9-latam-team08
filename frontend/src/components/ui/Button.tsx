@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
 import "./Button.css";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 
 interface BaseButtonProps {
   children: ReactNode;
   variant?: ButtonVariant;
   fullWidth?: boolean;
+  className?: string;
 }
 
 interface LinkButtonProps extends BaseButtonProps {
@@ -30,12 +31,14 @@ interface NativeButtonProps extends BaseButtonProps {
 
 type ButtonProps = LinkButtonProps | AnchorButtonProps | NativeButtonProps;
 
-const getClassName = (variant: ButtonVariant, fullWidth?: boolean) =>
-  `button button--${variant}${fullWidth ? " button--full-width" : ""}`;
+const getClassName = (variant: ButtonVariant, fullWidth?: boolean, className?: string) =>
+  `button button--${variant}${fullWidth ? " button--full-width" : ""}${
+    className ? ` ${className}` : ""
+  }`;
 
 function Button(props: ButtonProps) {
   const variant = props.variant ?? "primary";
-  const className = getClassName(variant, props.fullWidth);
+  const className = getClassName(variant, props.fullWidth, props.className);
 
   if (typeof props.to === "string") {
     return (

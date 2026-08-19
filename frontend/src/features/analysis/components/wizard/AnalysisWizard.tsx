@@ -1,4 +1,4 @@
-import { ArrowRight, LoaderCircle, RefreshCw } from "lucide-react";
+import { ArrowLeft, ArrowRight, LoaderCircle, RefreshCw } from "lucide-react";
 import { useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -306,21 +306,23 @@ function AnalysisWizard() {
             <div className="analysis-wizard__actions">
               {flow.returnToReviewAfterEdit && flow.currentStep < 3 ? (
                 <Button type="button" variant="ghost" onClick={handleReturnToReview}>
+                  <ArrowLeft size={16} aria-hidden="true" />
                   Volver a revisión
                 </Button>
               ) : flow.currentStep === 1 ? (
-                <Button type="button" variant="ghost" onClick={handleCancelAnalysis}>
+                <Button type="button" variant="danger" onClick={handleCancelAnalysis}>
                   Cancelar análisis
                 </Button>
               ) : (
-                <Button type="button" variant="ghost" onClick={handleBack}>
+                <Button type="button" variant="secondary" onClick={handleBack}>
+                  <ArrowLeft size={16} aria-hidden="true" />
                   Volver
                 </Button>
               )}
 
               <div className="analysis-wizard__actions-group">
                 {flow.currentStep < 3 ? (
-                  <Button type="button" onClick={handleContinue}>
+                  <Button type="button" onClick={handleContinue} className="analysis-wizard__next-button">
                     {primaryActionLabel}
                     <ArrowRight size={16} aria-hidden="true" />
                   </Button>
@@ -369,7 +371,8 @@ function AnalysisWizard() {
                   <RefreshCw size={16} aria-hidden="true" />
                   Reintentar
                 </Button>
-                <Button type="button" variant="ghost" onClick={goToReview}>
+                <Button type="button" variant="secondary" onClick={goToReview}>
+                  <ArrowLeft size={16} aria-hidden="true" />
                   Volver a revisión
                 </Button>
               </div>
@@ -395,6 +398,7 @@ function AnalysisWizard() {
 
             <div className="analysis-wizard__actions">
               <Button type="button" variant="ghost" onClick={goToReview}>
+                <ArrowLeft size={16} aria-hidden="true" />
                 Volver a revisión
               </Button>
               <Button type="button" onClick={handleNewAnalysis}>

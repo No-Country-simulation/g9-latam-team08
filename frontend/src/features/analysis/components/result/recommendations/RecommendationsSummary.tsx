@@ -1,3 +1,4 @@
+import { AlertTriangle, ListChecks, Target } from "lucide-react";
 import Card from "../../../../../components/ui/Card";
 import type {
   AnalysisRecommendationPriority,
@@ -24,16 +25,25 @@ function RecommendationsSummary({ recommendations }: RecommendationsSummaryProps
   return (
     <div className="analysis-result__recommendations-summary">
       <Card className="analysis-result__metric-card">
+        <span className="analysis-result__metric-icon" aria-hidden="true">
+          <ListChecks size={16} />
+        </span>
         <span className="analysis-result__metric-label">Cantidad de recomendaciones</span>
         <strong className="analysis-result__metric-value">{recommendations.length}</strong>
       </Card>
       <Card className="analysis-result__metric-card">
+        <span className="analysis-result__metric-icon" aria-hidden="true">
+          <AlertTriangle size={16} />
+        </span>
         <span className="analysis-result__metric-label">Prioridad más alta detectada</span>
         <strong className="analysis-result__metric-value">
           {highestPriority ? getPriorityShortLabel(highestPriority) : "No disponible"}
         </strong>
       </Card>
       <Card className="analysis-result__metric-card">
+        <span className="analysis-result__metric-icon" aria-hidden="true">
+          <Target size={16} />
+        </span>
         <span className="analysis-result__metric-label">Distribución por prioridad</span>
         <strong className="analysis-result__metric-value">
           Alta {counts.HIGH} · Media {counts.MEDIUM} · Baja {counts.LOW}
@@ -44,4 +54,3 @@ function RecommendationsSummary({ recommendations }: RecommendationsSummaryProps
 }
 
 export default RecommendationsSummary;
-

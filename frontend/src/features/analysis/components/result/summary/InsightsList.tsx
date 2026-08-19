@@ -1,3 +1,4 @@
+import { Sparkles } from "lucide-react";
 import Card from "../../../../../components/ui/Card";
 import type { AnalysisResultInsight } from "../../../types/analysis-result";
 
@@ -29,6 +30,9 @@ function InsightsList({
         <div className="analysis-result__insights-list">
           {insights.map((insight) => (
             <article key={insight.id} className="analysis-result__insight-card">
+              <span className="analysis-result__insight-icon" aria-hidden="true">
+                <Sparkles size={16} />
+              </span>
               <h4>{insight.title}</h4>
               <p>{insight.description}</p>
             </article>
@@ -40,4 +44,3 @@ function InsightsList({
 }
 
 export default InsightsList;
-

@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Button from "../../../../../components/ui/Button";
 import Card from "../../../../../components/ui/Card";
 import type { FinancialAnalysisResult } from "../../../types/analysis-result";
@@ -38,8 +39,9 @@ function SummaryTab({ result, onViewRecommendations }: SummaryTabProps) {
             <p>Priorizá primero las acciones con mayor impacto potencial.</p>
           </div>
           {result.recommendations.length > 0 ? (
-            <Button type="button" variant="ghost" onClick={onViewRecommendations}>
+            <Button type="button" variant="secondary" onClick={onViewRecommendations}>
               Ver recomendaciones
+              <ArrowRight size={16} aria-hidden="true" />
             </Button>
           ) : null}
         </div>
@@ -74,4 +76,3 @@ function SummaryTab({ result, onViewRecommendations }: SummaryTabProps) {
 }
 
 export default SummaryTab;
-

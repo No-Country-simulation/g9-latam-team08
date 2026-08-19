@@ -30,7 +30,7 @@ export const purchaseModeLabels: Record<PurchaseMode, string> = {
 
 export const movementTypeLabels: Record<MovementType, string> = {
   EXPENSE: "Gasto",
-  INCOME: "Ingreso",
+  INCOME: "Ingreso de dinero",
   TRANSFER: "Transferencia",
   OTHER: "Otro",
 };

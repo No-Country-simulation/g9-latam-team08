@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { Info, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form";
 import Button from "../../../../components/ui/Button";
@@ -102,7 +102,7 @@ function TransactionsStep() {
                 <p>Podés sumar compras, pagos, ingresos o transferencias recientes.</p>
               </div>
 
-              <Button type="button" onClick={openCreateDialog}>
+              <Button type="button" variant="secondary" onClick={openCreateDialog}>
                 <Plus size={16} aria-hidden="true" />
                 Nueva transacción
               </Button>
@@ -117,9 +117,12 @@ function TransactionsStep() {
             />
 
             <section className="analysis-banner" aria-label="Información sobre clasificación">
-              <p>
-                Las categorías se asignarán automáticamente durante el análisis.
-                Podrás revisarlas cuando el análisis esté disponible.
+              <p className="analysis-banner__copy">
+                <Info size={16} aria-hidden="true" />
+                <span>
+                  Las categorías se asignarán automáticamente durante el análisis.
+                  Podrás revisarlas cuando el análisis esté disponible.
+                </span>
               </p>
             </section>
           </div>

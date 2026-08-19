@@ -1,4 +1,4 @@
-import { Pencil } from "lucide-react";
+import { Landmark, PiggyBank, Pencil, ShieldCheck } from "lucide-react";
 import type {
   AnalysisDraftFinancialData,
   AnalysisIncomeDraftItem,
@@ -103,15 +103,15 @@ function FinancialReview({
 
         <dl className="review-key-values">
           <div className="review-key-values__item">
-            <dt>Ahorro mensual estimado</dt>
+            <dt><PiggyBank size={15} aria-hidden="true" /> Ahorro mensual estimado</dt>
             <dd>{formatOptionalMoney(financialData.estimatedMonthlySavings)}</dd>
           </div>
           <div className="review-key-values__item">
-            <dt>Pagos mensuales de deuda</dt>
+            <dt><Landmark size={15} aria-hidden="true" /> Pagos mensuales de deuda</dt>
             <dd>{formatOptionalMoney(financialData.monthlyDebtPayments)}</dd>
           </div>
           <div className="review-key-values__item">
-            <dt>Fondo de emergencia disponible</dt>
+            <dt><ShieldCheck size={15} aria-hidden="true" /> Fondo de emergencia disponible</dt>
             <dd>{formatOptionalMoney(financialData.emergencyFundAmount)}</dd>
           </div>
           <div className="review-key-values__item">

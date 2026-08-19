@@ -1,6 +1,6 @@
-import { Controller, useFieldArray, useFormContext, useWatch } from "react-hook-form";
 import { useMemo, useState } from "react";
-import { Plus } from "lucide-react";
+import { Controller, useFieldArray, useFormContext, useWatch } from "react-hook-form";
+import { Info, Plus } from "lucide-react";
 import Button from "../../../../components/ui/Button";
 import type { AnalysisDraftFormValues } from "../../schemas/analysis.schema";
 import type { AnalysisIncomeDraftItem } from "../../types/analysis-draft";
@@ -130,8 +130,8 @@ function FinancialDataStep() {
         <div className="analysis-card__section">
           <div className="analysis-card__header analysis-card__header--stacked">
             <div>
-              <h3>2. Informacion complementaria</h3>
-              <p>Estos datos ayudan a contextualizar tu situacion financiera actual.</p>
+              <h3>2. Información complementaria</h3>
+              <p>Estos datos ayudan a contextualizar tu situación financiera actual.</p>
             </div>
           </div>
 
@@ -241,9 +241,12 @@ function FinancialDataStep() {
         </div>
 
         <section className="analysis-banner" aria-label="Informacion del analisis">
-          <p>
-            Esta información se combinará más adelante con tus transacciones para
-            calcular indicadores y generar recomendaciones personalizadas.
+          <p className="analysis-banner__copy">
+            <Info size={16} aria-hidden="true" />
+            <span>
+              Esta información se combinará más adelante con tus transacciones para
+              calcular indicadores y generar recomendaciones personalizadas.
+            </span>
           </p>
         </section>
       </section>

@@ -4,26 +4,60 @@ const formatCurrencyInput = (value: number): string =>
   new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "ARS",
-    maximumFractionDigits: 0,
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
   }).format(value);
 
-const toEditableValue = (value: number): string => value.toString().replace(".", ",");
+const toEditableValue = (value: number): string =>
+  new Intl.NumberFormat("es-AR", {
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
+    useGrouping: true,
+  }).format(value);
+
+const normalizeMoneyInput = (rawValue: string): string => {
+  const trimmedValue = rawValue.trim();
+
+  if (!trimmedValue) {
+    return "";
+  }
+
+  const sanitizedValue = trimmedValue.replace(/[^\d,.-]/g, "");
+  const isNegative = sanitizedValue.startsWith("-");
+  const unsignedValue = sanitizedValue.replace(/-/g, "");
+  const lastCommaIndex = unsignedValue.lastIndexOf(",");
+  const lastDotIndex = unsignedValue.lastIndexOf(".");
+  const decimalSeparatorIndex = Math.max(lastCommaIndex, lastDotIndex);
+
+  if (decimalSeparatorIndex === -1) {
+    return `${isNegative ? "-" : ""}${unsignedValue.replace(/[.,]/g, "")}`;
+  }
+
+  const integerPart = unsignedValue
+    .slice(0, decimalSeparatorIndex)
+    .replace(/[.,]/g, "");
+  const decimalPart = unsignedValue
+    .slice(decimalSeparatorIndex + 1)
+    .replace(/[.,]/g, "");
+
+  return `${isNegative ? "-" : ""}${integerPart}${
+    decimalPart ? `,${decimalPart.slice(0, 2)}` : ""
+  }`;
+};
 
 const parseMoneyValue = (rawValue: string): number | null => {
-  const trimmedValue = rawValue.trim();
+  const trimmedValue = normalizeMoneyInput(rawValue);
 
   if (!trimmedValue) {
     return null;
   }
 
-  const sanitizedValue = trimmedValue.replace(/[^\d,.-]/g, "");
-
-  if (!sanitizedValue || sanitizedValue === "-" || sanitizedValue === "," || sanitizedValue === ".") {
+  if (!trimmedValue || trimmedValue === "-" || trimmedValue === "," || trimmedValue === ".") {
     return null;
   }
 
-  const isNegative = sanitizedValue.startsWith("-");
-  const unsignedValue = sanitizedValue.replace(/-/g, "").replace(/\./g, "").replace(",", ".");
+  const isNegative = trimmedValue.startsWith("-");
+  const unsignedValue = trimmedValue.replace(/-/g, "").replace(/\./g, "").replace(",", ".");
   const numericValue = Number(`${isNegative ? "-" : ""}${unsignedValue}`);
 
   return Number.isFinite(numericValue) ? numericValue : null;
@@ -117,8 +151,9 @@ function MoneyInput({
         }}
         onChange={(event) => {
           const nextRawValue = event.target.value;
-          setDisplayValue(nextRawValue);
-          onChange(parseMoneyValue(nextRawValue));
+          const normalizedValue = normalizeMoneyInput(nextRawValue);
+          setDisplayValue(normalizedValue);
+          onChange(parseMoneyValue(normalizedValue));
         }}
         placeholder={placeholder}
         required={required}

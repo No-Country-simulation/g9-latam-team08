@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { X } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { z } from "zod";
@@ -329,10 +329,11 @@ function TransactionDialog({
             </p>
 
             <div className="analysis-dialog__actions">
-              <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
+              <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
                 Cancelar
               </Button>
               <Button type="submit">
+                {mode === "create" ? <Plus size={16} aria-hidden="true" /> : null}
                 {mode === "create" ? "Agregar transacción" : "Guardar cambios"}
               </Button>
             </div>
