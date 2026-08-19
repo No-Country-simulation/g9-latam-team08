@@ -2,11 +2,26 @@ import React, { useState } from 'react';
 import { FiPhoneCall, FiUsers, FiGlobe, FiMail, FiLinkedin, FiGithub, FiHeadphones } from 'react-icons/fi';
 import './Soporte.css';
 import { equipo } from '../types/soporte-type';
-
+import { ModalContacto } from '../components/soporte/ModalContacto';
 
 export default function Soporte() {
 
     const [filtro, setFiltro] = useState('Todos');
+    const [modalAbierto, setModalAbierto] = useState(false);
+
+   const equipoFiltrado = equipo.filter((miembro) => {
+
+        if (filtro === 'Todos') return true;
+
+        const rolNormalizado = miembro.rol.toLowerCase();
+        const filtroNormalizado = filtro.toLowerCase();
+
+        if (filtroNormalizado === 'frontend' || filtroNormalizado === 'backend') {
+            return rolNormalizado.includes(filtroNormalizado) || rolNormalizado.includes('full stack');
+        }
+
+        return rolNormalizado.includes(filtroNormalizado);
+    });
 
     return (
         <div className="soporte-container">
@@ -67,12 +82,16 @@ export default function Soporte() {
                         <option value="Todos">Todos</option>
                         <option value="Backend">Backend</option>
                         <option value="Frontend">Frontend</option>
+                        <option value="Full stack">Full stack</option>
+                        <option value="Software Engineer">Software Engineer</option>
                         <option value="Data">Data</option>
+                        <option value="Agent Engineer">Agent Engineer</option>
+                        <option value="Project Manager">Project Manager</option>
                     </select>
                 </div>
 
                 <div className="equipo-grid">
-                    {equipo.map((miembro) => (
+                    {equipoFiltrado.map((miembro) => (
                         <div key={miembro.id} className="equipo-card">
                             <div className="card-top">
                                 <div
@@ -108,7 +127,7 @@ export default function Soporte() {
                 </div>
             </section>
 
-        <div className="soporte-footer">
+            <div className="soporte-footer">
                 <div className="footer-icon-wrapper">
                     <FiHeadphones size={24} color="#059669" />
                 </div>
@@ -118,10 +137,15 @@ export default function Soporte() {
                     <p>Estamos para ayudarte. Podés escribirnos y te responderemos lo antes posible.</p>
                 </div>
 
-                <button className="btn-footer">
+                <button className="btn-footer" onClick={() => setModalAbierto(true)}>
                     <FiMail size={18} color="#FFFFFF" /> Contactar soporte
                 </button>
             </div>
+
+            <ModalContacto
+                isOpen={modalAbierto}
+                onClose={() => setModalAbierto(false)}
+            />
         </div>
     );
 }

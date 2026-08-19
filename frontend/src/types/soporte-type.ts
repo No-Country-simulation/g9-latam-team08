@@ -1,4 +1,4 @@
- export interface MiembroEquipo {
+  interface MiembroEquipo {
     id: string;
     nombre: string;
     iniciales: string;
