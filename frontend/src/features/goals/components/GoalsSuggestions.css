@@ -1,0 +1,130 @@
+.goals-suggestions-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-color: rgba(11, 21, 51, 0.08);
+  box-shadow: 0 10px 28px rgba(7, 18, 47, 0.05);
+}
+
+.goals-suggestions-card__accordion {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.goals-suggestions-card__item {
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(10, 77, 92, 0.03) 0%, var(--color-surface-muted) 100%);
+  overflow: hidden;
+}
+
+.goals-suggestions-card__trigger {
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.goals-suggestions-card__trigger-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.goals-suggestions-card__trigger-copy strong,
+.goals-suggestions-card__trigger-copy span {
+  margin-bottom: 0;
+}
+
+.goals-suggestions-card__trigger-copy strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.goals-suggestions-card__trigger-copy span {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  font-weight: 400;
+}
+
+.goals-suggestions-card__trigger:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -1px;
+}
+
+.goals-suggestions-card__chevron {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--color-text-muted);
+  transition: transform 180ms ease;
+}
+
+.goals-suggestions-card__chevron--open {
+  transform: rotate(180deg);
+}
+
+.goals-suggestions-card__panel {
+  display: grid;
+  gap: 1rem;
+  padding: 0 1rem 1rem;
+}
+
+.goals-suggestions-card__panel h4,
+.goals-suggestions-card__panel p,
+.goals-suggestions-card__panel ul {
+  margin-bottom: 0;
+}
+
+.goals-suggestions-card__panel h4 {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.goals-suggestions-card__panel p {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.goals-suggestions-card__panel ul {
+  padding-left: 1.2rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.goals-suggestions-card__impact {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.95rem;
+  background: linear-gradient(180deg, rgba(42, 157, 143, 0.09) 0%, rgba(105, 201, 185, 0.08) 100%);
+}
+
+.goals-suggestions-card__impact span,
+.goals-suggestions-card__impact strong {
+  margin-bottom: 0;
+}
+
+.goals-suggestions-card__impact span {
+  color: #1f6d64;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.goals-suggestions-card__impact strong {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goals-suggestions-card__chevron {
+    transition: none;
+  }
+}

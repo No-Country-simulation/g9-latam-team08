@@ -4,6 +4,7 @@ import LandingPage from "../../pages/LandingPage";
 import Login from "../../pages/Login";
 import Historial from "../../pages/Historial";
 import NewAnalysisPage from "../../pages/NewAnalysisPage";
+import GoalsPage from "../../pages/GoalsPage";
 import Register from "../../pages/Register";
 import NotFoundPage from "../../pages/NotFoundPage";
 import AuthLayout from "../../components/layout/AuthLayout";
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
               {
                 path: "analisis/nuevo",
                 element: <NewAnalysisPage />,
+              },
+              {
+                path: "metas",
+                element: <GoalsPage />,
               },
               {
                 path: "soporte",
