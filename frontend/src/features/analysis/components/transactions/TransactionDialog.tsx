@@ -133,7 +133,7 @@ function TransactionDialog({
                 className="analysis-dialog__close"
                 aria-label="Cerrar modal de transacción"
               >
-                <X size={18} aria-hidden="true" />
+                <X size={20} strokeWidth={2.6} aria-hidden="true" />
               </button>
             </Dialog.Close>
           </div>

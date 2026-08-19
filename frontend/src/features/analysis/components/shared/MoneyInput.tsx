@@ -28,6 +28,7 @@ const normalizeMoneyInput = (rawValue: string): string => {
   const lastCommaIndex = unsignedValue.lastIndexOf(",");
   const lastDotIndex = unsignedValue.lastIndexOf(".");
   const decimalSeparatorIndex = Math.max(lastCommaIndex, lastDotIndex);
+  const hasTrailingSeparator = /[.,]$/.test(unsignedValue);
 
   if (decimalSeparatorIndex === -1) {
     return `${isNegative ? "-" : ""}${unsignedValue.replace(/[.,]/g, "")}`;
@@ -40,8 +41,12 @@ const normalizeMoneyInput = (rawValue: string): string => {
     .slice(decimalSeparatorIndex + 1)
     .replace(/[.,]/g, "");
 
-  return `${isNegative ? "-" : ""}${integerPart}${
-    decimalPart ? `,${decimalPart.slice(0, 2)}` : ""
+  if (decimalPart.length === 0 && hasTrailingSeparator) {
+    return `${isNegative ? "-" : ""}${integerPart},`;
+  }
+
+  return `${isNegative ? "-" : ""}${integerPart}${decimalSeparatorIndex !== -1 ? "," : ""}${
+    decimalPart.slice(0, 2)
   }`;
 };
 
