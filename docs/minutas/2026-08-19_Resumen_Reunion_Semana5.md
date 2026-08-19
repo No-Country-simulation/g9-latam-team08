@@ -25,6 +25,22 @@ Realizar el seguimiento del estado actual del MVP, definir las prioridades para 
 
 ---
 
+# Participantes
+
+| Nombre | Rol |
+| --- | --- |
+| Lucía Evelyn Jantus | Data Scientist |
+| Magalí Aldana Suarez | Frontend Developer |
+| Fernando Thiele | Data Scientist |
+| Matías Bueno | Data Engineer |
+| Alan Joel Romero | Software Engineer |
+| Juan Manuel Roldán | Backend Developer |
+| Leandro Baque | Backend Developer |
+| Thiago Beber Feil | Full Stack Developer |
+| Yanucelly Moreira | Project Manager |
+
+---
+
 # Temas tratados
 
 ## 1. Definición del alcance final del MVP
@@ -110,7 +126,7 @@ Se conversó sobre la necesidad de comenzar a trabajar de manera concreta en la 
 
 Como punto de partida se utilizará el **storytelling de Mateo elaborado por Lucía**.
 
-**Lucía y Yanucelly** quedaron en preparar para mañana una **propuesta inicial del Pitch** basada en dicho storytelling.
+**Lucía** quedó en preparar para mañana una **propuesta inicial del Pitch** basada en dicho storytelling.
 
 La propuesta servirá como base para trabajar conjuntamente con el equipo y definir:
 
@@ -126,17 +142,7 @@ La preparación del Pitch deberá mantenerse alineada con las funcionalidades qu
 
 ---
 
-## 6. Próxima reunión de trabajo
-
-Se acordó realizar una nueva reunión **mañana a las 11:00 h (Argentina)**.
-
-El objetivo principal será **trabajar conjuntamente sobre la propuesta del Pitch**, revisar el material preparado y definir la estructura que utilizará el equipo para la presentación.
-
-También se realizará seguimiento del avance de las pruebas e integraciones del MVP.
-
----
-
-## 7. Consolidación de pendientes para finalizar el proyecto
+## 6. Consolidación de pendientes para finalizar el proyecto
 
 Yanucelly quedó encargada de elaborar un **listado consolidado de todos los pendientes necesarios para finalizar el Proyecto del Hackathon**, con el objetivo de facilitar el seguimiento durante los últimos días del proyecto.
 
@@ -144,12 +150,16 @@ El listado contemplará principalmente:
 
 - Backend.
 - Frontend.
-- Integración y pruebas de validación.
 - Preparación de la Presentación Final / Pitch.
 - Repositorio y consolidación a `main`.
 - Documentación de Gestión del Proyecto.
+- Entregables finales.
+- Mejoras Futuras.
+- Control final de entrega.
 
-### Entregables finales de No Country
+---
+
+## 7. Entregables finales de No Country
 
 1. 📄 **Documentación del proyecto** — `README.md`, `Documentacion_Proyecto_Hackathon.md` y documentación del directorio `docs/`.
 2. 🎥 **Video Demo** — preparación, grabación, revisión, publicación e incorporación del enlace definitivo.
@@ -171,7 +181,7 @@ Este listado permitirá diferenciar claramente lo que puede resolverse inmediata
 - Corregir los bugs o incidencias que aparezcan durante las pruebas.
 - Organizar la documentación de Backend y sus README de acuerdo con la estructura definitiva.
 - Alan creó el **README general de las APIs**, según lo acordado durante la reunión.
-- Lucía y Yanucelly prepararán una **propuesta de Pitch basada en el storytelling de Mateo**.
+- Lucía preparará una **propuesta de Pitch basada en el storytelling de Mateo**.
 - Trabajar conjuntamente sobre el Pitch en la reunión de mañana.
 - Yanucelly elaborará el **listado consolidado de pendientes para finalizar el proyecto**.
 - Completar y validar `docs/Frontend.md` de acuerdo con la versión final de la aplicación.
@@ -191,7 +201,7 @@ Este listado permitirá diferenciar claramente lo que puede resolverse inmediata
 - Completar los documentos y entregables finales pendientes.
 - Completar y revisar los enlaces definitivos del proyecto.
 - Preparar el Video Demo.
-- Preparar la propuesta inicial del Pitch.
+- Revisar conjuntamente el planteamiento inicial del Pitch compartido por Lucía y definir la versión definitiva.
 - Definir conjuntamente el Pitch y el Happy Path.
 - Continuar con la organización final del repositorio y los merges definitivos a `main`.
 - Mantener actualizado el listado consolidado de pendientes hasta el cierre del proyecto.
@@ -206,7 +216,7 @@ Este listado permitirá diferenciar claramente lo que puede resolverse inmediata
 **Fecha:** Jueves, 20 de agosto de 2026  
 **Hora:** 11:00 h (Argentina)
 
-**Objetivo principal:** trabajar conjuntamente en la **definición del Pitch para el Demo Day**, tomando como base la propuesta preparada por Lucía y Yanucelly; **revisar y validar con el equipo el listado consolidado de pendientes para finalizar el proyecto**; y realizar seguimiento del avance de las pruebas e integraciones pendientes del MVP.
+**Objetivo principal:** trabajar conjuntamente en la **definición del Pitch para el Demo Day**, tomando como base la propuesta preparada por Lucía; **revisar y validar con el equipo el listado consolidado de pendientes para finalizar el proyecto**; y realizar seguimiento del avance de las pruebas e integraciones pendientes del MVP.
 
 ---
 
