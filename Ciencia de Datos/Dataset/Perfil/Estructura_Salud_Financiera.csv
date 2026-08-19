@@ -1,0 +1,19 @@
+Tipo_Variable,ID_Variable,Clasificacion,Entrada_o_Calculado,Formula_o_Regla_Excel,Descripcion_y_Alcance
+Variable Base,ingreso_mensual_fijo,Flujo de Entrada,Input Manual,Valores >= 0,"Sumatoria de ingresos recurrentes netos (salario, rentas fijas)."
+Variable Base,ingreso_mensual_variable,Flujo de Entrada,Input Manual,Valores >= 0,"Sumatoria de ingresos no recurrentes (bonos, horas extra). Mide volatilidad."
+Variable Base,ingreso_mensual,Flujo de Entrada,Calculado,ingreso_mensual_fijo + ingreso_mensual_variable,Ingreso neto total del mes.
+Variable Base,gastos_esenciales_mensuales,Flujo de Salida,Input Manual,Valores >= 0,"Gastos vitales: vivienda, salud, supermercado basico."
+Variable Base,gastos_no_escenciales_mensuales,Flujo de Salida,Input Manual,Valores >= 0,"Gastos de estilo de vida: ocio, restaurantes, compras prescindibles."
+Variable Base,gastos_totales_del_mes,Flujo de Salida,Calculado,gastos_esenciales_mensuales + gastos_no_escenciales_mensuales + cuotas_mensuales_deuda,Suma total de consumo. 
+Variable Base,cuotas_mensuales_deuda,Flujo de Salida,Input Manual,Valores >= 0,"Compromisos financieros fijos a pagar en el mes (tarjetas, prestamos)."
+Variable Base,modalidad_pago_tarjeta,Comportamiento de Pago,Input Manual,"total, ""parcial"", ""sin_deuda""",Comportamiento de pago de la tarjeta de credito. Clave para identificar deuda toxica.
+Variable Base,ahorro_mensual,Flujo de Retencion,Calculado,ingreso_mensual - gastos_totales_del_mes - cuotas_mensuales_deuda,"Lo que sobra a fin de mes. Si es negativo, hubo desahorro o nueva deuda."
+Variable Base,ahorro_previo,Stock Acumulado,Input Manual,Valores >= 0,Capital liquido o inversiones que el usuario ya tenia antes de este mes.
+Variable Base,ahorro_total,Stock Acumulado,Calculado,ahorro_mensual + ahorro_previo,Liquidez real disponible que tiene el usuario hoy sumando historial y mes corriente.
+Indicador Avanzado,ratio_ahorro_neto,Ratio,Calculado,ahorro_mensual / ingreso_mensual,Porcentaje del ingreso que se ahorra. Un 20% es el estandar ideal.
+Indicador Avanzado,ratio_endeudamiento_dti,Ratio,Calculado,cuotas_mensuales_deuda / ingreso_mensual,"Alimenta el semaforo: 0-20% Saludable, 21-36% Observacion, >37% Riesgo."
+Indicador Avanzado,gastos_esenciales_ratio,Ratio,Calculado,gastos_esenciales_mensuales / ingreso_mensual,"Si supera el 50%, el usuario es muy vulnerable a la inflacion o recortes."
+Indicador Avanzado,gastos_estilo_vida_ratio,Ratio,Calculado,gastos_no_escenciales_mensuales / ingreso_mensual,Margen de ajuste. Donde el usuario puede recortar en crisis.
+Indicador Avanzado,meses_supervivencia,Metrica de Resiliencia,Calculado,SI((gastos_esenciales_mensuales+cuotas_mensuales_deuda)>0; ahorro_total / (gastos_esenciales_mensuales+cuotas_mensuales_deuda); 0),Meses que sobrevive cubriendo vitales y obligaciones de deuda si sus ingresos caen a cero hoy.
+Indicador Comportamental,frecuencia_transacciones_ocio,Frecuencia,Input Manual,Entero >= 0,"Sintoma de ""gastos hormiga"". Mide descontrol impulsivo."
+Variable Objetivo,perfil_financiero,Categorica (Multiclase),Calculado,"SI(O(L2<0; M2>0,4; H2=""parcial""); ""En Riesgo""; SI(Y(L2>0,15; M2<0,2); ""Saludable""; ""En Observacion""))",Etiqueta final del algoritmo que clasifica el nivel de riesgo financiero del usuario.
