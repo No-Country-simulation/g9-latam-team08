@@ -215,20 +215,74 @@ Los entregables son revisados y validados por el equipo antes de su publicación
 
 ## Estado Actual del Proyecto
 
-Finance AI se encuentra en la etapa final de desarrollo del MVP.
+Finance AI se encuentra en la etapa final de desarrollo e integración del MVP.
 
-Los principales componentes de la solución se encuentran desarrollados o en proceso de integración, mientras el equipo avanza en las pruebas del flujo integrado del MVP, la consolidación de la documentación y la preparación de los entregables finales.
+Ciencia de Datos y Oracle Cloud Infrastructure (OCI) han completado sus actividades específicas. Backend se encuentra desarrollado y desplegado en OCI, quedando pendiente completar la integración definitiva con Frontend y las pruebas finales del flujo integrado. Frontend continúa con las integraciones y ajustes necesarios para completar la versión final de la aplicación web.
+
+### Ciencia de Datos
+
+- ✅ Generados y preparados los datasets utilizados para el análisis financiero y la clasificación de transacciones.
+- ✅ Completado el análisis exploratorio de datos (EDA) y el preprocesamiento de los datos.
+- ✅ Completada la ingeniería de características para el análisis del perfil financiero.
+- ✅ Desarrollado y entrenado el modelo de clasificación del perfil financiero mediante Random Forest.
+- ✅ Desarrollado y entrenado el modelo de clasificación de transacciones mediante Transformer con Context-Fusion.
+- ✅ Evaluados los modelos de Machine Learning y documentadas sus métricas de desempeño.
+- ✅ Serializados y exportados los modelos y artefactos necesarios para su integración.
+- ✅ Implementada la integración con Backend mediante la base de datos compartida en Railway y los modelos almacenados en OCI Object Storage.
+- ✅ Definido y documentado el contrato de datos para el intercambio de información con Backend.
+- ✅ Desarrollado un dashboard interactivo para visualizar resultados predictivos y comportamiento transaccional.
+- ✅ Documentadas las herramientas, tecnologías e infraestructura utilizadas por el área.
+
+**Estado:** ✅ El componente de Ciencia de Datos se encuentra desarrollado y preparado para su utilización dentro del flujo integrado del MVP.
+
+### Backend
+
+- ✅ Desarrollada e implementada la API REST mediante Java y Spring Boot.
+- ✅ Implementados los servicios y endpoints para la gestión de usuarios, transacciones, categorías, alertas y procesamiento financiero.
+- ✅ Implementada la persistencia de datos mediante Spring Data JPA, utilizando MySQL/Railway como base de datos de producción y H2 para desarrollo y pruebas locales.
+- ✅ Implementadas validaciones de datos y manejo de errores.
+- ✅ Implementada la seguridad de la API mediante Spring Security y autenticación con JWT.
+- ✅ Implementada la integración con el servicio de Ciencia de Datos para el procesamiento financiero y la utilización de los modelos de Machine Learning.
+- ✅ Implementada la comunicación mediante API REST y formato JSON para la integración con la aplicación Frontend.
+- ✅ Realizadas pruebas unitarias y de integración locales, junto con pruebas de endpoints mediante Postman y Swagger/OpenAPI.
+- ✅ Backend desplegado y operativo en OCI Compute.
+- 🔄 Pendiente completar y validar la integración definitiva con Frontend de acuerdo con las funcionalidades finales de la aplicación web.
+- ⏳ Pendientes las pruebas finales del flujo integrado del MVP.
+
+**Estado:** 🔄 El componente Backend se encuentra desarrollado y desplegado, quedando pendiente completar la integración definitiva con Frontend y realizar las pruebas finales del flujo integrado del MVP.
+
+### Frontend
+
+- ✅ Implementadas las principales páginas y funcionalidades de la aplicación web del MVP.
+- ✅ Completado el flujo de **Nuevo Análisis** a nivel de Frontend, incluyendo datos financieros, transacciones, revisión, procesamiento y visualización de resultados mediante las vistas de Resumen, Gastos y Recomendaciones.
+- ✅ Implementadas las funcionalidades de **Metas** y **Notificaciones** a nivel de Frontend.
+- ✅ Implementadas las funcionalidades de autenticación e integración con Backend para **Login y Registro**.
+- 🔄 **Historial financiero** implementado con integración parcial con Backend.
+- ⏳ **Configuraciones** pendiente de implementación.
+- 🔄 Pendiente completar la integración real del flujo de **Nuevo Análisis con Backend** y los servicios correspondientes de Ciencia de Datos/OCI.
+- 🔄 Pendiente la integración y persistencia Backend de **Metas**.
+- 🔄 Pendiente la integración Backend de **Notificaciones y preferencias**.
+- ⏳ Pendientes las **pruebas finales de integración/end-to-end**.
+- 🔄 La documentación de Frontend se encuentra en proceso de consolidación para reflejar la implementación e integración definitiva del MVP.
+
+**Nota:** Las funcionalidades aún no integradas con Backend utilizan actualmente mocks/estado local para permitir su funcionamiento y validación a nivel de Frontend.
+
+**Estado:** 🔄 El componente Frontend se encuentra avanzado a nivel de implementación, quedando pendientes la integración definitiva con Backend, los ajustes finales y las pruebas de integración/end-to-end del MVP.
 
 ### Oracle Cloud Infrastructure (OCI)
 
-- ✅ Implementado Object Storage para el almacenamiento de los modelos de Machine Learning.
-- ✅ Configurado el acceso de Backend a los modelos almacenados mediante Pre-Authenticated Request (PAR).
-- ✅ Provisionada y configurada la instancia OCI Compute.
-- ✅ API REST desplegada en OCI Compute.
-- ✅ Configurada la infraestructura de red mediante VCN, subnet pública y Security List.
-- ✅ Documentada la integración de OCI con Backend y Ciencia de Datos.
-- ℹ️ OCI Functions no fue requerido para la implementación final.
-- ℹ️ La base de datos MySQL se encuentra alojada en Railway y no en OCI.
+- ✅ Implementado **Object Storage** para el almacenamiento de los modelos de Machine Learning desarrollados por Ciencia de Datos.
+- ✅ Organizados y almacenados los artefactos correspondientes a los modelos de clasificación de gastos y perfil financiero.
+- ✅ Configurado el acceso de Backend a los modelos mediante **Pre-Authenticated Request (PAR)** con permisos de lectura y listado.
+- ✅ Provisionada y configurada una instancia **OCI Compute** para el despliegue de la API REST.
+- ✅ Configurada la infraestructura de red mediante **VCN, subnet pública y Security List**, habilitando el puerto 8080 para el acceso a la API.
+- ✅ Configurado el acceso seguro a la instancia Compute mediante autenticación por clave SSH.
+- ✅ Backend desplegó la **API REST en OCI Compute**, quedando operativa en la infraestructura provista.
+- ✅ Implementada y documentada la integración de OCI con **Backend y Ciencia de Datos**.
+- ℹ️ **OCI Functions** no fue requerido para la implementación final del MVP.
+- ℹ️ La base de datos **MySQL** del proyecto se encuentra alojada en **Railway** y no en OCI.
+
+**Estado:** ✅ El componente de Oracle Cloud Infrastructure (OCI) se encuentra implementado y operativo para los servicios definidos en la arquitectura final del MVP.
 
 ---
 
