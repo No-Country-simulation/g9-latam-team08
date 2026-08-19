@@ -102,7 +102,7 @@ function TransactionsStep() {
                 <p>Podés sumar compras, pagos, ingresos o transferencias recientes.</p>
               </div>
 
-              <Button type="button" variant="secondary" onClick={openCreateDialog}>
+              <Button type="button" onClick={openCreateDialog}>
                 <Plus size={16} aria-hidden="true" />
                 Nueva transacción
               </Button>

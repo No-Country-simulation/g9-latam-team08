@@ -116,228 +116,232 @@ function TransactionDialog({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="analysis-dialog__overlay" />
-        <Dialog.Content className="analysis-dialog__content transactions-dialog__content">
-          <div className="analysis-dialog__header">
-            <div>
+        <Dialog.Content className="analysis-dialog__content analysis-transaction-dialog">
+          <div className="analysis-dialog__layout">
+            <div className="analysis-dialog__header">
+              <div>
               <Dialog.Title className="analysis-dialog__title">
                 {mode === "create" ? "Nueva transacción" : "Editar transacción"}
               </Dialog.Title>
               <Dialog.Description className="analysis-dialog__description">
                 Completá la información principal de la transacción.
               </Dialog.Description>
+              </div>
+
+              <Dialog.Close asChild>
+                <button
+                  type="button"
+                  className="analysis-dialog__close"
+                  aria-label="Cerrar modal de transacción"
+                >
+                  <X size={20} strokeWidth={2.6} aria-hidden="true" />
+                </button>
+              </Dialog.Close>
             </div>
 
-            <Dialog.Close asChild>
-              <button
-                type="button"
-                className="analysis-dialog__close"
-                aria-label="Cerrar modal de transacción"
-              >
-                <X size={20} strokeWidth={2.6} aria-hidden="true" />
-              </button>
-            </Dialog.Close>
-          </div>
+            <form
+              noValidate
+              className="analysis-dialog__form"
+              onSubmit={handleSubmit((values) => {
+                if (values.amount === null) {
+                  return;
+                }
 
-          <form
-            noValidate
-            className="analysis-dialog__form"
-            onSubmit={handleSubmit((values) => {
-              if (values.amount === null) {
-                return;
-              }
+                onSubmit({
+                  description: values.description.trim(),
+                  amount: values.amount,
+                  date: values.date,
+                  paymentMethod: values.paymentMethod as PaymentMethod,
+                  purchaseMode: values.purchaseMode as PurchaseMode,
+                  movementType: values.movementType as MovementType,
+                });
+                onOpenChange(false);
+              })}
+            >
+              <div className="analysis-dialog__scroll-area">
+                <div className="analysis-form-field">
+                  <label className="analysis-form-field__label" htmlFor="transaction-description">
+                    Descripción
+                  </label>
+                  <input
+                    id="transaction-description"
+                    className={`analysis-form-field__input${
+                      errors.description ? " analysis-form-field__input--error" : ""
+                    }`}
+                    placeholder="Carrefour"
+                    aria-invalid={errors.description ? "true" : "false"}
+                    aria-describedby={errors.description ? "transaction-description-error" : undefined}
+                    {...register("description")}
+                  />
+                  {errors.description ? (
+                    <p
+                      id="transaction-description-error"
+                      className="analysis-form-field__error"
+                      role="alert"
+                    >
+                      {errors.description.message}
+                    </p>
+                  ) : null}
+                </div>
 
-              onSubmit({
-                description: values.description.trim(),
-                amount: values.amount,
-                date: values.date,
-                paymentMethod: values.paymentMethod as PaymentMethod,
-                purchaseMode: values.purchaseMode as PurchaseMode,
-                movementType: values.movementType as MovementType,
-              });
-              onOpenChange(false);
-            })}
-          >
-            <div className="analysis-form-field">
-              <label className="analysis-form-field__label" htmlFor="transaction-description">
-                Descripción
-              </label>
-              <input
-                id="transaction-description"
-                className={`analysis-form-field__input${
-                  errors.description ? " analysis-form-field__input--error" : ""
-                }`}
-                placeholder="Carrefour"
-                aria-invalid={errors.description ? "true" : "false"}
-                aria-describedby={errors.description ? "transaction-description-error" : undefined}
-                {...register("description")}
-              />
-              {errors.description ? (
-                <p
-                  id="transaction-description-error"
-                  className="analysis-form-field__error"
-                  role="alert"
-                >
-                  {errors.description.message}
+                <Controller
+                  control={control}
+                  name="amount"
+                  render={({ field }) => (
+                    <MoneyInput
+                      id="transaction-amount"
+                      label="Monto"
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      placeholder="$ 0"
+                      required
+                      error={errors.amount?.message}
+                    />
+                  )}
+                />
+
+                <div className="transactions-dialog__grid">
+                  <div className="analysis-form-field">
+                    <label className="analysis-form-field__label" htmlFor="transaction-date">
+                      Fecha
+                    </label>
+                    <input
+                      id="transaction-date"
+                      type="date"
+                      className={`analysis-form-field__input${
+                        errors.date ? " analysis-form-field__input--error" : ""
+                      }`}
+                      aria-invalid={errors.date ? "true" : "false"}
+                      aria-describedby={errors.date ? "transaction-date-error" : undefined}
+                      {...register("date")}
+                    />
+                    {errors.date ? (
+                      <p id="transaction-date-error" className="analysis-form-field__error" role="alert">
+                        {errors.date.message}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  <div className="analysis-form-field">
+                    <label className="analysis-form-field__label" htmlFor="transaction-payment-method">
+                      Medio de pago
+                    </label>
+                    <select
+                      id="transaction-payment-method"
+                      className={`analysis-form-field__input${
+                        errors.paymentMethod ? " analysis-form-field__input--error" : ""
+                      }`}
+                      aria-invalid={errors.paymentMethod ? "true" : "false"}
+                      aria-describedby={
+                        errors.paymentMethod ? "transaction-payment-method-error" : undefined
+                      }
+                      {...register("paymentMethod")}
+                    >
+                      <option value="">Seleccioná una opción</option>
+                      {paymentMethodOptions.map((paymentMethod) => (
+                        <option key={paymentMethod} value={paymentMethod}>
+                          {paymentMethodLabels[paymentMethod]}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.paymentMethod ? (
+                      <p
+                        id="transaction-payment-method-error"
+                        className="analysis-form-field__error"
+                        role="alert"
+                      >
+                        {errors.paymentMethod.message}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+
+                <div className="transactions-dialog__grid">
+                  <div className="analysis-form-field">
+                    <label className="analysis-form-field__label" htmlFor="transaction-purchase-mode">
+                      Modalidad
+                    </label>
+                    <select
+                      id="transaction-purchase-mode"
+                      className={`analysis-form-field__input${
+                        errors.purchaseMode ? " analysis-form-field__input--error" : ""
+                      }`}
+                      aria-invalid={errors.purchaseMode ? "true" : "false"}
+                      aria-describedby={
+                        errors.purchaseMode ? "transaction-purchase-mode-error" : undefined
+                      }
+                      {...register("purchaseMode")}
+                    >
+                      <option value="">Seleccioná una opción</option>
+                      {purchaseModeOptions.map((purchaseMode) => (
+                        <option key={purchaseMode} value={purchaseMode}>
+                          {purchaseModeLabels[purchaseMode]}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.purchaseMode ? (
+                      <p
+                        id="transaction-purchase-mode-error"
+                        className="analysis-form-field__error"
+                        role="alert"
+                      >
+                        {errors.purchaseMode.message}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  <div className="analysis-form-field">
+                    <label className="analysis-form-field__label" htmlFor="transaction-movement-type">
+                      Tipo de movimiento
+                    </label>
+                    <select
+                      id="transaction-movement-type"
+                      className={`analysis-form-field__input${
+                        errors.movementType ? " analysis-form-field__input--error" : ""
+                      }`}
+                      aria-invalid={errors.movementType ? "true" : "false"}
+                      aria-describedby={
+                        errors.movementType ? "transaction-movement-type-error" : undefined
+                      }
+                      {...register("movementType")}
+                    >
+                      <option value="">Seleccioná una opción</option>
+                      {movementTypeOptions.map((movementType) => (
+                        <option key={movementType} value={movementType}>
+                          {movementTypeLabels[movementType]}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.movementType ? (
+                      <p
+                        id="transaction-movement-type-error"
+                        className="analysis-form-field__error"
+                        role="alert"
+                      >
+                        {errors.movementType.message}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+
+                <p className="transactions-dialog__note">
+                  {/* TODO-DATA-CONTRACT: La categoría definitiva será provista por el análisis. */}
+                  La categoría se asignará automáticamente durante el análisis.
                 </p>
-              ) : null}
-            </div>
-
-            <Controller
-              control={control}
-              name="amount"
-              render={({ field }) => (
-                <MoneyInput
-                  id="transaction-amount"
-                  label="Monto"
-                  value={field.value}
-                  onChange={field.onChange}
-                  onBlur={field.onBlur}
-                  placeholder="$ 0"
-                  required
-                  error={errors.amount?.message}
-                />
-              )}
-            />
-
-            <div className="transactions-dialog__grid">
-              <div className="analysis-form-field">
-                <label className="analysis-form-field__label" htmlFor="transaction-date">
-                  Fecha
-                </label>
-                <input
-                  id="transaction-date"
-                  type="date"
-                  className={`analysis-form-field__input${
-                    errors.date ? " analysis-form-field__input--error" : ""
-                  }`}
-                  aria-invalid={errors.date ? "true" : "false"}
-                  aria-describedby={errors.date ? "transaction-date-error" : undefined}
-                  {...register("date")}
-                />
-                {errors.date ? (
-                  <p id="transaction-date-error" className="analysis-form-field__error" role="alert">
-                    {errors.date.message}
-                  </p>
-                ) : null}
               </div>
 
-              <div className="analysis-form-field">
-                <label className="analysis-form-field__label" htmlFor="transaction-payment-method">
-                  Medio de pago
-                </label>
-                <select
-                  id="transaction-payment-method"
-                  className={`analysis-form-field__input${
-                    errors.paymentMethod ? " analysis-form-field__input--error" : ""
-                  }`}
-                  aria-invalid={errors.paymentMethod ? "true" : "false"}
-                  aria-describedby={
-                    errors.paymentMethod ? "transaction-payment-method-error" : undefined
-                  }
-                  {...register("paymentMethod")}
-                >
-                  <option value="">Seleccioná una opción</option>
-                  {paymentMethodOptions.map((paymentMethod) => (
-                    <option key={paymentMethod} value={paymentMethod}>
-                      {paymentMethodLabels[paymentMethod]}
-                    </option>
-                  ))}
-                </select>
-                {errors.paymentMethod ? (
-                  <p
-                    id="transaction-payment-method-error"
-                    className="analysis-form-field__error"
-                    role="alert"
-                  >
-                    {errors.paymentMethod.message}
-                  </p>
-                ) : null}
+              <div className="analysis-dialog__actions analysis-dialog__footer">
+                <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
+                  Cancelar
+                </Button>
+                <Button type="submit">
+                  {mode === "create" ? <Plus size={16} aria-hidden="true" /> : null}
+                  {mode === "create" ? "Agregar transacción" : "Guardar cambios"}
+                </Button>
               </div>
-            </div>
-
-            <div className="transactions-dialog__grid">
-              <div className="analysis-form-field">
-                <label className="analysis-form-field__label" htmlFor="transaction-purchase-mode">
-                  Modalidad
-                </label>
-                <select
-                  id="transaction-purchase-mode"
-                  className={`analysis-form-field__input${
-                    errors.purchaseMode ? " analysis-form-field__input--error" : ""
-                  }`}
-                  aria-invalid={errors.purchaseMode ? "true" : "false"}
-                  aria-describedby={
-                    errors.purchaseMode ? "transaction-purchase-mode-error" : undefined
-                  }
-                  {...register("purchaseMode")}
-                >
-                  <option value="">Seleccioná una opción</option>
-                  {purchaseModeOptions.map((purchaseMode) => (
-                    <option key={purchaseMode} value={purchaseMode}>
-                      {purchaseModeLabels[purchaseMode]}
-                    </option>
-                  ))}
-                </select>
-                {errors.purchaseMode ? (
-                  <p
-                    id="transaction-purchase-mode-error"
-                    className="analysis-form-field__error"
-                    role="alert"
-                  >
-                    {errors.purchaseMode.message}
-                  </p>
-                ) : null}
-              </div>
-
-              <div className="analysis-form-field">
-                <label className="analysis-form-field__label" htmlFor="transaction-movement-type">
-                  Tipo de movimiento
-                </label>
-                <select
-                  id="transaction-movement-type"
-                  className={`analysis-form-field__input${
-                    errors.movementType ? " analysis-form-field__input--error" : ""
-                  }`}
-                  aria-invalid={errors.movementType ? "true" : "false"}
-                  aria-describedby={
-                    errors.movementType ? "transaction-movement-type-error" : undefined
-                  }
-                  {...register("movementType")}
-                >
-                  <option value="">Seleccioná una opción</option>
-                  {movementTypeOptions.map((movementType) => (
-                    <option key={movementType} value={movementType}>
-                      {movementTypeLabels[movementType]}
-                    </option>
-                  ))}
-                </select>
-                {errors.movementType ? (
-                  <p
-                    id="transaction-movement-type-error"
-                    className="analysis-form-field__error"
-                    role="alert"
-                  >
-                    {errors.movementType.message}
-                  </p>
-                ) : null}
-              </div>
-            </div>
-
-            <p className="transactions-dialog__note">
-              {/* TODO-DATA-CONTRACT: La categoría definitiva será provista por el análisis. */}
-              La categoría se asignará automáticamente durante el análisis.
-            </p>
-
-            <div className="analysis-dialog__actions">
-              <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
-                Cancelar
-              </Button>
-              <Button type="submit">
-                {mode === "create" ? <Plus size={16} aria-hidden="true" /> : null}
-                {mode === "create" ? "Agregar transacción" : "Guardar cambios"}
-              </Button>
-            </div>
-          </form>
+            </form>
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

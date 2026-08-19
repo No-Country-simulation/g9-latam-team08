@@ -64,12 +64,12 @@ function AnalysisResultView({
         <div className="analysis-result__footer-actions">
           <div className="analysis-result__footer-actions-group">
             {/* TODO-BE-CONTRACT: Guardar informe cuando exista persistencia definitiva. */}
-            <Button type="button" variant="secondary" disabled>
+            <Button type="button" variant="ghost" disabled>
               <Save size={16} aria-hidden="true" />
               Guardar informe
             </Button>
             {/* TODO-PDF: Conectar descarga cuando exista renderer del informe. */}
-            <Button type="button" variant="secondary" disabled>
+            <Button type="button" variant="ghost" disabled>
               <Download size={16} aria-hidden="true" />
               Descargar informe
             </Button>

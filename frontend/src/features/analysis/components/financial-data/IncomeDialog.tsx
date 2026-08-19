@@ -84,122 +84,126 @@ function IncomeDialog({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="analysis-dialog__overlay" />
-        <Dialog.Content className="analysis-dialog__content">
-          <div className="analysis-dialog__header">
-            <div>
+        <Dialog.Content className="analysis-dialog__content analysis-income-dialog">
+          <div className="analysis-dialog__layout">
+            <div className="analysis-dialog__header">
+              <div>
               <Dialog.Title className="analysis-dialog__title">
                 {mode === "create" ? "Agregar ingreso" : "Editar ingreso"}
               </Dialog.Title>
               <Dialog.Description className="analysis-dialog__description">
                 Completá la información de la fuente de ingreso.
               </Dialog.Description>
-            </div>
+              </div>
 
-            <Dialog.Close asChild>
-              <button
-                type="button"
-                className="analysis-dialog__close"
-                aria-label="Cerrar modal de ingreso"
-              >
-                <X size={20} strokeWidth={2.6} aria-hidden="true" />
-              </button>
-            </Dialog.Close>
-          </div>
-
-          <form
-            noValidate
-            className="analysis-dialog__form"
-            onSubmit={handleSubmit((values) => {
-              if (values.monthlyAmount === null) {
-                return;
-              }
-
-              onSubmit({
-                ...values,
-                monthlyAmount: values.monthlyAmount,
-              });
-              onOpenChange(false);
-            })}
-          >
-            <div className="analysis-form-field">
-              <label className="analysis-form-field__label" htmlFor="income-description">
-                Descripción
-              </label>
-              <input
-                id="income-description"
-                className={`analysis-form-field__input${
-                  errors.description ? " analysis-form-field__input--error" : ""
-                }`}
-                placeholder="Sueldo principal"
-                aria-invalid={errors.description ? "true" : "false"}
-                aria-describedby={errors.description ? "income-description-error" : undefined}
-                {...register("description")}
-              />
-              {errors.description ? (
-                <p
-                  id="income-description-error"
-                  className="analysis-form-field__error"
-                  role="alert"
+              <Dialog.Close asChild>
+                <button
+                  type="button"
+                  className="analysis-dialog__close"
+                  aria-label="Cerrar modal de ingreso"
                 >
-                  {errors.description.message}
-                </p>
-              ) : null}
+                  <X size={20} strokeWidth={2.6} aria-hidden="true" />
+                </button>
+              </Dialog.Close>
             </div>
 
-            <Controller
-              control={control}
-              name="monthlyAmount"
-              render={({ field }) => (
-                <MoneyInput
-                  id="income-monthly-amount"
-                  label="Monto mensual"
-                  helperText="Ingresá el monto aproximado que recibís por mes."
-                  value={field.value}
-                  onChange={field.onChange}
-                  onBlur={field.onBlur}
-                  placeholder="$ 0"
-                  required
-                  error={errors.monthlyAmount?.message}
+            <form
+              noValidate
+              className="analysis-dialog__form"
+              onSubmit={handleSubmit((values) => {
+                if (values.monthlyAmount === null) {
+                  return;
+                }
+
+                onSubmit({
+                  ...values,
+                  monthlyAmount: values.monthlyAmount,
+                });
+                onOpenChange(false);
+              })}
+            >
+              <div className="analysis-dialog__scroll-area">
+                <div className="analysis-form-field">
+                  <label className="analysis-form-field__label" htmlFor="income-description">
+                    Descripción
+                  </label>
+                  <input
+                    id="income-description"
+                    className={`analysis-form-field__input${
+                      errors.description ? " analysis-form-field__input--error" : ""
+                    }`}
+                    placeholder="Sueldo principal"
+                    aria-invalid={errors.description ? "true" : "false"}
+                    aria-describedby={errors.description ? "income-description-error" : undefined}
+                    {...register("description")}
+                  />
+                  {errors.description ? (
+                    <p
+                      id="income-description-error"
+                      className="analysis-form-field__error"
+                      role="alert"
+                    >
+                      {errors.description.message}
+                    </p>
+                  ) : null}
+                </div>
+
+                <Controller
+                  control={control}
+                  name="monthlyAmount"
+                  render={({ field }) => (
+                    <MoneyInput
+                      id="income-monthly-amount"
+                      label="Monto mensual"
+                      helperText="Ingresá el monto aproximado que recibís por mes."
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      placeholder="$ 0"
+                      required
+                      error={errors.monthlyAmount?.message}
+                    />
+                  )}
                 />
-              )}
-            />
 
-            <div className="analysis-form-field">
-              <label className="analysis-form-field__label" htmlFor="income-type">
-                Tipo de ingreso
-              </label>
-              <select
-                id="income-type"
-                className={`analysis-form-field__input${
-                  errors.incomeType ? " analysis-form-field__input--error" : ""
-                }`}
-                aria-invalid={errors.incomeType ? "true" : "false"}
-                aria-describedby={errors.incomeType ? "income-type-error" : undefined}
-                {...register("incomeType")}
-              >
-                {incomeTypeOptions.map((incomeType) => (
-                  <option key={incomeType} value={incomeType}>
-                    {incomeTypeLabels[incomeType]}
-                  </option>
-                ))}
-              </select>
-              {errors.incomeType ? (
-                <p id="income-type-error" className="analysis-form-field__error" role="alert">
-                  {errors.incomeType.message}
-                </p>
-              ) : null}
-            </div>
+                <div className="analysis-form-field">
+                  <label className="analysis-form-field__label" htmlFor="income-type">
+                    Tipo de ingreso
+                  </label>
+                  <select
+                    id="income-type"
+                    className={`analysis-form-field__input${
+                      errors.incomeType ? " analysis-form-field__input--error" : ""
+                    }`}
+                    aria-invalid={errors.incomeType ? "true" : "false"}
+                    aria-describedby={errors.incomeType ? "income-type-error" : undefined}
+                    {...register("incomeType")}
+                  >
+                    {incomeTypeOptions.map((incomeType) => (
+                      <option key={incomeType} value={incomeType}>
+                        {incomeTypeLabels[incomeType]}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.incomeType ? (
+                    <p id="income-type-error" className="analysis-form-field__error" role="alert">
+                      {errors.incomeType.message}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
 
-            <div className="analysis-dialog__actions">
-              <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
-                Cancelar
-              </Button>
-              <Button type="submit">
-                {mode === "create" ? <Plus size={16} aria-hidden="true" /> : null}
-                {mode === "create" ? "Agregar ingreso" : "Guardar cambios"}
-              </Button>
-            </div>
-          </form>
+              <div className="analysis-dialog__actions analysis-dialog__footer">
+                <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
+                  Cancelar
+                </Button>
+                <Button type="submit">
+                  {mode === "create" ? <Plus size={16} aria-hidden="true" /> : null}
+                  {mode === "create" ? "Agregar ingreso" : "Guardar cambios"}
+                </Button>
+              </div>
+            </form>
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

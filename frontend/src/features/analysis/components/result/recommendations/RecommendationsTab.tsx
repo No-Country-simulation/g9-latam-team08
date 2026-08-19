@@ -16,7 +16,7 @@ function RecommendationsTab({ result }: RecommendationsTabProps) {
         <div className="analysis-result__section-heading">
           <div>
             <h3>Plan de acción recomendado</h3>
-            <p>Revisá cada recomendación y sus acciones sugeridas.</p>
+            <p>Esta recomendación se basa en la información cargada para este análisis.</p>
           </div>
         </div>
 
@@ -27,4 +27,3 @@ function RecommendationsTab({ result }: RecommendationsTabProps) {
 }
 
 export default RecommendationsTab;
-
