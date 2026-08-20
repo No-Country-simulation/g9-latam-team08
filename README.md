@@ -4,4 +4,14 @@ Proyecto de No Country enfocado en desarrollar una herramienta de gestión de fi
 
 ## Frontend
 
-La base inicial del frontend vive en [frontend](./frontend) y contiene la landing pública del MVP de FinanceAI.
+El frontend consolidado vive en [frontend](./frontend) y reúne:
+
+- landing pública
+- autenticación
+- dashboard privado
+- nuevo análisis
+- historial
+- soporte
+- metas y notificaciones preservadas
+
+La documentación funcional y de arquitectura se encuentra en [frontend/README.md](./frontend/README.md) y [docs/Frontend.md](./docs/Frontend.md).

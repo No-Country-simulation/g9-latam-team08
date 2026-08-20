@@ -4,3 +4,4 @@ frontend/.vite
 frontend/.DS_Store
 frontend/.env
 frontend/.env.local
+.pnpm-store/

@@ -1,0 +1,54 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+.dashboard-layout__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.dashboard-layout__main {
+  display: grid;
+  flex: 1;
+  gap: var(--space-5);
+  padding: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout__main {
+    gap: var(--space-4);
+    padding: var(--space-4);
+    padding-bottom: calc(var(--space-8) + var(--space-4));
+  }
+}
+
+/*
+ * Modo oscuro: redefine únicamente los tokens de color dentro de .dashboard-layout.
+ * Como todos los componentes del Dashboard ya consumen exclusivamente var(--color-*),
+ * este único bloque re-tematiza Sidebar, Topbar, cards, gráficos y tabla sin tocar
+ * el CSS de cada componente individual. No afecta a Login/Register/Landing, que
+ * quedan fuera de este árbol y siguen usando los valores claros de tokens.css.
+ */
+.dashboard-layout[data-theme="dark"] {
+  --color-primary: #2dd4bf;
+  --color-primary-strong: #5eead4;
+  --color-primary-soft: rgba(45, 212, 191, 0.16);
+  --color-secondary: #22b8c4;
+  --color-background: #0b1220;
+  --color-surface: #111a2e;
+  --color-surface-muted: #16213a;
+  --color-text: #eef2ff;
+  --color-text-muted: #9aa5c4;
+  --color-text-inverse: #0b1220;
+  --color-border: rgba(238, 242, 255, 0.12);
+  --color-border-strong: rgba(238, 242, 255, 0.24);
+  --color-warning: #fbbf24;
+  --color-warning-soft: rgba(251, 191, 36, 0.18);
+  --color-positive: #34d399;
+  --color-error: #f87171;
+  --color-focus-ring: rgba(45, 212, 191, 0.4);
+}

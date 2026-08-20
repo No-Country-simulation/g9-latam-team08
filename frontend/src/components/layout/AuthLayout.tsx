@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import logoFinanceAI from "../../assets/logo-financeai.svg"; // <-- 1. Importamos tu logo
+import RouteContentFallback from "./RouteContentFallback";
 import "./AuthLayout.css";
 
 export default function AuthLayout() {
@@ -18,7 +20,9 @@ export default function AuthLayout() {
         </div>
 
         {/* El contenido de la tarjeta (login, registro, etc.) se renderiza aquí */}
-        <Outlet />
+        <Suspense fallback={<RouteContentFallback message="Preparando acceso..." compact />}>
+          <Outlet />
+        </Suspense>
       </section>
     </main>
   );

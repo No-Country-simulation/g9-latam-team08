@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Transaction } from "../types/transaction-type";
+import Button from "../components/ui/Button";
 
 import FiltrosHistorial from "../components/historial/FiltrosHistorial";
 import ResumenFinanciero from "../components/historial/ResumenFinanciero";
 import TablaTransacciones from "../components/historial/TablaTransacciones";
 import { ModalEditar } from "../components/historial/ModalEditar";
+import { exportarTransaccionesPDF } from "../utils/exportUtils";
 
 export default function Historial() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -133,6 +135,14 @@ export default function Historial() {
     setModalAbierto(true);
   };
 
+  const handleExport = async () => {
+    try {
+      await exportarTransaccionesPDF(transaccionesFiltradas);
+    } catch (error) {
+      console.error("Error al exportar el PDF:", error);
+    }
+  };
+
   // Función que envía el PUT a Java (se la pasamos al Modal)
 const handleGuardarEdicion = async (datosModificados: any) => {
     // 1. LOS DETECTORES DE MENTIRAS
@@ -191,6 +201,14 @@ const handleGuardarEdicion = async (datosModificados: any) => {
         <h1 style={{ fontSize: '2rem', margin: '0 0 0.5rem 0' }}>
           Historial Financiero
         </h1>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
+          <p style={{ margin: 0, color: "#4b5563" }}>
+            Revisá tus movimientos, editá registros y exportá el listado filtrado cuando lo necesites.
+          </p>
+          <Button variant="secondary" onClick={() => void handleExport()}>
+            Exportar PDF
+          </Button>
+        </div>
         {error && <p style={{ color: '#ef4444', fontSize: '0.875rem' }}>{error}</p>}
       </header>
 

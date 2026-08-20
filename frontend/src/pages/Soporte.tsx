@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import { FiPhoneCall, FiUsers, FiGlobe, FiMail, FiLinkedin, FiGithub, FiHeadphones } from 'react-icons/fi';
 import './Soporte.css';
 import { equipo } from '../types/soporte-type';
+import { ModalContacto } from '../components/soporte/ModalContacto';
 
 
 export default function Soporte() {
 
     const [filtro, setFiltro] = useState('Todos');
+    const [modalAbierto, setModalAbierto] = useState(false);
+    const equipoFiltrado = equipo.filter((miembro) => {
+        if (filtro === 'Todos') return true;
+        return miembro.rol.toLowerCase().includes(filtro.toLowerCase());
+    });
 
     return (
         <div className="soporte-container">
@@ -72,7 +78,7 @@ export default function Soporte() {
                 </div>
 
                 <div className="equipo-grid">
-                    {equipo.map((miembro) => (
+                    {equipoFiltrado.map((miembro) => (
                         <div key={miembro.id} className="equipo-card">
                             <div className="card-top">
                                 <div
@@ -118,10 +124,12 @@ export default function Soporte() {
                     <p>Estamos para ayudarte. Podés escribirnos y te responderemos lo antes posible.</p>
                 </div>
 
-                <button className="btn-footer">
+                <button className="btn-footer" onClick={() => setModalAbierto(true)}>
                     <FiMail size={18} color="#FFFFFF" /> Contactar soporte
                 </button>
             </div>
+
+            <ModalContacto isOpen={modalAbierto} onClose={() => setModalAbierto(false)} />
         </div>
     );
 }

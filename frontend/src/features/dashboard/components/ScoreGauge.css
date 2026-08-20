@@ -1,0 +1,36 @@
+.score-gauge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.score-gauge__track {
+  stroke: var(--color-border);
+}
+
+.score-gauge__progress {
+  transition: stroke-dashoffset 400ms ease;
+}
+
+.score-gauge__value {
+  position: absolute;
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  color: var(--color-text);
+}
+
+.score-gauge__value strong {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.score-gauge__value span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}

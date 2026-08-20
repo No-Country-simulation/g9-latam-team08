@@ -1,0 +1,100 @@
+.transactions-table {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.transactions-table__title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.transactions-table__scroll {
+  overflow-x: auto;
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table thead th {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.transactions-table tbody td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.transactions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.transactions-table__description {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.transactions-table__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.transactions-table__amount {
+  color: var(--color-error);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.transactions-table__confidence {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 6rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.transactions-table__footer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: center;
+  gap: 0.3rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.transactions-table__footer-link:hover {
+  text-decoration: underline;
+}
+
+.transactions-table__footer-link:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .transactions-table {
+    display: none;
+  }
+}
