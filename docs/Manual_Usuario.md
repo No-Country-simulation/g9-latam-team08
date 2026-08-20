@@ -32,7 +32,7 @@ FinanceAI es una aplicación web (WebApp) diseñada para ejecutarse en navegador
 
 * **Conexión a Internet:** Conexión estable para la comunicación con nuestros servidores de procesamiento.
 
-* **Dispositivos:** Actualmente optimizada para equipos de escritorio (PC/Laptop). Próximamente disponible para dispositivos móviles.
+* **Dispositivos:** Actualmente optimizada para equipos de escritorio (PC/Laptop).
 
 ### Acceso a la Aplicación
 
@@ -44,7 +44,7 @@ Registro: Accede a la URL oficial y crea tu cuenta utilizando un correo electró
 
 ## Inicio de la Aplicación
 
-Tras iniciar sesión, accederás al **Dashboard Principal**. Aquí visualizarás un resumen de tu salud financiera actual. En tu primer acceso, la aplicación te guiará mediante un asistente para configurar tus datos base e ingresos mensuales, lo cual es fundamental para que el motor de inteligencia artificial comience a generar tus perfiles de análisis.
+Tras iniciar sesión, accederás al **Dashboard Principal**. Aquí visualizarás un resumen de tu salud financiera actual.
 
 ---
 
@@ -52,7 +52,9 @@ Tras iniciar sesión, accederás al **Dashboard Principal**. Aquí visualizarás
 
 ### Registro de Información Financiera
 
-Para registrar tus gastos, puedes exportar tus estados de cuenta en formato PDF y cargarlos manualmente en la plataforma. La aplicación procesará esta información para incorporarla a tu historial detallado.
+Para registrar tus gastos, debes ingresar manualmente la información correspondiente en la plataforma. La aplicación procesará estos datos para incorporarlos a tu historial detallado.
+
+Los registros de transacciones pueden exportarse en formato PDF.
 
 ### Visualización del Análisis Financiero
 
@@ -83,13 +85,12 @@ La aplicación clasifica tu situación financiera en uno de los siguientes tres 
 ## Preguntas Frecuentes (FAQ)
 
 **¿Mis datos bancarios están seguros?**
+
 FinanceAI no utiliza APIs bancarias externas. Toda la información es gestionada a través de tus registros manuales, garantizando que no accedemos a tus cuentas bancarias directamente.
 
 **¿Puedo usar la app desde mi celular?**
-Actualmente está diseñada para escritorio, pero estamos trabajando en la versión móvil próximamente.
 
-**¿Qué hago si la categoría de un gasto no es correcta?**
-La categorización es automática mediante nuestra IA; si detectas un error, el sistema aprenderá de tus correcciones en futuras cargas.
+Actualmente, la versión del MVP está orientada principalmente a equipos de escritorio (PC/Laptop).
 
 ---
 
@@ -108,6 +109,6 @@ La categorización es automática mediante nuestra IA; si detectas un error, el 
 * **Historial:** La precisión del perfil financiero aumenta con la cantidad de meses cargados; el sistema requiere al menos un mes de datos para ofrecer un perfil inicial.
 
 ---
-
 ## Versiones
-** Versión 1.0.0 (Lanzamiento inicial):** Incluye exportacion del registro de transacciones mediante PDF, categorización automática mediante API Python, generación de perfiles de riesgo y panel de visualización en WebApp.
+
+**Versión 1.0.0 (Lanzamiento inicial):** Incluye exportación del registro de transacciones mediante PDF, categorización automática mediante API Python, generación de perfiles de riesgo y panel de visualización en WebApp.
