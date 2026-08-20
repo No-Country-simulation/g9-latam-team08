@@ -1,6 +1,6 @@
 package com.financeai.service.impl;
 
-import com.financeai.entity.Usuario;
+import com.financeai.entity.User;
 import com.financeai.repository.UserRepository;
 import com.financeai.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public Usuario createUser(String email, String password, String firstName, String lastName) {
-        Usuario user = new Usuario();
+    public User createUser(String email, String password, String firstName, String lastName) {
+        User user = new User();
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
         user.setFirstName(firstName);
@@ -37,20 +37,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<Usuario> getUserById(Long id) {
+    public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public Optional<Usuario> getUserByEmail(String email) {
+    public Optional<User> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public Usuario updateUser(Long id, Usuario user) {
-        Optional<Usuario> existingUser = userRepository.findById(id);
+    public User updateUser(Long id, User user) {
+        Optional<User> existingUser = userRepository.findById(id);
         if (existingUser.isPresent()) {
-            Usuario u = existingUser.get();
+            User u = existingUser.get();
             u.setFirstName(user.getFirstName());
             u.setLastName(user.getLastName());
             u.setUpdatedAt(LocalDateTime.now());
@@ -65,10 +65,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Usuario updateFinancialData(Long userId, Double income, Double expenses, Double emergencyFund, Double debt) {
-        Optional<Usuario> user = userRepository.findById(userId);
+    public User updateFinancialData(Long userId, Double income, Double expenses, Double emergencyFund, Double debt) {
+        Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()) {
-            Usuario u = user.get();
+            User u = user.get();
             if (income != null) u.setMonthlyIncome(income);
             if (expenses != null) u.setMonthlyExpenses(expenses);
             if (emergencyFund != null) u.setEmergencyFund(emergencyFund);
