@@ -1,6 +1,6 @@
 package com.financeai.service.impl;
 
-import com.financeai.entity.Categoria;
+import com.financeai.entity.Category;
 import com.financeai.repository.CategoryRepository;
 import com.financeai.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +18,18 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Categoria> getAllCategories() {
+    public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
     @Override
-    public Optional<Categoria> getCategoryByName(String name) {
+    public Optional<Category> getCategoryByName(String name) {
         return categoryRepository.findByName(name);
     }
 
     @Override
-    public Categoria createCategory(String name, String color, Integer percentage, String icon) {
-        Categoria category = new Categoria();
+    public Category createCategory(String name, String color, Integer percentage, String icon) {
+        Category category = new Category();
         category.setName(name);
         category.setColor(color);
         category.setPercentage(percentage);
