@@ -1,9 +1,9 @@
 package com.financeai.service.impl;
 
 import com.financeai.dto.*;
-import com.financeai.entity.Alerta;
-import com.financeai.entity.Transaccion;
-import com.financeai.entity.Usuario;
+import com.financeai.entity.Alert;
+import com.financeai.entity.Transaction;
+import com.financeai.entity.User;
 import com.financeai.repository.UserRepository;
 import com.financeai.repository.TransactionRepository;
 import com.financeai.repository.AlertRepository;
@@ -40,13 +40,13 @@ public class DashboardServiceImpl implements DashboardService {
 
     @Override
     public DashboardDTO getDashboard(Long userId) {
-        Optional<Usuario> user = userRepository.findById(userId);
+        Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
 
         DashboardDTO dashboard = new DashboardDTO();
-        Usuario u = user.get();
+        User u = user.get();
 
         // Get metrics
         dashboard.setMetrics(calculateMetrics(u));
@@ -71,7 +71,7 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public DashboardMetricsDTO calculateMetrics(Usuario user) {
+    public DashboardMetricsDTO calculateMetrics(User user) {
         DashboardMetricsDTO metrics = new DashboardMetricsDTO();
 
         metrics.setMonthlyIncome(user.getMonthlyIncome());
@@ -98,56 +98,56 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public void checkAlerts(Usuario user) {
+    public void checkAlerts(User user) {
         // Check for low emergency fund
         if (user.getMonthlyExpenses() > 0) {
             Double emergencyFundMonths = user.getEmergencyFund() / user.getMonthlyExpenses();
-            if (emergencyFundMonths < 1.0 && !hasAlert(user, Alerta.AlertType.LOW_EMERGENCY_FUND)) {
+            if (emergencyFundMonths < 1.0 && !hasAlert(user, Alert.AlertType.LOW_EMERGENCY_FUND)) {
                 alertService.createAlert(
                     user.getId(),
                     "Fondo de emergencia bajo",
                     "Tu fondo de emergencia cubre menos de un mes de gastos",
-                    Alerta.AlertType.LOW_EMERGENCY_FUND
+                    Alert.AlertType.LOW_EMERGENCY_FUND
                 );
             }
         }
 
         // Check for high debt
         Integer debtPercentage = calculateDebtPercentage(user);
-        if (debtPercentage > 50 && !hasAlert(user, Alerta.AlertType.HIGH_DEBT)) {
+        if (debtPercentage > 50 && !hasAlert(user, Alert.AlertType.HIGH_DEBT)) {
             alertService.createAlert(
                 user.getId(),
                 "Nivel de deuda alto",
                 "Tu deuda mensual representa más del 50% de tus ingresos",
-                Alerta.AlertType.HIGH_DEBT
+                Alert.AlertType.HIGH_DEBT
             );
         }
 
         // Check for high expenses
         Double expenseRatio = (user.getMonthlyExpenses() / user.getMonthlyIncome()) * 100;
-        if (expenseRatio > 85 && !hasAlert(user, Alerta.AlertType.HIGH_EXPENSES)) {
+        if (expenseRatio > 85 && !hasAlert(user, Alert.AlertType.HIGH_EXPENSES)) {
             alertService.createAlert(
                 user.getId(),
                 "Gastos muy altos",
                 "Tus gastos representan más del 85% de tus ingresos",
-                Alerta.AlertType.HIGH_EXPENSES
+                Alert.AlertType.HIGH_EXPENSES
             );
         }
     }
 
     @Override
-    public void generateRecommendations(Usuario user) {
+    public void generateRecommendations(User user) {
         // This method can generate dynamic recommendations
     }
 
-    private List<ExpenseByCategoryDTO> getExpensesByCategory(Usuario user) {
-        List<Transaccion> transactions = transactionRepository.findByUser(user);
+    private List<ExpenseByCategoryDTO> getExpensesByCategory(User user) {
+        List<Transaction> transactions = transactionRepository.findByUser(user);
         
         Map<String, Double> categoryExpenses = new HashMap<>();
         Double totalExpenses = 0.0;
 
-        for (Transaccion t : transactions) {
-            if (t.getType() == Transaccion.TransactionType.EXPENSE) {
+        for (Transaction t : transactions) {
+            if (t.getType() == Transaction.TransactionType.EXPENSE) {
                 String categoryName = t.getCategory().getName();
                 categoryExpenses.put(categoryName, categoryExpenses.getOrDefault(categoryName, 0.0) + t.getAmount());
                 totalExpenses += t.getAmount();
@@ -164,19 +164,19 @@ public class DashboardServiceImpl implements DashboardService {
         }).collect(Collectors.toList());
     }
 
-    private List<MonthlyEvolutionDTO> getMonthlyEvolution(Usuario user) {
-        List<Transaccion> transactions = transactionRepository.findByUser(user);
+    private List<MonthlyEvolutionDTO> getMonthlyEvolution(User user) {
+        List<Transaction> transactions = transactionRepository.findByUser(user);
         
         Map<String, MonthlyEvolutionDTO> monthlyData = new TreeMap<>();
 
-        for (Transaccion t : transactions) {
+        for (Transaction t : transactions) {
             YearMonth yearMonth = YearMonth.from(t.getTransactionDate());
             String monthKey = yearMonth.toString();
 
             MonthlyEvolutionDTO data = monthlyData.getOrDefault(monthKey, new MonthlyEvolutionDTO());
             data.setMonth(monthKey);
 
-            if (t.getType() == Transaccion.TransactionType.INCOME) {
+            if (t.getType() == Transaction.TransactionType.INCOME) {
                 data.setIncome((data.getIncome() != null ? data.getIncome() : 0.0) + t.getAmount());
             } else {
                 data.setExpenses((data.getExpenses() != null ? data.getExpenses() : 0.0) + t.getAmount());
@@ -188,7 +188,7 @@ public class DashboardServiceImpl implements DashboardService {
         return new ArrayList<>(monthlyData.values());
     }
 
-    private List<RecommendationDTO> getRecommendations(Usuario user) {
+    private List<RecommendationDTO> getRecommendations(User user) {
         List<RecommendationDTO> recommendations = new ArrayList<>();
 
         Integer debtPercentage = calculateDebtPercentage(user);
@@ -225,12 +225,12 @@ public class DashboardServiceImpl implements DashboardService {
         return recommendations;
     }
 
-    private Integer calculateDebtPercentage(Usuario user) {
+    private Integer calculateDebtPercentage(User user) {
         if (user.getMonthlyIncome() == 0) return 0;
         return (int) ((user.getMonthlyDebt() / user.getMonthlyIncome()) * 100);
     }
 
-    private Integer calculateFinancialHealthScore(Usuario user, Integer debtPercentage, Double emergencyFundMonths) {
+    private Integer calculateFinancialHealthScore(User user, Integer debtPercentage, Double emergencyFundMonths) {
         Integer score = 100;
 
         // Deduct points for high debt
@@ -250,8 +250,8 @@ public class DashboardServiceImpl implements DashboardService {
         return Math.max(score, 0);
     }
 
-    private boolean hasAlert(Usuario user, Alerta.AlertType type) {
-        List<Alerta> alerts = alertRepository.findByUserAndIsReadFalse(user);
+    private boolean hasAlert(User user, Alert.AlertType type) {
+        List<Alert> alerts = alertRepository.findByUserAndIsReadFalse(user);
         return alerts.stream().anyMatch(a -> a.getType() == type);
     }
 }
