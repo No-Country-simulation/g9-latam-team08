@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "transacciones")
-public class Transaccion {
+@Table(name = "transactions")
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario user;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = false)
     private String description;
@@ -22,10 +22,10 @@ public class Transaccion {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
-    private Categoria category;
+    private Category category;
 
     @Column(nullable = false)
-    private Integer confidence; 
+    private Integer confidence; // 0-100
 
     @Column(nullable = false)
     private LocalDateTime transactionDate;
@@ -51,16 +51,20 @@ public class Transaccion {
         updatedAt = LocalDateTime.now();
     }
 
+    public enum TransactionType {
+        INCOME, EXPENSE
+    }
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public Usuario getUser() { return user; }
-    public void setUser(Usuario user) { this.user = user; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
     public Double getAmount() { return amount; }
     public void setAmount(Double amount) { this.amount = amount; }
-    public Categoria getCategory() { return category; }
-    public void setCategory(Categoria category) { this.category = category; }
+    public Category getCategory() { return category; }
+    public void setCategory(Category category) { this.category = category; }
     public Integer getConfidence() { return confidence; }
     public void setConfidence(Integer confidence) { this.confidence = confidence; }
     public LocalDateTime getTransactionDate() { return transactionDate; }
@@ -71,8 +75,4 @@ public class Transaccion {
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
     public TransactionType getType() { return type; }
     public void setType(TransactionType type) { this.type = type; }
-
-    public enum TransactionType {
-        INCOME, EXPENSE
-    }
 }
