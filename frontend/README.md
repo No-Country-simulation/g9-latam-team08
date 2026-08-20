@@ -2,7 +2,16 @@
 
 Aplicación frontend de FinanceAI construida con React, TypeScript y Vite. El frontend consolidado reúne la landing pública, autenticación, dashboard privado, historial financiero, el flujo de Nuevo Análisis, la gestión de Metas, el centro de Notificaciones y la pantalla de Soporte del equipo.
 
-El estado actual del proyecto es mixto y debe leerse con cuidado: varias vistas están completamente implementadas desde el lado frontend, pero no todas consumen contratos backend reales verificados end-to-end. En particular, Dashboard usa `dashboardMock`, Nuevo Análisis sigue funcionando mediante `MockAnalysisGateway`, y Metas / Notificaciones continúan resolviéndose con mocks o estado local.
+El objetivo del frontend es ayudar a que una persona pueda cargar información, revisar su situación financiera, explorar un dashboard visual, registrar movimientos, ejecutar un análisis guiado y acceder a features preservadas aunque no todas formen parte del MVP visible.
+
+El estado actual del proyecto es mixto y debe interpretarse con precisión:
+
+- varias vistas están completamente implementadas desde el lado frontend;
+- no todas consumen backend real validado end-to-end;
+- Dashboard usa `dashboardMock`;
+- Nuevo Análisis sigue funcionando mediante `MockAnalysisGateway`;
+- Metas y Notificaciones siguen en mocks o estado local;
+- Historial sí tiene código cliente contra backend, pero requiere backend disponible para validación real.
 
 ## Stack tecnológico
 
@@ -10,14 +19,23 @@ El estado actual del proyecto es mixto y debe leerse con cuidado: varias vistas 
 - TypeScript 5
 - Vite 7
 - React Router DOM 7
-- React Hook Form + Zod
+- React Hook Form
+- Zod
 - Radix UI Dialog
 - Lucide React
 - React Icons
 - Google OAuth para login social
-- jsPDF para exportación PDF
-- jsPDF AutoTable para tablas en PDF
-- Integración cliente para Gemini disponible en `src/api` (presente en el repositorio, no conectada al flujo principal actual)
+- jsPDF
+- jsPDF AutoTable
+- pnpm
+
+Infraestructura cliente adicional presente:
+
+- `@google/generative-ai`
+
+Nota:
+
+- La integración cliente con Gemini sigue existiendo en `src/api`, pero no participa del flujo principal consolidado actual.
 
 ## Requisitos
 
@@ -58,7 +76,7 @@ frontend/
 │   │   └── ui/                       # Button, Card, Container, SectionHeader, etc.
 │   ├── features/
 │   │   ├── analysis/                 # Wizard, validaciones, draft, resultado, gateway
-│   │   ├── dashboard/                # Layout privado, sidebar, topbar, widgets, charts y mocks
+│   │   ├── dashboard/                # Layout privado, navegación, widgets, charts y mocks
 │   │   ├── goals/                    # Metas, dialogs, métricas, sugerencias
 │   │   ├── landing/                  # Componentes de la landing pública
 │   │   └── notifications/            # Notificaciones, preferencias, resumen
@@ -72,27 +90,73 @@ frontend/
 └── README.md
 ```
 
+## Objetivo de la consolidación frontend
+
+La rama `feature/frontend-consolidated` se construyó para reunir el trabajo frontend existente sin eliminar funcionalidades previas del equipo.
+
+La consolidación tomó como base:
+
+- `feature/notifications-frontend`
+
+y recuperó selectivamente trabajo de:
+
+- `origin/Juan`
+- `origin/feature/dashboard`
+
+Esto no debe documentarse como merge completo de ramas, sino como integración selectiva orientada a:
+
+- preservar trabajo existente;
+- no eliminar features fuera del MVP visible;
+- unificar layout y navegación;
+- conservar funcionalidades accesibles por URL aunque no todas aparezcan en la navegación principal;
+- mejorar performance mediante code splitting real.
+
 ## Arquitectura de rutas y layout privado
 
-La aplicación utiliza un router único en `src/app/router/index.tsx` con separación entre rutas públicas, privadas y redirects de compatibilidad.
+La aplicación usa un router único en `src/app/router/index.tsx`.
 
-La jerarquía privada consolidada actual es:
+La arquitectura privada vigente es:
 
-`ProtectedRoute` -> `DashboardLayout` -> `Outlet` -> página privada
+`ProtectedRoute` -> `DashboardLayout` -> `Sidebar + Topbar + MobileTabBar` -> `Outlet` -> página privada
 
-Eso implica:
+### Qué significa hoy esa arquitectura
 
-- `ProtectedRoute` valida autenticación con `localStorage` (`userId`).
+- `ProtectedRoute` protege el acceso autenticado usando `localStorage` (`userId`).
 - `DashboardLayout` es el layout privado común vigente.
-- `Sidebar`, `Topbar` y `MobileTabBar` del dashboard son ahora la navegación visual principal del área autenticada.
-- `src/components/layout/Nav.tsx` se preservó como implementación previa del equipo, pero ya no es el layout utilizado por el router actual.
+- `Sidebar`, `Topbar` y `MobileTabBar` componen la navegación visual activa del área privada.
+- `Outlet` renderiza la página privada correspondiente a cada ruta.
+
+### Layout privado actual
+
+Archivo principal:
+
+- `src/features/dashboard/components/DashboardLayout.tsx`
+
+Comportamiento:
+
+- lee datos básicos del usuario desde `localStorage`;
+- aplica `useTheme`;
+- monta `Sidebar`, `Topbar`, `MobileTabBar`;
+- usa `Suspense` con `RouteContentFallback` para cargar páginas privadas lazy.
+
+### Estado de `Nav.tsx`
+
+Archivo:
+
+- `src/components/layout/Nav.tsx`
+
+Situación actual:
+
+- se preservó como implementación previa del equipo;
+- ya no es el layout utilizado por el router principal;
+- sigue siendo referencia histórica útil para entender el estado anterior de la navegación privada.
 
 ## Rutas implementadas
 
 ### Públicas
 
 - `/`: landing pública con propuesta del producto, demo visual y CTA al análisis.
-- `/demo`: reutiliza la landing y hace scroll al preview. Sigue registrada.
+- `/demo`: reutiliza la landing y hace scroll al preview. Sigue registrada actualmente.
 - `/login`: inicio de sesión con formulario y opción Google.
 - `/register`: registro con formulario y opción Google.
 
@@ -103,7 +167,7 @@ Eso implica:
 - `/historial`: historial financiero con filtros, resumen, tabla, edición, eliminación y exportación PDF.
 - `/metas`: gestión de metas financieras.
 - `/notificaciones`: centro de notificaciones con filtros, preferencias y resumen.
-- `/soporte`: página informativa del equipo y canal de contacto.
+- `/soporte`: pantalla del equipo y contacto.
 
 ### Redirects de compatibilidad
 
@@ -112,351 +176,508 @@ Eso implica:
 - `/dashboard/notificaciones` -> `/notificaciones`
 - `/dashboard/soporte` -> `/soporte`
 
-### Decisión de navegación MVP
+### Rutas no documentadas como disponibles
 
-La navegación visible actual del MVP prioriza:
+- `/configuraciones` no debe considerarse ruta real disponible, porque no existe una página implementada y registrada en el router actual.
+
+## Navegación visible del MVP
+
+La navegación principal visible actual del MVP contiene:
 
 - Dashboard
 - Nuevo Análisis
 - Historial
 - Soporte
 
+### Features preservadas fuera del MVP visible
+
 Metas y Notificaciones:
 
-- siguen completamente implementadas;
 - no fueron eliminadas;
-- están ocultas de la navegación principal del MVP;
-- siguen accesibles directamente por URL en `/metas` y `/notificaciones`.
+- siguen implementadas;
+- siguen registradas en el router;
+- siguen accesibles directamente mediante URL;
+- están ocultas de la navegación principal visible del MVP.
 
-Esta decisión busca simplificar el foco del MVP sin perder trabajo previo del equipo ni romper compatibilidad de rutas existentes.
+Rutas directas preservadas:
+
+- `/metas`
+- `/notificaciones`
+
+Regla arquitectónica importante:
+
+**Fuera del MVP visible no significa eliminado.**
 
 ## Code splitting y carga diferida
 
-El frontend consolidado aplica route-level code splitting usando:
+El frontend consolidado aplica route-level code splitting mediante:
 
 - `React.lazy()`
 - `dynamic import()`
 - `Suspense`
 
-Las páginas principales se cargan de forma lazy desde el router y se muestran mediante `RouteContentFallback` mientras llega cada chunk.
+### Páginas convertidas a lazy
 
-Esto redujo aproximadamente el chunk JavaScript principal desde:
+- `LandingPage`
+- `Login`
+- `Register`
+- `DashboardPage`
+- `NewAnalysisPage`
+- `Historial`
+- `GoalsPage`
+- `NotificationsPage`
+- `Soporte`
 
-- `~1046.69 kB`
+### Fallback visual de rutas lazy
 
-a:
+Archivos:
 
-- `~305.46 kB`
+- `src/components/layout/RouteContentFallback.tsx`
+- `src/components/layout/RouteContentFallback.css`
 
-y eliminó el warning de Vite sobre chunks mayores a `500 kB`.
+Uso:
 
-La mejora se obtuvo mediante separación real por ruta; no se aumentó artificialmente `chunkSizeWarningLimit`, ni se usó `manualChunks` como parche.
+- `App.tsx`
+- `AuthLayout.tsx`
+- `DashboardLayout.tsx`
 
-## Fallback visual de rutas lazy
+Función:
 
-`src/components/layout/RouteContentFallback.tsx` es el fallback visual usado mientras se cargan páginas lazy.
+- mostrar una transición visual simple mientras cada página lazy se descarga;
+- evitar pantallas en blanco innecesarias;
+- hacerlo sin introducir un segundo layout ni dependencias extras.
 
-Se utiliza en tres niveles:
+### Resultado de la optimización
 
-- `App.tsx` para la navegación general.
-- `AuthLayout.tsx` para login y register.
-- `DashboardLayout.tsx` para el área privada.
+Antes del code splitting:
 
-El fallback es deliberadamente simple para evitar layout shift severo y no agregar dependencias nuevas.
+- chunk JS principal: `~1046.69 kB`
+- gzip: `~325.53 kB`
+
+Después:
+
+- chunk JS principal: `~305.46 kB`
+- gzip: `~99.41 kB`
+
+Reducción aproximada:
+
+- `~70.8 %`
+
+Resultado adicional:
+
+- el warning de Vite `Some chunks are larger than 500 kB after minification` ya no aparece;
+- la mejora vino de code splitting real;
+- no se usó `manualChunks`;
+- no se aumentó `chunkSizeWarningLimit`.
 
 ## Funcionalidades por feature
 
-### Landing y navegación
+### Landing y navegación pública
 
 `Implementado frontend`
 
-- Landing pública con hero, bloques de funcionalidades, pasos y CTA.
-- Demo visual basada en `DashboardPreviewSkeleton`.
-- Navegación pública mediante header/footer.
-- Accesos directos al flujo de análisis.
+- landing pública con hero, bloques de funcionalidades, pasos y CTA;
+- demo visual basada en `DashboardPreviewSkeleton`;
+- navegación pública mediante header y footer;
+- CTA hacia login, registro y análisis.
 
-`Implementado en arquitectura consolidada`
+`Notas técnicas`
 
-- El área privada ahora usa `DashboardLayout` como layout común.
-- El sidebar visual consolidado proviene del trabajo de `feature/dashboard`.
-- El `MobileTabBar` acompaña la navegación autenticada en mobile.
+- la landing sigue registrada en `/` y `/demo`;
+- ahora también participa del esquema de páginas lazy del router.
 
 ### Dashboard
 
+Ruta:
+
+- `/dashboard`
+
 `Implementado frontend`
 
-- Ruta privada `/dashboard` ya implementada.
-- Vista visual consolidada desde `feature/dashboard`.
-- Layout privado común con:
-  - `DashboardLayout`
-  - `Sidebar`
-  - `Topbar`
-  - `MobileTabBar`
-- Componentes visuales principales:
-  - cards de score y métricas
-  - gráficos
-  - tabla de transacciones
-  - alertas
-  - factores clave
-  - recomendaciones
+- UI implementada;
+- integrada al layout privado común;
+- navegación consolidada con `Sidebar`, `Topbar` y `MobileTabBar`;
+- cards, widgets, tabla y gráficos preservados.
 
-`Implementado con mock/estado local`
+`Componentes principales`
 
-- La vista usa actualmente `dashboardMock`.
-- Los datos del dashboard no deben interpretarse como provenientes de una API real validada.
-- La navegación, estructura visual y composición de widgets sí están consolidadas y operativas desde el lado frontend.
+- `DashboardLayout`
+- `Sidebar`
+- `Topbar`
+- `MobileTabBar`
+- `AlertsCard`
+- `BarChart`
+- `BrandMark`
+- `CategoryBadge`
+- `ConfidenceBar`
+- `DonutChart`
+- `ExpensesByCategoryCard`
+- `KeyFactorsCard`
+- `MonthlyEvolutionCard`
+- `RecommendationsCard`
+- `ScoreCard`
+- `ScoreGauge`
+- `StatCard`
+- `StatsGrid`
+- `TransactionsTable`
+- `categoryColors`
+- `dashboardMocks`
+- `useTheme`
 
-`Componentes clave del dashboard`
+`Mock / estado actual`
 
-- `src/features/dashboard/components/DashboardLayout.tsx`
-- `src/features/dashboard/components/Sidebar.tsx`
-- `src/features/dashboard/components/Topbar.tsx`
-- `src/features/dashboard/components/MobileTabBar.tsx`
-- `src/features/dashboard/components/dashboardMocks.ts`
+- actualmente usa `dashboardMock`;
+- no debe documentarse como dashboard conectado a API real;
+- el frontend visual está implementado, pero la integración backend real sigue pendiente o no validada.
 
 ### Autenticación
 
-`Implementado con integración backend`
+`Implementado con integración backend en código`
 
-- Login por email/contraseña contra `POST /api/auth/login`.
-- Registro contra `POST /api/auth/register`.
-- Inicio de sesión con Google contra `POST /api/auth/google`.
-- Persistencia de sesión en `localStorage`:
+- login por email/contraseña contra `POST /api/auth/login`;
+- registro contra `POST /api/auth/register`;
+- inicio de sesión con Google contra `POST /api/auth/google`;
+- persistencia de sesión en `localStorage`:
   - `userId`
   - `jwt_token`
   - `userName`
   - `userEmail`
   - `userPhoto`
 
-Observaciones:
+`Notas importantes`
 
-- El frontend ya usa `VITE_GOOGLE_CLIENT_ID` y ahora debe documentarse explícitamente en `.env.example`.
-- La autenticación protege el acceso al área privada mediante `ProtectedRoute`.
+- el frontend ya usa `VITE_GOOGLE_CLIENT_ID`;
+- la disponibilidad real del login/register/google auth depende de backend y configuración vigentes en el entorno;
+- debe evitarse afirmar validación end-to-end si el servicio no estuvo disponible durante la prueba.
 
 ### Historial financiero
 
+Ruta:
+
+- `/historial`
+
 `Implementado frontend con integración backend parcial`
 
-- Listado inicial desde `GET /api/transactions`.
-- Autenticación JWT mediante header `Authorization: Bearer <token>`.
-- Filtros por búsqueda, categoría, tipo y cuenta.
-- Resumen de ingresos/egresos filtrados.
-- Edición vía `PUT /api/transactions/:id`.
-- Eliminación vía `DELETE /api/transactions/:id`.
-- Exportación PDF desde la propia vista.
+- listado inicial desde `GET /api/transactions`;
+- autenticación JWT mediante `Authorization: Bearer <token>`;
+- búsqueda;
+- filtros por categoría, tipo y cuenta;
+- resumen de ingresos y egresos;
+- edición vía `PUT /api/transactions/:id`;
+- eliminación vía `DELETE /api/transactions/:id`;
+- exportación PDF.
 
-`Fallback local/mock`
+`Fallback local / demostración`
 
-- Si el backend no responde, la pantalla muestra un mensaje visible de error y carga datos de prueba en memoria.
-- Durante smoke test local del frontend consolidado, el backend en `http://localhost:8080` no estaba levantado y se obtuvo `ERR_CONNECTION_REFUSED`.
-- Eso debe tratarse como pendiente de integración backend, no como un error del router o de la consolidación del frontend.
+- si el backend no responde, la pantalla muestra un mensaje visible y carga datos locales de demostración;
+- ese fallback no debe interpretarse como respuesta real del backend.
 
-`Exportación PDF`
+`Estado de validación`
 
-- La exportación vive en `src/utils/exportUtils.ts`.
-- Utiliza `jspdf` y `jspdf-autotable`.
-- Las dependencias de PDF se cargan mediante `dynamic import()` únicamente cuando el usuario solicita exportar, para no inflar la carga inicial del bundle.
+- el frontend sí ejecuta requests reales desde el código;
+- durante smoke test local previo, el backend no estaba levantado en `http://localhost:8080`;
+- el error observado fue `ERR_CONNECTION_REFUSED`;
+- esto se clasifica como backend no disponible durante la prueba, no como error del router ni del code splitting.
 
-Limitaciones detectadas:
+`Limitaciones detectadas`
 
-- El filtro de período existe en UI, pero no impacta actualmente en el filtrado derivado.
-- La integración backend de Historial existe a nivel de código, pero requiere backend disponible para validación end-to-end real.
+- el filtro de período sigue existiendo en la UI;
+- `selectedPeriod` todavía no participa realmente del filtrado derivado.
+
+### Exportación PDF
+
+Archivo principal:
+
+- `src/utils/exportUtils.ts`
+
+Dependencias:
+
+- `jspdf`
+- `jspdf-autotable`
+
+`Implementado frontend`
+
+- la exportación PDF fue incorporada durante la consolidación;
+- las dependencias de PDF se cargan mediante `dynamic import()` sólo cuando el usuario solicita exportar;
+- Historial deja de cargar inicialmente todo jsPDF;
+- eso reduce significativamente el peso del chunk de Historial.
+
+`Métricas aproximadas útiles`
+
+- Historial quedó en aproximadamente `9.83 kB` (`gzip ~3.71 kB`) en su chunk principal;
+- jsPDF quedó separado en chunks on-demand:
+  - `jspdf ~386 kB`
+  - `jspdf-autotable ~31 kB`
 
 ### Nuevo Análisis
 
+Ruta:
+
+- `/analisis/nuevo`
+
 `Implementado frontend`
 
-- Wizard de 3 pasos:
-  - datos financieros,
-  - transacciones,
-  - revisión.
-- Validaciones con React Hook Form + Zod.
-- Edición desde revisión.
-- Pantalla de procesamiento.
-- Vista de resultados con tabs:
-  - Resumen,
-  - Gastos,
-  - Recomendaciones.
-- Diseño responsive y pulido visual del flujo/resultados.
+- wizard de 3 pasos:
+  1. datos financieros;
+  2. transacciones;
+  3. revisión / confirmación.
+- validaciones con React Hook Form + Zod;
+- edición antes de confirmar;
+- pantalla de procesamiento;
+- resultados con tabs;
+- diseño responsive;
+- borrador temporal persistido en `localStorage`.
 
-`Implementado con mock/estado local`
+`Arquitectura`
 
-- El análisis usa `AnalysisGateway` como abstracción.
-- La implementación conectada hoy en el wizard es `MockAnalysisGateway`.
-- El resultado final se construye desde `buildMockAnalysisResult(...)`.
-- No existe todavía contrato backend/data science definitivo integrado en esta rama.
+UI -> hooks / flujo -> `AnalysisGateway` -> implementación
+
+`Estado actual`
+
+- el flujo usa `AnalysisGateway`;
+- la implementación concreta activa es `MockAnalysisGateway`;
+- no existe todavía contrato backend/data science definitivo integrado en esta rama.
 
 `Persistencia temporal del borrador`
 
-- El draft del análisis se guarda en `localStorage` por usuario usando `financeai:new-analysis-draft:{userId}`.
-- El autosave se hace desde `useAnalysisDraftPersistence`.
+- el draft se guarda en `localStorage` por usuario usando `financeai:new-analysis-draft:{userId}`;
+- el autosave se realiza desde `useAnalysisDraftPersistence`.
 
-`Pendiente de integración`
+`Conclusión`
 
-- Endpoint real de análisis backend/data science.
-- Contrato definitivo del payload/respuesta del análisis.
+- UI completa: implementada;
+- contrato backend/data definitivo: pendiente externo;
+- los resultados no deben describirse como respuesta real de backend o data science.
 
 ### Metas
 
+Ruta:
+
+- `/metas`
+
 `Implementado frontend`
 
-- Listado de metas.
-- Creación y edición.
-- Registro de aportes.
-- Completar meta.
-- Pausar y reactivar.
-- Eliminar.
-- Métricas de progreso.
-- Distribución de ahorro.
-- Sugerencias y estados vacíos.
-- Dialogs y action menu completos.
-- Responsive desktop/mobile.
+- listado;
+- creación;
+- edición;
+- registro de aportes;
+- completar meta;
+- pausar y reactivar;
+- eliminar;
+- métricas de progreso;
+- distribución de ahorro;
+- sugerencias;
+- dialogs;
+- action menus;
+- responsive desktop/mobile.
 
-`Implementado con mock/estado local`
+`Mock / estado local`
 
-- El estado vive en `GoalsPage` con `useState`.
-- La data inicial proviene de `features/goals/mocks/goals.ts`.
-- No hay persistencia backend ni sincronización remota.
+- el estado vive en `GoalsPage` usando `useState`;
+- la data inicial proviene de `features/goals/mocks/goals.ts`;
+- no hay persistencia backend ni sincronización remota.
 
 `Estado dentro del MVP`
 
-- La feature se preserva por completo.
-- Sigue accesible directamente en `/metas`.
-- Actualmente está oculta de la navegación visible principal del MVP.
+- preservada por completo;
+- accesible por URL;
+- actualmente oculta de la navegación principal visible del MVP.
+
+`Nota de alcance`
+
+- persistencia backend puede considerarse integración futura o externa;
+- no debe documentarse como deuda obligatoria del frontend consolidado actual.
 
 ### Notificaciones
 
+Ruta:
+
+- `/notificaciones`
+
 `Implementado frontend`
 
-- Filtros por:
-  - Todas,
-  - No leídas,
-  - Alertas,
-  - Recordatorios,
-  - Sugerencias.
-- Contadores derivados dinámicamente.
-- Marcar como leída/no leída.
-- Marcar todas como leídas.
-- Eliminar notificación.
-- Preferencias locales con toggles.
-- Resumen mensual visual.
-- Empty states.
-- Responsive y menú de acciones accesible.
+- filtros:
+  - Todas
+  - No leídas
+  - Alertas
+  - Recordatorios
+  - Sugerencias
+- contadores derivados;
+- marcar leída/no leída;
+- marcar todas;
+- eliminar;
+- preferencias;
+- resumen;
+- empty states;
+- responsive.
 
-`Implementado con mock/estado local`
+`Mock / estado local`
 
-- La página usa `useState` como única fuente de verdad.
-- Las notificaciones salen de `features/notifications/mocks/notifications.ts`.
-- Las preferencias no tienen persistencia backend.
-- No existe generación real de notificaciones desde backend, websockets o polling.
+- la página usa `useState` como fuente de verdad local;
+- los datos provienen de `features/notifications/mocks/notifications.ts`;
+- no existe evidencia de persistencia backend;
+- no existe evidencia de WebSockets, polling o servicio real de notificaciones.
 
 `Estado dentro del MVP`
 
-- La feature se preserva por completo.
-- Sigue accesible directamente en `/notificaciones`.
-- Actualmente está oculta de la navegación visible principal del MVP.
+- preservada por completo;
+- accesible por URL;
+- actualmente oculta de la navegación visible principal del MVP.
 
 ### Soporte
 
+Ruta:
+
+- `/soporte`
+
 `Implementado frontend`
 
-- Página visual del equipo del proyecto.
-- Filtro por perfil (`Todos`, `Backend`, `Frontend`, `Data`).
-- Tarjetas del equipo.
-- CTA visual de contacto.
-- `ModalContacto` disponible desde la pantalla.
+- presentación visual del equipo;
+- perfiles;
+- filtros;
+- datos de contacto visibles;
+- botones/links visuales;
+- modal de contacto.
 
-Observación:
+`Consolidación incorporada`
 
-- Hoy es una pantalla informativa con modal local.
-- No existe ticketing, backend real de soporte ni integración operativa confirmada.
+- `src/components/soporte/ModalContacto.tsx`
+- `src/components/soporte/ModalContacto.css`
+
+`Notas`
+
+- la pantalla sigue siendo informativa;
+- no existe ticketing backend real documentable en esta rama.
 
 ## Estado de integración
 
 ### Integrado / implementado frontend
 
-- Landing pública.
-- Layout privado consolidado.
-- Dashboard visual en `/dashboard`.
-- Login por email/contraseña.
-- Registro.
-- Login con Google validado por backend.
-- Historial:
-  - listado,
-  - edición,
-  - eliminación,
-  - exportación PDF.
-- Wizard visual completo de Nuevo Análisis.
-- Metas.
-- Notificaciones.
-- Soporte con modal de contacto.
+- landing pública;
+- layout privado consolidado;
+- dashboard visual;
+- login;
+- register;
+- Google Auth del lado cliente;
+- historial;
+- exportación PDF;
+- Metas;
+- Notificaciones;
+- Soporte.
 
 ### Mock / local state
 
-- Dashboard: `dashboardMock`.
-- Nuevo Análisis: `MockAnalysisGateway`.
-- Metas: estado local + mocks.
-- Notificaciones: estado local + mocks.
-- Soporte: modal local sin backend.
+- Dashboard: `dashboardMock`
+- Nuevo Análisis: `MockAnalysisGateway`
+- Metas: local state / mocks
+- Notificaciones: local state / mocks
+- Soporte: modal local sin backend
 
-### Pendiente de otros equipos / integración externa
+### Integración backend presente en código, pendiente de validación end-to-end
 
-- Backend real para Dashboard.
-- Contrato backend/data science definitivo para Nuevo Análisis.
-- Validación end-to-end real de Historial con backend disponible.
-- Cualquier contrato adicional que dependa de Backend o Data Science.
+- Login
+- Register
+- Google auth
+- Historial
 
 ## Infraestructura API presente en el frontend
 
-### Infraestructura ya presente
+### Infraestructura disponible
 
-- `src/api/env.ts`: centraliza variables de entorno del frontend.
-- `src/api/index.ts`: helpers de acceso a servicios cliente.
+- `src/api/env.ts`: centraliza variables de entorno.
+- `src/api/index.ts`: helpers de acceso cliente.
 - `src/api/indicators.ts`: cliente para `GET /api/indicadores/:userId` con fallback mock.
 - `src/api/recommendations.ts`: cliente para Gemini usando `VITE_GEMINI_API_KEY`.
 - `src/api/types.ts`: tipos compartidos para capa API.
 
-### Nota importante
+### Nota de uso real
 
-La infraestructura API existe en el repositorio, pero no toda está conectada al flujo principal actual.
+La infraestructura API está presente en el repositorio, pero no toda participa del flujo principal consolidado actual.
 
 En particular:
 
-- Dashboard no está consumiendo API real.
-- Nuevo Análisis no usa contrato backend/data definitivo en esta rama.
-- Historial sí contiene código de integración backend, pero requiere backend disponible para validación real.
+- Dashboard no consume API real en esta rama;
+- Nuevo Análisis no usa todavía contrato backend/data definitivo;
+- Historial sí contiene integración cliente, pero requiere backend operativo para validación real.
 
 ## Variables de entorno
 
 Documentadas actualmente en `frontend/.env.example`:
 
-- `VITE_API_BASE_URL=http://localhost:8080`
-- `VITE_GEMINI_API_KEY=tu_api_key_de_gemini`
-- `VITE_GOOGLE_CLIENT_ID=tu_google_client_id`
+```bash
+VITE_API_BASE_URL=http://localhost:8080
+VITE_GEMINI_API_KEY=tu_api_key_de_gemini
+VITE_GOOGLE_CLIENT_ID=tu_google_client_id
+```
 
 Notas:
 
-- Usar sólo valores de ejemplo.
-- No hardcodear secretos reales en el repositorio.
+- usar solamente valores de ejemplo;
+- no agregar secretos reales;
+- no copiar valores desde `.env` o `.env.local`.
+
+## Estado funcional sugerido
+
+| Feature | Frontend | Backend/API | Estado |
+| --- | --- | --- | --- |
+| Landing | Implementado | No requerido | Disponible |
+| Login | Implementado | Integración presente | Requiere backend disponible |
+| Registro | Implementado | Integración presente | Requiere backend disponible |
+| Google Auth | Implementado | Integración presente | Requiere configuración |
+| Dashboard | Implementado | Mock | Disponible con datos simulados |
+| Nuevo Análisis | Implementado | `MockAnalysisGateway` | Disponible con datos simulados |
+| Historial | Implementado | Requests reales | Requiere backend disponible |
+| PDF | Implementado | No requerido | Disponible |
+| Metas | Implementado | Local/mock | Preservado por URL |
+| Notificaciones | Implementado | Local/mock | Preservado por URL |
+| Soporte | Implementado | Local | Disponible |
+
+## Build
+
+Último build comprobado:
+
+- comando: `pnpm build`
+- resultado: success
+- fecha: `20 de agosto de 2026`
+- duración aproximada: `6.67 s`
+- warning `>500 kB`: no presente
 
 ## Pendientes técnicos comprobables
 
 ### Pendientes frontend
 
-- Completar smoke test manual del frontend consolidado con entorno local estable.
-- Agregar pruebas E2E o de integración frontend cuando el alcance del proyecto lo justifique.
-- Evaluar mejoras futuras de performance sobre assets pesados como `logo-light.png` y `logo-dark.png`.
+- smoke test desktop/mobile completo;
+- pruebas E2E;
+- pruebas de integración frontend;
+- validación PDF real en navegador;
+- mejoras de accesibilidad;
+- revisar el filtro de período de Historial si continúa sin funcionar;
+- optimización adicional de logos y otros assets pesados.
 
 ### Pendientes de integración externa
 
-- Integrar Dashboard con backend real cuando exista contrato publicado.
-- Integrar Nuevo Análisis con backend/data science reemplazando `MockAnalysisGateway`.
-- Definir y aplicar el contrato definitivo del endpoint de análisis.
-- Validar Historial end-to-end con backend operativo en `localhost:8080` o el entorno que corresponda.
+- Dashboard:
+  - endpoint real;
+  - contrato;
+  - validación end-to-end.
+- Nuevo Análisis:
+  - endpoint backend;
+  - contrato request/response;
+  - integración backend/data;
+  - validación end-to-end.
+- Historial:
+  - backend activo;
+  - URL definitiva según entorno;
+  - JWT válido;
+  - validación end-to-end real.
+- Metas:
+  - persistencia backend sólo si el alcance futuro la requiere.
+- Notificaciones:
+  - persistencia o servicio real sólo si el alcance futuro la requiere.
 
 ## Notas técnicas relevantes
 
-- El dashboard consolidado usa el layout privado común y reemplaza al `Nav.tsx` como layout efectivo del router.
-- Las rutas legacy bajo `/dashboard/...` se preservan mediante redirects para evitar regresiones.
-- Metas y Notificaciones están fuera del foco visible del MVP, pero no se eliminaron.
-- La carga diferida de páginas y la carga bajo demanda de librerías PDF forman parte de la arquitectura actual de performance del frontend.
+- `Nav.tsx` se conserva, pero ya no es el layout activo del router.
+- Metas y Notificaciones siguen implementadas aunque no aparezcan en la navegación visible principal.
+- La mejora de performance del frontend vino de code splitting real, no de cambios cosméticos en la configuración de build.
+- `logo-light.png` y `logo-dark.png` siguen siendo assets pesados y pueden tratarse como mejora futura del frontend, pero no fueron optimizados en esta etapa.
