@@ -50,11 +50,15 @@ Tras iniciar sesión, accederás al **Dashboard Principal**. Aquí visualizarás
 
 ## Funcionalidades
 
-### Registro de Información Financiera
+### Nuevo Análisis
 
-Para registrar tus gastos, debes ingresar manualmente la información correspondiente en la plataforma. La aplicación procesará estos datos para incorporarlos a tu historial detallado.
+Desde la opción **Nuevo Análisis**, puedes ingresar la información necesaria para realizar tu análisis financiero mediante un proceso guiado de tres pasos:
 
-Los registros de transacciones pueden exportarse en formato PDF.
+- Datos financieros.
+- Transacciones.
+- Revisión de la información.
+
+Antes de confirmar, puedes revisar y editar los datos ingresados.
 
 ### Visualización del Análisis Financiero
 
@@ -67,6 +71,19 @@ Podrás consultar métricas clave como tu ratio de endeudamiento, gastos esencia
 ### Recomendaciones Financieras
 
 Basándose en tu comportamiento de gasto, FinanceAI te proporcionará recomendaciones personalizadas para optimizar tu presupuesto y alcanzar una mayor estabilidad económica.
+
+### Historial de Transacciones
+
+Desde la sección **Historial** puedes consultar y gestionar las transacciones registradas.
+
+La sección permite:
+
+- Visualizar el listado de transacciones.
+- Buscar y filtrar registros.
+- Consultar el resumen de ingresos y egresos.
+- Editar transacciones.
+- Eliminar transacciones.
+- Exportar los registros en formato PDF.
 
 ---
 

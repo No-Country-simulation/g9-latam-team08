@@ -424,6 +424,18 @@ Resultado:
 - Warning `>500 kB`: no presente
 
 ---
+### Comandos de Ejecución
+
+Los principales comandos utilizados para instalar dependencias, ejecutar y construir el Frontend son:
+
+```bash
+pnpm install
+pnpm dev
+pnpm build
+pnpm preview
+```
+
+---
 
 ## Estado Actual del Frontend
 
