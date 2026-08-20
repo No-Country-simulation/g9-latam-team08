@@ -1,6 +1,6 @@
 package com.financeai.controller;
 
-import com.financeai.entity.Categoria;
+import com.financeai.entity.Category;
 import com.financeai.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +19,9 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping
-    public ResponseEntity<List<Categoria>> getAllCategories() {
+    public ResponseEntity<List<Category>> getAllCategories() {
         try {
-            List<Categoria> categories = categoryService.getAllCategories();
+            List<Category> categories = categoryService.getAllCategories();
             return ResponseEntity.ok(categories);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -29,9 +29,9 @@ public class CategoryController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Categoria> getCategoryByName(@PathVariable String name) {
+    public ResponseEntity<Category> getCategoryByName(@PathVariable String name) {
         try {
-            Optional<Categoria> category = categoryService.getCategoryByName(name);
+            Optional<Category> category = categoryService.getCategoryByName(name);
             return category.map(ResponseEntity::ok)
                     .orElseGet(() -> ResponseEntity.notFound().build());
         } catch (Exception e) {
@@ -40,9 +40,9 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> createCategory(@RequestBody Categoria category) {
+    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         try {
-            Categoria created = categoryService.createCategory(
+            Category created = categoryService.createCategory(
                 category.getName(),
                 category.getColor(),
                 category.getPercentage(),
