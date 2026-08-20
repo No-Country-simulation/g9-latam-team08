@@ -1,14 +1,14 @@
 package com.financeai.repository;
 
-import com.financeai.entity.Alerta;
-import com.financeai.entity.Usuario;
+import com.financeai.entity.Alert;
+import com.financeai.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AlertRepository extends JpaRepository<Alerta, Long> {
-    List<Alerta> findByUser(Usuario usuario);
-    List<Alerta> findByUserOrderByCreatedAtDesc(Usuario usuario);
-    List<Alerta> findByUserAndIsReadFalse(Usuario usuario);
+public interface AlertRepository extends JpaRepository<Alert, Long> {
+    List<Alert> findByUser(User user);
+    List<Alert> findByUserOrderByCreatedAtDesc(User user);
+    List<Alert> findByUserAndIsReadFalse(User user);
 }
