@@ -1,6 +1,6 @@
 package com.financeai.controller;
 
-import com.financeai.entity.Usuario;
+import com.financeai.entity.User;
 import com.financeai.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +19,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Usuario> createUser(@Valid @RequestBody Usuario user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         try {
-            Usuario created = userService.createUser(
+            User created = userService.createUser(
                 user.getEmail(),
                 user.getPassword(),
                 user.getFirstName(),
@@ -34,9 +34,9 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<Usuario> getUser(@PathVariable Long userId) {
+    public ResponseEntity<User> getUser(@PathVariable Long userId) {
         try {
-            Optional<Usuario> user = userService.getUserById(userId);
+            Optional<User> user = userService.getUserById(userId);
             return user.map(ResponseEntity::ok)
                     .orElseGet(() -> ResponseEntity.notFound().build());
         } catch (Exception e) {
@@ -45,9 +45,9 @@ public class UserController {
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<Usuario> getUserByEmail(@PathVariable String email) {
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         try {
-            Optional<Usuario> user = userService.getUserByEmail(email);
+            Optional<User> user = userService.getUserByEmail(email);
             return user.map(ResponseEntity::ok)
                     .orElseGet(() -> ResponseEntity.notFound().build());
         } catch (Exception e) {
@@ -56,11 +56,11 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<Usuario> updateUser(
+    public ResponseEntity<User> updateUser(
             @PathVariable Long userId,
-            @Valid @RequestBody Usuario user) {
+            @Valid @RequestBody User user) {
         try {
-            Usuario updated = userService.updateUser(userId, user);
+            User updated = userService.updateUser(userId, user);
             if (updated == null) {
                 return ResponseEntity.notFound().build();
             }
@@ -71,14 +71,14 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/financial")
-    public ResponseEntity<Usuario> updateFinancialData(
+    public ResponseEntity<User> updateFinancialData(
             @PathVariable Long userId,
             @RequestParam(required = false) Double income,
             @RequestParam(required = false) Double expenses,
             @RequestParam(required = false) Double emergencyFund,
             @RequestParam(required = false) Double debt) {
         try {
-            Usuario updated = userService.updateFinancialData(userId, income, expenses, emergencyFund, debt);
+            User updated = userService.updateFinancialData(userId, income, expenses, emergencyFund, debt);
             if (updated == null) {
                 return ResponseEntity.notFound().build();
             }
