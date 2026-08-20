@@ -2,9 +2,9 @@ package com.financeai.service.impl;
 
 import com.financeai.dto.CreateTransactionDTO;
 import com.financeai.dto.TransactionDTO;
-import com.financeai.entity.Categoria;
-import com.financeai.entity.Transaccion;
-import com.financeai.entity.Usuario;
+import com.financeai.entity.Category;
+import com.financeai.entity.Transaction;
+import com.financeai.entity.User;
 import com.financeai.repository.CategoryRepository;
 import com.financeai.repository.TransactionRepository;
 import com.financeai.repository.UserRepository;
@@ -33,33 +33,33 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionDTO createTransaction(Long userId, CreateTransactionDTO dto) {
-        Optional<Usuario> user = userRepository.findById(userId);
+        Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
 
-        Optional<Categoria> category = categoryRepository.findByName(dto.getCategory());
+        Optional<Category> category = categoryRepository.findByName(dto.getCategory());
         if (category.isEmpty()) {
             throw new RuntimeException("Category not found");
         }
 
-        Transaccion transaction = new Transaccion();
+        Transaction transaction = new Transaction();
         transaction.setUser(user.get());
         transaction.setDescription(dto.getDescription());
         transaction.setAmount(dto.getAmount());
         transaction.setCategory(category.get());
         transaction.setTransactionDate(dto.getTransactionDate());
-        transaction.setType(Transaccion.TransactionType.valueOf(dto.getType()));
+        transaction.setType(Transaction.TransactionType.valueOf(dto.getType()));
         transaction.setConfidence(95); // Default confidence
         transaction.setCreatedAt(LocalDateTime.now());
 
-        Transaccion saved = transactionRepository.save(transaction);
+        Transaction saved = transactionRepository.save(transaction);
         return convertToDTO(saved);
     }
 
     @Override
     public List<TransactionDTO> getUserTransactions(Long userId) {
-        Optional<Usuario> user = userRepository.findById(userId);
+        Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
@@ -71,7 +71,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<TransactionDTO> getRecentTransactions(Long userId, Integer limit) {
-        Optional<Usuario> user = userRepository.findById(userId);
+        Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
@@ -84,7 +84,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionDTO getTransaction(Long transactionId) {
-        Optional<Transaccion> transaction = transactionRepository.findById(transactionId);
+        Optional<Transaction> transaction = transactionRepository.findById(transactionId);
         if (transaction.isEmpty()) {
             throw new RuntimeException("Transaction not found");
         }
@@ -97,15 +97,15 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaccion> getMonthlyTransactions(Long userId, Integer month, Integer year) {
-        Optional<Usuario> user = userRepository.findById(userId);
+    public List<Transaction> getMonthlyTransactions(Long userId, Integer month, Integer year) {
+        Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
         return transactionRepository.findByUserAndMonth(user.get(), month, year);
     }
 
-    private TransactionDTO convertToDTO(Transaccion transaction) {
+    private TransactionDTO convertToDTO(Transaction transaction) {
         TransactionDTO dto = new TransactionDTO();
         dto.setId(transaction.getId());
         dto.setDescription(transaction.getDescription());
