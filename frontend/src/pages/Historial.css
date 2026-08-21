@@ -1,0 +1,92 @@
+.historial-page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.historial-page h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.historial-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.historial-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.historial-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.historial-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.historial-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.historial-table tr:last-child td {
+  border-bottom: none;
+}
+
+.historial-table tr:hover {
+  background: rgba(0, 122, 138, 0.03);
+}
+
+.historial-desc {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.historial-income {
+  color: var(--color-positive);
+  font-weight: 700;
+}
+
+.historial-expense {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+.historial-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.historial-delete-btn {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(217, 45, 32, 0.2);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-error);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.historial-delete-btn:hover {
+  background: rgba(217, 45, 32, 0.08);
+}

@@ -1,0 +1,162 @@
+.goals-page {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.goals-page__hero,
+.goals-page__metrics,
+.goals-page__content {
+  display: grid;
+  gap: 1rem;
+}
+
+.goals-page__hero {
+  padding: clamp(1.25rem, 2vw, 1.6rem);
+  border: 1px solid rgba(0, 122, 138, 0.12);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(105, 201, 185, 0.22), transparent 28%),
+    linear-gradient(180deg, rgba(0, 122, 138, 0.04) 0%, var(--color-surface) 52%);
+}
+
+.goals-page__hero-copy,
+.goals-page__hero-actions,
+.goals-page__analysis-date,
+.goals-page__buttons,
+.goals-page__section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.goals-page__hero-copy,
+.goals-page__analysis-date {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.goals-page__hero-actions,
+.goals-page__buttons,
+.goals-page__section-heading {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.goals-page__eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.goals-page__hero-copy h1,
+.goals-page__hero-copy p,
+.goals-page__analysis-date span,
+.goals-page__analysis-date strong,
+.goals-page__section-heading h2,
+.goals-page__section-heading p {
+  margin-bottom: 0;
+}
+
+.goals-page__hero-copy h1 {
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.goals-page__hero-copy p,
+.goals-page__section-heading p {
+  max-width: 52rem;
+}
+
+.goals-page__analysis-date {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(11, 21, 51, 0.08);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.goals-page__analysis-date span {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.goals-page__analysis-date strong {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.goals-page__buttons {
+  justify-content: flex-end;
+}
+
+.goals-page__metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.goals-page__content {
+  grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 0.95fr);
+  align-items: start;
+}
+
+.goals-page__main-column,
+.goals-page__sidebar,
+.goals-page__goals-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.goals-page__sidebar {
+  align-content: start;
+}
+
+.goals-page__section-heading h2 {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.goals-page__secondary-cta {
+  border-color: rgba(0, 122, 138, 0.28);
+  color: var(--color-secondary);
+  background: linear-gradient(180deg, var(--color-surface) 0%, rgba(0, 122, 138, 0.04) 100%);
+  box-shadow: 0 8px 20px rgba(7, 18, 47, 0.04);
+}
+
+@media (max-width: 1180px) {
+  .goals-page__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .goals-page__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .goals-page {
+    padding: 1rem;
+  }
+
+  .goals-page__hero-copy,
+  .goals-page__hero-actions,
+  .goals-page__buttons,
+  .goals-page__section-heading {
+    display: grid;
+  }
+
+  .goals-page__buttons .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .goals-page__metrics {
+    grid-template-columns: 1fr;
+  }
+}
