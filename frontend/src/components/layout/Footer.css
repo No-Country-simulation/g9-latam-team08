@@ -1,0 +1,36 @@
+.public-footer {
+  padding: var(--space-7) 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.public-footer__inner {
+  display: grid;
+  gap: 1rem;
+}
+
+.public-footer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.public-footer__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.public-footer__nav a,
+.public-footer p {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.public-footer__notice {
+  max-width: 44rem;
+  margin: 0;
+}
