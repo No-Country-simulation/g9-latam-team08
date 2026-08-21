@@ -1,0 +1,102 @@
+.dashboard-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  min-height: 5rem;
+  padding: 0 var(--space-6);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dashboard-topbar__brand {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  margin-right: auto;
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.dashboard-topbar__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-text-inverse);
+}
+
+.dashboard-topbar__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.dashboard-topbar__date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dashboard-topbar__notifications {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.dashboard-topbar__notifications:hover {
+  background: var(--color-surface-muted);
+}
+
+.dashboard-topbar__notifications:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.dashboard-topbar__notifications-dot {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-secondary);
+  box-shadow: 0 0 0 2px var(--color-surface);
+}
+
+@media (max-width: 768px) {
+  .dashboard-topbar {
+    justify-content: space-between;
+    min-height: 4.25rem;
+    padding: 0 var(--space-4);
+  }
+
+  .dashboard-topbar__brand {
+    display: inline-flex;
+  }
+
+  .dashboard-topbar__meta {
+    display: none;
+  }
+}

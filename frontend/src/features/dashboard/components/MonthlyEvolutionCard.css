@@ -1,0 +1,47 @@
+.monthly-evolution-card {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-6);
+}
+
+.monthly-evolution-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.monthly-evolution-card__title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.monthly-evolution-card__legend {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.monthly-evolution-card__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.monthly-evolution-card__legend-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: var(--radius-pill);
+}
+
+@media (max-width: 768px) {
+  .monthly-evolution-card {
+    display: none;
+  }
+}

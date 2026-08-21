@@ -1,0 +1,79 @@
+/* FiltrosHistorial.css */
+.filtros-contenedor {
+  background: var(--color-surface, #ffffff);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.filtro-buscador-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtros-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.filtro-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.filtro-input, .filtro-select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #111827;
+  font-size: 0.875rem;
+  transition: border-color 150ms ease;
+  min-width: 250px;
+}
+
+.filtro-input:focus, .filtro-select:focus {
+  outline: none;
+  border-color: #0f172a;
+}
+
+.pildoras-lista {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-pildora {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 99px;
+  background: #ffffff;
+  color: #4b5563;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.btn-pildora:hover {
+  background: #f3f4f6;
+}
+
+/* El estado activo del botón */
+.btn-pildora.activa {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}

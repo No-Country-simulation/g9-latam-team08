@@ -1,0 +1,17 @@
+.confidence-bar {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 6rem;
+  height: 0.35rem;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+}
+
+.confidence-bar__fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-positive);
+}

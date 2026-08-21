@@ -1,0 +1,39 @@
+.donut-chart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.donut-chart__empty {
+  stroke: var(--color-border);
+}
+
+.donut-chart__center {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  max-width: 65%;
+  text-align: center;
+}
+
+.donut-chart__center-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.donut-chart__center-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .donut-chart__center {
+    display: flex;
+  }
+}
