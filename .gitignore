@@ -1,0 +1,15 @@
+﻿node_modules
+.pnpm
+.npm
+dist
+build
+out
+target
+.env
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.log
+
+oracleJdk-26/
