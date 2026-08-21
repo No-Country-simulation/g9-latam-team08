@@ -1,0 +1,81 @@
+/* ─── Goals Dialog Overrides ──────────────────────────────────────────────── */
+
+.goals-dialog__content {
+  max-width: 480px;
+}
+
+.goals-dialog__content--form {
+  max-width: 560px;
+}
+
+.goals-dialog__layout {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.goals-dialog__header-copy {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.goals-dialog__summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt, var(--color-border));
+  font-size: 0.9rem;
+}
+
+.goals-dialog__summary strong {
+  color: var(--color-text);
+}
+
+.goals-dialog__textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.goals-dialog__danger-button {
+  background: var(--color-error) !important;
+  color: white !important;
+  border-color: var(--color-error) !important;
+}
+
+.goals-dialog__danger-button:hover {
+  opacity: 0.9;
+}
+
+.goals-dialog__pause-button {
+  background: var(--color-warning) !important;
+  color: white !important;
+  border-color: var(--color-warning) !important;
+}
+
+.goals-dialog__pause-button:hover {
+  opacity: 0.9;
+}
+
+/* ─── Goal Form ──────────────────────────────────────────────────────────── */
+
+.goal-form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.goal-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 480px) {
+  .goal-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .goals-dialog__content--form {
+    max-width: 100%;
+  }
+}

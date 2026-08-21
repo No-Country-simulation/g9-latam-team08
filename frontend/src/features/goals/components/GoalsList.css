@@ -1,0 +1,39 @@
+/* ─── Goals List Grid ─────────────────────────────────────────────────────── */
+
+.goals-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-5);
+}
+
+/* Empty state */
+
+.goals-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-5);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.goals-list__empty h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.goals-list__empty p {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .goals-list {
+    grid-template-columns: 1fr;
+  }
+}

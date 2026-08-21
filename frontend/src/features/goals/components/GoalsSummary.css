@@ -1,0 +1,43 @@
+/* ─── Goals Summary Cards ─────────────────────────────────────────────────── */
+
+.goals-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.goals-summary__card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.goals-summary__icon {
+  flex-shrink: 0;
+  color: var(--color-primary, #6366f1);
+  opacity: 0.85;
+}
+
+.goals-summary__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.goals-summary__value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.goals-summary__label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .goals-summary {
+    grid-template-columns: 1fr;
+  }
+}
