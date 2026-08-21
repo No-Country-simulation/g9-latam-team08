@@ -68,75 +68,100 @@ Plataforma cloud utilizada para el almacenamiento de los modelos entrenados y su
 
 ## Backend
 
-Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de los servicios Backend de Finance AI, la implementación de las APIs REST, la persistencia de datos y la integración con los modelos de Machine Learning.
+Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de los servicios Backend de Finance AI, la implementación de la API REST y la integración con los modelos de Machine Learning.
 
 ### Lenguajes de programación
 
 - **Java:** lenguaje utilizado para el desarrollo de la API REST principal.
-- **Python:** lenguaje utilizado para el desarrollo del servicio encargado del procesamiento financiero y la ejecución de los modelos de Machine Learning.
+
+- **Python:** lenguaje utilizado para el servicio encargado de los cálculos financieros y la ejecución de los modelos de Machine Learning.
 
 ### Frameworks
 
 - **Spring Boot:** framework utilizado para el desarrollo de la API REST en Java.
+
 - **Spring Data JPA / Hibernate:** utilizados para el mapeo objeto-relacional y la persistencia de datos.
+
 - **Flask:** microframework utilizado para implementar la API en Python encargada de los cálculos financieros y la ejecución de los modelos de Machine Learning.
 
 ### Procesamiento e integración con Machine Learning
 
-- **Pandas:** utilizado para el procesamiento de datos dentro del servicio Python.
+- **Pandas:** utilizado para la manipulación y procesamiento de datos dentro del servicio Python.
+
 - **scikit-learn:** utilizado para la ejecución de los modelos predictivos.
-- **joblib:** utilizado para la carga de los modelos serializados.
+
+- **joblib:** utilizado para la carga y ejecución de los modelos serializados.
+
 - **Requests:** utilizado para realizar peticiones HTTP y acceder a los artefactos requeridos por el servicio.
 
 ### Base de datos
 
-- **H2 Database:** base de datos en memoria utilizada para desarrollo y pruebas locales del Backend.
-- **MySQL:** sistema de gestión de base de datos utilizado para la persistencia de datos en el entorno de producción.
-- **Railway:** plataforma utilizada para alojar la base de datos MySQL utilizada por la solución en la nube.
+- **MySQL:** sistema de gestión de base de datos relacional utilizado para la persistencia de la información.
 
+### Integración con OCI
 
-### Seguridad
-
-- **Spring Security:** framework utilizado para la configuración de seguridad y autenticación en la aplicación Backend.
-- **JWT (JSON Web Token):** utilizado para la autenticación mediante tokens y la gestión de acceso a los servicios protegidos de la aplicación.
-
+- **Oracle Cloud Infrastructure (OCI) Object Storage:** utilizado para almacenar los artefactos de los modelos de Machine Learning que son utilizados por los servicios de Backend.
 
 ### Gestión de dependencias y construcción
 
 - **Maven:** utilizado para la gestión de dependencias y construcción de la aplicación desarrollada con Spring Boot.
 
-### Documentación y pruebas de API
-
-- **Swagger / OpenAPI:** herramienta utilizada para la documentación y prueba de los endpoints de la API.
-
-### Herramientas de desarrollo
-
-- **Lombok:** librería utilizada para reducir código repetitivo en las clases Java mediante la generación automática de métodos y constructores.
-
 ### Control de versiones
 
 - **Git:** sistema utilizado para el control de versiones.
+
 - **GitHub:** plataforma utilizada para alojar y gestionar colaborativamente el código fuente.
 
 ---
 
 ## Frontend
 
-Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de la interfaz web de Finance AI, la construcción de componentes reutilizables, la navegación entre las distintas páginas y la integración con los servicios del Backend.
+Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de la interfaz web de Finance AI, la construcción de componentes reutilizables, la navegación entre las distintas páginas y la interacción con los servicios de la aplicación.
 
 ### Framework y lenguaje
 
-- **React:** utilizado para el desarrollo de la interfaz de usuario y la construcción de componentes reutilizables.
-- **TypeScript:** lenguaje utilizado para el desarrollo del Frontend, proporcionando tipado estático y facilitando la organización y mantenimiento del código.
+- **React 19:** utilizado para el desarrollo de la interfaz de usuario y la construcción de componentes reutilizables.
+
+- **TypeScript 5:** lenguaje utilizado para el desarrollo del Frontend, proporcionando tipado estático y facilitando la organización y mantenimiento del código.
+
+### Navegación
+
+- **React Router DOM 7:** utilizado para gestionar las rutas públicas y privadas y la navegación entre las distintas páginas de la aplicación.
+
+### Formularios y validación
+
+- **React Hook Form:** utilizado para la gestión de formularios, incluyendo el flujo de Nuevo Análisis.
+
+- **Zod:** utilizado para la validación de los datos ingresados por el usuario.
+
+### Componentes e interfaz
+
+- **Radix UI Dialog:** utilizado para la implementación de componentes de diálogo en la interfaz.
+
+- **Lucide React:** librería de iconos utilizada en los componentes de la aplicación.
+
+- **React Icons:** librería utilizada para incorporar iconos en la interfaz.
+
+### Autenticación
+
+- **Google OAuth:** utilizado para implementar la opción de inicio de sesión mediante cuenta de Google.
+
+### Exportación de información
+
+- **jsPDF:** utilizado para generar documentos PDF desde el Frontend.
+
+- **jsPDF AutoTable:** utilizado junto con jsPDF para generar tablas dentro de los documentos PDF exportados.
 
 ### Herramientas de desarrollo
 
-- **Vite:** herramienta utilizada para el desarrollo, ejecución local y construcción del Frontend.
+- **Vite 7:** herramienta utilizada para el desarrollo, ejecución local y construcción del Frontend.
+
 - **pnpm:** gestor de paquetes utilizado para la instalación y administración de las dependencias del proyecto.
 
 ### Estilos y diseño de interfaz
 
 - **CSS:** utilizado para la definición de estilos de las páginas y componentes de la aplicación.
+
 - **Design Tokens:** utilizados para centralizar y mantener consistentes los estilos visuales de la aplicación mediante `tokens.css` y `globals.css`.
 
 ---

@@ -6,7 +6,7 @@
 
 ## Objetivo
 
-Centralizar los enlaces oficiales utilizados durante el desarrollo del proyecto, facilitando el acceso a las herramientas de trabajo, la documentación, el código fuente, la aplicación, la presentación y los entregables del Hackathon.
+Centralizar los enlaces oficiales utilizados durante el desarrollo del proyecto, facilitando el acceso a las herramientas de trabajo, la documentación, el código fuente, la aplicación y los entregables del Hackathon.
 
 ---
 
@@ -20,7 +20,7 @@ Este documento reúne los enlaces oficiales relacionados con el proyecto, incluy
 
 ### Repositorio principal
 
-https://github.com/No-Country-simulation/g9-latam-team08
+https://github.com/No-Country-simulation/g9-latam-team08/tree/main
 
 ---
 
@@ -29,13 +29,21 @@ https://github.com/No-Country-simulation/g9-latam-team08
 ### Documentación general
 
 - `README.md` – README principal del proyecto.
+
 - `docs/Documentacion_Proyecto_Hackathon.md` – Documentación general del proyecto.
+
 - `docs/Herramientas_y_Tecnologias.md` – Herramientas y tecnologías utilizadas.
+
 - `docs/Manual_Usuario.md` – Manual de usuario.
+
 - `docs/minutas/` – Registro de reuniones del proyecto.
+
 - `docs/Ciencia_Datos.md` – Documentación técnica de Ciencia de Datos.
+
 - `docs/Backend.md` – Documentación técnica de Backend.
+
 - `docs/Frontend.md` – Documentación técnica de Frontend.
+
 - `docs/OCI.md` – Documentación técnica de Oracle Cloud Infrastructure.
 
 > 🔄 Los enlaces definitivos serán incorporados una vez consolidada la documentación en la rama principal.
@@ -48,9 +56,12 @@ https://github.com/No-Country-simulation/g9-latam-team08
 
 Tablero General utilizado para la planificación, seguimiento y coordinación del proyecto.
 
+https://trello.com/b/hNUvR6lB/%F0%9F%93%8A-finance-ai-asistente-inteligente-de-salud-financiera
+
 > 🔄 Pendiente de revisar el contenido del tablero y verificar su acceso público antes de incorporar el enlace definitivo.
 
 ---
+
 ## Aplicación Web para escritorio (PC)
 
 Enlace de acceso a la Aplicación Web para escritorio (PC) de Finance AI.
@@ -75,14 +86,6 @@ Enlace al diseño de la interfaz de la aplicación web.
 
 ---
 
-## Presentación (Pitch)
-
-Presentación oficial utilizada para la exposición final del proyecto.
-
-> 🔄 Enlace pendiente de incorporar.
-
----
-
 ## Videos del Proyecto
 
 ### Video Demo
@@ -91,12 +94,6 @@ Video demostrativo del funcionamiento del MVP correspondiente al entregable soli
 
 > 🔄 Enlace de YouTube pendiente de incorporar.
 
-### Demo Day
-
-Video correspondiente a la presentación final del proyecto en Demo Day, cuando se encuentre disponible.
-
-> 🔄 Enlace pendiente de incorporar.
-
 ---
 
 ## Entregables del Hackathon
@@ -104,8 +101,11 @@ Video correspondiente a la presentación final del proyecto en Demo Day, cuando 
 De acuerdo con las tareas definidas en la plataforma de No Country, los entregables finales del proyecto comprenden:
 
 - 📄 **Documentación del Proyecto:** URL directa al archivo `.md` correspondiente en GitHub.
+
 - 🛠️ **Herramientas del Equipo:** seleccionadas directamente en la plataforma de No Country, hasta un máximo de 10.
+
 - 🔗 **Enlaces del Proyecto:** recursos y enlaces relevantes del proyecto.
+
 - 🎥 **Video Demo:** enlace de YouTube con la demostración del MVP, con una duración máxima de 10 minutos.
 
 > 🔄 Los enlaces definitivos serán incorporados y verificados antes de la entrega final.
