@@ -1,0 +1,134 @@
+.dashboard-preview {
+  display: grid;
+  grid-template-columns: minmax(5rem, 7rem) 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.dashboard-preview__sidebar,
+.dashboard-preview__panel,
+.dashboard-preview__hero-card {
+  border-radius: calc(var(--radius-lg) - 4px);
+  background: var(--color-surface-muted);
+}
+
+.dashboard-preview__sidebar {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  padding: 0.9rem 0.75rem;
+}
+
+.dashboard-preview__sidebar-brand {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
+}
+
+.dashboard-preview__content {
+  display: grid;
+  gap: 1rem;
+}
+
+.dashboard-preview__hero-card,
+.dashboard-preview__panel {
+  padding: 1rem;
+}
+
+.dashboard-preview__metrics,
+.dashboard-preview__bottom {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.dashboard-preview__metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0.75rem;
+}
+
+.dashboard-preview__bottom {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skeleton-block,
+.skeleton-line,
+.skeleton-chip,
+.skeleton-metric,
+.skeleton-bar {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 77, 92, 0.08) 0%,
+    rgba(10, 77, 92, 0.16) 50%,
+    rgba(10, 77, 92, 0.08) 100%
+  );
+  background-size: 200% 100%;
+  animation: pulse 1.7s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 0.8rem;
+  border-radius: 999px;
+}
+
+.skeleton-line--short {
+  width: 48%;
+}
+
+.skeleton-line--medium {
+  width: 72%;
+}
+
+.skeleton-chip {
+  width: 5rem;
+  height: 1.6rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+}
+
+.skeleton-metric {
+  height: 5rem;
+  border-radius: 1rem;
+}
+
+.skeleton-bar {
+  height: 0.85rem;
+  margin-top: 1rem;
+  border-radius: 999px;
+}
+
+.skeleton-bar--wide {
+  width: 88%;
+}
+
+.skeleton-bar--medium {
+  width: 64%;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-preview__sidebar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .dashboard-preview__bottom,
+  .dashboard-preview__metrics {
+    grid-template-columns: 1fr;
+  }
+}
