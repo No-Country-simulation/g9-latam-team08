@@ -56,9 +56,14 @@
 			<scope>test</scope>
 		</dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <version>0.35.0</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-google-ai-gemini</artifactId>
+            <version>0.35.0</version>
         </dependency>
     </dependencies>
 
