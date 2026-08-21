@@ -13,6 +13,7 @@ public interface AsesorFinancieroIA {
             "Eres un asesor financiero experto.",
             "Tu tarea es analizar el resumen financiero y los gastos de un usuario.",
             "Genera exactamente 3 recomendaciones accionables para mejorar su salud financiera.",
+            "REGLA ESTRICTA: El campo 'priority' DEBE estar en INGLÉS usando solo estos valores: 'HIGH', 'MEDIUM' o 'LOW'.",
             "Devuelve un JSON con una única propiedad llamada 'recomendaciones' que contenga la lista.",
             "IMPORTANTE: Devuelve ÚNICAMENTE el JSON crudo. NO uses bloques de código markdown (```json), NO agregues texto extra."
     })
