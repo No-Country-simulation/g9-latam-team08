@@ -4,8 +4,8 @@ import "./FiltrosHistorial.css";
 export default function FiltrosHistorial({
   searchTerm,
   onSearchChange,
-  selectedPeriod: _selectedPeriod,
-  onPeriodChange: _onPeriodChange,
+  //selectedPeriod: _selectedPeriod,
+  //onPeriodChange: _onPeriodChange,
   selectedCategory,
   onCategoryChange,
   selectedType,
