@@ -8,6 +8,16 @@ import { exportarTransaccionesPDF } from "../utils/exportUtils";
 import { ModalEditar } from "../components/historial/ModalEditar";
 import { env } from "../api/env";
 
+const mapBackendTransaction = (t: any): Transaction => ({
+  id: String(t.id),
+  description: t.nombre_tienda ?? "",
+  amount: Number(t.monto ?? 0),
+  date: t.fecha ?? "",
+  category: t.categoria_principal ?? "Otros",
+  type: t.type === "INCOME" ? "income" : "expense",
+  account: "Principal"
+});
+
 export default function Historial() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -49,8 +59,12 @@ const response = await fetch(
           throw new Error(`Error HTTP: ${response.status}`);
         }
 
-        const data: Transaction[] = await response.json();
-        setTransactions(data);
+        const data = await response.json();
+
+        const transactionsMapped: Transaction[] =
+          data.map(mapBackendTransaction);
+
+        setTransactions(transactionsMapped);
         setError(null);
 
       } catch (err) {
@@ -140,7 +154,7 @@ const response = await fetch(
   // ==========================================
   // 6. MANEJADORES DE ACCIONES
   // ==========================================
-  const handleDelete = async (id: string | number) => {
+  const handleDelete = async (id: string) => {
     const confirmar = window.confirm("¿Estás seguro de que querés eliminar este movimiento?");
     if (!confirmar) return;
 
@@ -188,12 +202,32 @@ const response = await fetch(
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ ...datosModificados, id: idTransaccion })
+        body: JSON.stringify({
+        nombre_tienda: datosModificados.description,
+        monto: Number(datosModificados.amount),
+        categoria_principal: datosModificados.category,
+        fecha: datosModificados.date,
+        type:
+          datosModificados.type === "income"
+            ? "INCOME"
+            : "EXPENSE"
+      })
       });
 
       if (response.ok) {
-        const transaccionActualizada = await response.json();
-        setTransactions(prev => prev.map(t => t.id === transaccionActualizada.id ? transaccionActualizada : t));
+        const data = await response.json();
+      
+        const transaccionActualizada =
+          mapBackendTransaction(data);
+      
+        setTransactions(prev =>
+          prev.map(t =>
+            t.id === transaccionActualizada.id
+              ? transaccionActualizada
+              : t
+          )
+        );
+      
         setModalAbierto(false);
       } else {
         alert(`Fallo en el servidor: HTTP ${response.status}`);
