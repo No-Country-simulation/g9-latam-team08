@@ -1,0 +1,32 @@
+.goals-empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px dashed rgba(10, 77, 92, 0.22);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(105, 201, 185, 0.18), transparent 25%),
+    linear-gradient(180deg, rgba(0, 122, 138, 0.03) 0%, var(--color-surface) 100%);
+}
+
+.goals-empty-state__icon {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: rgba(0, 122, 138, 0.1);
+  color: var(--color-primary);
+}
+
+.goals-empty-state__copy {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.goals-empty-state__copy h3,
+.goals-empty-state__copy p {
+  margin-bottom: 0;
+}

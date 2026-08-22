@@ -1,0 +1,19 @@
+.bar-chart {
+  display: block;
+  overflow: visible;
+}
+
+.bar-chart__grid-line {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.bar-chart__axis-label,
+.bar-chart__category-label {
+  font-size: 11px;
+  fill: var(--color-text-muted);
+}
+
+.bar-chart__category-label {
+  font-weight: 600;
+}

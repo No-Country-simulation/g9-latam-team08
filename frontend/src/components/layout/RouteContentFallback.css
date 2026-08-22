@@ -1,0 +1,46 @@
+.route-fallback {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  min-height: 16rem;
+  padding: 2rem 1rem;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.route-fallback--compact {
+  min-height: 10rem;
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.route-fallback--fullscreen {
+  min-height: 100vh;
+}
+
+.route-fallback__pulse {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--color-primary) 0%, rgba(13, 148, 136, 0.16) 70%);
+  animation: route-fallback-pulse 1.4s ease-in-out infinite;
+}
+
+.route-fallback p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+@keyframes route-fallback-pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

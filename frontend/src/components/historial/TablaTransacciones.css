@@ -1,0 +1,196 @@
+/* TablaTransacciones.css */
+
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--color-surface, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-top: 1.5rem;
+}
+
+.tabla-historial {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabla-encabezado th {
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.tabla-fila {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 150ms ease;
+}
+
+.tabla-fila:hover {
+  background-color: var(--color-surface-muted);
+}
+
+.tabla-celda {
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; color: var(--color-text); }
+.text-muted { color: var(--color-text-muted); }
+
+/* La etiqueta naranja de la categoría */
+.pildora-categoria {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #c2410c;
+  background-color: #ffedd5;
+  border-radius: 9999px;
+}
+
+.dashboard-layout[data-theme="dark"] .pildora-categoria {
+  color: #fdba74;
+  background-color: rgba(194, 65, 12, 0.25);
+}
+
+/* Botones de acción (Editar / Eliminar) */
+/* Contenedor de los botones */
+.tabla-acciones {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Los botones*/
+.btn-accion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 150ms ease;
+  flex-shrink: 0;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+
+.btn-accion svg {
+  flex-shrink: 0;
+  min-width: 16px;
+}
+.btn-editar { color: var(--color-text-muted); }
+.btn-editar:hover { background-color: var(--color-surface-muted); color: var(--color-text); }
+
+.btn-eliminar { color: var(--color-error); }
+.btn-eliminar:hover { background-color: rgba(248, 113, 113, 0.16); }
+
+.tabla-estado-vacio {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  /* 1. Ocultamos el encabezado de la tabla */
+  .tabla-historial thead {
+    display: none !important;
+  }
+
+  .tabla-historial,
+  .tabla-historial tbody {
+    display: block;
+    width: 100%;
+  }
+
+  /* 2. Transformamos la fila en una TARJETA usando CSS Grid */
+  .tabla-fila {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Dos columnas: Izquierda (crece) y Derecha (se ajusta) */
+    grid-template-areas:
+      "descripción monto"
+      "fecha categoria"
+      "acciones acciones";
+    gap: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+  }
+
+  /* 3. Limpiamos los estilos de celda por defecto */
+  .tabla-celda {
+    display: flex;
+    padding: 0;
+    border: none !important; /* Quitamos las líneas entre celdas */
+    align-items: center;
+  }
+
+  /* 4. Acomodamos cada dato en su lugar específico de la tarjeta */
+
+  /* Descripción: Arriba a la izquierda */
+  .tabla-celda:nth-child(1) {
+    grid-area: descripción;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  /* Monto: Arriba a la derecha */
+  .tabla-celda:nth-child(2) {
+    grid-area: monto;
+    justify-content: flex-end;
+    font-size: 1.1rem;
+  }
+
+  /* Fecha: Al medio a la izquierda */
+  .tabla-celda:nth-child(3) {
+    grid-area: fecha;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+  }
+
+  /* Categoría (Píldora): Al medio a la derecha */
+  .tabla-celda:nth-child(4) {
+    grid-area: categoria;
+    justify-content: flex-end;
+  }
+
+  /* Acciones (Botones): Abajo del todo, alineados a la derecha */
+/* 5. Acciones (Botones): Abajo del todo, alineados a la derecha */
+.tabla-celda:nth-child(5) {
+    grid-area: acciones;
+    justify-content: flex-start; /* <--- ¡ESTE ES EL CAMBIO CLAVE! */
+    gap: 1rem;
+    padding-top: 0.85rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  /* Le damos forma de "botón táctil" a los íconos en móviles */
+  .tabla-celda:nth-child(5) .btn-accion {
+    background-color: rgba(255, 255, 255, 0.05); /* Un fondo sutil para marcarlos */
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Si tu tema oscuro usa otras variables, ajusta el fondo del botón de borrar para que resalte apenas */
+  .tabla-celda:nth-child(5) .btn-eliminar {
+    background-color: rgba(248, 113, 113, 0.1);
+  }
+}

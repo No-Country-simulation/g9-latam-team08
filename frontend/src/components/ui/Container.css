@@ -1,0 +1,4 @@
+.container {
+  width: min(100% - 2rem, var(--container-max-width));
+  margin: 0 auto;
+}

@@ -1,0 +1,8 @@
+.new-analysis-page {
+  min-height: 100%;
+}
+
+.new-analysis-page__inner {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}

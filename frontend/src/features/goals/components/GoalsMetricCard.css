@@ -1,0 +1,77 @@
+.goals-metric-card {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.1rem 1.15rem;
+  border-color: rgba(0, 122, 138, 0.12);
+  background: linear-gradient(180deg, rgba(0, 122, 138, 0.04) 0%, var(--color-surface) 100%);
+  box-shadow: 0 10px 26px rgba(7, 18, 47, 0.04);
+}
+
+.goals-metric-card--blue {
+  border-color: rgba(78, 116, 189, 0.18);
+  background: linear-gradient(180deg, rgba(78, 116, 189, 0.06) 0%, var(--color-surface) 100%);
+}
+
+.goals-metric-card--purple {
+  border-color: rgba(125, 90, 255, 0.18);
+  background: linear-gradient(180deg, rgba(125, 90, 255, 0.06) 0%, var(--color-surface) 100%);
+}
+
+.goals-metric-card--amber {
+  border-color: rgba(249, 178, 51, 0.22);
+  background: linear-gradient(180deg, rgba(249, 178, 51, 0.08) 0%, var(--color-surface) 100%);
+}
+
+.goals-metric-card__icon {
+  display: inline-flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.goals-metric-card__icon--teal {
+  background: rgba(42, 157, 143, 0.12);
+  color: #1f6d64;
+}
+
+.goals-metric-card__icon--blue {
+  background: rgba(78, 116, 189, 0.12);
+  color: #35538d;
+}
+
+.goals-metric-card__icon--purple {
+  background: rgba(125, 90, 255, 0.12);
+  color: #5e42d2;
+}
+
+.goals-metric-card__icon--amber {
+  background: var(--color-warning-soft);
+  color: #8b5e00;
+}
+
+.goals-metric-card__label,
+.goals-metric-card__hint {
+  margin-bottom: 0;
+}
+
+.goals-metric-card__label {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.goals-metric-card__value {
+  color: var(--color-text);
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.goals-metric-card__hint {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 400;
+}

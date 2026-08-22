@@ -1,0 +1,34 @@
+.dashboard-page__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+  gap: var(--space-5);
+}
+
+.dashboard-page__main {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.dashboard-page__side {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.dashboard-page__charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+@media (max-width: 960px) {
+  .dashboard-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-page__charts-row {
+    grid-template-columns: 1fr;
+  }
+}

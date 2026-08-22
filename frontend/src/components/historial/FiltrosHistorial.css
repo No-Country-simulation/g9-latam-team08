@@ -1,0 +1,99 @@
+/* FiltrosHistorial.css */
+
+.filtros-contenedor {
+  background: var(--color-surface, #ffffff);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.filtro-buscador-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtros-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.filtro-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.filtro-input, .filtro-select {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 8px;
+  background-color: var(--color-surface-muted);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  transition: border-color 150ms ease;
+  min-width: 250px;
+}
+
+.filtro-input:focus, .filtro-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.pildoras-lista {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-pildora {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 99px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.btn-pildora:hover {
+  background: var(--color-surface-muted);
+}
+
+/* El estado activo del botón */
+.btn-pildora.activa {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .filtros-grid {
+    flex-direction: column; /* Apila los filtros uno debajo del otro */
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .filtro-input, .filtro-select {
+    min-width: 100%; /* Elimina el 250px que rompía la pantalla */
+    width: 100%;
+  }
+
+  .pildoras-lista {
+    overflow-x: auto; /* Si hay muchas píldoras, permite deslizar con el dedo */
+    padding-bottom: 8px;
+    flex-wrap: nowrap; /* Evita que se amontonen feo hacia abajo */
+  }
+}

@@ -1,0 +1,83 @@
+.public-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+  background: color-mix(in srgb, var(--color-background) 88%, white);
+  border-bottom: 1px solid rgba(10, 77, 92, 0.08);
+}
+
+.public-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 5rem;
+}
+
+.public-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.public-header__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-sm);
+}
+
+.public-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.public-header__nav a {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.public-header__nav a:hover,
+.public-header__nav a:focus-visible {
+  color: var(--color-primary);
+}
+
+.public-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.public-header__menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .public-header__nav,
+  .public-header__actions .button {
+    display: none;
+  }
+
+  .public-header__menu {
+    display: inline-flex;
+  }
+}

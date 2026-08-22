@@ -1,0 +1,19 @@
+.step-card {
+  position: relative;
+  padding: var(--space-5);
+  min-height: 100%;
+}
+
+.step-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  margin-bottom: 1.25rem;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  background: var(--color-warning-soft);
+  color: var(--color-text);
+  font-weight: 700;
+}
