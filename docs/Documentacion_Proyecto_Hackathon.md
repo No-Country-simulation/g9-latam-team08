@@ -117,7 +117,7 @@ El flujo general de la solución contempla:
 4. Los modelos de Ciencia de Datos procesan la información para clasificar las transacciones y evaluar el perfil financiero del usuario.
 5. Los modelos de Machine Learning desarrollados por Ciencia de Datos se encuentran almacenados en OCI Object Storage y son puestos a disposición de Backend para su utilización dentro de la solución. La API REST se encuentra desplegada sobre una instancia de OCI Compute.
 6. Los resultados obtenidos son procesados por los servicios de la solución y presentados al usuario mediante la aplicación web.
-7. El usuario puede visualizar sus indicadores, distribución de gastos, perfil financiero, alertas y recomendaciones.
+7. El usuario puede visualizar sus indicadores, distribución de gastos, perfil financiero y recomendaciones personalizadas.
 
 ---
 ## Gestión y Metodología de Trabajo
@@ -213,100 +213,182 @@ Los entregables son revisados y validados por el equipo antes de su publicación
 
 ---
 
-## Estado Actual del Proyecto
+## Estado Final del Proyecto
 
-Finance AI se encuentra en la etapa final de desarrollo e integración del MVP.
+Finance AI se encuentra en la jornada de cierre y consolidación final de su MVP en el marco del **Hackathon ONE | Alura Latam | No Country**.
 
-Ciencia de Datos y Oracle Cloud Infrastructure (OCI) han completado sus actividades específicas. Backend se encuentra desarrollado y desplegado en OCI, quedando pendiente completar la integración definitiva con Frontend y las pruebas finales del flujo integrado. Frontend continúa con las integraciones y ajustes necesarios para completar la versión final de la aplicación web.
+Los componentes principales de **Ciencia de Datos, Backend, Frontend y Oracle Cloud Infrastructure (OCI)** fueron desarrollados de acuerdo con el alcance definido para el proyecto.
+
+Ciencia de Datos completó el desarrollo, evaluación y serialización de los modelos de Machine Learning. Backend cuenta con los servicios necesarios para el procesamiento financiero, la integración con los modelos y el flujo de Nuevo Análisis. Frontend cuenta con una versión consolidada de la Aplicación Web para escritorio (PC), mientras que OCI proporciona Object Storage para el almacenamiento de los modelos de Machine Learning y Compute para el despliegue de la API REST.
+
+Durante la jornada de cierre se completará la consolidación definitiva de las áreas en `main` y la validación final del funcionamiento integrado de la aplicación, antes de preparar la versión definitiva de los entregables del proyecto.
 
 ### Ciencia de Datos
 
 - ✅ Generados y preparados los datasets utilizados para el análisis financiero y la clasificación de transacciones.
+
 - ✅ Completado el análisis exploratorio de datos (EDA) y el preprocesamiento de los datos.
+
 - ✅ Completada la ingeniería de características para el análisis del perfil financiero.
+
 - ✅ Desarrollado y entrenado el modelo de clasificación del perfil financiero mediante Random Forest.
+
 - ✅ Desarrollado y entrenado el modelo de clasificación de transacciones mediante Transformer con Context-Fusion.
+
 - ✅ Evaluados los modelos de Machine Learning y documentadas sus métricas de desempeño.
+
 - ✅ Serializados y exportados los modelos y artefactos necesarios para su integración.
-- ✅ Implementada la integración con Backend mediante la base de datos compartida en Railway y los modelos almacenados en OCI Object Storage.
+
+- ✅ Implementada la integración con Backend mediante los modelos y artefactos de Machine Learning almacenados en OCI Object Storage.
+
 - ✅ Definido y documentado el contrato de datos para el intercambio de información con Backend.
+
 - ✅ Desarrollado un dashboard interactivo para visualizar resultados predictivos y comportamiento transaccional.
+
 - ✅ Documentadas las herramientas, tecnologías e infraestructura utilizadas por el área.
 
 **Estado:** ✅ El componente de Ciencia de Datos se encuentra desarrollado y preparado para su utilización dentro del flujo integrado del MVP.
 
 ### Backend
 
-- ✅ Desarrollada e implementada la API REST mediante Java y Spring Boot.
-- ✅ Implementados los servicios y endpoints para la gestión de usuarios, transacciones, categorías, alertas y procesamiento financiero.
-- ✅ Implementada la persistencia de datos mediante Spring Data JPA, utilizando MySQL/Railway como base de datos de producción y H2 para desarrollo y pruebas locales.
-- ✅ Implementadas validaciones de datos y manejo de errores.
-- ✅ Implementada la seguridad de la API mediante Spring Security y autenticación con JWT.
-- ✅ Implementada la integración con el servicio de Ciencia de Datos para el procesamiento financiero y la utilización de los modelos de Machine Learning.
-- ✅ Implementada la comunicación mediante API REST y formato JSON para la integración con la aplicación Frontend.
-- ✅ Realizadas pruebas unitarias y de integración locales, junto con pruebas de endpoints mediante Postman y Swagger/OpenAPI.
-- ✅ Backend desplegado y operativo en OCI Compute.
-- 🔄 Pendiente completar y validar la integración definitiva con Frontend de acuerdo con las funcionalidades finales de la aplicación web.
-- ⏳ Pendientes las pruebas finales del flujo integrado del MVP.
+- ✅ Desarrollada e implementada la API REST principal mediante Java y Spring Boot.
 
-**Estado:** 🔄 El componente Backend se encuentra desarrollado y desplegado, quedando pendiente completar la integración definitiva con Frontend y realizar las pruebas finales del flujo integrado del MVP.
+- ✅ Implementados los servicios y endpoints necesarios para la gestión y procesamiento de la información financiera.
+
+- ✅ Implementada la persistencia de datos mediante Spring Data JPA/Hibernate, utilizando MySQL alojado en Railway y H2 para desarrollo y pruebas locales.
+
+- ✅ Implementada la seguridad mediante Spring Security y autenticación con JWT.
+
+- ✅ Implementada una API Python/Flask para realizar cálculos financieros, evaluar indicadores de salud financiera y ejecutar los modelos de Machine Learning desarrollados por Ciencia de Datos.
+
+- ✅ Implementada la utilización de los modelos almacenados en OCI Object Storage para la clasificación de transacciones y evaluación del perfil financiero.
+
+- ✅ Implementado el flujo de **Nuevo Análisis** mediante un orquestador Backend For Frontend (BFF) desarrollado con Java y Spring Boot.
+
+- ✅ El orquestador recibe la información financiera y transaccional proveniente del Frontend, coordina el procesamiento mediante los servicios correspondientes y devuelve una respuesta estructurada para la aplicación.
+
+- ✅ Incorporada la generación de recomendaciones financieras personalizadas mediante LangChain4j y Google Gemini, enriqueciendo los resultados obtenidos durante el análisis financiero.
+
+- ✅ Implementada la comunicación entre los diferentes servicios mediante API REST y formato JSON.
+
+- ✅ Realizadas pruebas de entrada y salida de datos sobre los servicios correspondientes al flujo de análisis.
+
+- ✅ API REST desplegada en una instancia de OCI Compute.
+
+- 🔄 Consolidación definitiva de Backend en `main` prevista para la jornada de cierre.
+
+- ⏳ Validación final del funcionamiento de Backend dentro del flujo completo de la aplicación.
+
+**Estado:** 🔄 El componente Backend se encuentra desarrollado y con sus servicios principales implementados. Durante el cierre se completará su consolidación definitiva en `main` y la validación dentro del flujo completo del MVP.
 
 ### Frontend
 
-- ✅ Implementadas las principales páginas y funcionalidades de la aplicación web del MVP.
-- ✅ Completado el flujo de **Nuevo Análisis** a nivel de Frontend, incluyendo datos financieros, transacciones, revisión, procesamiento y visualización de resultados mediante las vistas de Resumen, Gastos y Recomendaciones.
-- ✅ Implementadas las funcionalidades de **Metas** y **Notificaciones** a nivel de Frontend.
-- ✅ Implementadas las funcionalidades de autenticación e integración con Backend para **Login y Registro**.
-- 🔄 **Historial financiero** implementado con integración parcial con Backend.
-- ⏳ **Configuraciones** pendiente de implementación.
-- 🔄 Pendiente completar la integración real del flujo de **Nuevo Análisis con Backend** y los servicios correspondientes de Ciencia de Datos/OCI.
-- 🔄 Pendiente la integración y persistencia Backend de **Metas**.
-- 🔄 Pendiente la integración Backend de **Notificaciones y preferencias**.
-- ⏳ Pendientes las **pruebas finales de integración/end-to-end**.
-- 🔄 La documentación de Frontend se encuentra en proceso de consolidación para reflejar la implementación e integración definitiva del MVP.
+- ✅ Desarrollada la Aplicación Web para escritorio (PC) mediante React, TypeScript y Vite.
 
-**Nota:** Las funcionalidades aún no integradas con Backend utilizan actualmente mocks/estado local para permitir su funcionamiento y validación a nivel de Frontend.
+- ✅ Consolidada la implementación de Frontend correspondiente al MVP en su rama de trabajo.
 
-**Estado:** 🔄 El componente Frontend se encuentra avanzado a nivel de implementación, quedando pendientes la integración definitiva con Backend, los ajustes finales y las pruebas de integración/end-to-end del MVP.
+- ✅ Implementadas la Landing pública y las funcionalidades de autenticación.
+
+- ✅ Implementado el Dashboard privado para la visualización de la información financiera del usuario.
+
+- ✅ Implementado el flujo de **Nuevo Análisis** a nivel de interfaz, incluyendo el ingreso de datos financieros, carga de transacciones, revisión de información, procesamiento y visualización de resultados.
+
+- ✅ Implementadas las vistas de resultados correspondientes a Resumen, Gastos y Recomendaciones.
+
+- ✅ Implementado el Historial financiero a nivel de Frontend y preparada su comunicación con los servicios correspondientes de Backend.
+
+- ✅ Implementada la sección de Soporte.
+
+- ✅ Las funcionalidades de **Metas** y **Notificaciones** se encuentran desarrolladas a nivel de Frontend y preservadas dentro de la aplicación, aunque fuera de la navegación principal del MVP.
+
+- ℹ️ La integración completa de **Metas y Notificaciones con Backend** se contempla como una mejora futura de Finance AI y no forma parte del flujo principal definido para la versión final del MVP.
+
+- ℹ️ **Configuración** no forma parte de las funcionalidades implementadas para la versión final del MVP y se contempla como una posible evolución futura de la aplicación.
+
+- 🔄 Consolidación definitiva de Frontend en `main` prevista para la jornada de cierre.
+
+- ⏳ Pendiente la validación final de la Aplicación Web dentro del flujo completo e integrado del MVP.
+
+**Estado:** 🔄 El componente Frontend se encuentra desarrollado y consolidado en su rama de trabajo de acuerdo con el alcance visible definido para el MVP. Durante el cierre se completará su incorporación definitiva a `main` y la validación final junto con los servicios de Backend.
 
 ### Oracle Cloud Infrastructure (OCI)
 
 - ✅ Implementado **Object Storage** para el almacenamiento de los modelos de Machine Learning desarrollados por Ciencia de Datos.
+
 - ✅ Organizados y almacenados los artefactos correspondientes a los modelos de clasificación de gastos y perfil financiero.
+
 - ✅ Configurado el acceso de Backend a los modelos mediante **Pre-Authenticated Request (PAR)** con permisos de lectura y listado.
+
 - ✅ Provisionada y configurada una instancia **OCI Compute** para el despliegue de la API REST.
-- ✅ Configurada la infraestructura de red mediante **VCN, subnet pública y Security List**, habilitando el puerto 8080 para el acceso a la API.
+
+- ✅ Configurada la infraestructura de red mediante **VCN, subnet pública y Security List**, habilitando el puerto necesario para el acceso a la API.
+
 - ✅ Configurado el acceso seguro a la instancia Compute mediante autenticación por clave SSH.
-- ✅ Backend desplegó la **API REST en OCI Compute**, quedando operativa en la infraestructura provista.
+
+- ✅ Desplegada la **API REST en OCI Compute**.
+
 - ✅ Implementada y documentada la integración de OCI con **Backend y Ciencia de Datos**.
+
 - ℹ️ **OCI Functions** no fue requerido para la implementación final del MVP.
+
 - ℹ️ La base de datos **MySQL** del proyecto se encuentra alojada en **Railway** y no en OCI.
 
-**Estado:** ✅ El componente de Oracle Cloud Infrastructure (OCI) se encuentra implementado y operativo para los servicios definidos en la arquitectura final del MVP.
+**Estado:** ✅ El componente de Oracle Cloud Infrastructure (OCI) se encuentra implementado para los servicios definidos en la arquitectura final del MVP.
+
+### Cierre del MVP
+
+Para completar formalmente el cierre técnico del MVP durante la jornada del **22/08/2026**, se realizarán las siguientes actividades finales:
+
+- 🔄 Consolidación de las versiones definitivas de las áreas en `main`.
+
+- ⏳ Verificación de la estructura final del repositorio.
+
+- ⏳ Validación del funcionamiento integrado de la Aplicación Web con los servicios de Backend.
+
+- ⏳ Verificación del enlace definitivo de acceso a la Aplicación Web desplegada.
+
+- ⏳ Prueba del recorrido funcional que será utilizado para la grabación del Video Demo.
+
+Una vez confirmadas estas actividades, el MVP quedará preparado para el cierre definitivo de la documentación, la grabación y publicación del Video Demo y la presentación de los entregables finales del Hackathon.
 
 ---
-
 ## Mejoras Futuras
 
-Como evolución del MVP, Finance AI podrá incorporar nuevas funcionalidades y mejoras orientadas a ampliar las capacidades de análisis financiero y la experiencia del usuario.
+Como evolución de Finance AI, se identificaron oportunidades para ampliar las funcionalidades del MVP y continuar fortaleciendo la experiencia del usuario.
 
-Las mejoras futuras serán definidas a partir de los resultados obtenidos durante las pruebas del MVP y de las oportunidades de evolución identificadas por el equipo.
+Entre las principales mejoras futuras se contemplan:
 
+- Completar la integración de **Metas** con Backend y su persistencia de datos.
+
+- Completar la integración de **Notificaciones** con Backend y ampliar la gestión de alertas y preferencias del usuario.
+
+- Incorporar una sección de **Configuración** para la gestión de preferencias y datos del usuario.
+
+- Ampliar las funcionalidades de seguimiento y planificación financiera.
+
+- Continuar evolucionando los modelos y mecanismos de generación de recomendaciones personalizadas.
+
+- Ampliar las capacidades de visualización y análisis de la información financiera.
+
+Estas mejoras permitirán evolucionar Finance AI a partir del MVP desarrollado durante el Hackathon, incorporando progresivamente nuevas capacidades y funcionalidades.
 ---
 
-## Repositorio y Enlaces del Proyecto
+## Repositorio y Recursos del Proyecto
 
-Los enlaces oficiales del proyecto serán incorporados y verificados antes de la entrega final:
+El código fuente, la documentación técnica y los recursos correspondientes a Finance AI se encuentran organizados en el repositorio principal del proyecto.
 
-- **Repositorio GitHub:** pendiente de incorporar.
-- **Aplicación Web:** pendiente de incorporar.
-- **API REST:** pendiente de incorporar, si se publica.
-- **Figma:** pendiente de incorporar.
-- **Video Demo:** pendiente de incorporar.
-- **Documentación:** pendiente de consolidación y revisión final.
+Los recursos complementarios utilizados durante el desarrollo incluyen el diseño de la aplicación en Figma, los tableros de gestión del proyecto y la Aplicación Web desplegada.
+
+Los enlaces definitivos correspondientes a los entregables del Hackathon serán verificados y cargados directamente en los apartados correspondientes de la plataforma de No Country.
+
+La URL de la API REST no será publicada como enlace independiente dentro de los entregables del proyecto.
 
 ---
 
 ## Observaciones
 
-Este documento consolida la información general de **Finance AI – Asistente Inteligente de Salud Financiera** y será actualizado conforme finalicen la integración, las pruebas y la preparación de los entregables del Hackathon.
+Este documento consolida la información general de **Finance AI – Asistente Inteligente de Salud Financiera**, incluyendo el objetivo, alcance, arquitectura, componentes, metodología de trabajo, organización del equipo, tecnologías utilizadas y estado final del MVP desarrollado durante el Hackathon.
+
+La información técnica específica de cada componente se encuentra complementada mediante los README y documentos técnicos correspondientes disponibles en el repositorio del proyecto.
+
+Las funcionalidades identificadas como mejoras futuras no forman parte del flujo funcional principal definido para la versión final del MVP y representan posibles líneas de evolución de Finance AI. 

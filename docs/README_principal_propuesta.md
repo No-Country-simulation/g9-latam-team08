@@ -67,9 +67,11 @@ Las transacciones son clasificadas en seis categorías financieras principales:
 
 ### Flujo general
 
-**Usuario → Frontend → Backend → Ciencia de Datos → Backend → Frontend → Usuario**
+**Usuario → Frontend → Backend → Servicios de análisis y modelos de Machine Learning → Backend → Frontend → Usuario**
 
-Los modelos de Machine Learning desarrollados por Ciencia de Datos son almacenados en **OCI Object Storage** y puestos a disposición de Backend para su utilización dentro de la solución. La API REST se encuentra desplegada sobre una instancia de **OCI Compute**.
+Los modelos de Machine Learning desarrollados por Ciencia de Datos se encuentran almacenados en **OCI Object Storage** y son utilizados por los servicios de Backend para realizar la clasificación de gastos y la evaluación del perfil financiero.
+
+La **API REST** se encuentra desplegada sobre una instancia de **OCI Compute**. Backend integra los servicios necesarios para procesar la información financiera y proporcionar al Frontend los resultados utilizados en la visualización del análisis.
 
 ---
 
@@ -78,7 +80,8 @@ Los modelos de Machine Learning desarrollados por Ciencia de Datos son almacenad
 **Finance AI** integra diferentes tecnologías de acuerdo con los componentes de la solución:
 
 - **Ciencia de Datos:** Python, pandas, NumPy, scikit-learn, TensorFlow/Keras y MySQL.
-- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, JWT, H2, MySQL, Maven y Swagger/OpenAPI.
+- **Backend:** Java, Spring Boot, Python, Flask, Spring Data JPA/Hibernate, Spring Security, JWT, H2, MySQL, Maven, Swagger/OpenAPI y LangChain4j.
+- **Inteligencia Artificial Generativa:** Google Gemini, utilizado para la generación de recomendaciones financieras personalizadas.
 - **Frontend:** React, TypeScript, Vite, pnpm y CSS.
 - **Cloud:** Oracle Cloud Infrastructure (OCI), Object Storage, Compute y Networking.
 - **Gestión y colaboración:** Trello, GitHub, GitHub Desktop, Discord y Figma.
@@ -102,15 +105,15 @@ Para consultar el detalle del desarrollo, modelos, evaluación e integración de
 
 ### ⚙️ Backend
 
-El componente de **Backend** se encarga de proporcionar los servicios necesarios para la comunicación entre la Aplicación Web para escritorio (PC), los servicios de Ciencia de Datos y la infraestructura utilizada por la solución.
+El componente de **Backend** proporciona los servicios necesarios para la comunicación entre la Aplicación Web para escritorio (PC), los servicios de análisis financiero, los modelos de Machine Learning y la infraestructura utilizada por la solución.
 
-La implementación incluye servicios desarrollados en **Java/Spring Boot** y **Python/Flask**, responsables de gestionar la información financiera, exponer los endpoints de la solución e integrar los modelos desarrollados por Ciencia de Datos.
+La implementación integra servicios desarrollados en **Java/Spring Boot** y **Python/Flask**, responsables de gestionar la información financiera, exponer los endpoints de la solución, ejecutar los cálculos financieros e integrar los modelos desarrollados por Ciencia de Datos.
+
+Asimismo, Finance AI incorpora un servicio de **Nuevo Análisis** que actúa como orquestador del procesamiento financiero y permite enriquecer los resultados mediante la generación de recomendaciones financieras personalizadas utilizando Inteligencia Artificial Generativa.
 
 Para consultar la documentación técnica del área:
 
 - [`Documentación técnica – Backend`](docs/Backend.md)
-
-> 🔄 Pendiente incorporar el enlace al README principal de Backend una vez definida su ubicación definitiva.
 
 ---
 
@@ -118,11 +121,16 @@ Para consultar la documentación técnica del área:
 
 El componente de **Frontend** proporciona la **Aplicación Web para escritorio (PC)** mediante la cual el usuario interactúa con Finance AI y visualiza su información y los resultados del análisis financiero.
 
-Para consultar la documentación técnica del área:
+En la versión final del MVP, el flujo principal de la aplicación prioriza las funcionalidades de **Dashboard, Nuevo Análisis, Historial y Soporte**.
 
+Las funcionalidades de **Metas** y **Notificaciones** se encuentran desarrolladas a nivel de Frontend y preservadas dentro de la aplicación, aunque fuera de la navegación principal del MVP. Su integración completa con Backend se contempla como una mejora futura.
+
+**Configuración** no forma parte de las funcionalidades implementadas para la versión final del MVP y se contempla como una posible evolución futura de Finance AI.
+
+Para consultar el detalle de la implementación, arquitectura y estado técnico del área:
+
+- [`README – Frontend`](frontend/README.md)
 - [`Documentación técnica – Frontend`](docs/Frontend.md)
-
-> 🔄 Documentación de Frontend pendiente de completar y validar de acuerdo con la implementación definitiva.
 
 ---
 
@@ -167,12 +175,15 @@ Los enlaces oficiales del proyecto, herramientas utilizadas, aplicación, diseñ
 Finance AI fue desarrollado por un equipo multidisciplinario integrado por perfiles de **Project Management, Ciencia de Datos, Data Engineering, Backend, Frontend, Full Stack y Software Engineering**.
 
 ---
-
 ## 📌 Estado del Proyecto
 
-🔄 **Finance AI se encuentra en etapa de integración, pruebas y cierre documental del MVP.**
+🟡 **Finance AI se encuentra en la etapa final de consolidación y validación del MVP.**
 
-Las áreas de Ciencia de Datos y Backend cuentan con avances de desarrollo y documentación validados, y la infraestructura implementada en OCI se encuentra documentada. Actualmente continúan el desarrollo e integración de Frontend, las pruebas finales del flujo integrado y la consolidación de la documentación y estructura definitiva del repositorio.
+Los componentes de **Ciencia de Datos, Backend, Frontend y Oracle Cloud Infrastructure (OCI)** cuentan con sus desarrollos y documentación correspondientes.
+
+Las versiones consolidadas de Frontend y Backend se encuentran preparadas para su incorporación definitiva a `main`.
+
+El cierre del MVP comprende la consolidación final del repositorio, la validación del flujo funcional sobre la aplicación web desplegada, la revisión definitiva de la documentación y la preparación del Video Demo.
 
 ---
 
@@ -181,4 +192,3 @@ Las áreas de Ciencia de Datos y Backend cuentan con avances de desarrollo y doc
 El Video Demo del MVP será incorporado una vez finalizadas las pruebas y validado el funcionamiento definitivo de Finance AI.
 
 > 🔄 Enlace pendiente de incorporar.
-
