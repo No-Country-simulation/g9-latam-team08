@@ -3,22 +3,25 @@
 ## Manual de Usuario
 
 ---
-
 ## Introducción
 
-Este manual tiene como objetivo servir como guía práctica y de referencia para los usuarios de FinanceAI, una aplicación diseñada para transformar la gestión del dinero personal mediante el uso de inteligencia artificial. A través de este documento, aprenderás a configurar tu cuenta, registrar tus movimientos, interpretar tus análisis mensuales y aprovechar al máximo las recomendaciones automatizadas para optimizar tu salud financiera.
+Este manual tiene como objetivo servir como guía práctica y de referencia para los usuarios de Finance AI, una aplicación diseñada para facilitar la comprensión y gestión de las finanzas personales mediante el análisis de información financiera y el uso de inteligencia artificial.
+
+A través de este documento, el usuario podrá conocer las principales funcionalidades de la aplicación, ingresar la información necesaria para realizar un nuevo análisis, interpretar los resultados obtenidos y consultar las recomendaciones personalizadas generadas para apoyar la toma de decisiones financieras.
 
 ---
 
 ## Objetivo de la Aplicación
 
-FinanceAI ha sido desarrollada con la misión de democratizar el acceso a la gestión financiera personal, brindando a los usuarios herramientas de análisis profundo que anteriormente estaban limitadas a especialistas. El objetivo central de la aplicación es dotar al usuario de una visión clara y transparente sobre su flujo de dinero mediante tres pilares fundamentales:
+Finance AI tiene como objetivo ayudar al usuario a comprender mejor su situación financiera mediante el análisis de su información financiera y transaccional, facilitando la identificación de hábitos de consumo y apoyando la toma de decisiones sobre sus finanzas personales.
 
-* **Control y Registro:** Facilitar la creación de un historial financiero completo y organizado, permitiendo el seguimiento detallado de los ingresos y egresos diarios.
+La solución se apoya en tres pilares fundamentales:
 
-* **Análisis Conductual:** Procesar los gastos mensuales mediante algoritmos inteligentes para identificar patrones de consumo y categorizar el comportamiento financiero del usuario.
+- **Control y Organización:** Facilitar el registro y la organización de la información financiera y transaccional del usuario para favorecer una visión más clara de sus ingresos y gastos.
 
-* **Perfilamiento y Salud Financiera:** Determinar un perfil financiero personalizado que permita al usuario entender su situación actual, identificar oportunidades de ahorro y recibir recomendaciones accionables para mejorar su estabilidad económica a largo plazo.
+- **Análisis Financiero:** Procesar la información ingresada para identificar patrones de consumo, clasificar los gastos y generar indicadores que permitan comprender mejor la situación financiera del usuario.
+
+- **Perfilamiento y Salud Financiera:** Determinar un perfil financiero a partir de los indicadores analizados y generar recomendaciones personalizadas que ayuden al usuario a identificar oportunidades de mejora en la gestión de sus finanzas.
 
 ---
 
@@ -36,9 +39,9 @@ FinanceAI es una aplicación web (WebApp) diseñada para ejecutarse en navegador
 
 ### Acceso a la Aplicación
 
-El acceso a la plataforma se realiza a través de un sistema de autenticación segura.
+El acceso a Finance AI se realiza desde la Aplicación Web desplegada.
 
-Registro: Accede a la URL oficial y crea tu cuenta utilizando un correo electrónico válido y una contraseña segura.
+Una vez disponible la versión definitiva del MVP, el usuario podrá acceder mediante las opciones de autenticación habilitadas en la aplicación.
 
 ---
 
@@ -61,6 +64,12 @@ Desde la opción **Nuevo Análisis**, puedes ingresar la información necesaria 
 Antes de confirmar, puedes revisar y editar los datos ingresados.
 
 ### Visualización del Análisis Financiero
+
+Una vez ingresada y procesada la información financiera, Finance AI presenta los resultados del análisis para facilitar la comprensión de la situación financiera del usuario.
+
+Los resultados incluyen indicadores y datos relacionados con el comportamiento financiero, que permiten al usuario conocer su perfil financiero y comprender mejor la distribución de sus gastos.
+
+voy a dejar paar verificar
 
 El sistema analiza tus movimientos mensuales mediante nuestra API de Python. Los resultados se reflejan en gráficos interactivos que muestran la evolución de tus gastos y tu capacidad de ahorro a lo largo del tiempo.
 
@@ -115,7 +124,7 @@ Actualmente, la versión del MVP está orientada principalmente a equipos de esc
 
 * **El análisis no carga:** Refresca la página. Si el problema persiste, verifica tu conexión a internet o intenta cerrar y volver a abrir sesión.
 
-* **Problemas de acceso:** Utiliza la opción de "Recuperar contraseña" en la pantalla de inicio.
+- **Problemas de acceso:** Verifica tu conexión a Internet y vuelve a intentar el acceso mediante las opciones de autenticación disponibles en la aplicación.
 
 ---
 
@@ -123,9 +132,8 @@ Actualmente, la versión del MVP está orientada principalmente a equipos de esc
 
 * **Acceso:** No es una aplicación nativa, por lo que su rendimiento depende del navegador web utilizado.
 
-* **Historial:** La precisión del perfil financiero aumenta con la cantidad de meses cargados; el sistema requiere al menos un mes de datos para ofrecer un perfil inicial.
-
 ---
+
 ## Versiones
 
 **Versión 1.0.0 (Lanzamiento inicial):** Incluye exportación del registro de transacciones mediante PDF, categorización automática mediante API Python, generación de perfiles de riesgo y panel de visualización en WebApp.
