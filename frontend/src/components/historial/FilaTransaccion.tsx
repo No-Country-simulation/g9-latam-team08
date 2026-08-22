@@ -18,22 +18,21 @@ export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaT
     return new Date(dateString).toLocaleDateString('es-AR', options);
   };
 
-  return (
-    return (
+ return (
     <tr className="tabla-fila">
-      
-      <td className="tabla-celda font-medium" data-label="DESCRIPCIÓN">{transaccion.description}</td>
-
+      {/* Cuidado aquí: el data-label DEBE estar escrito exactamente así */}
+      <td className="tabla-celda font-medium" data-label="DESCRIPCIÓN">
+        {transaccion.description}
+      </td>
       <td className="tabla-celda font-bold" data-label="MONTO">
         {formatCurrency(transaccion.amount)}
       </td>
-
-      <td className="tabla-celda text-muted" data-label="FECHA">{formatDate(transaccion.date)}</td>
-
+      <td className="tabla-celda text-muted" data-label="FECHA">
+        {formatDate(transaccion.date)}
+      </td>
       <td className="tabla-celda" data-label="CATEGORÍA">
         <span className="pildora-categoria">{transaccion.category}</span>
       </td>
-
       <td className="tabla-celda tabla-acciones" data-label="ACCIÓN">
         <button
           onClick={() => onEdit(transaccion)}
@@ -51,6 +50,5 @@ export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaT
         </button>
       </td>
     </tr>
-  );
-  );
+  )
 }
