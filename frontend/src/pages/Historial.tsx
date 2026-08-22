@@ -29,16 +29,17 @@ export default function Historial() {
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      try {
-        const token = localStorage.getItem('jwt_token');
+try {
+  const token = localStorage.getItem('jwt_token');
+  const userId = localStorage.getItem('userId');
 
-        const response = await fetch(`http://localhost:8080/api/transactions`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token ? `Bearer ${token}` : ''
-          }
-        });
+  const response = await fetch(`http://146.181.60.43:8080/transactions/user/${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    }
+  });
 
         if (!response.ok) {
           throw new Error(`Error HTTP: ${response.status}`);
@@ -141,7 +142,7 @@ export default function Historial() {
 
     try {
       const token = localStorage.getItem('jwt_token');
-      const response = await fetch(`http://localhost:8080/api/transactions/${id}`, {
+      const response = await fetch(`http://146.181.60.43:8080/transactions/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -173,7 +174,7 @@ export default function Historial() {
         return;
       }
 
-      const response = await fetch(`http://localhost:8080/api/transactions/${idTransaccion}`, {
+      const response = await fetch(`http://146.181.60.43:8080/transactions/${idTransaccion}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
