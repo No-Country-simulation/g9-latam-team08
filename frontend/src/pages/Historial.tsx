@@ -6,6 +6,7 @@ import ResumenFinanciero from "../components/historial/ResumenFinanciero";
 import TablaTransacciones from "../components/historial/TablaTransacciones";
 import { exportarTransaccionesPDF } from "../utils/exportUtils";
 import { ModalEditar } from "../components/historial/ModalEditar";
+import { env } from "../api/env";
 
 export default function Historial() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
