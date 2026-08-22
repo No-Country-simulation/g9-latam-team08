@@ -71,7 +71,10 @@ function Login() {
         localStorage.setItem('jwt_token', data.token);
       }
 
-      localStorage.setItem('userName', data.name);
+localStorage.setItem(
+  "userName",
+  data.nombre ?? data.name ?? ""
+);
       localStorage.setItem('userEmail', data.email);
 
       if (data.photo) {
