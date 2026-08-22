@@ -50,7 +50,7 @@ function Register() {
 
     try {
 const response = await fetch(
-  `${env.apiBaseUrl}api/users`,
+  `${env.apiBaseUrl}api/usuarios`,
   {
     method: "POST",
     headers: {
