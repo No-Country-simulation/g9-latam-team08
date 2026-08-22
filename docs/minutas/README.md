@@ -24,23 +24,23 @@ Cada minuta documenta los objetivos de la reunión, los participantes, los temas
 | 17/08/2026 | Semana 5 | Seguimiento del estado de Frontend y preparación para el inicio de las pruebas finales, revisión de documentación y estructura final del repositorio, seguimiento de entregables y organización del Pitch para el Demo Day. |
 | 19/08/2026 | Semana 5 | Definición de prioridades para el cierre del MVP, continuidad de las integraciones y pruebas, revisión de la documentación pendiente de Backend y Frontend, consolidación de los pendientes para finalizar el proyecto y preparación del Pitch para el Demo Day. |
 | 20/08/2026 | Semana 5 | Seguimiento de los pendientes para el cierre del MVP, priorización de la integración Frontend ↔ Backend y pruebas, organización y consolidación final de Backend y Frontend, avance de la documentación, planificación del Video Demo y preparación de los entregables finales. |
+| 21/08/2026 – 11:00 h | Semana 5 | Seguimiento de los pendientes para el cierre del MVP, revisión de Nuevo Análisis, integración Backend y OCI, validación del guion del Video Demo, organización de las pruebas finales, documentación y entregables. |
+| 21/08/2026 – 21:00 h | Semana 5 | Revisión de los avances del cierre del MVP, confirmación de las versiones consolidadas de Frontend y Backend para su posterior merge a `main`, coordinación de las verificaciones finales, disponibilidad de apoyo para OCI, recepción del enlace de Figma, coordinación del acceso a la aplicación web desplegada para su validación, documentación, enlaces y preparación del Video Demo. |
 
 ---
 
 ## Estructura de las minutas
 
-Cada minuta contiene la siguiente información:
+Las minutas registran, según los temas abordados en cada reunión:
 
 - Objetivo de la reunión.
-- Seguimiento de acuerdos de la reunión anterior.
-- Participantes.
-- Ausentes.
+- Participantes y ausentes.
+- Seguimiento de avances.
 - Temas tratados.
-- Próximas actividades.
 - Acuerdos alcanzados.
 - Pendientes.
-- Próxima reunión.
-- Temas propuestos.
+- Próximos pasos.
+- Próxima reunión, cuando corresponda.
 - Cierre.
 
 ---
