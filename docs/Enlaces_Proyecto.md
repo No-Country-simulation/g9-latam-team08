@@ -61,28 +61,20 @@ https://trello.com/b/hNUvR6lB/%F0%9F%93%8A-finance-ai-asistente-inteligente-de-s
 > 🔄 Pendiente de revisar el contenido del tablero y verificar su acceso público antes de incorporar el enlace definitivo.
 
 ---
-
 ## Aplicación Web para escritorio (PC)
 
 Enlace de acceso a la Aplicación Web para escritorio (PC) de Finance AI.
 
-> 🔄 Pendiente de completar una vez realizado y validado el despliegue.
-
----
-
-## API REST
-
-Enlace público de acceso a la API REST del proyecto, si corresponde.
-
-> 🔄 Pendiente de completar una vez confirmado el despliegue final.
+> 🔄 Pendiente de incorporar una vez finalizado y validado el despliegue.
 
 ---
 
 ## Diseño en Figma
 
-Enlace al diseño de la interfaz de la aplicación web.
+Enlace al diseño de la interfaz de Finance AI.
 
-> 🔄 Enlace pendiente de incorporar.
+https://www.figma.com/design/w7EfiNvq6LC2D5S19S3Acj/Grupo-8---No-Country?node-id=4-4&p=f
+
 
 ---
 
@@ -104,11 +96,11 @@ De acuerdo con las tareas definidas en la plataforma de No Country, los entregab
 
 - 🛠️ **Herramientas del Equipo:** seleccionadas directamente en la plataforma de No Country, hasta un máximo de 10.
 
-- 🔗 **Enlaces del Proyecto:** recursos y enlaces relevantes del proyecto.
+- 🔗 **Enlaces del Proyecto:** los recursos y enlaces relevantes del proyecto se cargan individualmente en la plataforma de No Country, una vez verificados.
 
 - 🎥 **Video Demo:** enlace de YouTube con la demostración del MVP, con una duración máxima de 10 minutos.
 
-> 🔄 Los enlaces definitivos serán incorporados y verificados antes de la entrega final.
+> 🔄 Los recursos que aún se encuentren pendientes serán incorporados y verificados antes de la entrega final.
 
 ---
 
@@ -120,10 +112,14 @@ La actualización, consolidación y verificación de los enlaces del proyecto es
 
 ## Observaciones
 
-Este documento será actualizado progresivamente conforme se publiquen y validen los enlaces oficiales del proyecto.
+Este documento funciona como registro y referencia de los recursos oficiales de Finance AI.
+
+Los enlaces correspondientes al entregable **Enlaces del Proyecto** se cargan individualmente en la plataforma de No Country, por lo que este documento no sustituye la carga de dichos enlaces.
 
 De acuerdo con la información proporcionada por No Country, no existe un conjunto obligatorio de enlaces para esta sección. El equipo seleccionará los recursos que considere relevantes para la presentación y evaluación del proyecto.
 
-Antes de la entrega final se verificará que todos los enlaces incluidos se encuentren actualizados, correspondan a las versiones definitivas de los recursos y cuenten con acceso público para permitir su revisión por parte de los evaluadores.
+Solo se incorporarán recursos correspondientes a las versiones definitivas y verificadas del proyecto.
+
+Antes de la entrega final se comprobará que los enlaces incluidos se encuentren actualizados y, cuando corresponda, cuenten con acceso público para permitir su revisión por parte de los evaluadores.
 
 No se incorporarán credenciales, datos de acceso ni enlaces a recursos privados.

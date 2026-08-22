@@ -94,6 +94,14 @@ Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de 
 
 - **Requests:** utilizado para realizar peticiones HTTP y acceder a los artefactos requeridos por el servicio.
 
+### Orquestación y recomendaciones con Inteligencia Artificial
+
+- **LangChain4j:** framework utilizado en el servicio de Nuevo Análisis para integrar el Backend con el modelo de Inteligencia Artificial Generativa.
+
+- **Google Gemini AI:** utilizado para generar recomendaciones financieras personalizadas a partir de los resultados obtenidos durante el análisis financiero.
+
+- **Spring RestClient:** utilizado para la comunicación entre el servicio orquestador y los servicios Backend involucrados en el procesamiento del análisis.
+
 ### Base de datos
 
 - **MySQL:** sistema de gestión de base de datos relacional utilizado para la persistencia de la información.
@@ -101,6 +109,8 @@ Las siguientes herramientas y tecnologías son utilizadas para el desarrollo de 
 ### Integración con OCI
 
 - **Oracle Cloud Infrastructure (OCI) Object Storage:** utilizado para almacenar los artefactos de los modelos de Machine Learning que son utilizados por los servicios de Backend.
+
+- **Oracle Cloud Infrastructure (OCI) Compute:** infraestructura utilizada para el despliegue y ejecución de la API REST del proyecto.
 
 ### Gestión de dependencias y construcción
 
@@ -286,6 +296,10 @@ El proyecto es desarrollado por un equipo multidisciplinario integrado por profe
 
 ## Observaciones
 
-Este documento será actualizado conforme cada área complete y valide la información correspondiente a las herramientas y tecnologías efectivamente utilizadas durante el desarrollo del proyecto.
+Este documento consolida las principales herramientas, tecnologías, lenguajes, frameworks, plataformas y servicios utilizados por las diferentes áreas durante el desarrollo de **Finance AI – Asistente Inteligente de Salud Financiera**.
 
-La información será consolidada por el Project Manager para su incorporación en los entregables finales del Hackathon.
+La selección tecnológica responde a las necesidades de los componentes de Ciencia de Datos, Backend, Frontend e infraestructura cloud, así como a los requerimientos de gestión, colaboración, documentación y control de versiones del proyecto.
+
+La información técnica específica sobre la implementación de cada componente se encuentra disponible en los README y documentos técnicos correspondientes del repositorio.
+
+---
