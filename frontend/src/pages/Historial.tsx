@@ -34,7 +34,10 @@ try {
   const token = localStorage.getItem('jwt_token');
   const userId = localStorage.getItem('userId');
 
-  const response = await fetch(`http://146.181.60.43:8080/transactions/user/${userId}`, {
+  // GET
+const response = await fetch(
+  `${env.apiBaseUrl}/api/transactions/user/${userId}`,
+  {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -143,7 +146,10 @@ try {
 
     try {
       const token = localStorage.getItem('jwt_token');
-      const response = await fetch(`http://146.181.60.43:8080/transactions/${id}`, {
+      // DELETE
+const response = await fetch(
+  `${env.apiBaseUrl}/api/transactions/${id}`,
+  {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -175,8 +181,9 @@ try {
         return;
       }
 
-      const response = await fetch(`http://146.181.60.43:8080/transactions/${idTransaccion}`, {
-        method: 'PUT',
+const response = await fetch(
+  `${env.apiBaseUrl}/api/transactions/${idTransaccion}`,
+  {        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
