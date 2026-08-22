@@ -42,7 +42,7 @@ function Login() {
 
     try {
       const response = await fetch(
-  `${env.apiBaseUrl}/users/login`,
+  `${env.apiBaseUrl}/api/users/login`,
   {
     method: "POST",
     headers: {
