@@ -29,7 +29,7 @@ public class OrquestadorFinancieroService {
         AnalisisResponse respuestaPython;
 
         try {
-            String API_DESTINO_URL = "http://localhost:8080/api/mock/analisis";
+            String API_DESTINO_URL = "http://146.181.60.43:8080/api/usuarios/analisis";
 
             respuestaPython = restClient.post()
                     .uri(API_DESTINO_URL)
