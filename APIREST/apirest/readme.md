@@ -155,10 +155,6 @@ Método: GET
 ```
 **Descripción:** Retorna aquellos usuarios cuyos meses de supervivencia estimados sean mayores a cero. 
 
-<<<<<<< HEAD
-## Equipo de trabajo
-Equipo: Grupo de Desarrollo del equipo 8.
-=======
 ** Generar Analisis de datos del usuario**
 ```text
 URL: /api/usuarios/analisis 
@@ -167,7 +163,5 @@ Método: POST
 ```
 **Descripción:** Genera un reporte de los datos enviados por el usuario. 
 
-
 ## Equipo de trabajo
 Equipo: Grupo de Desarrollo del equipo 8.
->>>>>>> 7c65b01e840023a89d8c72bd292bee09da059d54
