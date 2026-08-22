@@ -40,6 +40,8 @@ De acuerdo con la documentación validada por el área, se realizaron pruebas so
 
 ✅ API Python/Flask validada de acuerdo con la implementación realizada.
 
+✅ Servicio de Nuevo Análisis implementado para la orquestación del procesamiento financiero y la generación de recomendaciones personalizadas.
+
 ✅ Swagger/OpenAPI utilizado para documentación y pruebas de endpoints.
 
 ✅ Integración Backend ↔ Ciencia de Datos confirmada.
@@ -85,9 +87,10 @@ Para consultar el detalle técnico:
 
 ## Frontend
 
+
 🔄 Las pruebas de Frontend se encuentran en progreso de acuerdo con el avance de la integración de la Aplicación Web para escritorio (PC) con Backend.
 
-### Pruebas realizadas
+### Pruebas realizadas durante el desarrollo
 
 - ✅ Validado el flujo del Dashboard integrado con Backend.
 - ✅ Validada la recepción de datos reales desde Backend para su presentación en el Dashboard.
@@ -120,23 +123,26 @@ Para consultar el detalle técnico:
 - 🔄 Completar la validación de las demás funcionalidades que formen parte de la versión final de la Aplicación Web para escritorio (PC).
 - 🔄 Completar las pruebas del flujo integrado definitivo del MVP:
 
-**Frontend ↔ Backend ↔ Ciencia de Datos ↔ OCI**
+**Frontend ↔ Backend ↔ servicios de análisis/modelos de Ciencia de Datos ↔ OCI**
 
 ---
-
 ## Ejemplos Reales de Uso del MVP
 
-Esta sección documentará la validación de un mínimo de tres ejemplos reales de uso del MVP.
+Como parte de los requisitos mínimos del proyecto, Finance AI contempla la ejecución de un mínimo de tres ejemplos reales de uso del MVP.
 
-🔄 Pendiente definir y validar los ejemplos durante las pruebas finales del flujo integrado.
+Los tres casos serán realizados utilizando el usuario de demostración **Mateo**, permitiendo verificar el procesamiento de diferentes datos financieros y transaccionales y los resultados generados por la solución.
+
+La ejecución de estos casos formará parte de la demostración funcional del MVP presentada en el **Video Demo del proyecto**.
+
+🔄 Pendiente realizar y validar los tres casos sobre la versión final desplegada de Finance AI.
 
 ---
 
 ## Incidencias y Correcciones
 
-Esta sección permitirá registrar las incidencias detectadas durante las pruebas finales del MVP, las correcciones realizadas y el resultado de las nuevas validaciones.
+Esta sección registrará las incidencias que puedan detectarse durante las pruebas finales del MVP, las correcciones realizadas y el resultado de las nuevas validaciones.
 
-🔄 Pendiente completar de acuerdo con los resultados de las pruebas.
+🔄 Pendiente completar de acuerdo con los resultados de la validación final de la aplicación.
 
 ---
 
