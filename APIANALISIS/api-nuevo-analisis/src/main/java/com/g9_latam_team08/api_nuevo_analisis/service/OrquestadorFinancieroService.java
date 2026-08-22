@@ -5,6 +5,7 @@ import com.g9_latam_team08.api_nuevo_analisis.dto.AnalisisResponse;
 import com.g9_latam_team08.api_nuevo_analisis.dto.RespuestaRecomendacionesIA;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -17,6 +18,8 @@ public class OrquestadorFinancieroService {
     private static final Logger logger = LoggerFactory.getLogger(OrquestadorFinancieroService.class);
     private final AsesorFinancieroIA asesorIA;
 
+    @Value("${api.destino.url}")
+    private String API_DESTINO_URL;
     public OrquestadorFinancieroService(RestClient restClient, AsesorFinancieroIA asesorIA) {
         this.asesorIA = asesorIA;
         this.restClient = restClient;
@@ -29,8 +32,6 @@ public class OrquestadorFinancieroService {
         AnalisisResponse respuestaPython;
 
         try {
-            String API_DESTINO_URL = "http://146.181.60.43:8080/api/usuarios/analisis";
-
             respuestaPython = restClient.post()
                     .uri(API_DESTINO_URL)
                     .body(payloadFrontend)
