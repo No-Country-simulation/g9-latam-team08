@@ -4,6 +4,7 @@ import Button from "../components/ui/Button";
 import BotonGoogle from "../components/ui/BotonGoogle";
 import { useGoogleAuth } from "../hooks/useGoogleAuth";
 import { FcGoogle } from "react-icons/fc";
+import { env } from "../api/env";
 
 function Register() {
   const [name, setName] = useState<string>("");
@@ -48,11 +49,20 @@ function Register() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+const response = await fetch(
+  `${env.apiBaseUrl}/users`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nombre: name,
+      email,
+      password,
+    }),
+  }
+);
 
       const data = await response.json();
 
