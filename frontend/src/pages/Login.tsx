@@ -4,6 +4,7 @@ import Button from "../components/ui/Button";
 import BotonGoogle from "../components/ui/BotonGoogle";
 import { useGoogleAuth } from "../hooks/useGoogleAuth";
 import { FcGoogle } from "react-icons/fc";
+import { env } from "../api/env";
 
 function Login() {
   const [email, setEmail] = useState<string>("");
@@ -40,13 +41,19 @@ function Login() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        // Enviamos el email y la contraseña al servidor
-        body: JSON.stringify({ email, password }),
-      });
-
+      const response = await fetch(
+  `${env.apiBaseUrl}/users/login`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  }
+);
       const data = await response.json();
 
       // Si las credenciales están mal (ej. HTTP 401)
