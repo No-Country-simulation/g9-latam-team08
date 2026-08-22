@@ -1,8 +1,21 @@
-import { TablaTransaccionesProps } from "../../types/transaction-type";
+import { TablaTransaccionesProps } from "../types/transaction-type";
 import FilaTransaccion from "./FilaTransaccion";
 import "./TablaTransacciones.css";
+import PieDeTabla from "./PieDeTabla";
 
-export default function TablaTransacciones({ transacciones, onEdit, onDelete }: TablaTransaccionesProps) {
+export default function TablaTransacciones({
+  transacciones,
+  onEdit,
+  onDelete,
+  // Props de paginación
+  currentPage,
+  totalPages,
+  totalItems,
+  itemsPerPage,
+  onNextPage,
+  onPrevPage,
+  onExport
+}: TablaTransaccionesProps) {
   return (
     <div className="tabla-contenedor">
       <table className="tabla-historial">
@@ -34,6 +47,16 @@ export default function TablaTransacciones({ transacciones, onEdit, onDelete }: 
           )}
         </tbody>
       </table>
+
+      <PieDeTabla
+        currentPage={currentPage}
+        totalPages={totalPages}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+        onNextPage={onNextPage}
+        onPrevPage={onPrevPage}
+        onExport={onExport}
+      />
     </div>
   );
 }

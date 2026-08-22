@@ -1,10 +1,10 @@
 /* Contenedor General */
 .soporte-container {
     padding: 32px;
-    background-color: #F9FAFB;
+    background-color: var(--color-background);
     min-height: 100vh;
     font-family: sans-serif;
-    color: #111827;
+    color: var(--color-text);
 }
 
 /* Encabezado */
@@ -18,7 +18,7 @@
 }
 .icon-title {
     font-size: 24px;
-    color: #059669;
+    color: var(--color-primary);
 }
 .soporte-title-wrapper h2 {
     margin: 0;
@@ -27,17 +27,17 @@
 }
 .soporte-subtitle {
     margin: 8px 0 0 36px;
-    color: #6B7280;
+    color: var(--color-text-muted);
     font-size: 14px;
 }
 
 /* Banner Estamos para ayudarte */
 .soporte-banner {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: clamp(24px, 4vw, 40px);
-    background-color: #ffffff;
-    border: 1px solid #E5E7EB;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: clamp(16px, 3vw, 24px);
     margin-bottom: 40px;
@@ -52,7 +52,7 @@
 }
 
 .banner-icon-bg {
-    background-color: #D1FAE5;
+    background-color: var(--color-primary-soft);
     width: 48px;
     height: 48px;
     border-radius: 12px;
@@ -69,7 +69,7 @@
 
 .banner-texto p {
     margin: 0;
-    color: #6B7280;
+    color: var(--color-text-muted);
     font-size: 14px;
     line-height: 1.5;
 }
@@ -85,14 +85,14 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: #F9FAFB;
+    background-color: var(--color-surface-muted);
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid #F3F4F6;
+    border: 1px solid var(--color-border);
 }
 
 .stat-icon {
-    color: #059669;
+    color: var(--color-primary);
     font-size: 20px;
     flex-shrink: 0;
 }
@@ -100,13 +100,13 @@
 .stat-item strong {
     display: block;
     font-size: 14px;
-    color: #111827;
+    color: var(--color-text);
 }
 
 .stat-item span {
     display: block;
     font-size: 12px;
-    color: #6B7280;
+    color: var(--color-text-muted);
 }
 
 /* Grilla del Equipo */
@@ -122,10 +122,10 @@
 }
 .equipo-select {
     padding: 8px 16px;
-    border: 1px solid #D1D5DB;
+    border: 1px solid var(--color-border-strong);
     border-radius: 6px;
-    background-color: white;
-    color: #374151;
+    background-color: var(--color-surface);
+    color: var(--color-text);
     cursor: pointer;
 }
 
@@ -137,8 +137,8 @@
 
 /* Tarjeta Individual */
 .equipo-card {
-    background-color: #ffffff;
-    border: 1px solid #E5E7EB;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -158,7 +158,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--color-text-inverse);
     font-weight: bold;
     font-size: 18px;
     flex-shrink: 0;
@@ -166,7 +166,7 @@
 .card-info h4 {
     margin: 0 0 4px 0;
     font-size: 16px;
-    color: #111827;
+    color: var(--color-text);
 }
 .badge {
     display: inline-block;
@@ -178,7 +178,7 @@
 .card-desc {
     margin: 0 0 20px 0;
     font-size: 13px;
-    color: #6B7280;
+    color: var(--color-text-muted);
     line-height: 1.5;
     flex-grow: 1;
 }
@@ -188,21 +188,26 @@
 }
 .icon-btn {
     background: none;
-    border: 1px solid #E5E7EB;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6B7280;
+    color: var(--color-text-muted);
     cursor: pointer;
     transition: all 0.2s;
 }
 .icon-btn:hover {
-    color: #111827;
-    border-color: #D1D5DB;
-    background-color: #F3F4F6;
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+    background-color: var(--color-surface-muted);
+}
+
+.dashboard-layout[data-theme="dark"] .badge {
+    background-color: var(--color-primary-soft) !important;
+    color: var(--color-primary-strong) !important;
 }
 
 .soporte-footer {
@@ -210,8 +215,8 @@
     flex-wrap: wrap;
     align-items: center;
     gap: clamp(16px, 2vw, 24px);
-    background-color: #ffffff;
-    border: 1px solid #E5E7EB;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: clamp(16px, 3vw, 24px);
     margin-top: 32px;
@@ -219,7 +224,7 @@
 }
 
 .footer-icon-wrapper {
-    background-color: #D1FAE5;
+    background-color: var(--color-primary-soft);
     width: 48px;
     height: 48px;
     border-radius: 12px;
@@ -237,13 +242,13 @@
 .soporte-footer_text h4 {
     margin: 0 0 4px 0;
     font-size: clamp(15px, 2vw, 16px);
-    color: #111827;
+    color: var(--color-text);
 }
 
 .soporte-footer_text p {
     margin: 0;
     font-size: clamp(13px, 1.5vw, 14px);
-    color: #6B7280;
+    color: var(--color-text-muted);
 }
 
 .btn-footer {
@@ -254,8 +259,8 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: #059669;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
     padding: 10px 20px;
     border-radius: 8px;

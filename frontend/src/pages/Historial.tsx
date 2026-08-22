@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { Transaction } from "../types/transaction-type";
-import Button from "../components/ui/Button";
 
 import FiltrosHistorial from "../components/historial/FiltrosHistorial";
 import ResumenFinanciero from "../components/historial/ResumenFinanciero";
 import TablaTransacciones from "../components/historial/TablaTransacciones";
-import { ModalEditar } from "../components/historial/ModalEditar";
 import { exportarTransaccionesPDF } from "../utils/exportUtils";
+import { ModalEditar } from "../components/historial/ModalEditar";
 
 export default function Historial() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -14,7 +13,6 @@ export default function Historial() {
   const [error, setError] = useState<string | null>(null);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [selectedPeriod, setSelectedPeriod] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
   const [selectedType, setSelectedType] = useState<string>("Todos");
   const [selectedAccount, setSelectedAccount] = useState<string>("Principal");
@@ -22,17 +20,22 @@ export default function Historial() {
   const [modalAbierto, setModalAbierto] = useState(false);
   const [transaccionEditando, setTransaccionEditando] = useState<Transaction | null>(null);
 
+
+  // ==========================================
+  // NUEVO: ESTADOS DE PAGINACIÓN
+  // ==========================================
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 5; // cambiar esto a 10 o 20 según que se busca
+
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        // 1. Buscamos nuestro el Token
         const token = localStorage.getItem('jwt_token');
 
         const response = await fetch(`http://localhost:8080/api/transactions`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // Enviamos el token para que Spring Boot nos deje pasar
             'Authorization': token ? `Bearer ${token}` : ''
           }
         });
@@ -41,11 +44,7 @@ export default function Historial() {
           throw new Error(`Error HTTP: ${response.status}`);
         }
 
-
         const data: Transaction[] = await response.json();
-
-        console.log("1. Datos crudos desde MySQL:", data);
-
         setTransactions(data);
         setError(null);
 
@@ -53,11 +52,15 @@ export default function Historial() {
         console.error("Error fetching transactions:", err);
         setError("No pudimos conectar con el servidor de FinanceAI, mostrando datos de prueba.");
 
-        // DATOS DE PRUEBA (Fallback)
         setTransactions([
           { id: "1", description: "Compras Supermercado DIA", amount: 24500, date: "2024-05-19", category: "Comida", type: "expense", account: "Principal" },
           { id: "2", description: "Pago de Internet", amount: 15000, date: "2024-05-18", category: "Servicios", type: "expense", account: "Principal" },
-          { id: "3", description: "Sueldo Hackathon", amount: 850000, date: "2024-05-01", category: "Todos", type: "income", account: "Principal" }
+          { id: "3", description: "Sueldo Hackathon", amount: 850000, date: "2024-05-01", category: "Todos", type: "income", account: "Principal" },
+           { id: "4", description: "Compras Supermercado DIA", amount: 24500, date: "2024-05-19", category: "Comida", type: "expense", account: "Principal" },
+          { id: "5", description: "Pago de Internet", amount: 15000, date: "2024-05-18", category: "Servicios", type: "expense", account: "Principal" },
+          { id: "6", description: "Sueldo Hackathon", amount: 850000, date: "2024-05-01", category: "Todos", type: "income", account: "Principal" },
+          { id: "7", description: "Pago de Internet", amount: 15000, date: "2024-05-18", category: "Servicios", type: "expense", account: "Principal" },
+          { id: "8", description: "Sueldo Hackathon", amount: 850000, date: "2024-05-01", category: "Todos", type: "income", account: "Principal" }
         ]);
       } finally {
         setIsLoading(false);
@@ -68,12 +71,20 @@ export default function Historial() {
   }, []);
 
   // ==========================================
-  // 4. ESTADO DERIVADO:
+  // NUEVO: RESETEO DE PÁGINA AL FILTRAR
+  // Si busco algo, quiero volver a la página 1 automáticamente
+  // ==========================================
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCategory, selectedType, selectedAccount]);
+
+  // ==========================================
+  // 4. ESTADO DERIVADO: FILTROS
   // ==========================================
   const transaccionesFiltradas = transactions.filter((t) => {
-    const desc = t.description || ""; // Protección contra null
-    const cat = t.category || "";     // Protección contra null
-    const acc = t.account || "";      // Protección contra null
+    const desc = t.description || "";
+    const cat = t.category || "";
+    const acc = t.account || "";
 
     const matchSearch = desc.toLowerCase().includes((searchTerm || "").toLowerCase());
     const matchCategory = selectedCategory === "Todos" || cat === selectedCategory;
@@ -87,7 +98,31 @@ export default function Historial() {
   });
 
   // ==========================================
-  // 5. ESTADO DERIVADO: MATEMÁTICAS
+  // NUEVO: ESTADO DERIVADO - MATEMÁTICAS DE PAGINACIÓN
+  // ==========================================
+  const totalItems = transaccionesFiltradas.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+
+  // Cortamos el array gigante para pasarle solo los 5 elementos correspondientes a la tabla
+  const transaccionesPaginadas = transaccionesFiltradas.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handleNextPage = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1));
+  };
+
+  const handleExport = () => {
+    exportarTransaccionesPDF(transaccionesFiltradas);
+  };
+
+  // ==========================================
+  // 5. ESTADO DERIVADO: MATEMÁTICAS (Mantiene el total general de los filtros)
   // ==========================================
   const ingresosTotales = transaccionesFiltradas
     .filter(t => t.type === "income")
@@ -98,17 +133,14 @@ export default function Historial() {
     .reduce((acc, t) => acc + t.amount, 0);
 
   // ==========================================
-  // 6. MANEJADORES DE ACCIONES (Se los pasamos a la tabla)
+  // 6. MANEJADORES DE ACCIONES
   // ==========================================
-  const handleDelete = async (id: string) => {
-     // 1. Confirmación de seguridad
+  const handleDelete = async (id: string | number) => {
     const confirmar = window.confirm("¿Estás seguro de que querés eliminar este movimiento?");
     if (!confirmar) return;
 
     try {
       const token = localStorage.getItem('jwt_token');
-
-      // 2. Petición al backend
       const response = await fetch(`http://localhost:8080/api/transactions/${id}`, {
         method: 'DELETE',
         headers: {
@@ -117,10 +149,7 @@ export default function Historial() {
       });
 
       if (response.ok) {
-        // 3. Actualizamos el estado filtrando la que borramos
-        // Esto hace que desaparezca de la pantalla al instante sin recargar la página
         setTransactions(prevTransactions => prevTransactions.filter(t => t.id !== id));
-        console.log("¡Transacción eliminada con éxito!");
       } else {
         alert("Hubo un error al intentar eliminar la transacción.");
       }
@@ -129,38 +158,20 @@ export default function Historial() {
     }
   };
 
-  // Función para abrir el modal al hacer clic en "Editar"
   const handleClickEditar = (transaccion: Transaction) => {
     setTransaccionEditando(transaccion);
     setModalAbierto(true);
   };
 
-  const handleExport = async () => {
-    try {
-      await exportarTransaccionesPDF(transaccionesFiltradas);
-    } catch (error) {
-      console.error("Error al exportar el PDF:", error);
-    }
-  };
-
-  // Función que envía el PUT a Java (se la pasamos al Modal)
-const handleGuardarEdicion = async (datosModificados: any) => {
-    // 1. LOS DETECTORES DE MENTIRAS
-    console.log("A. Estado 'transaccionEditando' original:", transaccionEditando);
-    console.log("B. Datos 'datosModificados' que devolvió el Modal:", datosModificados);
-
+  const handleGuardarEdicion = async (datosModificados: any) => {
     try {
       const token = localStorage.getItem('jwt_token');
-
-      // 2. Intentamos rescatar el ID de cualquier lugar posible
       const idTransaccion = datosModificados.id || transaccionEditando?.id;
 
       if (!idTransaccion) {
-        alert("Fallo crítico: El ID se perdió. Mirá la consola de F12 para ver qué tienen los objetos A y B.");
-        return; // Cortamos acá para no romper nada
+        alert("Fallo crítico: El ID se perdió.");
+        return;
       }
-
-      console.log("C. ¡ID encontrado! Enviando PUT a:", `http://localhost:8080/api/transactions/${idTransaccion}`);
 
       const response = await fetch(`http://localhost:8080/api/transactions/${idTransaccion}`, {
         method: 'PUT',
@@ -168,7 +179,6 @@ const handleGuardarEdicion = async (datosModificados: any) => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        // Enviamos el objeto con el ID garantizado
         body: JSON.stringify({ ...datosModificados, id: idTransaccion })
       });
 
@@ -176,16 +186,14 @@ const handleGuardarEdicion = async (datosModificados: any) => {
         const transaccionActualizada = await response.json();
         setTransactions(prev => prev.map(t => t.id === transaccionActualizada.id ? transaccionActualizada : t));
         setModalAbierto(false);
-        console.log("¡Actualización exitosa!");
       } else {
-        const errorText = await response.text();
-        console.error(`Error del servidor (Status ${response.status}):`, errorText);
         alert(`Fallo en el servidor: HTTP ${response.status}`);
       }
     } catch (error) {
       console.error("Error de red al actualizar:", error);
     }
   };
+
   // ==========================================
   // 7. RENDERIZADO DEL DASHBOARD
   // ==========================================
@@ -194,34 +202,20 @@ const handleGuardarEdicion = async (datosModificados: any) => {
   }
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1100px', margin: '0 auto' }}>
+    <div style={{ padding: 'clamp(1rem, 5vw, 2rem)', maxWidth: '1100px', margin: '0 auto' }}>
 
-      {/* Cabecera */}
       <header style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', margin: '0 0 0.5rem 0' }}>
-          Historial Financiero
-        </h1>
-        <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
-          <p style={{ margin: 0, color: "#4b5563" }}>
-            Revisá tus movimientos, editá registros y exportá el listado filtrado cuando lo necesites.
-          </p>
-          <Button variant="secondary" onClick={() => void handleExport()}>
-            Exportar PDF
-          </Button>
-        </div>
+        <h1 style={{ fontSize: '2rem', margin: '0 0 0.5rem 0', color: 'var(--color-text)' }}>Historial Financiero</h1>
         {error && <p style={{ color: '#ef4444', fontSize: '0.875rem' }}>{error}</p>}
       </header>
 
-      {/* Componente 1: Filtros */}
       <FiltrosHistorial
         searchTerm={searchTerm} onSearchChange={setSearchTerm}
-        selectedPeriod={selectedPeriod} onPeriodChange={setSelectedPeriod}
         selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory}
         selectedType={selectedType} onTypeChange={setSelectedType}
         selectedAccount={selectedAccount} onAccountChange={setSelectedAccount}
       />
 
-      {/* Componente 2: Cajas de Resumen Matemático */}
       <div style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
         <ResumenFinanciero
           ingresosTotales={ingresosTotales}
@@ -229,11 +223,18 @@ const handleGuardarEdicion = async (datosModificados: any) => {
         />
       </div>
 
-      {/* Componente 3: La Tabla de Datos */}
+      {/* Le pasamos transaccionesPaginadas a la tabla y las props para el Pie */}
       <TablaTransacciones
-        transacciones={transaccionesFiltradas}
+        transacciones={transaccionesPaginadas}
         onEdit={handleClickEditar}
         onDelete={handleDelete}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+        onNextPage={handleNextPage}
+        onPrevPage={handlePrevPage}
+        onExport={handleExport}
       />
 
       <ModalEditar

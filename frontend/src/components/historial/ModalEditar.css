@@ -11,17 +11,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;          
+  z-index: 1000;
 }
 
 /* La caja blanca del formulario */
 .modal-content {
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   padding: 30px;
   border-radius: 10px;
   width: 90%;
   max-width: 500px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content > h3 {
+  color: var(--color-text);
 }
 
 /* Ordenamos los inputs del formulario en columna */
@@ -34,7 +38,7 @@
 
 .modal-content label {
   font-weight: 600;
-  color: #333;
+  color: var(--color-text);
   margin-bottom: -10px;
 }
 
@@ -47,8 +51,8 @@
 }
 
 button {
-    background-color: #0f172a;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;

@@ -4,14 +4,23 @@ import './Soporte.css';
 import { equipo } from '../types/soporte-type';
 import { ModalContacto } from '../components/soporte/ModalContacto';
 
-
 export default function Soporte() {
 
     const [filtro, setFiltro] = useState('Todos');
     const [modalAbierto, setModalAbierto] = useState(false);
-    const equipoFiltrado = equipo.filter((miembro) => {
+
+   const equipoFiltrado = equipo.filter((miembro) => {
+
         if (filtro === 'Todos') return true;
-        return miembro.rol.toLowerCase().includes(filtro.toLowerCase());
+
+        const rolNormalizado = miembro.rol.toLowerCase();
+        const filtroNormalizado = filtro.toLowerCase();
+
+        if (filtroNormalizado === 'frontend' || filtroNormalizado === 'backend') {
+            return rolNormalizado.includes(filtroNormalizado) || rolNormalizado.includes('full stack');
+        }
+
+        return rolNormalizado.includes(filtroNormalizado);
     });
 
     return (
@@ -29,7 +38,7 @@ export default function Soporte() {
             <section className="soporte-banner">
                 <div className="banner-texto">
                     <div className="banner-icon-bg">
-                        <FiPhoneCall size={24} color="#059669" />
+                        <FiPhoneCall size={24} color="currentColor" />
                     </div>
                     <div>
                         <h3>Estamos para ayudarte.</h3>
@@ -73,7 +82,11 @@ export default function Soporte() {
                         <option value="Todos">Todos</option>
                         <option value="Backend">Backend</option>
                         <option value="Frontend">Frontend</option>
+                        <option value="Full stack">Full stack</option>
+                        <option value="Software Engineer">Software Engineer</option>
                         <option value="Data">Data</option>
+                        <option value="Agent Engineer">Agent Engineer</option>
+                        <option value="Project Manager">Project Manager</option>
                     </select>
                 </div>
 
@@ -100,13 +113,13 @@ export default function Soporte() {
                             <p className="card-desc">{miembro.descripcion}</p>
                             <div className="card-footer">
                                 <button className="icon-btn" aria-label="Email">
-                                    <FiMail size={18} color="#6B7280" style={{ minWidth: '18px', minHeight: '18px' }} />
+                                    <FiMail size={18} color="currentColor" style={{ minWidth: '18px', minHeight: '18px' }} />
                                 </button>
                                 <button className="icon-btn" aria-label="LinkedIn">
-                                    <FiLinkedin size={18} color="#6B7280" style={{ minWidth: '18px', minHeight: '18px' }} />
+                                    <FiLinkedin size={18} color="currentColor" style={{ minWidth: '18px', minHeight: '18px' }} />
                                 </button>
                                 <button className="icon-btn" aria-label="GitHub">
-                                    <FiGithub size={18} color="#6B7280" style={{ minWidth: '18px', minHeight: '18px' }} />
+                                    <FiGithub size={18} color="currentColor" style={{ minWidth: '18px', minHeight: '18px' }} />
                                 </button>
                             </div>
                         </div>
@@ -114,9 +127,9 @@ export default function Soporte() {
                 </div>
             </section>
 
-        <div className="soporte-footer">
+            <div className="soporte-footer">
                 <div className="footer-icon-wrapper">
-                    <FiHeadphones size={24} color="#059669" />
+                    <FiHeadphones size={24} color="currentColor" />
                 </div>
 
                 <div className="soporte-footer_text">
@@ -125,11 +138,14 @@ export default function Soporte() {
                 </div>
 
                 <button className="btn-footer" onClick={() => setModalAbierto(true)}>
-                    <FiMail size={18} color="#FFFFFF" /> Contactar soporte
+                    <FiMail size={18} color="currentColor" /> Contactar soporte
                 </button>
             </div>
 
-            <ModalContacto isOpen={modalAbierto} onClose={() => setModalAbierto(false)} />
+            <ModalContacto
+                isOpen={modalAbierto}
+                onClose={() => setModalAbierto(false)}
+            />
         </div>
     );
 }

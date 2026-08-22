@@ -31,15 +31,15 @@
 .filtro-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-text);
 }
 
 .filtro-input, .filtro-select {
   padding: 0.6rem 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border-strong);
   border-radius: 8px;
-  background-color: #f9fafb;
-  color: #111827;
+  background-color: var(--color-surface-muted);
+  color: var(--color-text);
   font-size: 0.875rem;
   transition: border-color 150ms ease;
   min-width: 250px;
@@ -47,7 +47,7 @@
 
 .filtro-input:focus, .filtro-select:focus {
   outline: none;
-  border-color: #0f172a;
+  border-color: var(--color-primary);
 }
 
 .pildoras-lista {
@@ -58,10 +58,10 @@
 
 .btn-pildora {
   padding: 0.5rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   border-radius: 99px;
-  background: #ffffff;
-  color: #4b5563;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
@@ -69,12 +69,31 @@
 }
 
 .btn-pildora:hover {
-  background: #f3f4f6;
+  background: var(--color-surface-muted);
 }
 
 /* El estado activo del botón */
 .btn-pildora.activa {
-  background: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .filtros-grid {
+    flex-direction: column; /* Apila los filtros uno debajo del otro */
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .filtro-input, .filtro-select {
+    min-width: 100%; /* Elimina el 250px que rompía la pantalla */
+    width: 100%;
+  }
+
+  .pildoras-lista {
+    overflow-x: auto; /* Si hay muchas píldoras, permite deslizar con el dedo */
+    padding-bottom: 8px;
+    flex-wrap: nowrap; /* Evita que se amontonen feo hacia abajo */
+  }
 }

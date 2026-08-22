@@ -40,7 +40,7 @@ export const ModalContacto: React.FC<ModalContactoProps> = ({ isOpen, onClose })
         {/* Cabecera */}
         <div className="modal-header-soporte">
           <div className="modal-icon-badge">
-            <FiMail size={22} color="#059669" />
+            <FiMail size={22} color="currentColor" />
           </div>
           <div>
             <h3>Contactar soporte</h3>

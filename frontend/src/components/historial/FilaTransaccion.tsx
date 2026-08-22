@@ -19,16 +19,22 @@ export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaT
   };
 
   return (
+    return (
     <tr className="tabla-fila">
-      <td className="tabla-celda font-medium">{transaccion.description}</td>
-      <td className="tabla-celda font-bold">
+      
+      <td className="tabla-celda font-medium" data-label="DESCRIPCIÓN">{transaccion.description}</td>
+
+      <td className="tabla-celda font-bold" data-label="MONTO">
         {formatCurrency(transaccion.amount)}
       </td>
-      <td className="tabla-celda text-muted">{formatDate(transaccion.date)}</td>
-      <td className="tabla-celda">
+
+      <td className="tabla-celda text-muted" data-label="FECHA">{formatDate(transaccion.date)}</td>
+
+      <td className="tabla-celda" data-label="CATEGORÍA">
         <span className="pildora-categoria">{transaccion.category}</span>
       </td>
-      <td className="tabla-celda tabla-acciones">
+
+      <td className="tabla-celda tabla-acciones" data-label="ACCIÓN">
         <button
           onClick={() => onEdit(transaccion)}
           className="btn-accion btn-editar"
@@ -45,5 +51,6 @@ export default function FilaTransaccion({ transaccion, onEdit, onDelete }: FilaT
         </button>
       </td>
     </tr>
+  );
   );
 }

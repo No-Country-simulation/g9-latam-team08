@@ -18,7 +18,7 @@ import { useRunAnalysis } from "../../hooks/useRunAnalysis";
 import { loadDraft } from "../../utils/draftStorage";
 import { createEmptyAnalysisDraft, type AnalysisDraft } from "../../types/analysis-draft";
 import type { AnalysisWizardStep } from "../../types/analysis-flow";
-import { MockAnalysisGateway } from "../../gateways/MockAnalysisGateway";
+import { HttpAnalysisGateway } from "../../gateways/AnalysisGateway";
 import AnalysisStepper from "./AnalysisStepper";
 import "./AnalysisWizard.css";
 
@@ -58,7 +58,7 @@ function AnalysisWizard() {
   const defaultValues = useMemo<AnalysisDraftFormValues>(() => {
     return loadDraft(userId) ?? emptyDraft;
   }, [emptyDraft, userId]);
-  const gateway = useMemo(() => new MockAnalysisGateway(), []);
+  const gateway = useMemo(() => new HttpAnalysisGateway(), []);
 
   const methods = useForm<AnalysisDraftFormValues>({
     resolver: zodResolver(analysisDraftSchema),
