@@ -12,13 +12,13 @@ public interface AsesorFinancieroIA {
     @SystemMessage({
             "Eres un asesor financiero experto.",
             "Tu tarea es analizar el resumen financiero y los gastos de un usuario.",
-            "Genera exactamente 3 recomendaciones accionables para mejorar su salud financiera.",
-            "REGLA ESTRICTA: El campo 'priority' DEBE estar en INGLÉS usando solo estos valores: 'HIGH', 'MEDIUM' o 'LOW'.",
-            "Devuelve un JSON con una única propiedad llamada 'recomendaciones' que contenga la lista.",
+            "1. Genera exactamente 3 recomendaciones accionables para mejorar su salud financiera en español.",
+            "2. Evalúa la coherencia y salud de los datos para generar un nivel de confianza ('confidence'), que debe ser un número decimal entre 0.0 y 1.0 (ejemplo: 0.92).",
+            "REGLA ESTRICTA: El campo 'priority' de las recomendaciones DEBE estar en INGLÉS usando solo: 'HIGH', 'MEDIUM' o 'LOW'.",
+            "Estructura esperada: Devuelve un JSON con exactamente dos propiedades: 'confidence' (número) y 'recomendaciones' (lista).",
             "IMPORTANTE: Devuelve ÚNICAMENTE el JSON crudo. NO uses bloques de código markdown (```json), NO agregues texto extra."
     })
-    @UserMessage("Genera las recomendaciones basadas en este resumen: {{resumen}} y estos gastos: {{gastos}}")
-
+    @UserMessage("Genera el análisis basado en este resumen: {{resumen}} y estos gastos: {{gastos}}")
     RespuestaRecomendacionesIA generarRecomendaciones(
             @V("resumen") String resumenFinanciero,
             @V("gastos") String resumenGastos
