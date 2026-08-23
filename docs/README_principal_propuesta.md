@@ -113,7 +113,7 @@ Asimismo, Finance AI incorpora un servicio de **Nuevo Análisis** que actúa com
 
 Para consultar el detalle de la implementación y documentación técnica del área:
 
-- [`README – Backend`](backend/Readme.md)
+- [`README – Backend`](backend/README.md)
 - [`Documentación técnica – Backend`](docs/Backend.md)
 
 ---
