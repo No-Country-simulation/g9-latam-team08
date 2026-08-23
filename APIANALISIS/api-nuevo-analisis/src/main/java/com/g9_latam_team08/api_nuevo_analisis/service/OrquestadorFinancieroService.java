@@ -211,7 +211,7 @@ public class OrquestadorFinancieroService {
         // 2. Agrupar sumas por categoría (Evitando el error del null)
         Map<String, Double> gastosPorCategoria = egresos.stream()
                 .collect(Collectors.groupingBy(
-                        t -> t.categoryLabel() != null ? t.categoryLabel() : "Sin Categoría", // <--- Salvavidas
+                        t -> t.categoryLabel() != null ? t.categoryLabel() : "Sin Categoría",
                         Collectors.summingDouble(AnalisisPayload.Transaction::amount)
                 ));
 

@@ -15,6 +15,9 @@ public class Config {
     @Value("${gemini.api.key}")
     private String apiKey;
 
+    @Value("${modelo}")
+    private String modelo_gemini;
+
     @Bean
     public RestClient restClient() {
         return RestClient.create();
@@ -25,7 +28,7 @@ public class Config {
         return GoogleAiGeminiChatModel.builder()
                 .apiKey(apiKey)
                 .temperature(0.7)
-                .modelName("gemini-3.5-flash-lite")
+                .modelName(modelo_gemini)
                 .timeout(Duration.ofMinutes(3))
                 .logRequestsAndResponses(true)
                 .build();
