@@ -1,365 +1,320 @@
-# API REST - Sistema de Alerta Financiera Temprana
+# Finance AI Backend - Sistema de Alerta Financiera Temprana
 
-Proyecto backend en Spring Boot para gestionar usuarios, gastos financieros y evaluación de riesgo financiero. La solución está pensada para calcular señales tempranas de salud económica, clasificar perfiles financieros y facilitar la gestión de transacciones asociadas a cada cliente.
+Backend RESTful API para un dashboard de análisis de salud financiera, desarrollado con Java y Spring Boot.
 
-## Descripción general
+## ¿Qué incluye este proyecto?
 
-La API permite:
+Gestión de usuarios
+Registro y consulta de transacciones
+Dashboard con métricas financieras
+Alertas automáticas
+Recomendaciones personalizadas
+Categorías predeterminadas para gastos
 
-- Registrar y consultar usuarios financieros.
-- Registrar y consultar gastos asociados a cada usuario.
-- Evaluar indicadores de salud financiera como ahorro neto, DTI, gastos esenciales y meses de supervivencia.
-- Filtrar usuarios por perfil financiero.
-- Integrar un cálculo adicional con un servicio Python para el análisis predictivo.
+## Requisitos previos
 
-## Objetivo
+- Java 
+- Maven 
+- Git
 
-Brindar una herramienta de gestión financiera para visualizar de forma rápida y estructurada la situación económica de cada usuario, detectando señales de riesgo y permitiendo una mejor toma de decisiones.
-
-## Arquitectura de despliegue
-
-- **Railway** aloja únicamente la base de datos MySQL.
-- **OCI Compute** ejecuta únicamente el backend Spring Boot.
-- OCI no necesita instalar ni ejecutar MySQL localmente.
-- El backend escucha en el puerto `8080` y se conecta a Railway mediante variables de entorno.
-- Las credenciales no deben guardarse en Git, en el WAR ni en este README.
-
-## Funcionalidades principales
-
-- Gestión de usuarios y clientes financieros.
-- Registro y consulta de gastos por usuario.
-- Cálculo de ratios financieros y métricas clave.
-- Perfilamiento financiero por riesgo.
-- Persistencia relacional en MySQL alojado en Railway.
-- Arquitectura REST con Spring Boot.
-- Despliegue operativo en una instancia OCI con acceso público en el puerto 8080.
-
-## Stack tecnológico
-
-- Java 21
-- Spring Boot 4.1.0
-- Spring Web MVC
-- Spring Data JPA / Hibernate
-- MySQL 8
-- Maven
-- OCI (Oracle Cloud Infrastructure) VM
-- systemd para servicio del backend
 
 ## Estructura del proyecto
 
 ```text
-apirest/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── team08/apirest/
-│   │   │       ├── controllers/
-│   │   │       │   ├── GastoController.java
-│   │   │       │   └── UsuarioController.java
-│   │   │       ├── models/
-│   │   │       │   ├── GastoModel.java
-│   │   │       │   └── UsuarioModel.java
-│   │   │       ├── repositories/
-│   │   │       │   ├── GastoRepository.java
-│   │   │       │   └── UsuarioRepository.java
-│   │   │       ├── services/
-│   │   │       │   ├── GastoService.java
-│   │   │       │   └── UsuarioService.java
-│   │   │       ├── ApirestApplication.java
-│   │   │       └── ServletInitializer.java
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/
-│       └── java/team08/apirest/ApirestApplicationTests.java
-├── pom.xml
-├── mvnw
-├── mvnw.cmd
-├── readme.md
-├── .mvn/wrapper/maven-wrapper.properties
-└── .gitignore
+src/main/java/com/financeai/
+
+├── resources.           # Configuraciones de APIs con variables de entorno
+├── config/              # Configuraciones y inicialización de datos
+├── controller/          # Controladores REST
+├── dto/                 # Objetos de transferencia de datos
+├── entity/              # Entidades JPA
+├── repository/          # Repositorios Spring Data JPA
+├── service/             # Interfaces de servicios
+├── service/impl/        # Implementaciones de servicios
+└── FinanceAiApplication.java
 ```
-
-## Requisitos de ejecución
-
-- Java 21
-- Maven
-- Acceso a la base de datos MySQL en Railway
-- Acceso SSH a la infraestructura OCI si se desea desplegar en servidor
-- Clave SSH privada para OCI, fuera del repositorio
 
 ## Configuración local
 
-Archivo principal:
+### 1. Clonar el repositorio 
+
+```
+https://github.com/No-Country-simulation/g9-latam-team08.git
+```
+
+### 2. Verificar Java y Maven
+
+```bash
+java -version
+mvn -v
+```
+
+### 3. Compilar el proyecto
+
+```bash
+mvn clean install
+```
+
+### 4. Ejecutar la aplicación
+
+```bash
+mvn spring-boot:run
+```
+
+La API quedará disponible en:
+
+```text
+http://localhost:8080
+
+y en producción en:
+
+http://146.181.60.43:8080/
+```
+
+## Endpoints principales
+
+### Usuarios
+
+**Registrar un usuario**
+
+```text
+URL: /users
+Método: POST
+```
+**Descripción:** Crea un nuevo usuario en el sistema.
+
+
+**Obtener un usuario por ID**
+
+```text
+URL: /users/{userId}
+Método: GET
+```
+**Descripción:** Recupera la información detallada de un usuario específico mediante su ID.
+
+
+**Buscar usuario por correo**
+
+```text
+URL: /users/email/{email}
+Método: GET
+```
+**Descripción:** Busca un usuario en el sistema utilizando su dirección de correo electrónico.
+
+**Actualizar datos básicos**
+
+```text
+URL: /users/{userId}
+Método: PUT
+```
+**Descripción:** Actualiza la información personal básica de un usuario existente.
+
+
+**Actualizar datos financieros**
+
+```text
+URL: /users/{userId}/financial
+Método: PUT
+```
+**Descripción:** Modifica únicamente la información financiera asociada a un usuario.
+
+
+**Eliminar usuario**
+
+```text
+URL: /users/{userId}
+Método: DELETE
+```
+**Descripción:** Elimina permanentemente a un usuario del sistema.
+
+
+### Transacciones
+
+**Crear una transacción**
+
+```text
+URL: /transactions
+Método: POST
+```
+**Descripción:** Registra un nuevo movimiento o gasto en el sistema asociado a un usuario.
+
+
+**Obtener transacciones de un usuario**
+
+```text
+URL: /transactions/user/{userId}
+Método: GET
+```
+**Descripción:** Lista todas las transacciones realizadas por un usuario específico.
+
+
+**Obtener una transacción por ID**
+
+```text
+URL: /transactions/{transactionId}
+Método: GET
+```
+**Descripción:** Recupera los detalles de una transacción única mediante su identificador.
+
+
+**Eliminar una transacción**
+
+```text
+URL: /transactions/{transactionId}
+Método: DELETE
+```
+**Descripción:** Borra un registro de transacción específico del sistema.
+
+
+### Categorías
+
+**Listar categorías**
+
+```text
+URL: /categories
+Método: GET
+```
+**Descripción:** Obtiene un listado completo de las categorías disponibles para transacciones.
+
+
+**Buscar categoría por nombre**
+
+```text
+URL: /categories/{name}
+Método: GET
+```
+**Descripción:** Busca una categoría específica filtrándola por su nombre.
+
+
+**Crear categoría**
+
+```text
+URL: /categories
+Método: POST
+```
+**Descripción:** Añade una nueva categoría para clasificar gastos o ingresos.
+
+
+### Alertas
+
+**Obtener alertas de un usuario**
+
+```text
+URL: /alerts/user/{userId}
+Método: GET
+```
+**Descripción:** Recupera todas las alertas generadas para un usuario en particular.
+
+
+**Obtener alertas no leídas**
+
+```text
+URL: /alerts/user/{userId}/unread
+Método: GET
+```
+**Descripción:** Filtra y muestra solo las notificaciones o alertas que el usuario aún no ha revisado.
+
+
+**Marcar alerta como leída**
+
+```text
+URL: /alerts/{alertId}/read
+Método: PUT
+```
+**Descripción:** Actualiza el estado de una alerta específica para marcarla como leída.
+
+
+### Finanzas
+
+**Calcular finanzas y perfil de riesgo**
+
+```text
+URL: /calcular-finanzas
+Método: POST
+```
+**Descripción:** Procesa los ingresos, gastos y ahorros, calcula los ratios financieros correspondientes a supervivencia, endeudamiento, etc. Evalúa el perfil de riesgo mediante un modelo predictivo.
+
+
+
+## Base de datos
+
+Por defecto el proyecto usa H2 en memoria.
+
+La consola H2 queda disponible en:
+
+```text
+http://localhost:8080/h2-console
+```
+
+## Variables de entorno importantes
+
+- `JAVA_HOME`: debe apuntar al JDK.
+- `PATH`: debe incluir `%JAVA_HOME%\bin`.
+
+## Troubleshooting
+
+### Puerto ocupado
+
+Si 8080 ya está en uso, puedes cambiarlo en `application.properties`:
 
 ```properties
-spring.application.name=apirest
-server.address=0.0.0.0
-server.port=8080
-
-spring.datasource.url=${SPRING_DATASOURCE_URL}
-spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
-spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
-spring.jpa.hibernate.ddl-auto=none
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+server.port=8081
 ```
 
-Para ejecución local, configura las variables sin escribir la contraseña en archivos versionados:
+El backend está configurado para aceptar solicitudes desde:
+- `http://localhost:3000`
+- `http://localhost:4200`
+
+## Logs
+
+Los logs están configurados en `application.properties`:
+
+```properties
+logging.level.root=INFO
+logging.level.com.financeai=DEBUG
+```
+### Error: "Table creation"
+Verifica que `spring.jpa.hibernate.ddl-auto=create-drop` está en `application.properties`
+
+### Error: "User not found"
+Asegúrate de que el usuario exista antes de crear transacciones
+
+
+## Build y Deployment
+
+### Compilar JAR ejecutable
 
 ```bash
-export SPRING_DATASOURCE_URL='jdbc:mysql://HOST:PUERTO/BASE?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&sslMode=REQUIRED'
-export SPRING_DATASOURCE_USERNAME='USUARIO'
-export SPRING_DATASOURCE_PASSWORD='CONTRASENA'
+mvn clean package
 ```
 
-### Ejecutar localmente
+### Ejecutar JAR
 
 ```bash
-cd apirest
-./mvnw clean test
-./mvnw clean package -DskipTests
-java -jar target/apirest-0.0.1-SNAPSHOT.war --server.port=8080
+java -jar target/finance-dashboard-api-1.0.0.jar
 ```
 
-Las pruebas usan H2 temporal y no dependen de Railway. El empaquetado requiere Java 21.
+## Tecnologías Utilizadas
 
-## Despliegue en OCI
 
-El backend quedó configurado y ejecutándose en una instancia OCI con acceso público en el puerto 8080.
+- **Java 21 ** - Lenguaje de programación 
+- **Spring Boot +3.6 ** - Framework
+- **Spring Data JPA** - ORM
+- **Spring Security** - Autenticación
+- **H2 Database** - Base de datos
+- **MSQL Database** - Base de datos de producción desplegada en Railway 
+- **Lombok** - Reducir boilerplate
+- **Maven** - Gestor de dependencias
+- **Springdoc OpenAPI (Swagger)** - Documentación interactiva de la API integrada en /swagger-ui.html.
+- **JWT** - Autenticación por tokens  
 
-### Datos de despliegue verificados
+## Variables de Entorno
 
-- IP pública: 146.181.60.43
-- Usuario: ubuntu
-- Puerto: 8080
-- URL base: http://146.181.60.43:8080
+Contiene variables de entorno en `application.properties` y `application-prod.properties` para producción.
 
-### Pasos de despliegue usados
+## Desarrollo Futuro
 
-1. Crear y configurar la base de datos MySQL en Railway.
-2. Instalar Java 21 y Maven en la VM de OCI.
-3. Compilar el proyecto con Maven.
-4. Subir el artefacto WAR a la VM.
-5. Configurar las variables de conexión a Railway.
-6. Crear un servicio `systemd` para arrancar la aplicación automáticamente.
+- [ ] Agregar dockerizacion 
 
-### Servicio systemd
+---
 
-```ini
-[Unit]
-Description=API REST Backend
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-User=ubuntu
-WorkingDirectory=/home/ubuntu
-ExecStart=/usr/lib/jvm/java-21-openjdk-amd64/bin/java -jar /home/ubuntu/apirest.war --server.port=8080
-Restart=always
-RestartSec=10
-EnvironmentFile=/etc/apirest.env
-StandardOutput=append:/home/ubuntu/apirest.log
-StandardError=append:/home/ubuntu/apirest.log
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Crear `/etc/apirest.env` directamente en OCI, sin subirlo a Git:
-
-```ini
-SPRING_DATASOURCE_URL=jdbc:mysql://HOST:PUERTO/BASE?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&sslMode=REQUIRED
-SPRING_DATASOURCE_USERNAME=USUARIO
-SPRING_DATASOURCE_PASSWORD=CONTRASENA
-PYTHON_SERVICE_URL=
-PYTHON_ML_URL=
-APP_CORS_ALLOWED_ORIGINS=*
-```
-
-Aplicar la configuración:
-
-```bash
-sudo chmod 600 /etc/apirest.env
-sudo systemctl daemon-reload
-sudo systemctl enable apirest
-sudo systemctl restart apirest
-```
-
-Para subir una nueva versión:
-
-```bash
-scp -i /ruta/clave-oci target/apirest-0.0.1-SNAPSHOT.war ubuntu@IP_PUBLICA_OCI:/home/ubuntu/apirest.war
-ssh -i /ruta/clave-oci ubuntu@IP_PUBLICA_OCI
-sudo systemctl restart apirest
-```
-
-### Comandos de gestión del servicio
-
-```bash
-sudo systemctl status apirest
-sudo systemctl restart apirest
-sudo journalctl -u apirest -f
-```
-
-## Endpoints de la API REST
-
-### Módulo de gastos
-
-#### 1) Listar todos los gastos
-
-```http
-GET /api/gastos
-```
-
-#### 2) Registrar un gasto
-
-```http
-POST /api/gastos
-Content-Type: application/json
-```
-
-Ejemplo de body:
-
-```json
-{
-  "nombreTienda": "Supermercado",
-  "subcategoria": "Alimentos",
-  "monto": 1500.5,
-  "metodoPago": "Tarjeta",
-  "esencial": true,
-  "categoriaPrincipal": "Hogar",
-  "usuario": {
-    "id": 1
-  }
-}
-```
-
-#### 3) Obtener gastos por cliente
-
-```http
-GET /api/gastos/cliente/{idCliente}
-```
-
-#### 4) Obtener gasto por ID
-
-```http
-GET /api/gastos/{id}
-```
-
-#### 5) Eliminar gasto
-
-```http
-DELETE /api/gastos/{id}
-```
-
-### Módulo de usuarios
-
-#### 1) Listar usuarios
-
-```http
-GET /api/usuarios
-```
-
-#### 2) Registrar usuario
-
-```http
-POST /api/usuarios
-Content-Type: application/json
-```
-
-Ejemplo de ejemplo:
-
-```json
-{
-  "nombre": "Ana",
-  "password": "123456",
-  "email": "ana@email.com",
-  "ingresoMensualFijo": 2500000,
-  "ingresoMensualVariable": 500000,
-  "ingresoMensual": 3000000,
-  "gastosEsencialesMensuales": 1200000,
-  "gastosNoEsencialesMensuales": 400000,
-  "gastosTotalesDelMes": 1600000,
-  "cuotasMensualesDeuda": 300000,
-  "ahorroMensual": 700000,
-  "ahorroTotal": 8000000,
-  "perfilFinanciero": "Estable",
-  "mesesSupervivencia": 8
-}
-```
-
-#### 3) Obtener usuario por ID
-
-```http
-GET /api/usuarios/{id}
-```
-
-#### 4) Eliminar usuario
-
-```http
-DELETE /api/usuarios/{id}
-```
-
-#### 5) Filtrar usuarios por perfil financiero
-
-```http
-GET /api/usuarios/perfil/{perfilFinanciero}
-```
-
-#### 6) Filtrar usuarios con supervivencia > 0
-
-```http
-GET /api/usuarios/supervivencia-mayor-cero
-```
-
-## Observaciones del proyecto
-
-- La aplicación utiliza JPA para mapear entidades y persistirlas en MySQL.
-- La estructura de entidades incluye una relación entre `UsuarioModel` y `GastoModel`.
-- La conexión a la base de datos se gestiona por Spring Boot HikariCP.
-- `spring.jpa.hibernate.ddl-auto=none` conserva el esquema administrado en Railway y evita cambios automáticos en producción.
-- Los importes históricos con separadores de miles, como `-1.454.888`, se normalizan mediante `FormattedLongConverter`.
-- Si las URLs Python están vacías, el backend conserva el funcionamiento principal y guarda los datos sin clasificación externa.
-
-## Problemas comunes y soluciones
-
-### Error: Java version unsupported
-
-Si el backend falla con `UnsupportedClassVersionError`, significa que se compiló con Java más reciente que la versión disponible en la VM.
-
-Solución:
-
-```bash
-sudo apt-get install openjdk-21-jdk
-```
-
-Y compilar de nuevo con Java 21.
-
-### Error de conexión con Railway
-
-Verificar que `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD` estén configuradas en el servicio `systemd` y que la base de datos de Railway esté disponible.
-
-### Puerto 8080 no responde
-
-Verificar:
-
-```bash
-sudo systemctl status apirest
-sudo journalctl -u apirest -n 100 --no-pager
-ss -lnt | grep 8080
-curl -i http://127.0.0.1:8080/api/usuarios
-```
-
-Si la prueba interna responde `HTTP 200` pero la pública agota el tiempo, revisar la regla de entrada de OCI/NSG/Security List para `TCP 8080`. `ss` solo confirma que Java escucha localmente; no confirma que OCI permita tráfico desde Internet. También revisar `sudo ufw status verbose` y, si corresponde, `sudo ufw allow 8080/tcp`.
-
-La IP `192.168.0.1` es la IP privada del router local, no la IP pública. Para descartar NAT loopback o bloqueo del proveedor, probar desde otra red o datos móviles.
-
-## Equipo
-
-Equipo 8 - Desarrollo backend y servicios financieros.
-
-## Estado actual
-
-El backend se ejecuta en OCI, escucha en el puerto 8080 y usa Railway como base de datos remota. El acceso externo depende de las reglas de red de OCI.
