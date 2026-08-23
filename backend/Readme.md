@@ -318,3 +318,5 @@ Contiene variables de entorno en `application.properties` y `application-prod.pr
 
 ---
 
+## Equipo de trabajo
+Equipo: Grupo de Desarrollo del equipo 8.
