@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/nuevo-analisis/procesar-perfil")
+@RequestMapping("/api/usuarios/analisis")
 @CrossOrigin(origins = "*")
 public class AnalisisController {
 
