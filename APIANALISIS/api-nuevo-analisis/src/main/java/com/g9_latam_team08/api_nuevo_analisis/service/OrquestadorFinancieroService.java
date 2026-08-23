@@ -32,15 +32,78 @@ public class OrquestadorFinancieroService {
 
     public AnalisisResponse procesarYEnriquecer(AnalisisPayload payloadFrontend) {
 
+        logger.info("0. Pre-procesando y clasificando datos con Gemini...");
+
+        AnalisisPayload payloadEnriquecido = payloadFrontend;
+
+        try {
+
+            // Juntamos ingresos y transacciones en un solo texto para que Gemini los lea
+            String datosParaClasificar = payloadFrontend.financialData().incomes().toString() + "\n" +
+                    payloadFrontend.transactions().toString();
+
+            RespuestaClasificacionIA respuestaClasificacion = asesorIA.clasificarMovimientos(datosParaClasificar);
+            List<ClasificacionIA> clasificaciones = respuestaClasificacion.clasificaciones();
+
+            // 1. Reconstruimos las transacciones inyectándoles la categoría de Gemini
+            List<AnalisisPayload.Transaction> transaccionesClasificadas = payloadFrontend.transactions().stream()
+                    .map(t -> {
+                        String categoriaIA = clasificaciones.stream()
+                                .filter(c -> t.id().equals(c.id()) && c.categoria() != null)
+                                .map(ClasificacionIA::categoria)
+                                .findFirst()
+                                .orElse("Otros"); // Si Gemini no la encontró, le ponemos "Otros"
+
+                        return new AnalisisPayload.Transaction(
+                                t.id(), t.description(), t.amount(), t.date(),
+                                t.paymentMethod(), t.purchaseMode(), t.movementType(),
+                                categoriaIA
+                        );
+                    }).toList();
+
+            // 2. Reconstruimos los ingresos inyectándoles el tipo de Gemini
+            List<AnalisisPayload.Income> ingresosClasificados = payloadFrontend.financialData().incomes().stream()
+                    .map(i -> {
+                        String tipoIA = clasificaciones.stream()
+                                .filter(c -> i.id().equals(c.id()) && c.tipoIngreso() != null)
+                                .map(ClasificacionIA::tipoIngreso)
+                                .findFirst()
+                                .orElse("SALARY");
+
+                        return new AnalisisPayload.Income(
+                                i.id(), i.description(), i.monthlyAmount(),
+                                tipoIA // <--- Aquí entra "SALARY" o "VARIABLE"
+                        );
+                    }).toList();
+
+            // 3. Armamos el nuevo Payload "Limpio"
+            AnalisisPayload.FinancialData nuevaData = new AnalisisPayload.FinancialData(
+                    ingresosClasificados,
+                    payloadFrontend.financialData().estimatedMonthlySavings(),
+                    payloadFrontend.financialData().monthlyDebtPayments(),
+                    payloadFrontend.financialData().emergencyFundAmount(),
+                    payloadFrontend.financialData().savingsFrequency()
+            );
+
+            payloadEnriquecido = new AnalisisPayload(nuevaData, transaccionesClasificadas);
+            logger.info("Clasificación exitosa. Los datos 'null' fueron corregidos.");
+
+        } catch (Exception e) {
+            logger.error("Error en la clasificación previa con Gemini. Se usarán datos originales.", e);
+        }
+
+
         // 1. TRADUCIMOS lo que viene del Frontend al nuevo request de la APIREST
-        logger.info("1. Mapeando datos del Frontend para Python...");
-        UsuarioAnalisisRequest analisisRequest = prepararDatosParaAPI(payloadFrontend);
+
+        logger.info("1. Mapeando datos del Frontend para la APIREST...");
+
+        UsuarioAnalisisRequest analisisRequest = prepararDatosParaAPI(payloadEnriquecido);
+        System.out.println(analisisRequest);
 
         // 2. Usamos el nuevo DTO para recibir los datos
         UsuarioAnalisisResponse response;
-
         try {
-            logger.info("2. Enviando datos a la API de Python...");
+            logger.info("2. Enviando datos a la APIREST...");
             response = restClient.post()
                     .uri(API_DESTINO_URL)
                     .body(analisisRequest)
@@ -52,14 +115,16 @@ public class OrquestadorFinancieroService {
             throw new RuntimeException("No se pudo obtener el análisis de Python. Intente de nuevo.");
         }
 
-        // 3. Consulta a Gemini
+        // 3. Consulta a Gemini para las Recomendaciones Finales
         List<AnalisisResponse.Recommendation> recomendacionesGemini = null;
         double confianzaIA = 0.91;
 
         try {
-            logger.info("3. Consultando a Gemini...");
+            logger.info("3. Consultando a Gemini para recomendaciones...");
             String resumenString = response != null ? response.toString() : "Sin datos";
-            String gastosString = payloadFrontend.transactions().toString();
+
+            // Le pasamos las transacciones ya clasificadas para que su análisis sea más preciso
+            String gastosString = payloadEnriquecido.transactions().toString();
 
             RespuestaRecomendacionesIA respuestaIA = asesorIA.generarRecomendaciones(resumenString, gastosString);
             recomendacionesGemini = respuestaIA.recomendaciones();
@@ -75,13 +140,12 @@ public class OrquestadorFinancieroService {
 
         logger.info("4. Ensamblando JSON final para el Frontend...");
 
-        // Calculamos los gastos usando el método interno
-        AnalisisResponse.Expenses gastosCalculados = construirGastos(payloadFrontend.transactions());
+        // Calculamos los gastos usando las transacciones ya clasificadas
+        AnalisisResponse.Expenses gastosCalculados = construirGastos(payloadEnriquecido.transactions());
 
-        // Armamos el Summary convirtiendo los Long e Integer a Double
         AnalisisResponse.Summary summaryArmado = new AnalisisResponse.Summary(
                 response.perfilFinanciero() != null ? response.perfilFinanciero() : "HEALTHY",
-                0.91,
+                confianzaIA,
                 response.ratioEndeudamientoDti() != null ? response.ratioEndeudamientoDti() : 0.0,
                 response.ahorroMensual() != null ? response.ahorroMensual().doubleValue() : 0.0,
                 response.mesesSupervivencia() != null ? response.mesesSupervivencia().doubleValue() : 0.0
@@ -124,6 +188,7 @@ public class OrquestadorFinancieroService {
                 .filter(t -> t.categoryLabel() == null || !categoriasEsenciales.contains(t.categoryLabel()))
                 .mapToDouble(AnalisisPayload.Transaction::amount)
                 .sum();
+
         // Retornamos el nuevo DTO
         return new UsuarioAnalisisRequest(
                 ingresosFijos,
@@ -159,11 +224,14 @@ public class OrquestadorFinancieroService {
         List<AnalisisResponse.CategorySummary> byCategory = gastosPorCategoria.entrySet().stream()
                 .map(entry -> {
                     double amount = entry.getValue();
-                    double percentage = totalGastos > 0 ? (amount / totalGastos) * 100 : 0;
+                    double rawPercentage = totalGastos > 0 ? (amount / totalGastos) * 100 : 0;
+                    double percentage = Math.round(rawPercentage * 100.0) / 100.0;
+
                     int count = (int) egresos.stream().filter(t -> {
                         String cat = t.categoryLabel() != null ? t.categoryLabel() : "Sin Categoría";
                         return cat.equals(entry.getKey());
                     }).count();
+
                     return new AnalisisResponse.CategorySummary(entry.getKey(), amount, percentage, count);
                 }).toList();
 
