@@ -297,8 +297,8 @@ java -jar target/finance-dashboard-api-1.0.0.jar
 ## Tecnologías Utilizadas
 
 
-- **Java 21 ** - Lenguaje de programación 
-- **Spring Boot +3.6 ** - Framework
+- **Java 21** - Lenguaje de programación 
+- **Spring Boot +3.6** - Framework
 - **Spring Data JPA** - ORM
 - **Spring Security** - Autenticación
 - **H2 Database** - Base de datos
