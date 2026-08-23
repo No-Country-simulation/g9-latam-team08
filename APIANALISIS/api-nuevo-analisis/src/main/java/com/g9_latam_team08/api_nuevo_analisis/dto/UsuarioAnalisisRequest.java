@@ -8,13 +8,13 @@ public record UsuarioAnalisisRequest(
         @JsonProperty("ingreso_mensual_variable")
         Double ingresoMensualVariable,
 
-        @JsonProperty("gastos_esenciales")
+        @JsonProperty("gastos_esenciales_mensuales")
         Double gastosEsenciales,
 
-        @JsonProperty("gastos_no_esenciales")
+        @JsonProperty("gastos_no_esenciales_mensuales")
         Double gastosNoEsenciales,
 
-        @JsonProperty("cuotas_deuda")
+        @JsonProperty("cuotas_mensuales_deuda")
         Double cuotasDeuda,
 
         @JsonProperty("ahorro_previo")
