@@ -20,7 +20,7 @@ La documentación está organizada por áreas con el objetivo de facilitar su co
 | Documentacion_Proyecto_Hackathon.md | Documento general del proyecto: descripción, problema, objetivo, usuario objetivo, solución propuesta, alcance del MVP y componentes de la solución. |
 | Herramientas_y_Tecnologias.md | Herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto. |
 | Enlaces_Proyecto.md | Enlaces oficiales relacionados con el repositorio, documentación, Aplicación Web para escritorio (PC), API REST, diseño, herramientas y entregables del proyecto. |
-| Pruebas_y_Validacion.md | Registro y seguimiento de las pruebas funcionales, técnicas y de integración realizadas para la validación del MVP. |
+| Pruebas_y_validacion_MVP.md | Registro y seguimiento de las pruebas funcionales, técnicas y de integración realizadas para la validación del MVP. |
 
 ---
 
@@ -53,7 +53,7 @@ La documentación está organizada por áreas con el objetivo de facilitar su co
 
 # Organización de la Documentación
 
-Cada documento será elaborado, revisado y actualizado por los responsables definidos, manteniendo una estructura común para facilitar la consulta, el mantenimiento y la trazabilidad de la documentación del proyecto.
+Cada documento fue elaborado, revisado y actualizado por los responsables definidos, manteniendo una estructura común para facilitar la consulta, el mantenimiento y la trazabilidad de la documentación del proyecto.
 
 ## Estructura Estándar de los README
 
@@ -103,13 +103,13 @@ Cada documento podrá incorporar secciones específicas de acuerdo con las neces
 - **Manual_Usuario.md:** Acceso a la aplicación, navegación, funcionalidades principales, guía de uso y preguntas frecuentes.
 - **Herramientas_y_Tecnologias.md:** Herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto.
 - **Enlaces_Proyecto.md:** Enlaces oficiales del proyecto y de los entregables finales.
-- **Pruebas_y_Validacion.md:** Pruebas por componente, pruebas de integración, ejemplos de uso del MVP, incidencias, correcciones y validación final.
+- - **Pruebas_y_validacion_MVP.md:** Pruebas por componente, pruebas de integración, ejemplos de uso del MVP, incidencias, correcciones y validación final.
 
 ---
 
 # Actualización de la Documentación
 
-La documentación será revisada y actualizada de forma continua durante el desarrollo del proyecto, incorporando los avances, acuerdos y mejoras realizadas por cada área.
+La documentación fue revisada y actualizada durante el desarrollo del proyecto, incorporando los avances, acuerdos y mejoras realizadas por cada área hasta la consolidación de la versión final del MVP.
 
 ---
 
@@ -127,7 +127,7 @@ La documentación será revisada y actualizada de forma continua durante el desa
 | Manual_Usuario.md | **Equipo de Desarrollo**, con apoyo del Equipo de Ciencia de Datos cuando sea necesario |
 | minutas/README.md | **Yanucelly Moreira** (Project Manager) |
 | Minutas de reunión | **Yanucelly Moreira** (Project Manager) |
-| Pruebas_y_Validacion.md | **Responsables de cada área**, según los componentes evaluados; coordinación y consolidación documental a cargo del **Project Manager** |
+| Pruebas_y_validacion_MVP.md | **Responsables de cada área**, según los componentes evaluados; coordinación y consolidación documental a cargo del **Project Manager** |
 
 ---
 
