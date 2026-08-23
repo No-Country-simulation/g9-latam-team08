@@ -111,8 +111,9 @@ La implementación integra servicios desarrollados en **Java/Spring Boot** y **P
 
 Asimismo, Finance AI incorpora un servicio de **Nuevo Análisis** que actúa como orquestador del procesamiento financiero y permite enriquecer los resultados mediante la generación de recomendaciones financieras personalizadas utilizando Inteligencia Artificial Generativa.
 
-Para consultar la documentación técnica del área:
+Para consultar el detalle de la implementación y documentación técnica del área:
 
+- [`README – Backend`](backend/Readme.md)
 - [`Documentación técnica – Backend`](docs/Backend.md)
 
 ---
@@ -175,20 +176,17 @@ Los enlaces oficiales del proyecto, herramientas utilizadas, aplicación, diseñ
 Finance AI fue desarrollado por un equipo multidisciplinario integrado por perfiles de **Project Management, Ciencia de Datos, Data Engineering, Backend, Frontend, Full Stack y Software Engineering**.
 
 ---
+
 ## 📌 Estado del Proyecto
 
-🟡 **Finance AI se encuentra en la etapa final de consolidación y validación del MVP.**
+✅ **Finance AI cuenta con una versión funcional del MVP desarrollada, integrada y validada para su demostración.**
 
-Los componentes de **Ciencia de Datos, Backend, Frontend y Oracle Cloud Infrastructure (OCI)** cuentan con sus desarrollos y documentación correspondientes.
+Los componentes de **Ciencia de Datos, Backend, Frontend y Oracle Cloud Infrastructure (OCI)** se encuentran desarrollados y cuentan con su documentación correspondiente.
 
-Las versiones consolidadas de Frontend y Backend se encuentran preparadas para su incorporación definitiva a `main`.
+Las versiones definitivas de Backend y Frontend se encuentran consolidadas en `main`.
 
-El cierre del MVP comprende la consolidación final del repositorio, la validación del flujo funcional sobre la aplicación web desplegada, la revisión definitiva de la documentación y la preparación del Video Demo.
+El flujo funcional del MVP fue validado en entorno local, confirmando la integración de los principales componentes de la solución y el funcionamiento de los casos de uso definidos para la demostración.
 
----
+La **API REST** se encuentra desplegada en **OCI Compute** y los modelos de Machine Learning utilizados por la solución se encuentran almacenados en **OCI Object Storage**.
 
-## 🎥 Demo
-
-El Video Demo del MVP será incorporado una vez finalizadas las pruebas y validado el funcionamiento definitivo de Finance AI.
-
-> 🔄 Enlace pendiente de incorporar.
+Adicionalmente, se dispone de una versión pública de la WebApp cuya comunicación con las APIs continúa en revisión, sin afectar el funcionamiento del MVP validado en entorno local.

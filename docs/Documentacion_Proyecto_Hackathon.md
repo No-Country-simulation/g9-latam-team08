@@ -212,16 +212,15 @@ Los principales entregables preparados por el equipo incluyen:
 Los entregables son revisados y validados por el equipo antes de su publicación o carga en la plataforma correspondiente.
 
 ---
-
 ## Estado Final del Proyecto
 
-Finance AI se encuentra en la jornada de cierre y consolidación final de su MVP en el marco del **Hackathon ONE | Alura Latam | No Country**.
+Finance AI cuenta con un MVP desarrollado e integrado en el marco del **Hackathon ONE | Alura Latam | No Country**.
 
 Los componentes principales de **Ciencia de Datos, Backend, Frontend y Oracle Cloud Infrastructure (OCI)** fueron desarrollados de acuerdo con el alcance definido para el proyecto.
 
 Ciencia de Datos completó el desarrollo, evaluación y serialización de los modelos de Machine Learning. Backend cuenta con los servicios necesarios para el procesamiento financiero, la integración con los modelos y el flujo de Nuevo Análisis. Frontend cuenta con una versión consolidada de la Aplicación Web para escritorio (PC), mientras que OCI proporciona Object Storage para el almacenamiento de los modelos de Machine Learning y Compute para el despliegue de la API REST.
 
-Durante la jornada de cierre se completará la consolidación definitiva de las áreas en `main` y la validación final del funcionamiento integrado de la aplicación, antes de preparar la versión definitiva de los entregables del proyecto.
+Backend y Frontend se encuentran consolidados en `main` y se verificó el funcionamiento integrado del MVP en entorno local. La aplicación se encuentra funcional para su ejecución y demostración en dicho entorno. Asimismo, se dispone de una versión pública de la WebApp, cuya comunicación con las APIs continúa en revisión.
 
 ### Ciencia de Datos
 
@@ -275,17 +274,15 @@ Durante la jornada de cierre se completará la consolidación definitiva de las 
 
 - ✅ API REST desplegada en una instancia de OCI Compute.
 
-- 🔄 Consolidación definitiva de Backend en `main` prevista para la jornada de cierre.
+- ✅ Consolidada la versión definitiva de Backend en `main`.
 
-- ⏳ Validación final del funcionamiento de Backend dentro del flujo completo de la aplicación.
+- ✅ Verificado el funcionamiento de Backend dentro del flujo integrado del MVP ejecutado en entorno local.
 
-**Estado:** 🔄 El componente Backend se encuentra desarrollado y con sus servicios principales implementados. Durante el cierre se completará su consolidación definitiva en `main` y la validación dentro del flujo completo del MVP.
+**Estado:** ✅ El componente Backend se encuentra desarrollado, integrado y consolidado en `main`, con sus servicios principales implementados y operativo dentro del flujo funcional del MVP en entorno local.
 
 ### Frontend
 
 - ✅ Desarrollada la Aplicación Web para escritorio (PC) mediante React, TypeScript y Vite.
-
-- ✅ Consolidada la implementación de Frontend correspondiente al MVP en su rama de trabajo.
 
 - ✅ Implementadas la Landing pública y las funcionalidades de autenticación.
 
@@ -305,11 +302,13 @@ Durante la jornada de cierre se completará la consolidación definitiva de las 
 
 - ℹ️ **Configuración** no forma parte de las funcionalidades implementadas para la versión final del MVP y se contempla como una posible evolución futura de la aplicación.
 
-- 🔄 Consolidación definitiva de Frontend en `main` prevista para la jornada de cierre.
+- ✅ Consolidada la versión definitiva de Frontend en `main`.
 
-- ⏳ Pendiente la validación final de la Aplicación Web dentro del flujo completo e integrado del MVP.
+- ✅ Validado el funcionamiento de la Aplicación Web dentro del flujo integrado del MVP en entorno local.
 
-**Estado:** 🔄 El componente Frontend se encuentra desarrollado y consolidado en su rama de trabajo de acuerdo con el alcance visible definido para el MVP. Durante el cierre se completará su incorporación definitiva a `main` y la validación final junto con los servicios de Backend.
+- 🔄 La comunicación de la versión pública desplegada de la WebApp con las APIs continúa en revisión.
+
+**Estado:** ✅ El componente Frontend se encuentra desarrollado y consolidado en `main` de acuerdo con el alcance definido para el MVP. La Aplicación Web se encuentra funcional para su ejecución y demostración en entorno local. Se dispone además de una versión pública desplegada, cuya comunicación con las APIs continúa en revisión.
 
 ### Oracle Cloud Infrastructure (OCI)
 
@@ -337,21 +336,32 @@ Durante la jornada de cierre se completará la consolidación definitiva de las 
 
 ### Cierre del MVP
 
-Para completar formalmente el cierre técnico del MVP durante la jornada del **22/08/2026**, se realizarán las siguientes actividades finales:
+Como resultado del proceso de desarrollo, integración y validación, se completaron las actividades correspondientes al cierre técnico del MVP:
 
-- 🔄 Consolidación de las versiones definitivas de las áreas en `main`.
+- ✅ Consolidación de las versiones definitivas de Backend y Frontend en `main`.
 
-- ⏳ Verificación de la estructura final del repositorio.
+- ✅ Verificación de la estructura final de los componentes consolidados del repositorio.
 
-- ⏳ Validación del funcionamiento integrado de la Aplicación Web con los servicios de Backend.
+- ✅ Validación del funcionamiento integrado del MVP ejecutado en entorno local.
 
-- ⏳ Verificación del enlace definitivo de acceso a la Aplicación Web desplegada.
+- ✅ Confirmación del funcionamiento de las integraciones principales entre Frontend, Backend y Ciencia de Datos en entorno local.
 
-- ⏳ Prueba del recorrido funcional que será utilizado para la grabación del Video Demo.
+- ✅ API REST desplegada en OCI Compute.
 
-Una vez confirmadas estas actividades, el MVP quedará preparado para el cierre definitivo de la documentación, la grabación y publicación del Video Demo y la presentación de los entregables finales del Hackathon.
+- ✅ Validación de los casos de uso definidos para la demostración del MVP en entorno local.
+
+- ✅ Definido y preparado el recorrido funcional para la grabación del Video Demo.
+
+La versión funcional del MVP se encuentra disponible para su ejecución y demostración en entorno local, donde se verificó correctamente el funcionamiento del flujo definido para la solución.
+
+El recorrido funcional del Video Demo se encuentra definido y preparado para su grabación utilizando este entorno.
+
+Adicionalmente, se dispone de una versión pública de la WebApp. La comunicación de esta versión con las APIs continúa en revisión y no afecta el funcionamiento ni la demostración del MVP en entorno local.
+
+Finance AI cuenta con una versión funcional del MVP preparada para su demostración y presentación como resultado del Hackathon.
 
 ---
+
 ## Mejoras Futuras
 
 Como evolución de Finance AI, se identificaron oportunidades para ampliar las funcionalidades del MVP y continuar fortaleciendo la experiencia del usuario.
@@ -377,7 +387,8 @@ Estas mejoras permitirán evolucionar Finance AI a partir del MVP desarrollado d
 
 El código fuente, la documentación técnica y los recursos correspondientes a Finance AI se encuentran organizados en el repositorio principal del proyecto.
 
-Los recursos complementarios utilizados durante el desarrollo incluyen el diseño de la aplicación en Figma, los tableros de gestión del proyecto y la Aplicación Web desplegada.
+Los recursos complementarios utilizados durante el desarrollo incluyen el diseño de la aplicación en Figma, los tableros de gestión del proyecto y los recursos asociados a la Aplicación Web.
+
 
 Los enlaces definitivos correspondientes a los entregables del Hackathon serán verificados y cargados directamente en los apartados correspondientes de la plataforma de No Country.
 

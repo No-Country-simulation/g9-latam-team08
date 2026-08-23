@@ -26,6 +26,7 @@ Cada minuta documenta los objetivos de la reunión, los participantes, los temas
 | 20/08/2026 | Semana 5 | Seguimiento de los pendientes para el cierre del MVP, priorización de la integración Frontend ↔ Backend y pruebas, organización y consolidación final de Backend y Frontend, avance de la documentación, planificación del Video Demo y preparación de los entregables finales. |
 | 21/08/2026 – 11:00 h | Semana 5 | Seguimiento de los pendientes para el cierre del MVP, revisión de Nuevo Análisis, integración Backend y OCI, validación del guion del Video Demo, organización de las pruebas finales, documentación y entregables. |
 | 21/08/2026 – 21:00 h | Semana 5 | Revisión de los avances del cierre del MVP, confirmación de las versiones consolidadas de Frontend y Backend para su posterior merge a `main`, coordinación de las verificaciones finales, disponibilidad de apoyo para OCI, recepción del enlace de Figma, coordinación del acceso a la aplicación web desplegada para su validación, documentación, enlaces y preparación del Video Demo. |
+| 22/08/2026 – 13:00 h | Semana 5 | Seguimiento final y cierre técnico del MVP, revisión de las integraciones principales, consolidación de Frontend y Backend en `main`, seguimiento del cierre documental y de los entregables de No Country, revisión del despliegue de la WebApp y definición del entorno local para las grabaciones del Video Demo, verificación de enlaces y coordinación de las actividades finales para Demo Day. |
 
 ---
 

@@ -29,25 +29,29 @@ La solución se apoya en tres pilares fundamentales:
 
 ### Requisitos del Sistema
 
-FinanceAI es una aplicación web (WebApp) diseñada para ejecutarse en navegadores modernos. Para una experiencia óptima, recomendamos:
+Finance AI es una aplicación web (WebApp) diseñada para ejecutarse en navegadores modernos.
+
+Para una experiencia óptima, recomendamos:
 
 * **Navegador:** Versiones actualizadas de Google Chrome, Mozilla Firefox, Microsoft Edge o Safari.
 
-* **Conexión a Internet:** Conexión estable para la comunicación con nuestros servidores de procesamiento.
+* **Conexión a Internet:** Se recomienda disponer de una conexión estable a Internet para el acceso y funcionamiento de los servicios utilizados por la aplicación.
 
 * **Dispositivos:** Actualmente optimizada para equipos de escritorio (PC/Laptop).
 
 ### Acceso a la Aplicación
 
-El acceso a Finance AI se realiza desde la Aplicación Web desplegada.
+Finance AI es una aplicación web desarrollada para equipos de escritorio (PC/Laptop).
 
-Una vez disponible la versión definitiva del MVP, el usuario podrá acceder mediante las opciones de autenticación habilitadas en la aplicación.
+Para la versión final del MVP, el flujo funcional de la aplicación fue validado mediante su ejecución en entorno local.
+
+El acceso a las funcionalidades principales se realiza mediante las opciones de autenticación habilitadas en la aplicación.
 
 ---
 
 ## Inicio de la Aplicación
 
-Tras iniciar sesión, accederás al **Dashboard Principal**. Aquí visualizarás un resumen de tu salud financiera actual.
+Tras iniciar sesión, el usuario accede al **Dashboard Principal**, desde donde puede navegar por las funcionalidades disponibles y comenzar un **Nuevo Análisis** financiero.
 
 ---
 
@@ -55,13 +59,15 @@ Tras iniciar sesión, accederás al **Dashboard Principal**. Aquí visualizarás
 
 ### Nuevo Análisis
 
-Desde la opción **Nuevo Análisis**, puedes ingresar la información necesaria para realizar tu análisis financiero mediante un proceso guiado de tres pasos:
+Desde la opción **Nuevo Análisis**, el usuario puede ingresar la información necesaria para realizar su análisis financiero mediante un proceso guiado de tres pasos:
 
 - Datos financieros.
 - Transacciones.
 - Revisión de la información.
 
-Antes de confirmar, puedes revisar y editar los datos ingresados.
+Durante el proceso se ingresan los datos financieros y las transacciones que serán utilizados para realizar el análisis.
+
+Antes de confirmar, el usuario puede revisar y editar los datos ingresados si necesita realizar alguna corrección.
 
 ### Visualización del Análisis Financiero
 
@@ -69,21 +75,17 @@ Una vez ingresada y procesada la información financiera, Finance AI presenta lo
 
 Los resultados incluyen indicadores y datos relacionados con el comportamiento financiero, que permiten al usuario conocer su perfil financiero y comprender mejor la distribución de sus gastos.
 
-voy a dejar paar verificar
-
-El sistema analiza tus movimientos mensuales mediante nuestra API de Python. Los resultados se reflejan en gráficos interactivos que muestran la evolución de tus gastos y tu capacidad de ahorro a lo largo del tiempo.
-
 ### Consulta de Indicadores
 
-Podrás consultar métricas clave como tu ratio de endeudamiento, gastos esenciales vs. no esenciales y tu nivel de ahorro neto.
+El usuario puede consultar los indicadores financieros obtenidos a partir de la información ingresada, permitiendo comprender de forma más clara su situación financiera.
 
 ### Recomendaciones Financieras
 
-Basándose en tu comportamiento de gasto, FinanceAI te proporcionará recomendaciones personalizadas para optimizar tu presupuesto y alcanzar una mayor estabilidad económica.
+A partir de los resultados obtenidos durante el análisis, Finance AI genera recomendaciones personalizadas orientadas a ayudar al usuario a identificar oportunidades de mejora en la gestión de sus finanzas personales.
 
 ### Historial de Transacciones
 
-Desde la sección **Historial** puedes consultar y gestionar las transacciones registradas.
+Desde la sección **Historial**, el usuario puede consultar y gestionar las transacciones registradas.
 
 La sección permite:
 
@@ -95,26 +97,24 @@ La sección permite:
 - Exportar los registros en formato PDF.
 
 ---
-
 ## Interpretación de Resultados
 
-La aplicación clasifica tu situación financiera en uno de los siguientes tres perfiles:
+La aplicación clasifica la situación financiera del usuario en uno de los siguientes tres perfiles:
 
-* **Saludable:** Tus finanzas están equilibradas, con un buen margen de ahorro y bajo nivel de deuda.
+* **Saludable:** Las finanzas presentan un comportamiento equilibrado, con capacidad de ahorro y un nivel de endeudamiento controlado.
 
-* En **Observación:** Existen áreas de oportunidad; tus gastos están cerca de tus ingresos, lo que requiere un ajuste en el control de presupuestos.
+* **En Observación:** Se identifican aspectos de la situación financiera que requieren atención y seguimiento para mejorar la gestión de los ingresos y gastos.
 
-* En **Riesgo:** Tus indicadores muestran un endeudamiento elevado o gastos que superan tus ingresos recurrentes. Se requieren acciones correctivas inmediatas sugeridas por la app.
+* **En Riesgo:** Los indicadores financieros muestran una situación que requiere mayor atención y la aplicación de acciones orientadas a mejorar la salud financiera.
 
 ---
-
 ## Preguntas Frecuentes (FAQ)
 
-**¿Mis datos bancarios están seguros?**
+**¿Finance AI se conecta directamente con mis cuentas bancarias?**
 
-FinanceAI no utiliza APIs bancarias externas. Toda la información es gestionada a través de tus registros manuales, garantizando que no accedemos a tus cuentas bancarias directamente.
+No. En la versión actual del MVP, la información utilizada para realizar el análisis es ingresada por el usuario y no se realiza una conexión directa con cuentas bancarias.
 
-**¿Puedo usar la app desde mi celular?**
+**¿Puedo utilizar Finance AI desde mi celular?**
 
 Actualmente, la versión del MVP está orientada principalmente a equipos de escritorio (PC/Laptop).
 
@@ -122,9 +122,9 @@ Actualmente, la versión del MVP está orientada principalmente a equipos de esc
 
 ## Solución de Problemas
 
-* **El análisis no carga:** Refresca la página. Si el problema persiste, verifica tu conexión a internet o intenta cerrar y volver a abrir sesión.
+* **El análisis no carga:** El usuario puede refrescar la página y volver a intentar el análisis. Si el problema persiste, se recomienda verificar la conexión a Internet o cerrar y volver a iniciar sesión.
 
-- **Problemas de acceso:** Verifica tu conexión a Internet y vuelve a intentar el acceso mediante las opciones de autenticación disponibles en la aplicación.
+* **Problemas de acceso:** Se recomienda verificar que la conexión a Internet sea estable y volver a intentar el acceso mediante las opciones de autenticación disponibles en la aplicación.
 
 ---
 
@@ -133,7 +133,8 @@ Actualmente, la versión del MVP está orientada principalmente a equipos de esc
 * **Acceso:** No es una aplicación nativa, por lo que su rendimiento depende del navegador web utilizado.
 
 ---
-
 ## Versiones
 
-**Versión 1.0.0 (Lanzamiento inicial):** Incluye exportación del registro de transacciones mediante PDF, categorización automática mediante API Python, generación de perfiles de riesgo y panel de visualización en WebApp.
+**Versión 1.0.0 – MVP del Hackathon**
+
+Primera versión funcional de Finance AI, desarrollada en el marco del **Hackathon ONE | Alura Latam | No Country**, que integra el análisis de información financiera y transaccional, clasificación de gastos, evaluación del perfil financiero, generación de recomendaciones personalizadas y visualización de resultados mediante una Aplicación Web para escritorio (PC).
