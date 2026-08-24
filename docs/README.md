@@ -103,7 +103,7 @@ Cada documento podrá incorporar secciones específicas de acuerdo con las neces
 - **Manual_Usuario.md:** Acceso a la aplicación, navegación, funcionalidades principales, guía de uso y preguntas frecuentes.
 - **Herramientas_y_Tecnologias.md:** Herramientas, tecnologías, lenguajes, plataformas y servicios utilizados durante el desarrollo del proyecto.
 - **Enlaces_Proyecto.md:** Enlaces oficiales del proyecto y de los entregables finales.
-- - **Pruebas_y_validacion_MVP.md:** Pruebas por componente, pruebas de integración, ejemplos de uso del MVP, incidencias, correcciones y validación final.
+- **Pruebas_y_validacion_MVP.md:** Pruebas por componente, pruebas de integración, ejemplos de uso del MVP, incidencias, correcciones y validación final.
 
 ---
 
