@@ -124,7 +124,7 @@ La documentación fue revisada y actualizada durante el desarrollo del proyecto,
 | Backend.md | **Juan Roldán** (Backend Developer) y **Leandro Baque** (Backend Developer), con apoyo del Equipo de Desarrollo |
 | Frontend.md | **Magalí Aldana** (Frontend Developer), con apoyo del Equipo de Desarrollo |
 | OCI.md | **Matías Bueno** (Data Engineer), con apoyo del Equipo de Desarrollo |
-| Manual_Usuario.md | **Equipo de Desarrollo**, con apoyo del Equipo de Ciencia de Datos cuando sea necesario |
+| Manual_Usuario.md | **Alan Joel Romero (Software Engineer)** – Elaboración · **Yanucelly Moreira (Project Manager)** – Revisión |
 | minutas/README.md | **Yanucelly Moreira** (Project Manager) |
 | Minutas de reunión | **Yanucelly Moreira** (Project Manager) |
 | Pruebas_y_validacion_MVP.md | **Responsables de cada área**, según los componentes evaluados; coordinación y consolidación documental a cargo del **Project Manager** |
