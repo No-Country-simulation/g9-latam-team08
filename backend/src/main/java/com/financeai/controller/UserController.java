@@ -1,5 +1,5 @@
 
- package com.financeai.controller;
+package com.financeai.controller;
 
 import com.financeai.config.JwtService;
 import com.financeai.entity.Usuario;
