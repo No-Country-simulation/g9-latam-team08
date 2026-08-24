@@ -1,4 +1,4 @@
-package com.financeai.controller;
+ package com.financeai.controller;
 
 import com.financeai.config.JwtService;
 import com.financeai.entity.Usuario;
@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usuarios")
 public class UserController {
 
     @Autowired
