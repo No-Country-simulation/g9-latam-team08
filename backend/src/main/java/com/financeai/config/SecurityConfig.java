@@ -30,7 +30,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 // Rutas públicas (no requieren token)
-                .requestMatchers("/users/login", "/users", "/users/register").permitAll()
+                .requestMatchers("/usuarios/login", "/usuarios", "/usuarios/register").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 // Todo lo demás requiere autenticación
