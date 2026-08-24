@@ -42,7 +42,7 @@ function Login() {
 
     try {
       const response = await fetch(
-  `${env.apiBaseUrl}/api/users/login`,
+  `${env.apiBaseUrl}/api/usuarios/login`,
   {
     method: "POST",
     headers: {
@@ -89,7 +89,7 @@ localStorage.setItem(
     } catch (err: any) {
       setError(err.message || "Error al conectar con el servidor.");
     } finally {
-      setIsSubmitting(false); 
+      setIsSubmitting(false);
     }
   };
 
