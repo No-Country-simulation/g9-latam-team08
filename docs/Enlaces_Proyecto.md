@@ -37,7 +37,9 @@ El flujo funcional de la Aplicación Web de Finance AI fue validado en entorno l
 > El enlace público de la WebApp se incorporará únicamente si la versión desplegada queda disponible y validada para la entrega final.
 
 ---
+### 🎥 Video Demo
 
-## Video Demo
+**Video Demo – FinanceAI (YouTube):**  
+[Ver Video Demo](https://www.youtube.com/watch?v=b4XepFp4wYs)
 
-El enlace al Video Demo será incorporado una vez publicado en YouTube.
+**Estado:** ✅ Publicado y enlace verificado.
