@@ -1,0 +1,10 @@
+frontend/node_modules
+frontend/dist
+frontend/.vite
+frontend/.DS_Store
+frontend/.env
+frontend/.env.local
+.env
+.pnpm-store/
+__pycache__/
+*.py[cod]
